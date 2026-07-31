@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Investment Calendar Simulator â€” Algoritma cerdas untuk mengoptimalkan strategi investasi harian dengan kalender interaktif, analisis mendalam, dan ekspor lengkap." />
+  <meta name="keywords" content="investment calendar, simulasi investasi, kalender investasi, strategi investasi" />
+  <meta name="author" content="InvestCalc" />
+  <meta property="og:title" content="Investment Calendar Simulator" />
+  <meta property="og:description" content="Simulasi strategi investasi optimal dengan algoritma lookahead cerdas." />
+  <title>Investment Calendar Simulator</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- External CDN Libraries -->
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <!-- SheetJS (Excel export) -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js" defer></script>
+  <!-- jsPDF (PDF export) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <!-- jsPDF AutoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+  <!-- Firebase CDN (compat - no bundler needed) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <!-- ── Firebase Integration ──────────────────────────────────────────── -->
+  <script src="js/firebase.js"></script>
+</head>
+
+<body>
+
+  <!-- ── Password Modal ───────────────────────────────────────────────────── -->
+  <div id="auth-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(5,5,15,0.97);display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-card,#12121e);border:1px solid rgba(79,172,254,0.3);border-radius:16px;padding:40px 36px;width:340px;text-align:center;">
+      <div style="font-size:36px;margin-bottom:12px;">🔐</div>
+      <div style="font-size:18px;font-weight:700;color:#e2e8f0;margin-bottom:6px;">Invest Calculator</div>
+      <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">Masukkan password untuk melanjutkan</div>
+      <input id="auth-input" type="password" placeholder="Password..." style="width:100%;box-sizing:border-box;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:15px;outline:none;margin-bottom:12px;"/>
+      <button id="auth-btn" style="width:100%;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,#4facfe,#00f2fe);color:#0f0f1a;font-weight:700;font-size:14px;cursor:pointer;">Masuk</button>
+      <div id="auth-error" style="color:#ef4444;font-size:12px;margin-top:10px;display:none;">Password salah. Coba lagi.</div>
+      <div id="auth-setup" style="margin-top:16px;font-size:12px;color:#64748b;">Belum ada password? <a href="#" id="auth-setup-link" style="color:#4facfe;">Buat sekarang</a></div>
+    </div>
+  </div>
+
+  <div class="app-shell" role="main">
+
+    <!-- â”€â”€ Sidebar: Configuration Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <aside id="config-panel" aria-label="Configuration Panel">
+      <!-- Filled by app.js -->
+    </aside>
+
+    <!-- â”€â”€ Main Content Area â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section id="main-content" aria-label="Simulation Results">
+      <!-- Filled by app.js -->
+    </section>
+
+  </div><!-- /.app-shell -->
+
+  <!-- â”€â”€ Engine Scripts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <script src="js/engine/calculator.js"></script>
+  <script src="js/engine/ledger.js"></script>
+  <script src="js/engine/optimizer.js"></script>
+  <script src="js/engine/simulator.js"></script>
+
+  <!-- â”€â”€ UI Scripts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <script src="js/ui/calendar.js"></script>
+  <script src="js/ui/detail.js"></script>
+  <script src="js/ui/summary.js"></script>
+  <script src="js/ui/comparison.js"></script>
+
+  <!-- â”€â”€ Export Scripts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <script src="js/export/exporters.js"></script>
+
+  <!-- â”€â”€ App Orchestrator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <script src="js/app.js"></script>
+</body>
+</html>
+

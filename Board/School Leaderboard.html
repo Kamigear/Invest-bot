@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://boardleaders.rf.gd/?i=1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Leaderboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; padding: 20px; position: relative; min-height: 100vh; margin: 0; }
+        .container { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .portal-nav { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .nav-btn { text-decoration: none; padding: 8px 16px; font-size: 13px; font-weight: bold; border-radius: 4px; }
+        .rep-btn { background-color: #e2e6ea; color: #495057; }
+        .admin-btn { background-color: #343a40; color: #fff; }
+        .grade-menu { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
+        .grade-btn { padding: 12px 24px; font-weight: bold; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .grade-btn.active { background-color: #007bff; }
+        .board-section { display: none; } 
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .alert { padding: 15px; border-radius: 6px; margin-bottom: 20px; text-align: center; font-weight: bold; }
+        .easter-egg { position: absolute; font-size: 30px; cursor: pointer; z-index: 999; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 8px; text-align: center; max-width: 400px; width: 90%; }
+        .modal input, .modal select { padding: 10px; width: 100%; margin: 10px 0; box-sizing: border-box; }
+        .modal button { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; width: 100%; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="portal-nav">
+            <a href="https://boardleaders.rf.gd/rep_panel.php" class="nav-btn rep-btn">Representative Login</a>
+            <a href="https://boardleaders.rf.gd/admin.php" class="nav-btn admin-btn">Admin Login</a>
+        </div>
+
+                
+        <h1 style="text-align:center;">Informatics Leaderboard</h1>
+        
+        <div class="grade-menu">
+            <button class="grade-btn" id="btn-10" onclick="showGrade(10)">Grade 10</button>
+            <button class="grade-btn" id="btn-11" onclick="showGrade(11)">Grade 11</button>
+            <button class="grade-btn" id="btn-12" onclick="showGrade(12)">Grade 12</button>
+        </div>
+
+                    <div id="grade-10" class="board-section">
+                <h2>Grade 10 Standings</h2>
+                <table>
+                    <tbody><tr><th>Rank</th><th>Class Name</th><th>Available Points</th></tr>
+                                            <tr>
+                            <td>#1</td>
+                            <td>Class 10-1</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#2</td>
+                            <td>Class 10-4</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#3</td>
+                            <td>Class 10-5</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#4</td>
+                            <td>Class 10-6</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#5</td>
+                            <td>Class 10-7</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#6</td>
+                            <td>Class 10-2</td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#7</td>
+                            <td>Class 10-3</td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                                    </tbody></table>
+            </div>
+                    <div id="grade-11" class="board-section">
+                <h2>Grade 11 Standings</h2>
+                <table>
+                    <tbody><tr><th>Rank</th><th>Class Name</th><th>Available Points</th></tr>
+                                            <tr>
+                            <td>#1</td>
+                            <td>Class 11-A</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#2</td>
+                            <td>Class 11-B</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                    </tbody></table>
+            </div>
+                    <div id="grade-12" class="board-section">
+                <h2>Grade 12 Standings</h2>
+                <table>
+                    <tbody><tr><th>Rank</th><th>Class Name</th><th>Available Points</th></tr>
+                                            <tr>
+                            <td>#1</td>
+                            <td>Class 12-A</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                            <tr>
+                            <td>#2</td>
+                            <td>Class 12-B</td>
+                            <td><strong>50</strong></td>
+                        </tr>
+                                    </tbody></table>
+            </div>
+            </div>
+
+        <div class="easter-egg" style="top: 18%; left: 60%;" onclick="document.getElementById(&#39;eggModal&#39;).style.display=&#39;flex&#39;">󠀠󠀠⠀ ⠀ ⠀ ⠀ ⠀</div>
+
+    <div id="eggModal" class="modal">
+        <div class="modal-content">
+            <h2>Weekly reward found!</h2>
+            <form method="POST">
+                <select name="class_id" required="">
+                    <option value="">-- Choose Your Class --</option>
+                                            <option value="1">Class 10-1</option>
+                                            <option value="4">Class 10-4</option>
+                                            <option value="5">Class 10-5</option>
+                                            <option value="6">Class 10-6</option>
+                                            <option value="7">Class 10-7</option>
+                                            <option value="2">Class 10-2</option>
+                                            <option value="3">Class 10-3</option>
+                                            <option value="8">Class 11-A</option>
+                                            <option value="9">Class 11-B</option>
+                                            <option value="10">Class 12-A</option>
+                                            <option value="11">Class 12-B</option>
+                                    </select>
+                <input type="password" name="rep_password" placeholder="Enter Representative Password" required="">
+                <button type="submit" name="claim_egg">Claim 50 Bonus Points</button>
+            </form>
+            <button onclick="document.getElementById(&#39;eggModal&#39;).style.display=&#39;none&#39;" style="background:#ccc; margin-top:10px; color:#333; width:100%; padding:10px; border:none; cursor:pointer;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showGrade(g) {
+            let b = document.getElementsByClassName('board-section'); for(let i=0;i<b.length;i++) b[i].style.display='none';
+            let btn = document.getElementsByClassName('grade-btn'); for(let i=0;i<btn.length;i++) btn[i].classList.remove('active');
+            document.getElementById('grade-'+g).style.display='block';
+            document.getElementById('btn-'+g).classList.add('active');
+        }
+    </script>
+
+</body></html>

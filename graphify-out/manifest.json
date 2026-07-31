@@ -1,0 +1,47 @@
+{
+  "js/app.js": {
+    "mtime": 1785492557.4367313,
+    "ast_hash": "86b864d7d61af769865fbf36badbb31e",
+    "semantic_hash": "86b864d7d61af769865fbf36badbb31e"
+  },
+  "js/engine/calculator.js": {
+    "mtime": 1785492081.284734,
+    "ast_hash": "6e47d1b073c736b405435ea3acf2fca1",
+    "semantic_hash": "6e47d1b073c736b405435ea3acf2fca1"
+  },
+  "js/engine/optimizer.js": {
+    "mtime": 1785492466.6030216,
+    "ast_hash": "46ed7104191c8e4621d48d64f95c9d87",
+    "semantic_hash": "46ed7104191c8e4621d48d64f95c9d87"
+  },
+  "js/engine/simulator.js": {
+    "mtime": 1785492488.8365443,
+    "ast_hash": "cf99738aebf5955530693be40e0abcba",
+    "semantic_hash": "cf99738aebf5955530693be40e0abcba"
+  },
+  "js/export/exporters.js": {
+    "mtime": 1785487157.468014,
+    "ast_hash": "1aac1dcd3f97bac495234611de8c4088",
+    "semantic_hash": "1aac1dcd3f97bac495234611de8c4088"
+  },
+  "js/ui/calendar.js": {
+    "mtime": 1785492466.605758,
+    "ast_hash": "f97077fb8a173f2da46d29d4d9828743",
+    "semantic_hash": "f97077fb8a173f2da46d29d4d9828743"
+  },
+  "js/ui/comparison.js": {
+    "mtime": 1785492611.1477506,
+    "ast_hash": "8139050eb0b5f426c75bfebfbbac385c",
+    "semantic_hash": "8139050eb0b5f426c75bfebfbbac385c"
+  },
+  "js/ui/detail.js": {
+    "mtime": 1785492498.8459039,
+    "ast_hash": "86d45ffe8ead63ff70f5da9e71acae47",
+    "semantic_hash": "86d45ffe8ead63ff70f5da9e71acae47"
+  },
+  "js/ui/summary.js": {
+    "mtime": 1785487083.146348,
+    "ast_hash": "4a26c9e1dbfddcdda3207cca1fb6299c",
+    "semantic_hash": "4a26c9e1dbfddcdda3207cca1fb6299c"
+  }
+}

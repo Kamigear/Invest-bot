@@ -1,0 +1,586 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "simulation_engine_group",
+        "label": "Simulation Engine Components",
+        "nodes": [
+          "js_engine_calculator",
+          "js_engine_optimizer",
+          "js_engine_simulator"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "index.html"
+      },
+      {
+        "id": "ui_presentation_group",
+        "label": "UI Presentation Components",
+        "nodes": [
+          "js_ui_calendar",
+          "js_ui_detail",
+          "js_ui_summary",
+          "js_ui_comparison"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "index.html"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_app",
+      "community": 1,
+      "norm_label": "app.js"
+    },
+    {
+      "label": "App",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_app_app",
+      "community": 1,
+      "norm_label": "app"
+    },
+    {
+      "label": "calculator.js",
+      "file_type": "code",
+      "source_file": "js/engine/calculator.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_engine_calculator",
+      "community": 3,
+      "norm_label": "calculator.js"
+    },
+    {
+      "label": "Calculator",
+      "file_type": "code",
+      "source_file": "js/engine/calculator.js",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "js_engine_calculator_calculator",
+      "community": 3,
+      "norm_label": "calculator"
+    },
+    {
+      "label": "optimizer.js",
+      "file_type": "code",
+      "source_file": "js/engine/optimizer.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_engine_optimizer",
+      "community": 4,
+      "norm_label": "optimizer.js"
+    },
+    {
+      "label": "Optimizer",
+      "file_type": "code",
+      "source_file": "js/engine/optimizer.js",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "js_engine_optimizer_optimizer",
+      "community": 4,
+      "norm_label": "optimizer"
+    },
+    {
+      "label": "simulator.js",
+      "file_type": "code",
+      "source_file": "js/engine/simulator.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_engine_simulator",
+      "community": 1,
+      "norm_label": "simulator.js"
+    },
+    {
+      "label": "Simulator",
+      "file_type": "code",
+      "source_file": "js/engine/simulator.js",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "js_engine_simulator_simulator",
+      "community": 1,
+      "norm_label": "simulator"
+    },
+    {
+      "label": "Exporters",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "js_export_exporters",
+      "community": 2,
+      "norm_label": "exporters"
+    },
+    {
+      "label": "ExportCSV",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "js_export_exporters_exportcsv",
+      "community": 2,
+      "norm_label": "exportcsv"
+    },
+    {
+      "label": "ExportExcel",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "js_export_exporters_exportexcel",
+      "community": 2,
+      "norm_label": "exportexcel"
+    },
+    {
+      "label": "ExportPDF",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "js_export_exporters_exportpdf",
+      "community": 2,
+      "norm_label": "exportpdf"
+    },
+    {
+      "label": "Calendar UI",
+      "file_type": "code",
+      "source_file": "js/ui/calendar.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "js_ui_calendar",
+      "community": 5,
+      "norm_label": "calendar ui"
+    },
+    {
+      "label": "CalendarUI",
+      "file_type": "code",
+      "source_file": "js/ui/calendar.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_ui_calendar_calendarui",
+      "community": 5,
+      "norm_label": "calendarui"
+    },
+    {
+      "label": "Comparison UI",
+      "file_type": "code",
+      "source_file": "js/ui/comparison.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "js_ui_comparison",
+      "community": 6,
+      "norm_label": "comparison ui"
+    },
+    {
+      "label": "ComparisonUI",
+      "file_type": "code",
+      "source_file": "js/ui/comparison.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_ui_comparison_comparisonui",
+      "community": 6,
+      "norm_label": "comparisonui"
+    },
+    {
+      "label": "Detail UI",
+      "file_type": "code",
+      "source_file": "js/ui/detail.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "js_ui_detail",
+      "community": 0,
+      "norm_label": "detail ui"
+    },
+    {
+      "label": "DetailUI",
+      "file_type": "code",
+      "source_file": "js/ui/detail.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_ui_detail_detailui",
+      "community": 0,
+      "norm_label": "detailui"
+    },
+    {
+      "label": "Summary UI",
+      "file_type": "code",
+      "source_file": "js/ui/summary.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "js_ui_summary",
+      "community": 7,
+      "norm_label": "summary ui"
+    },
+    {
+      "label": "SummaryUI",
+      "file_type": "code",
+      "source_file": "js/ui/summary.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_ui_summary_summaryui",
+      "community": 7,
+      "norm_label": "summaryui"
+    },
+    {
+      "label": "index.html",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "InvestCalc",
+      "contributor": null,
+      "id": "index_html",
+      "community": 0,
+      "norm_label": "index.html"
+    },
+    {
+      "label": "Chart.js",
+      "file_type": "code",
+      "source_file": "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js",
+      "source_location": null,
+      "source_url": "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "chartjs",
+      "community": 0,
+      "norm_label": "chart.js"
+    },
+    {
+      "label": "SheetJS",
+      "file_type": "code",
+      "source_file": "https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js",
+      "source_location": null,
+      "source_url": "https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "sheetjs",
+      "community": 0,
+      "norm_label": "sheetjs"
+    },
+    {
+      "label": "jsPDF",
+      "file_type": "code",
+      "source_file": "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+      "source_location": null,
+      "source_url": "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "jspdf",
+      "community": 0,
+      "norm_label": "jspdf"
+    }
+  ],
+  "links": [
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "js_app",
+      "target": "js_engine_simulator"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_engine_calculator"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/calculator.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_engine_calculator",
+      "target": "js_engine_calculator_calculator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_engine_optimizer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/optimizer.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_engine_optimizer",
+      "target": "js_engine_optimizer_optimizer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_engine_simulator"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/simulator.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_engine_simulator",
+      "target": "js_engine_simulator_simulator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_export_exporters"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_export_exporters",
+      "target": "js_export_exporters_exportcsv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_export_exporters",
+      "target": "js_export_exporters_exportexcel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_export_exporters",
+      "target": "js_export_exporters_exportpdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_ui_calendar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/calendar.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_ui_calendar",
+      "target": "js_ui_calendar_calendarui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_ui_comparison"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/comparison.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_ui_comparison",
+      "target": "js_ui_comparison_comparisonui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_ui_detail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/detail.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_ui_detail",
+      "target": "js_ui_detail_detailui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "js_ui_summary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/summary.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_ui_summary",
+      "target": "js_ui_summary_summaryui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "chartjs"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "jspdf"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "sheetjs"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "simulation_engine_group",
+      "label": "Simulation Engine Components",
+      "nodes": [
+        "js_engine_calculator",
+        "js_engine_optimizer",
+        "js_engine_simulator"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "index.html"
+    },
+    {
+      "id": "ui_presentation_group",
+      "label": "UI Presentation Components",
+      "nodes": [
+        "js_ui_calendar",
+        "js_ui_detail",
+        "js_ui_summary",
+        "js_ui_comparison"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "index.html"
+    }
+  ]
+}

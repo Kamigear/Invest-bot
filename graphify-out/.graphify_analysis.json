@@ -1,0 +1,111 @@
+{
+  "communities": {
+    "0": [
+      "chartjs",
+      "index_html",
+      "js_ui_detail",
+      "js_ui_detail_detailui",
+      "jspdf",
+      "sheetjs"
+    ],
+    "1": [
+      "js_app",
+      "js_app_app",
+      "js_engine_simulator",
+      "js_engine_simulator_simulator"
+    ],
+    "2": [
+      "js_export_exporters",
+      "js_export_exporters_exportcsv",
+      "js_export_exporters_exportexcel",
+      "js_export_exporters_exportpdf"
+    ],
+    "3": [
+      "js_engine_calculator",
+      "js_engine_calculator_calculator"
+    ],
+    "4": [
+      "js_engine_optimizer",
+      "js_engine_optimizer_optimizer"
+    ],
+    "5": [
+      "js_ui_calendar",
+      "js_ui_calendar_calendarui"
+    ],
+    "6": [
+      "js_ui_comparison",
+      "js_ui_comparison_comparisonui"
+    ],
+    "7": [
+      "js_ui_summary",
+      "js_ui_summary_summaryui"
+    ]
+  },
+  "cohesion": {
+    "0": 0.3333333333333333,
+    "1": 0.5,
+    "2": 0.5,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0
+  },
+  "gods": [
+    {
+      "id": "js_export_exporters",
+      "label": "Exporters",
+      "degree": 4
+    },
+    {
+      "id": "js_ui_calendar",
+      "label": "Calendar UI",
+      "degree": 2
+    },
+    {
+      "id": "js_ui_comparison",
+      "label": "Comparison UI",
+      "degree": 2
+    },
+    {
+      "id": "js_ui_detail",
+      "label": "Detail UI",
+      "degree": 2
+    },
+    {
+      "id": "js_ui_summary",
+      "label": "Summary UI",
+      "degree": 2
+    },
+    {
+      "id": "js_app_app",
+      "label": "App",
+      "degree": 1
+    },
+    {
+      "id": "js_engine_calculator_calculator",
+      "label": "Calculator",
+      "degree": 1
+    },
+    {
+      "id": "js_engine_optimizer_optimizer",
+      "label": "Optimizer",
+      "degree": 1
+    },
+    {
+      "id": "js_engine_simulator_simulator",
+      "label": "Simulator",
+      "degree": 1
+    },
+    {
+      "id": "js_export_exporters_exportcsv",
+      "label": "ExportCSV",
+      "degree": 1
+    }
+  ],
+  "surprises": [],
+  "tokens": {
+    "input": 1613,
+    "output": 1714
+  }
+}
