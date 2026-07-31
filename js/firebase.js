@@ -33,6 +33,19 @@ const FirebaseDB = (() => {
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
+                // Generate entryIds to fetch existing statuses
+                const entryIds = [];
+                for (const entry of schedule) {
+                    const dateObj = new Date(entry.investDate || entry.date);
+                    const yyyy = dateObj.getFullYear();
+                    const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+                    const dd = String(dateObj.getDate()).padStart(2, '0');
+                    entryIds.push(`inv_${yyyy}-${mm}-${dd}`);
+                }
+
+                // Fetch current statuses from DB to avoid overwriting DONE/EXECUTING states
+                const existingStatuses = await FirebaseDB.getExecutionStatuses(entryIds);
+
                 // Batch write schedule (max 500)
                 let batch = db.batch();
                 let count = 0;
@@ -45,8 +58,9 @@ const FirebaseDB = (() => {
                     const entryId = `inv_${yyyy}-${mm}-${dd}`;
                     
                     const docRef = db.collection('executions').doc(entryId);
-                    
-                    batch.set(docRef, {
+                    const currentStatus = existingStatuses[entryId];
+
+                    const updateData = {
                         entryId: entryId,
                         investDate: entry.investDate || entry.date,
                         maturityDate: entry.maturityDate,
@@ -54,9 +68,15 @@ const FirebaseDB = (() => {
                         expectedReturn: entry.expectedReturn,
                         profit: entry.profit,
                         balanceBefore: entry.balanceBefore,
-                        status: 'PENDING',
                         generatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }, { merge: true }); // merge to not overwrite status if already exists
+                    };
+
+                    // Only set status to PENDING if it wasn't already processed (DONE/EXECUTING)
+                    if (currentStatus !== 'DONE' && currentStatus !== 'EXECUTING') {
+                        updateData.status = 'PENDING';
+                    }
+                    
+                    batch.set(docRef, updateData, { merge: true });
                     
                     count++;
                     if (count === 500) {
