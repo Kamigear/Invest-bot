@@ -130,6 +130,10 @@ const App = (() => {
             <strong>${Calculator.display(ledgerState.currentBalance)}</strong>
             <small>Net transaksi: ${ledgerState.netActual >= 0 ? '+' : ''}${Calculator.display(ledgerState.netActual)}</small>
           </div>
+          <div class="ledger-quickset">
+            <input type="number" id="ledger-quickset-val" min="0" step="1" placeholder="Saldo saya sekarang..."/>
+            <button type="button" id="btn-quickset-balance">📌 Setel</button>
+          </div>
           <div class="ledger-form">
             <input type="date" id="ledger-date" value="${ledgerState.today}"/>
             <select id="ledger-type">
@@ -703,6 +707,31 @@ const App = (() => {
         amount: panel.querySelector('#ledger-amount')?.value,
         note: panel.querySelector('#ledger-note')?.value || '',
       };
+      if (!Ledger.add(tx)) return;
+      readConfig();
+      saveConfig();
+      renderConfigPanel();
+      runSimulation();
+    });
+
+    panel.querySelector('#btn-quickset-balance')?.addEventListener('click', () => {
+      const targetInput = panel.querySelector('#ledger-quickset-val');
+      const targetVal = parseFloat(targetInput?.value);
+      if (isNaN(targetVal) || targetVal < 0) return;
+
+      const state = Ledger.getState(_config);
+      const current = state.currentBalance;
+      const diff = targetVal - current;
+
+      if (diff === 0) return;
+
+      const tx = {
+        date: Ledger.todayISO(),
+        type: diff > 0 ? 'adjustment' : 'expense',
+        amount: Math.abs(diff),
+        note: 'Setel Saldo Aktual',
+      };
+
       if (!Ledger.add(tx)) return;
       readConfig();
       saveConfig();
