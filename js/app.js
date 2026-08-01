@@ -80,6 +80,23 @@ const App = (() => {
 
     // Listen for tab switching
     document.addEventListener('click', handleTabClick);
+
+    // Set up live listener for actual balance from Bot in Firestore
+    if (typeof FirebaseDB !== 'undefined') {
+      FirebaseDB.onBalanceUpdate((balance) => {
+        console.log("Realtime balance update from bot:", balance);
+        if (_config.realtimeEnabled !== false && balance !== _config.initialBalance) {
+          _config.initialBalance = balance;
+          saveConfig();
+          const initialInput = document.getElementById('cfg-initial');
+          if (initialInput) {
+            initialInput.value = balance;
+          }
+          renderConfigPanel();
+          runSimulation();
+        }
+      });
+    }
   }
 
   // ── Config Panel ─────────────────────────────────────────────────────────

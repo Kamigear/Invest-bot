@@ -149,6 +149,16 @@ const FirebaseDB = (() => {
                 throw error;
             }
         },
+
+        onBalanceUpdate: (callback) => {
+            return db.collection('botState').doc('balance').onSnapshot((doc) => {
+                if (doc.exists) {
+                    callback(doc.data().balance);
+                }
+            }, (error) => {
+                console.error("Error listening to balance updates:", error);
+            });
+        },
         
         getDB: () => db
     };

@@ -3,6 +3,7 @@ const cron = require('node-cron');
 const puppeteer = require('puppeteer');
 const { runDailyJob } = require('./executor');
 const { sendAlert } = require('./alert');
+const { db, serverTimestamp } = require('./firebase');
 
 // ==========================================
 // PENGATURAN & ENVS
@@ -160,6 +161,30 @@ async function runTask2() {
     ]);
 
     console.log(`[TUGAS 2 SUKSES] Nama berhasil diperbarui menjadi "${dynamicName}" di server!`);
+
+    // Ambil saldo aktual dari homepage
+    console.log("[TUGAS 2] Mengambil saldo aktual dari homepage...");
+    await page.goto('https://boardleaders.rf.gd/', { waitUntil: 'networkidle2', timeout: 60000 });
+    const balance = await page.evaluate((prefix) => {
+      const rows = Array.from(document.querySelectorAll('tr'));
+      for (const row of rows) {
+        if (row.innerText.includes(prefix)) {
+          const strong = row.querySelector('strong');
+          return strong ? parseInt(strong.innerText.replace(/\./g, '')) : null;
+        }
+      }
+      return null;
+    }, PREFIX_NAME);
+
+    if (balance !== null) {
+      console.log(`[TUGAS 2] Saldo terdeteksi: ${balance}`);
+      await db.collection('botState').doc('balance').set({
+        balance: balance,
+        lastUpdated: serverTimestamp()
+      }, { merge: true });
+    } else {
+      console.log("[TUGAS 2 WARNING] Saldo tidak ditemukan di homepage.");
+    }
 
   } catch (e) {
     console.error(`[TUGAS 2 CRITICAL ERROR]: ${e.message}`);
