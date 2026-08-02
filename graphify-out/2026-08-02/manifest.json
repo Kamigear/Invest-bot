@@ -10,9 +10,9 @@
     "semantic_hash": "cce1a1f198c7a9bc6ec2fb689f1851d8"
   },
   "js/engine/optimizer.js": {
-    "mtime": 1785663963.2058377,
-    "ast_hash": "56c899fc276a7d76026b00c34bbf23e9",
-    "semantic_hash": ""
+    "mtime": 1785661216.1167452,
+    "ast_hash": "ec8410224ddc7d58ee87444f1a26d568",
+    "semantic_hash": "ec8410224ddc7d58ee87444f1a26d568"
   },
   "js/engine/simulator.js": {
     "mtime": 1785502468.3185372,
@@ -98,35 +98,5 @@
     "mtime": 1785508976.5455685,
     "ast_hash": "051507974409931048883c6b7ceb3919",
     "semantic_hash": "051507974409931048883c6b7ceb3919"
-  },
-  ".codex/hooks.json": {
-    "mtime": 1785661651.407245,
-    "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
-    "semantic_hash": ""
-  },
-  ".agents/rules/graphify.md": {
-    "mtime": 1785661642.884102,
-    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
-    "semantic_hash": ""
-  },
-  ".agents/workflows/graphify.md": {
-    "mtime": 1785661642.887276,
-    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
-    "semantic_hash": ""
-  },
-  "AGENTS.md": {
-    "mtime": 1785661460.6750872,
-    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
-    "semantic_hash": ""
-  },
-  "Board/README.md": {
-    "mtime": 1785509018.8971853,
-    "ast_hash": "64c321bb28b3a026baaa9642add595e9",
-    "semantic_hash": ""
-  },
-  "index.html": {
-    "mtime": 1785509051.134379,
-    "ast_hash": "cd12dee1ec87c29c4d95687ce65bba3e",
-    "semantic_hash": ""
   }
 }

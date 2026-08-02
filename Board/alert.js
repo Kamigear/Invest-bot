@@ -1,6 +1,14 @@
 const axios = require('axios');
 
+// Set ALERT_ENABLED=true di .env untuk mengaktifkan WhatsApp alert
+const ALERT_ENABLED = process.env.ALERT_ENABLED === 'true';
+
 async function sendAlert(message) {
+  if (!ALERT_ENABLED) {
+    console.log(`[ALERT DISABLED] ${message}`);
+    return;
+  }
+
   try {
     const phone = process.env.WHATSAPP_PHONE;
     const apikey = process.env.WHATSAPP_CALLMEBOT_APIKEY;

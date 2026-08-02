@@ -7,10 +7,6 @@
 const Optimizer = (() => {
 
   /**
-   * Find the best amount to invest given current balance and config.
-   * Returns floor(balance) capped at maxInvest, or 0 if too low.
-   */
-  /**
    * Find the best amount to invest given current total balance, balance before today's income, and config.
    */
   function findBestAmount(totalBalance, balanceBefore, config) {
@@ -28,10 +24,20 @@ const Optimizer = (() => {
       upperLimit = config.maxInvest;
     }
 
+    // Use pre-generated sweet spots for efficiency
+    if (config.sweetSpots && config.sweetSpots.length > 0) {
+      // Find the largest sweet spot <= upperLimit (sweetSpots are already >= minInvest)
+      for (let i = config.sweetSpots.length - 1; i >= 0; i--) {
+        if (config.sweetSpots[i] <= upperLimit) {
+          return config.sweetSpots[i];
+        }
+      }
+    }
+
+    // Fallback: search downwards for the nearest sweet spot
     const threshold = config.maxLostDecimal !== undefined ? config.maxLostDecimal : 0.10;
     const r = config.returnRate || 1.18;
 
-    // Search downwards for the nearest sweet spot
     for (let A = upperLimit; A >= config.minInvest; A--) {
       const returnAmt = A * r;
       const lost = parseFloat((returnAmt % 1).toFixed(4));
@@ -76,6 +82,76 @@ const Optimizer = (() => {
   }
 
   /**
+   * Perform lookahead to find the best future investment opportunity.
+   * Returns the best future opportunity or null.
+   */
+  function doLookahead(currentDay, balance, config, balanceBefore) {
+    let bestFuture = null;
+
+    for (let waitDays = 1; waitDays <= config.lookaheadDays; waitDays++) {
+      const proj = Calculator.projectFutureBalance(currentDay, balance, waitDays, config);
+      const futureAmount = findBestAmount(proj.balance, proj.lastDayBalanceBefore, config);
+      if (futureAmount === 0) continue;
+
+      const futureReturn = Calculator.getReturnAmount(futureAmount, config);
+      const futureProfit = futureReturn - futureAmount;
+
+      if (!bestFuture || futureProfit > bestFuture.profit) {
+        bestFuture = {
+          waitDays,
+          amount: futureAmount,
+          return: futureReturn,
+          profit: futureProfit,
+          projBalance: proj.balance,
+          bonusEvents: proj.events.filter(e => e.type === 'bonus'),
+          generateEvents: proj.events.filter(e => e.type === 'generate'),
+          lostDecimal: Calculator.getLostDecimal(futureAmount, config),
+          lostDecimalPct: futureAmount > 0 ? (Calculator.getLostDecimal(futureAmount, config) / futureAmount) * 100 : 0,
+        };
+      }
+    }
+
+    return bestFuture;
+  }
+
+  /**
+   * Build reason array for WAIT decision
+   */
+  function buildWaitReasons(bestFuture, config, noSweetSpotToday) {
+    const reasons = [];
+
+    if (bestFuture.bonusEvents.length > 0) {
+      const bonus = bestFuture.bonusEvents[0];
+      reasons.push(
+        `Weekly Bonus +${Calculator.display(config.weeklyBonus)} dalam ${bonus.daysFromNow} hari (Hari ${bonus.day})`
+      );
+    }
+
+    if (bestFuture.generateEvents.length > 0) {
+      const totalGen = bestFuture.generateEvents.reduce((s, e) => s + e.amount, 0);
+      reasons.push(`Generate diperkirakan menambah +${Calculator.display(totalGen)} poin`);
+    }
+
+    reasons.push(
+      `Proyeksi saldo setelah ${bestFuture.waitDays} hari: ${Calculator.display(bestFuture.projBalance)}`
+    );
+    reasons.push(
+      `Investasi ${Calculator.display(bestFuture.amount)} → return ${Calculator.display(bestFuture.return)}`
+    );
+
+    if (noSweetSpotToday) {
+      reasons.push(`Tidak ada sweet spot hari ini — menunggu sweet spot dalam ${bestFuture.waitDays} hari`);
+    } else {
+      reasons.push(`vs invest sekarang → return ${Calculator.display(bestFuture.return - bestFuture.profit + bestFuture.amount)}`);
+      reasons.push(
+        `Keuntungan tambahan dengan menunggu: +${Calculator.display(bestFuture.extraProfit)}`
+      );
+    }
+
+    return reasons;
+  }
+
+  /**
    * Main decision function.
    * Returns: { decision, amount, lostDecimal, returnAmount, profit, reason[], flags }
    */
@@ -85,6 +161,26 @@ const Optimizer = (() => {
     const investAmount = findBestAmount(balance, balBefore, config);
 
     if (investAmount === 0) {
+      // If sweetSpotOnly is active, do lookahead to see if waiting enables a sweet spot investment
+      if (config.sweetSpotOnly) {
+        const bestFuture = doLookahead(currentDay, balance, config, balBefore);
+        if (bestFuture && bestFuture.waitDays <= config.maxWaitDays) {
+          return {
+            decision: 'WAIT',
+            amount: 0,
+            lostDecimal: 0,
+            returnAmount: 0,
+            profit: 0,
+            waitDays: bestFuture.waitDays,
+            projectedInvest: bestFuture.amount,
+            projectedReturn: bestFuture.return,
+            projectedBalance: bestFuture.projBalance,
+            reason: buildWaitReasons(bestFuture, config, true),
+            flags: { isSweetSpot: false, isDeliberate: true },
+          };
+        }
+      }
+
       const reserve = config.reserveBalance || 0;
       const effectiveMax = balBefore - reserve;
       const isReserveBlock = reserve > 0 && effectiveMax < config.minInvest && balBefore >= config.minInvest;
@@ -116,31 +212,9 @@ const Optimizer = (() => {
     const sweetSpotNow = isSweetSpot(investAmount, balance, config);
 
     // Step 2: Lookahead — simulate next N days WITHOUT investing
-    let bestFuture = null;
-
-    for (let waitDays = 1; waitDays <= config.lookaheadDays; waitDays++) {
-      const proj = Calculator.projectFutureBalance(currentDay, balance, waitDays, config);
-      const futureAmount = findBestAmount(proj.balance, proj.lastDayBalanceBefore, config);
-      if (futureAmount === 0) continue;
-
-      const futureReturn = Calculator.getReturnAmount(futureAmount, config);
-      const futureProfit = futureReturn - futureAmount;
-      const extraProfit = futureProfit - profitNow;
-
-      if (!bestFuture || futureProfit > bestFuture.profit) {
-        bestFuture = {
-          waitDays,
-          amount: futureAmount,
-          return: futureReturn,
-          profit: futureProfit,
-          extraProfit,
-          projBalance: proj.balance,
-          bonusEvents: proj.events.filter(e => e.type === 'bonus'),
-          generateEvents: proj.events.filter(e => e.type === 'generate'),
-          lostDecimal: Calculator.getLostDecimal(futureAmount, config),
-          lostDecimalPct: futureAmount > 0 ? (Calculator.getLostDecimal(futureAmount, config) / futureAmount) * 100 : 0,
-        };
-      }
+    const bestFuture = doLookahead(currentDay, balance, config, balBefore);
+    if (bestFuture) {
+      bestFuture.extraProfit = bestFuture.profit - profitNow;
     }
 
     // Step 3: Should we wait?
@@ -150,32 +224,10 @@ const Optimizer = (() => {
       bestFuture.extraProfit > waitThreshold &&
       bestFuture.waitDays <= config.maxWaitDays;
 
-    if (shouldWait) {
-      const reasons = [];
+    // When sweetSpotOnly is active and today IS a sweet spot, never wait — invest now
+    const forceInvestOnSweetSpot = config.sweetSpotOnly && sweetSpotNow;
 
-      if (bestFuture.bonusEvents.length > 0) {
-        const bonus = bestFuture.bonusEvents[0];
-        reasons.push(
-          `Weekly Bonus +${Calculator.display(config.weeklyBonus)} dalam ${bonus.daysFromNow} hari (Hari ${bonus.day})`
-        );
-      }
-
-      if (bestFuture.generateEvents.length > 0) {
-        const totalGen = bestFuture.generateEvents.reduce((s, e) => s + e.amount, 0);
-        reasons.push(`Generate diperkirakan menambah +${Calculator.display(totalGen)} poin`);
-      }
-
-      reasons.push(
-        `Proyeksi saldo setelah ${bestFuture.waitDays} hari: ${Calculator.display(bestFuture.projBalance)}`
-      );
-      reasons.push(
-        `Investasi ${Calculator.display(bestFuture.amount)} → return ${Calculator.display(bestFuture.return)}`
-      );
-      reasons.push(`vs invest sekarang → return ${Calculator.display(returnNow)}`);
-      reasons.push(
-        `Keuntungan tambahan dengan menunggu: +${Calculator.display(bestFuture.extraProfit)}`
-      );
-
+    if (shouldWait && !forceInvestOnSweetSpot) {
       return {
         decision: 'WAIT',
         amount: 0,
@@ -186,7 +238,7 @@ const Optimizer = (() => {
         projectedInvest: bestFuture.amount,
         projectedReturn: bestFuture.return,
         projectedBalance: bestFuture.projBalance,
-        reason: reasons,
+        reason: buildWaitReasons(bestFuture, config, false),
         flags: { isSweetSpot: false, isDeliberate: true },
       };
     }

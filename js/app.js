@@ -38,7 +38,7 @@ const App = (() => {
 
     // Sweet Spots (dynamically generated)
     sweetSpots: [],
-    sweetSpotOnly: false,      // If true, only invest at sweet spot amounts
+    sweetSpotOnly: true,       // If true, only invest at sweet spot amounts
 
     // Optimizer lookahead
     lookaheadDays: 7,          // How many days to look ahead
@@ -276,6 +276,13 @@ const App = (() => {
             </label>
           </div>
 
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-sweet-spot-only" ${_config.sweetSpotOnly ? 'checked' : ''}/>
+              Sweet Spot Only — hanya invest di sweet spot
+            </label>
+          </div>
+
           <div class="param-group">
             <label>🎯 Sweet Spots Otomatis</label>
             <div id="sweet-spots-preview" style="font-size:11px; font-family:'JetBrains Mono',monospace; color:var(--accent-orange); word-break:break-all; max-height:60px; overflow-y:auto; background:var(--bg-input); padding:6px 8px; border-radius:6px; border:1px solid var(--border);">
@@ -421,6 +428,7 @@ const App = (() => {
       investDuration: getInt('cfg-duration', 30),
       returnRate: getNum('cfg-return', 118) / 100,
       maxLostDecimal: getNum('cfg-max-lost-decimal', 0.10),
+      sweetSpotOnly: getCheck('cfg-sweet-spot-only') ?? true,
       lookaheadDays: getInt('cfg-lookahead', 7),
       waitThresholdPct: getNum('cfg-wait-threshold', 5) / 100,
       maxWaitDays: getInt('cfg-max-wait', 6),

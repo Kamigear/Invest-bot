@@ -48,6 +48,45 @@
   },
   "nodes": [
     {
+      "label": "Chart.js",
+      "file_type": "code",
+      "source_file": "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js",
+      "source_location": null,
+      "source_url": "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "chart.js",
+      "id": "chartjs"
+    },
+    {
+      "label": "SheetJS",
+      "file_type": "code",
+      "source_file": "https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js",
+      "source_location": null,
+      "source_url": "https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 11,
+      "norm_label": "sheetjs",
+      "id": "sheetjs"
+    },
+    {
+      "label": "jsPDF",
+      "file_type": "code",
+      "source_file": "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+      "source_location": null,
+      "source_url": "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 10,
+      "norm_label": "jspdf",
+      "id": "jspdf"
+    },
+    {
       "label": "graphify.js",
       "file_type": "code",
       "source_file": ".kilo/plugins/graphify.js",
@@ -55,7 +94,6 @@
       "_origin": "ast",
       "id": "kilo_plugins_graphify",
       "community": 7,
-      "community_name": "graphify.js",
       "norm_label": "graphify.js"
     },
     {
@@ -66,7 +104,6 @@
       "_origin": "ast",
       "id": "kilo_plugins_graphify_graphifyplugin",
       "community": 7,
-      "community_name": "graphify.js",
       "norm_label": "graphifyplugin()"
     },
     {
@@ -76,8 +113,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_alert",
-      "community": 2,
-      "community_name": "index.js",
+      "community": 0,
       "norm_label": "alert.js"
     },
     {
@@ -87,8 +123,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_alert_axios",
-      "community": 2,
-      "community_name": "index.js",
+      "community": 0,
       "norm_label": "axios"
     },
     {
@@ -98,8 +133,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "board_alert_sendalert",
-      "community": 2,
-      "community_name": "index.js",
+      "community": 0,
       "norm_label": "sendalert()"
     },
     {
@@ -110,7 +144,6 @@
       "_origin": "ast",
       "id": "board_executor",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "executor.js"
     },
     {
@@ -121,7 +154,6 @@
       "_origin": "ast",
       "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "{ db, runtransaction, servertimestamp, getdoc, setdoc }"
     },
     {
@@ -132,7 +164,6 @@
       "_origin": "ast",
       "id": "board_executor_sendalert",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "{ sendalert }"
     },
     {
@@ -143,7 +174,6 @@
       "_origin": "ast",
       "id": "board_executor_executeinvest",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "{ executeinvest }"
     },
     {
@@ -153,8 +183,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "board_executor_rundailyjob",
-      "community": 2,
-      "community_name": "index.js",
+      "community": 0,
       "norm_label": "rundailyjob()"
     },
     {
@@ -165,7 +194,6 @@
       "_origin": "ast",
       "id": "board_firebase",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "firebase.js"
     },
     {
@@ -176,7 +204,6 @@
       "_origin": "ast",
       "id": "board_firebase_admin",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "admin"
     },
     {
@@ -187,7 +214,6 @@
       "_origin": "ast",
       "id": "board_firebase_db",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "db"
     },
     {
@@ -198,7 +224,6 @@
       "_origin": "ast",
       "id": "board_firebase_getdoc",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "getdoc()"
     },
     {
@@ -209,7 +234,6 @@
       "_origin": "ast",
       "id": "board_firebase_setdoc",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "setdoc()"
     },
     {
@@ -220,7 +244,6 @@
       "_origin": "ast",
       "id": "board_firebase_runtransaction",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "runtransaction()"
     },
     {
@@ -231,7 +254,6 @@
       "_origin": "ast",
       "id": "board_firebase_servertimestamp",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "servertimestamp()"
     },
     {
@@ -242,7 +264,6 @@
       "_origin": "ast",
       "id": "board_firebase_onsnapshot",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "onsnapshot()"
     },
     {
@@ -253,7 +274,6 @@
       "_origin": "ast",
       "id": "board_index",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "index.js"
     },
     {
@@ -264,7 +284,6 @@
       "_origin": "ast",
       "id": "board_index_cron",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "cron"
     },
     {
@@ -275,7 +294,6 @@
       "_origin": "ast",
       "id": "board_index_puppeteer",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "puppeteer"
     },
     {
@@ -286,7 +304,6 @@
       "_origin": "ast",
       "id": "board_index_rundailyjob",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "{ rundailyjob }"
     },
     {
@@ -297,7 +314,6 @@
       "_origin": "ast",
       "id": "board_index_sendalert",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "{ sendalert }"
     },
     {
@@ -308,7 +324,6 @@
       "_origin": "ast",
       "id": "board_index_db_servertimestamp",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "{ db, servertimestamp }"
     },
     {
@@ -319,7 +334,6 @@
       "_origin": "ast",
       "id": "board_index_sleep",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "sleep()"
     },
     {
@@ -330,7 +344,6 @@
       "_origin": "ast",
       "id": "board_index_waitforturn",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "waitforturn()"
     },
     {
@@ -341,7 +354,6 @@
       "_origin": "ast",
       "id": "board_index_openbrowser",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "openbrowser()"
     },
     {
@@ -352,7 +364,6 @@
       "_origin": "ast",
       "id": "board_index_runtask1",
       "community": 2,
-      "community_name": "index.js",
       "norm_label": "runtask1()"
     },
     {
@@ -362,8 +373,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "board_index_start",
-      "community": 2,
-      "community_name": "index.js",
+      "community": 0,
       "norm_label": "start()"
     },
     {
@@ -374,7 +384,6 @@
       "_origin": "ast",
       "id": "board_investor",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "investor.js"
     },
     {
@@ -385,7 +394,6 @@
       "_origin": "ast",
       "id": "board_investor_puppeteer",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "puppeteer"
     },
     {
@@ -396,7 +404,6 @@
       "_origin": "ast",
       "id": "board_investor_executeinvest",
       "community": 0,
-      "community_name": "executor.js",
       "norm_label": "executeinvest()"
     },
     {
@@ -407,7 +414,6 @@
       "_origin": "ast",
       "id": "board_package",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "package.json"
     },
     {
@@ -418,7 +424,6 @@
       "_origin": "ast",
       "id": "board_package_name",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "name"
     },
     {
@@ -429,7 +434,6 @@
       "_origin": "ast",
       "id": "board_package_version",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "version"
     },
     {
@@ -440,7 +444,6 @@
       "_origin": "ast",
       "id": "board_package_description",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "description"
     },
     {
@@ -451,7 +454,6 @@
       "_origin": "ast",
       "id": "board_package_main",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "main"
     },
     {
@@ -462,7 +464,6 @@
       "_origin": "ast",
       "id": "board_package_scripts",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "scripts"
     },
     {
@@ -473,7 +474,6 @@
       "_origin": "ast",
       "id": "board_package_scripts_start",
       "community": 5,
-      "community_name": "package.json",
       "norm_label": "start"
     },
     {
@@ -484,7 +484,6 @@
       "_origin": "ast",
       "id": "board_package_dependencies",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "dependencies"
     },
     {
@@ -495,7 +494,6 @@
       "_origin": "ast",
       "id": "board_package_dependencies_axios",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "axios"
     },
     {
@@ -506,7 +504,6 @@
       "_origin": "ast",
       "id": "axios",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "axios"
     },
     {
@@ -517,7 +514,6 @@
       "_origin": "ast",
       "id": "board_package_dependencies_dotenv",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "dotenv"
     },
     {
@@ -528,7 +524,6 @@
       "_origin": "ast",
       "id": "dotenv",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "dotenv"
     },
     {
@@ -539,7 +534,6 @@
       "_origin": "ast",
       "id": "board_package_dependencies_firebase_admin",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "firebase-admin"
     },
     {
@@ -550,7 +544,6 @@
       "_origin": "ast",
       "id": "firebase_admin",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "firebase-admin"
     },
     {
@@ -561,7 +554,6 @@
       "_origin": "ast",
       "id": "board_package_dependencies_node_cron",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "node-cron"
     },
     {
@@ -572,7 +564,6 @@
       "_origin": "ast",
       "id": "node_cron",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "node-cron"
     },
     {
@@ -583,7 +574,6 @@
       "_origin": "ast",
       "id": "board_package_dependencies_puppeteer",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "puppeteer"
     },
     {
@@ -594,7 +584,6 @@
       "_origin": "ast",
       "id": "puppeteer",
       "community": 3,
-      "community_name": "dependencies",
       "norm_label": "puppeteer"
     },
     {
@@ -605,7 +594,6 @@
       "_origin": "ast",
       "id": "js_app",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "app.js"
     },
     {
@@ -616,7 +604,6 @@
       "_origin": "ast",
       "id": "js_app_app",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "app"
     },
     {
@@ -627,7 +614,6 @@
       "_origin": "ast",
       "id": "js_app_trylogin",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "trylogin()"
     },
     {
@@ -638,7 +624,6 @@
       "_origin": "ast",
       "id": "js_app_setuppassword",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "setuppassword()"
     },
     {
@@ -649,7 +634,6 @@
       "_origin": "ast",
       "id": "js_app_synctofirebase",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "synctofirebase()"
     },
     {
@@ -660,7 +644,6 @@
       "_origin": "ast",
       "id": "js_engine_calculator",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "calculator.js"
     },
     {
@@ -671,7 +654,6 @@
       "_origin": "ast",
       "id": "js_engine_calculator_calculator",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "calculator"
     },
     {
@@ -682,7 +664,6 @@
       "_origin": "ast",
       "id": "js_engine_ledger",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "ledger.js"
     },
     {
@@ -693,7 +674,6 @@
       "_origin": "ast",
       "id": "js_engine_ledger_ledger",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "ledger"
     },
     {
@@ -704,7 +684,6 @@
       "_origin": "ast",
       "id": "js_engine_optimizer",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "optimizer.js"
     },
     {
@@ -715,7 +694,6 @@
       "_origin": "ast",
       "id": "js_engine_optimizer_optimizer",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "optimizer"
     },
     {
@@ -726,7 +704,6 @@
       "_origin": "ast",
       "id": "js_engine_simulator",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "simulator.js"
     },
     {
@@ -737,52 +714,7 @@
       "_origin": "ast",
       "id": "js_engine_simulator_simulator",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "simulator"
-    },
-    {
-      "label": "exporters.js",
-      "file_type": "code",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_export_exporters",
-      "community": 1,
-      "community_name": "Investment Calendar Simulator",
-      "norm_label": "exporters.js"
-    },
-    {
-      "label": "ExportCSV",
-      "file_type": "code",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "js_export_exporters_exportcsv",
-      "community": 1,
-      "community_name": "Investment Calendar Simulator",
-      "norm_label": "exportcsv"
-    },
-    {
-      "label": "ExportExcel",
-      "file_type": "code",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L46",
-      "_origin": "ast",
-      "id": "js_export_exporters_exportexcel",
-      "community": 1,
-      "community_name": "Investment Calendar Simulator",
-      "norm_label": "exportexcel"
-    },
-    {
-      "label": "ExportPDF",
-      "file_type": "code",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L93",
-      "_origin": "ast",
-      "id": "js_export_exporters_exportpdf",
-      "community": 1,
-      "community_name": "Investment Calendar Simulator",
-      "norm_label": "exportpdf"
     },
     {
       "label": "firebase.js",
@@ -792,7 +724,6 @@
       "_origin": "ast",
       "id": "js_firebase",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "firebase.js"
     },
     {
@@ -803,7 +734,6 @@
       "_origin": "ast",
       "id": "js_firebase_firebasedb",
       "community": 4,
-      "community_name": "app.js",
       "norm_label": "firebasedb"
     },
     {
@@ -814,7 +744,6 @@
       "_origin": "ast",
       "id": "js_ui_bot_status",
       "community": 6,
-      "community_name": "bot_status.js",
       "norm_label": "bot_status.js"
     },
     {
@@ -825,7 +754,6 @@
       "_origin": "ast",
       "id": "js_ui_bot_status_botstatusui",
       "community": 6,
-      "community_name": "bot_status.js",
       "norm_label": "botstatusui"
     },
     {
@@ -836,7 +764,6 @@
       "_origin": "ast",
       "id": "js_ui_calendar",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "calendar.js"
     },
     {
@@ -847,7 +774,6 @@
       "_origin": "ast",
       "id": "js_ui_calendar_calendarui",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "calendarui"
     },
     {
@@ -858,7 +784,6 @@
       "_origin": "ast",
       "id": "js_ui_comparison",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "comparison.js"
     },
     {
@@ -869,30 +794,7 @@
       "_origin": "ast",
       "id": "js_ui_comparison_comparisonui",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "comparisonui"
-    },
-    {
-      "label": "detail.js",
-      "file_type": "code",
-      "source_file": "js/ui/detail.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_ui_detail",
-      "community": 1,
-      "community_name": "Investment Calendar Simulator",
-      "norm_label": "detail.js"
-    },
-    {
-      "label": "DetailUI",
-      "file_type": "code",
-      "source_file": "js/ui/detail.js",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "js_ui_detail_detailui",
-      "community": 1,
-      "community_name": "Investment Calendar Simulator",
-      "norm_label": "detailui"
     },
     {
       "label": "summary.js",
@@ -902,7 +804,6 @@
       "_origin": "ast",
       "id": "js_ui_summary",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "summary.js"
     },
     {
@@ -913,145 +814,63 @@
       "_origin": "ast",
       "id": "js_ui_summary_summaryui",
       "community": 1,
-      "community_name": "Investment Calendar Simulator",
       "norm_label": "summaryui"
-    },
-    {
-      "label": "graphify.md",
-      "file_type": "document",
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_rules_graphify",
-      "community": 10,
-      "community_name": "graphify.md",
-      "norm_label": "graphify.md"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "agents_rules_graphify_graphify",
-      "community": 10,
-      "community_name": "graphify.md",
-      "norm_label": "graphify"
-    },
-    {
-      "label": "graphify.md",
-      "file_type": "document",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_workflows_graphify",
-      "community": 11,
-      "community_name": "graphify.md",
-      "norm_label": "graphify.md"
-    },
-    {
-      "label": "Workflow: graphify",
-      "file_type": "document",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "agents_workflows_graphify_workflow_graphify",
-      "community": 11,
-      "community_name": "graphify.md",
-      "norm_label": "workflow: graphify"
     },
     {
       "label": "AGENTS.md",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
       "id": "agents",
       "community": 8,
-      "community_name": "AGENTS.md",
       "norm_label": "agents.md"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_graphify",
-      "community": 8,
-      "community_name": "AGENTS.md",
-      "norm_label": "graphify"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "Board/README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "board_readme",
-      "community": 9,
-      "community_name": "Invest Bot",
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "Invest Bot",
-      "file_type": "document",
-      "source_file": "Board/README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "board_readme_invest_bot",
-      "community": 9,
-      "community_name": "Invest Bot",
-      "norm_label": "invest bot"
-    },
-    {
-      "label": "Setup di OrangePi",
-      "file_type": "document",
-      "source_file": "Board/README.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "board_readme_setup_di_orangepi",
-      "community": 9,
-      "community_name": "Invest Bot",
-      "norm_label": "setup di orangepi"
-    },
-    {
-      "label": "Architecture & Logic",
-      "file_type": "document",
-      "source_file": "Board/README.md",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "board_readme_architecture_logic",
-      "community": 9,
-      "community_name": "Invest Bot",
-      "norm_label": "architecture & logic"
     },
     {
       "label": "Investment Calendar Simulator",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 1,
-      "norm_label": "investment calendar simulator",
       "id": "index",
-      "community_name": "Investment Calendar Simulator"
+      "community": 1,
+      "norm_label": "investment calendar simulator"
+    },
+    {
+      "label": "Invest Bot README",
+      "file_type": "document",
+      "source_file": "Board/README.md",
+      "id": "board_readme",
+      "community": 2,
+      "norm_label": "invest bot readme"
+    },
+    {
+      "label": "js/ui/detail.js",
+      "file_type": "code",
+      "source_file": "js/ui/detail.js",
+      "id": "js_ui_detail",
+      "community": 1,
+      "norm_label": "js/ui/detail.js"
+    },
+    {
+      "label": "js/export/exporters.js",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "id": "js_export_exporters",
+      "community": 1,
+      "norm_label": "js/export/exporters.js"
     },
     {
       "label": "Firebase Firestore",
       "file_type": "concept",
       "source_file": "index.html",
-      "community": 1,
-      "norm_label": "firebase firestore",
       "id": "firebase_firestore",
-      "community_name": "Investment Calendar Simulator"
+      "community": 1,
+      "norm_label": "firebase firestore"
     },
     {
       "label": "CallMeBot API",
       "file_type": "concept",
       "source_file": "Board/README.md",
-      "community": 2,
-      "norm_label": "callmebot api",
       "id": "callmebot_api",
-      "community_name": "index.js"
+      "community": 2,
+      "norm_label": "callmebot api"
     }
   ],
   "links": [
@@ -2128,47 +1947,6 @@
       "confidence_score": 1.0,
       "source_file": "index.html",
       "source": "index",
-      "target": "js_export_exporters"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_export_exporters",
-      "target": "js_export_exporters_exportcsv",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L46",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_export_exporters",
-      "target": "js_export_exporters_exportexcel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/export/exporters.js",
-      "source_location": "L93",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_export_exporters",
-      "target": "js_export_exporters_exportpdf",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source": "index",
       "target": "js_firebase"
     },
     {
@@ -2245,25 +2023,6 @@
       "confidence_score": 1.0,
       "source_file": "index.html",
       "source": "index",
-      "target": "js_ui_detail"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/ui/detail.js",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_ui_detail",
-      "target": "js_ui_detail_detailui",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source": "index",
       "target": "js_ui_summary"
     },
     {
@@ -2278,70 +2037,12 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "references",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_rules_graphify",
-      "target": "agents_rules_graphify_graphify",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_workflows_graphify",
-      "target": "agents_workflows_graphify_workflow_graphify",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents",
-      "target": "agents_graphify",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "Board/README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "board_readme",
-      "target": "board_readme_invest_bot",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "Board/README.md",
-      "source_location": "L59",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "board_readme_invest_bot",
-      "target": "board_readme_architecture_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "Board/README.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "board_readme_invest_bot",
-      "target": "board_readme_setup_di_orangepi",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source": "index",
+      "target": "firebase_firestore"
     },
     {
       "relation": "references",
@@ -2349,7 +2050,15 @@
       "confidence_score": 1.0,
       "source_file": "index.html",
       "source": "index",
-      "target": "firebase_firestore"
+      "target": "js_export_exporters"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source": "index",
+      "target": "js_ui_detail"
     }
   ],
   "hyperedges": [
