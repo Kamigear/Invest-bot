@@ -583,7 +583,6 @@ const App = (() => {
     cfg.startDate = cfg.startDate || Ledger.todayISO();
     if (cfg.realtimeEnabled !== false) {
       const ledgerState = Ledger.getState(cfg);
-      cfg.initialBalance = ledgerState.currentBalance;
       cfg.ledgerState = ledgerState;
     }
     return cfg;
