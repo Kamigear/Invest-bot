@@ -184,13 +184,16 @@ const App = (() => {
       LiveMode.start(_config);
     }
 
+    let _firebaseBalanceInitialized = false;
+
     if (typeof FirebaseDB !== 'undefined') {
       try {
         const fbBalance = await FirebaseDB.getCurrentBalance();
         if (fbBalance !== null && fbBalance !== _config.initialBalance) {
           _config.initialBalance = fbBalance;
-          saveConfig();
         }
+        _firebaseBalanceInitialized = true;
+        saveConfig();
       } catch (e) {
         console.error("Failed to fetch Firebase balance on init:", e);
       }
@@ -204,8 +207,27 @@ const App = (() => {
 
     // Set up live listener for actual balance from Bot in Firestore
     if (typeof FirebaseDB !== 'undefined') {
+      let _isInitialSnapshot = true;
       FirebaseDB.onBalanceUpdate((balance) => {
         console.log("Realtime balance update from bot:", balance);
+        if (_isInitialSnapshot && _firebaseBalanceInitialized) {
+          _isInitialSnapshot = false;
+          if (balance === _config.initialBalance) { return; }
+          if (balance !== _config.initialBalance) {
+            _config.initialBalance = balance;
+            saveConfig();
+            const initialInput = document.getElementById('cfg-initial');
+            if (initialInput) {
+              initialInput.value = balance;
+            }
+            renderConfigPanel();
+            if (LiveMode.enabled) { LiveMode.resetAnchor(); }
+            runSimulation();
+          }
+          return;
+        }
+
+        _isInitialSnapshot = false;
         if (_config.realtimeEnabled !== false && balance !== _config.initialBalance) {
           _config.initialBalance = balance;
           saveConfig();

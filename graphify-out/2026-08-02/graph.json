@@ -689,7 +689,7 @@
       "label": "tryLogin()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L936",
+      "source_location": "L953",
       "_origin": "ast",
       "id": "js_app_trylogin",
       "community": 7,
@@ -700,7 +700,7 @@
       "label": "setupPassword()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L965",
+      "source_location": "L982",
       "_origin": "ast",
       "id": "js_app_setuppassword",
       "community": 7,
@@ -711,7 +711,7 @@
       "label": "syncToFirebase()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L994",
+      "source_location": "L1011",
       "_origin": "ast",
       "id": "js_app_synctofirebase",
       "community": 7,
@@ -1202,8 +1202,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "graphify query cli",
-      "id": ".agents_rules_graphify_graphify_query",
-      "community_name": "Graphify Config"
+      "community_name": "Graphify Config",
+      "id": ".agents_rules_graphify_graphify_query"
     },
     {
       "label": "graphify explain CLI",
@@ -1216,8 +1216,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "graphify explain cli",
-      "id": ".agents_rules_graphify_graphify_explain",
-      "community_name": "Graphify Config"
+      "community_name": "Graphify Config",
+      "id": ".agents_rules_graphify_graphify_explain"
     },
     {
       "label": "graphify-out directory",
@@ -1230,8 +1230,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "graphify-out directory",
-      "id": ".agents_rules_graphify_graphify_out",
-      "community_name": "Graphify Config"
+      "community_name": "Graphify Config",
+      "id": ".agents_rules_graphify_graphify_out"
     },
     {
       "label": "GRAPH_REPORT.md",
@@ -1244,8 +1244,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "graph_report.md",
-      "id": ".agents_rules_graphify_graph_report",
-      "community_name": "Graphify Config"
+      "community_name": "Graphify Config",
+      "id": ".agents_rules_graphify_graph_report"
     },
     {
       "label": "graphify workflow",
@@ -1258,8 +1258,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "graphify workflow",
-      "id": ".agents_workflows_graphify_workflow",
-      "community_name": "Graphify Config"
+      "community_name": "Graphify Config",
+      "id": ".agents_workflows_graphify_workflow"
     },
     {
       "label": "graphify skill",
@@ -1272,8 +1272,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "graphify skill",
-      "id": ".agents_workflows_graphify_skill",
-      "community_name": "Graphify Config"
+      "community_name": "Graphify Config",
+      "id": ".agents_workflows_graphify_skill"
     },
     {
       "label": "Live Mode",
@@ -1286,8 +1286,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "live mode",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_live_mode",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_live_mode"
     },
     {
       "label": "Actual Balance",
@@ -1300,8 +1300,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "actual balance",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_actual_balance",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_actual_balance"
     },
     {
       "label": "Predicted Balance",
@@ -1314,8 +1314,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "predicted balance",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_predicted_balance",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_predicted_balance"
     },
     {
       "label": "Simulation Engine",
@@ -1328,8 +1328,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "simulation engine",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_simulation",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_simulation"
     },
     {
       "label": "graphify update",
@@ -1342,8 +1342,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphify update",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_graphify_update",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_graphify_update"
     },
     {
       "label": "localStorage persistence",
@@ -1356,8 +1356,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "localstorage persistence",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_localstorage",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_localstorage"
     },
     {
       "label": "Bot Balance Scrape",
@@ -1370,8 +1370,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "bot balance scrape",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_bot_scrape",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_bot_scrape"
     },
     {
       "label": "Firestore botState",
@@ -1384,8 +1384,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "firestore botstate",
-      "id": ".kilo_plans_1785669327659_live_predicted_balance_firestore",
-      "community_name": "Live Predicted Balance"
+      "community_name": "Live Predicted Balance",
+      "id": ".kilo_plans_1785669327659_live_predicted_balance_firestore"
     },
     {
       "label": "CallMeBot API",
@@ -1393,8 +1393,8 @@
       "source_file": "Board/README.md",
       "community": 11,
       "norm_label": "callmebot api",
-      "id": "callmebot_api",
-      "community_name": "CallMeBot API"
+      "community_name": "CallMeBot API",
+      "id": "callmebot_api"
     },
     {
       "label": "Investment Calendar Simulator",
@@ -1402,8 +1402,8 @@
       "source_file": "index.html",
       "community": 8,
       "norm_label": "investment calendar simulator",
-      "id": "index",
-      "community_name": "Firebase Firestore"
+      "community_name": "Firebase Firestore",
+      "id": "index"
     },
     {
       "label": "Firebase Firestore",
@@ -1411,8 +1411,8 @@
       "source_file": "index.html",
       "community": 8,
       "norm_label": "firebase firestore",
-      "id": "firebase_firestore",
-      "community_name": "Firebase Firestore"
+      "community_name": "Firebase Firestore",
+      "id": "firebase_firestore"
     }
   ],
   "links": [
@@ -2346,7 +2346,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L965",
+      "source_location": "L982",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -2357,7 +2357,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L994",
+      "source_location": "L1011",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -2368,7 +2368,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L936",
+      "source_location": "L953",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -2381,7 +2381,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L947",
+      "source_location": "L964",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_trylogin",
@@ -2393,7 +2393,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L943",
+      "source_location": "L960",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_trylogin",
@@ -2405,7 +2405,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L971",
+      "source_location": "L988",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_setuppassword",
@@ -2417,7 +2417,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1002",
+      "source_location": "L1019",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_synctofirebase",
@@ -2578,6 +2578,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": ".agents_workflows_graphify_workflow",
+      "target": "agents_rules_graphify_graphify"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -2616,16 +2626,6 @@
       "weight": 1.0,
       "source": "agents_rules_graphify_graphify",
       "target": ".agents_rules_graphify_graphify_query"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": ".agents_workflows_graphify_workflow",
-      "target": "agents_rules_graphify_graphify"
     },
     {
       "relation": "contains",
