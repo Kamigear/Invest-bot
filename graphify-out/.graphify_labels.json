@@ -1,14 +1,1 @@
-{
-  "0": "executor.js",
-  "1": "Investment Calendar Simulator",
-  "2": "index.js",
-  "3": "dependencies",
-  "4": "app.js",
-  "5": "package.json",
-  "6": "bot_status.js",
-  "7": "graphify.js",
-  "8": "AGENTS.md",
-  "9": "Invest Bot",
-  "10": "graphify.md",
-  "11": "graphify.md"
-}
+{"0": "Live Balance Mode", "1": "Graphify Documentation", "2": "Board Package Config", "3": "HTTP Client", "4": "Environment Config", "5": "Firebase Admin", "6": "Task Scheduler", "7": "Browser Automation", "8": "Firestore Index", "9": "Agent Rules", "10": "Board README", "11": "CallMeBot API"}

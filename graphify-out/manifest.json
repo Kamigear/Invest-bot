@@ -12,7 +12,7 @@
   "js/engine/optimizer.js": {
     "mtime": 1785663963.2058377,
     "ast_hash": "56c899fc276a7d76026b00c34bbf23e9",
-    "semantic_hash": ""
+    "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
   },
   "js/engine/simulator.js": {
     "mtime": 1785502468.3185372,
@@ -45,9 +45,9 @@
     "semantic_hash": "d0aa74498d7714febde1a8c233654d6d"
   },
   ".kilo/kilo.json": {
-    "mtime": 1785661460.738261,
-    "ast_hash": "d50a68255f435aeab9b4ebba61cb3c97",
-    "semantic_hash": "d50a68255f435aeab9b4ebba61cb3c97"
+    "mtime": 1785668730.420267,
+    "ast_hash": "17742f4059382310833ee63af867aae1",
+    "semantic_hash": "17742f4059382310833ee63af867aae1"
   },
   ".kilo/plugins/graphify.js": {
     "mtime": 1785661460.676108,
@@ -102,31 +102,36 @@
   ".codex/hooks.json": {
     "mtime": 1785661651.407245,
     "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
-    "semantic_hash": ""
+    "semantic_hash": "5ebef3dd159986e465ab65e4014107ec"
   },
   ".agents/rules/graphify.md": {
     "mtime": 1785661642.884102,
     "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
-    "semantic_hash": ""
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
   },
   ".agents/workflows/graphify.md": {
     "mtime": 1785661642.887276,
     "ast_hash": "637776aa6f7496d069afe7520c845c8a",
-    "semantic_hash": ""
+    "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
   },
   "AGENTS.md": {
     "mtime": 1785661460.6750872,
     "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
-    "semantic_hash": ""
+    "semantic_hash": "21ceb6533048be51308e69e7b74a35cf"
   },
   "Board/README.md": {
     "mtime": 1785509018.8971853,
     "ast_hash": "64c321bb28b3a026baaa9642add595e9",
-    "semantic_hash": ""
+    "semantic_hash": "64c321bb28b3a026baaa9642add595e9"
   },
   "index.html": {
     "mtime": 1785509051.134379,
     "ast_hash": "cd12dee1ec87c29c4d95687ce65bba3e",
-    "semantic_hash": ""
+    "semantic_hash": "cd12dee1ec87c29c4d95687ce65bba3e"
+  },
+  ".kilo/plans/1785669327659-live-predicted-balance-mode.md": {
+    "mtime": 1785670439.4841056,
+    "ast_hash": "f8ed8bcf03a83589d5907016b3b9f62a",
+    "semantic_hash": "f8ed8bcf03a83589d5907016b3b9f62a"
   }
 }
