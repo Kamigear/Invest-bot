@@ -160,6 +160,7 @@ const App = (() => {
       // Exclude sweetSpots (regenerated on load) to keep storage lean
       const { sweetSpots, ...toSave } = _config;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+      console.debug('[DEBUG] saveConfig — initialBalance written to localStorage:', _config.initialBalance);
     } catch (e) { /* storage full or unavailable */ }
   }
 
@@ -169,6 +170,9 @@ const App = (() => {
       if (raw) {
         const saved = JSON.parse(raw);
         _config = { ...DEFAULT_CONFIG, ...saved };
+        console.debug('[DEBUG] loadConfig — initialBalance read from localStorage:', _config.initialBalance);
+      } else {
+        console.debug('[DEBUG] loadConfig — no localStorage entry found, using defaults. initialBalance:', _config.initialBalance);
       }
     } catch (e) { /* parse error — use defaults */ }
   }
@@ -189,11 +193,14 @@ const App = (() => {
     if (typeof FirebaseDB !== 'undefined') {
       try {
         const fbBalance = await FirebaseDB.getCurrentBalance();
+        console.debug('[DEBUG] Firebase getCurrentBalance:', fbBalance, '| localStorage initialBalance:', _config.initialBalance);
         if (fbBalance !== null && fbBalance !== _config.initialBalance) {
+          console.debug('[DEBUG] Updating initialBalance from Firebase:', _config.initialBalance, '->', fbBalance);
           _config.initialBalance = fbBalance;
         }
         _firebaseBalanceInitialized = true;
         saveConfig();
+        console.debug('[DEBUG] Saved config to localStorage. initialBalance now:', _config.initialBalance);
       } catch (e) {
         console.error("Failed to fetch Firebase balance on init:", e);
       }
@@ -209,11 +216,12 @@ const App = (() => {
     if (typeof FirebaseDB !== 'undefined') {
       let _isInitialSnapshot = true;
       FirebaseDB.onBalanceUpdate((balance) => {
-        console.log("Realtime balance update from bot:", balance);
+        console.debug('[DEBUG] onBalanceUpdate snapshot:', balance, '| current initialBalance:', _config.initialBalance, '| isInitial:', _isInitialSnapshot, '| fbInitialized:', _firebaseBalanceInitialized);
         if (_isInitialSnapshot && _firebaseBalanceInitialized) {
           _isInitialSnapshot = false;
-          if (balance === _config.initialBalance) { return; }
+          console.debug('[DEBUG] Skipping Firestore cache snapshot (initial). balance:', balance, 'stored:', _config.initialBalance);
           if (balance !== _config.initialBalance) {
+            console.debug('[DEBUG] Cache snapshot differs — applying. balance:', balance, 'stored:', _config.initialBalance);
             _config.initialBalance = balance;
             saveConfig();
             const initialInput = document.getElementById('cfg-initial');
@@ -229,6 +237,7 @@ const App = (() => {
 
         _isInitialSnapshot = false;
         if (_config.realtimeEnabled !== false && balance !== _config.initialBalance) {
+          console.debug('[DEBUG] Realtime onBalanceUpdate — diff detected. balance:', balance, 'stored:', _config.initialBalance);
           _config.initialBalance = balance;
           saveConfig();
           const initialInput = document.getElementById('cfg-initial');
@@ -254,6 +263,7 @@ const App = (() => {
     if (!panel) return;
     if (!_config.startDate) _config.startDate = Ledger.todayISO();
     const ledgerState = Ledger.getState(_config);
+    console.debug('[DEBUG] renderConfigPanel — initialBalance:', _config.initialBalance, '| ledgerState.currentBalance:', ledgerState.currentBalance, '| netActual:', ledgerState.netActual);
 
     panel.innerHTML = `
       <div class="config-header">
@@ -568,6 +578,7 @@ const App = (() => {
     const getNum = (id, def) => parseFloat(get(id)) || def;
     const getInt = (id, def) => parseInt(get(id)) || def;
 
+    const _prevIB = _config.initialBalance;
     _config = {
       ..._config,
       simulationDays: getInt('cfg-days', 90),
@@ -596,6 +607,9 @@ const App = (() => {
       waitThresholdPct: getNum('cfg-wait-threshold', 5) / 100,
       maxWaitDays: getInt('cfg-max-wait', 6),
     };
+    if (_prevIB !== _config.initialBalance) {
+      console.debug('[DEBUG] readConfig — initialBalance changed via DOM: ', _prevIB, '->', _config.initialBalance, '| cfg-initial value:', get('cfg-initial'));
+    }
     _config.sweetSpots = Calculator.generateSweetSpots(_config);
   }
 
