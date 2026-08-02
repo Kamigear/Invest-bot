@@ -1,8 +1,8 @@
 {
   "js/app.js": {
-    "mtime": 1785672878.9156797,
-    "ast_hash": "f63499a7f24b4315b630c6d89f45b4ac",
-    "semantic_hash": "f63499a7f24b4315b630c6d89f45b4ac"
+    "mtime": 1785674089.197068,
+    "ast_hash": "83ea4b69c7a717f2dfb37363cba9cf12",
+    "semantic_hash": ""
   },
   "js/engine/calculator.js": {
     "mtime": 1785499032.439246,
@@ -15,9 +15,9 @@
     "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
   },
   "js/engine/simulator.js": {
-    "mtime": 1785502468.3185372,
-    "ast_hash": "16dfca97426b48f9b8a263aed3564e3b",
-    "semantic_hash": "16dfca97426b48f9b8a263aed3564e3b"
+    "mtime": 1785673867.4085917,
+    "ast_hash": "70574976489ffe82e4ddfe03d968c871",
+    "semantic_hash": ""
   },
   "js/export/exporters.js": {
     "mtime": 1785487157.468014,
@@ -70,9 +70,9 @@
     "semantic_hash": "1f6e9288008386f258c3355d73995e91"
   },
   "Board/index.js": {
-    "mtime": 1785564333.7680292,
-    "ast_hash": "9703242b866f72542f1bbb631324f799",
-    "semantic_hash": "9703242b866f72542f1bbb631324f799"
+    "mtime": 1785673263.0710075,
+    "ast_hash": "33efe70120ca2d8313ddb40b1c685ac7",
+    "semantic_hash": ""
   },
   "Board/investor.js": {
     "mtime": 1785511147.2326455,

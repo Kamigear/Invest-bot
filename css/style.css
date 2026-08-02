@@ -843,6 +843,21 @@ body {
 .badge-neutral  { background: rgba(255,255,255,0.05);color: var(--text-muted);    border: 1px solid var(--border); }
 .badge-sweet    { background: rgba(249,115,22,0.2);  color: var(--accent-orange); border: 1px solid rgba(249,115,22,0.4); }
 
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(239,68,68,0.15);
+  color: var(--accent-red);
+  border: 1px solid rgba(239,68,68,0.4);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+  width: fit-content;
+}
+
 .empty-row {
   text-align: center !important;
   color: var(--text-muted);

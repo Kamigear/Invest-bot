@@ -1,6 +1,106 @@
 'use strict';
 
 /**
+ * LiveMode — Wall-clock live projection so actual balance follows predicted.
+ */
+const LiveMode = (() => {
+  const STORAGE_KEY = 'investcalc_livemode_v1';
+  let _enabled = false;
+  let _liveStartDate = null;
+  let _ticker = null;
+
+  function todayISO() {
+    const now = new Date();
+    const tzOffset = now.getTimezoneOffset() * 60000;
+    return new Date(now.getTime() - tzOffset).toISOString().slice(0, 10);
+  }
+
+  function daysBetween(a, b) {
+    const d = new Date(a);
+    const e = new Date(b);
+    return Math.floor((e.getTime() - d.getTime()) / 86400000);
+  }
+
+  function currentSimDay(config) {
+    if (!_liveStartDate || !config) return 0;
+    const elapsed = daysBetween(_liveStartDate, todayISO());
+    return Math.max(0, Math.min(elapsed, config.simulationDays));
+  }
+
+  function projectedActual(records, day) {
+    if (!records || !records.length) return 0;
+    const idx = Math.max(0, Math.min(day, records.length - 1));
+    return records[idx].balanceAfter ?? 0;
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        enabled: _enabled,
+        liveStartDate: _liveStartDate,
+      }));
+    } catch (e) { /* storage full or unavailable */ }
+  }
+
+  function restore() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const data = JSON.parse(raw);
+        _enabled = !!data.enabled;
+        _liveStartDate = data.liveStartDate || null;
+      }
+    } catch (e) { /* parse error — use defaults */ }
+  }
+
+  function start(config) {
+    if (_enabled) return;
+    if (!_liveStartDate) {
+      _liveStartDate = todayISO();
+    }
+    _enabled = true;
+    persist();
+    stopTicker();
+    _ticker = setInterval(() => {
+      if (App.runSimulation) App.runSimulation();
+    }, 60000);
+  }
+
+  function stop() {
+    _enabled = false;
+    _liveStartDate = null;
+    persist();
+    stopTicker();
+  }
+
+  function stopTicker() {
+    if (_ticker) {
+      clearInterval(_ticker);
+      _ticker = null;
+    }
+  }
+
+  function resetAnchor() {
+    _liveStartDate = todayISO();
+    persist();
+  }
+
+  restore();
+
+  return {
+    get enabled() { return _enabled; },
+    get liveStartDate() { return _liveStartDate; },
+    start,
+    stop,
+    resetAnchor,
+    currentSimDay,
+    projectedActual,
+    persist,
+    restore,
+  };
+})();
+
+/**
  * App — Main orchestrator. Manages config, runs simulations, and coordinates UI.
  */
 const App = (() => {
@@ -12,8 +112,10 @@ const App = (() => {
     initialBalance: 520,
     realtimeEnabled: true,
     startDate: '',
+    liveModeEnabled: false,
 
     // Income
+    incomeDailyEnabled: true,
     incomeType: 'linear',      // 'fixed' | 'linear' | 'custom'
     incomeBase: 12,
     incomeGrowthRate: 1,       // +1 per day for linear
@@ -76,6 +178,12 @@ const App = (() => {
     loadConfig();          // restore last session
     DetailUI.init();
 
+    // Restore live mode state
+    LiveMode.restore();
+    if (LiveMode.enabled) {
+      LiveMode.start(_config);
+    }
+
     if (typeof FirebaseDB !== 'undefined') {
       try {
         const fbBalance = await FirebaseDB.getCurrentBalance();
@@ -106,6 +214,12 @@ const App = (() => {
             initialInput.value = balance;
           }
           renderConfigPanel();
+
+          // Anchor live projection to today when bot reports a new balance
+          if (LiveMode.enabled) {
+            LiveMode.resetAnchor();
+          }
+
           runSimulation();
         }
       });
@@ -144,6 +258,12 @@ const App = (() => {
           <div class="param-group">
             <label for="cfg-start-date">Mulai Forecast</label>
             <input type="date" id="cfg-start-date" value="${_config.startDate || ledgerState.today}"/>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-live-mode-enabled" ${_config.liveModeEnabled ? 'checked' : ''}/>
+              🔴 Mode Live (saldo aktual mengikuti prediksi per hari)
+            </label>
           </div>
         </div>
 
@@ -185,6 +305,12 @@ const App = (() => {
 
         <div class="config-section">
           <div class="config-section-title">💵 Income Harian</div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-income-daily-enabled" ${_config.incomeDailyEnabled !== false ? 'checked' : ''}/>
+              Aktifkan Income Harian
+            </label>
+          </div>
           <div class="param-group">
             <label for="cfg-income-type">Tipe</label>
             <select id="cfg-income-type">
@@ -425,10 +551,12 @@ const App = (() => {
       simulationDays: getInt('cfg-days', 90),
       initialBalance: getNum('cfg-initial', 520),
       realtimeEnabled: getCheck('cfg-realtime-enabled') ?? true,
+      liveModeEnabled: getCheck('cfg-live-mode-enabled') ?? false,
       startDate: get('cfg-start-date') || Ledger.todayISO(),
       incomeType: get('cfg-income-type') || 'linear',
       incomeBase: getNum('cfg-income-base', 12),
       incomeGrowthRate: getNum('cfg-income-growth', 1),
+      incomeDailyEnabled: getCheck('cfg-income-daily-enabled') ?? true,
       weeklyBonusEnabled: getCheck('cfg-bonus-enabled') ?? true,
       weeklyBonus: getNum('cfg-bonus', 60),
       weeklyBonusInterval: getInt('cfg-bonus-interval', 7),
@@ -463,6 +591,14 @@ const App = (() => {
 
   function runSimulation() {
     readConfig();
+
+    if (typeof LiveMode !== 'undefined') {
+      if (_config.liveModeEnabled && !LiveMode.enabled) {
+        LiveMode.start(_config);
+      } else if (!_config.liveModeEnabled && LiveMode.enabled) {
+        LiveMode.stop();
+      }
+    }
 
     const runBtn = document.getElementById('btn-run-sim');
     if (runBtn) {
@@ -590,7 +726,10 @@ const App = (() => {
           </div>
           <div class="rsb-item">
             <span class="rsb-label">Saldo Aktual</span>
-            <span class="rsb-value profit-color">${Calculator.display(summary.initialBalance)}</span>
+            ${LiveMode.enabled && records.length
+              ? `<span class="rsb-value profit-color">${Calculator.display(LiveMode.projectedActual(records, LiveMode.currentSimDay(_config)))}</span>
+                 <span class="live-badge">🔴 Hari ${LiveMode.currentSimDay(_config)}</span>`
+              : `<span class="rsb-value profit-color">${Calculator.display(summary.initialBalance)}</span>`}
           </div>
           <div class="rsb-item">
             <span class="rsb-label">Total Investasi</span>
@@ -795,6 +934,7 @@ const App = (() => {
 
   return {
     init,
+    runSimulation,
     getConfig: () => _config,
     getSchedule: () => _baseResult?.summary?.investmentSchedule || [],
   };

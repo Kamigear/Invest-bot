@@ -1,8 +1,8 @@
 {
   "js/app.js": {
-    "mtime": 1785661198.330164,
-    "ast_hash": "253192f3346fcafde2784b998ea26ccd",
-    "semantic_hash": "253192f3346fcafde2784b998ea26ccd"
+    "mtime": 1785673891.505858,
+    "ast_hash": "4a7a3c59f7d8c26ee291345fca907d30",
+    "semantic_hash": ""
   },
   "js/engine/calculator.js": {
     "mtime": 1785499032.439246,
@@ -10,14 +10,14 @@
     "semantic_hash": "cce1a1f198c7a9bc6ec2fb689f1851d8"
   },
   "js/engine/optimizer.js": {
-    "mtime": 1785661216.1167452,
-    "ast_hash": "ec8410224ddc7d58ee87444f1a26d568",
-    "semantic_hash": "ec8410224ddc7d58ee87444f1a26d568"
+    "mtime": 1785663963.2058377,
+    "ast_hash": "56c899fc276a7d76026b00c34bbf23e9",
+    "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
   },
   "js/engine/simulator.js": {
-    "mtime": 1785502468.3185372,
-    "ast_hash": "16dfca97426b48f9b8a263aed3564e3b",
-    "semantic_hash": "16dfca97426b48f9b8a263aed3564e3b"
+    "mtime": 1785673867.4085917,
+    "ast_hash": "70574976489ffe82e4ddfe03d968c871",
+    "semantic_hash": ""
   },
   "js/export/exporters.js": {
     "mtime": 1785487157.468014,
@@ -45,9 +45,9 @@
     "semantic_hash": "d0aa74498d7714febde1a8c233654d6d"
   },
   ".kilo/kilo.json": {
-    "mtime": 1785661460.738261,
-    "ast_hash": "d50a68255f435aeab9b4ebba61cb3c97",
-    "semantic_hash": "d50a68255f435aeab9b4ebba61cb3c97"
+    "mtime": 1785672441.2713363,
+    "ast_hash": "cb34025bffd1e9cb6a083623d545a7cd",
+    "semantic_hash": "cb34025bffd1e9cb6a083623d545a7cd"
   },
   ".kilo/plugins/graphify.js": {
     "mtime": 1785661460.676108,
@@ -70,9 +70,9 @@
     "semantic_hash": "1f6e9288008386f258c3355d73995e91"
   },
   "Board/index.js": {
-    "mtime": 1785564333.7680292,
-    "ast_hash": "9703242b866f72542f1bbb631324f799",
-    "semantic_hash": "9703242b866f72542f1bbb631324f799"
+    "mtime": 1785673263.0710075,
+    "ast_hash": "33efe70120ca2d8313ddb40b1c685ac7",
+    "semantic_hash": ""
   },
   "Board/investor.js": {
     "mtime": 1785511147.2326455,
@@ -90,13 +90,48 @@
     "semantic_hash": "d127f52ce442ac9445ec7352d2fb88cd"
   },
   "js/firebase.js": {
-    "mtime": 1785548801.5884578,
-    "ast_hash": "3f701feb66856cdbc4550952052b0d0f",
-    "semantic_hash": "3f701feb66856cdbc4550952052b0d0f"
+    "mtime": 1785672780.9136178,
+    "ast_hash": "91d487e649f81d4011f137236dbeb808",
+    "semantic_hash": "91d487e649f81d4011f137236dbeb808"
   },
   "js/ui/bot_status.js": {
     "mtime": 1785508976.5455685,
     "ast_hash": "051507974409931048883c6b7ceb3919",
     "semantic_hash": "051507974409931048883c6b7ceb3919"
+  },
+  ".codex/hooks.json": {
+    "mtime": 1785661651.407245,
+    "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
+    "semantic_hash": "5ebef3dd159986e465ab65e4014107ec"
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1785661642.884102,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1785661642.887276,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
+  },
+  "AGENTS.md": {
+    "mtime": 1785661460.6750872,
+    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
+    "semantic_hash": "21ceb6533048be51308e69e7b74a35cf"
+  },
+  "Board/README.md": {
+    "mtime": 1785509018.8971853,
+    "ast_hash": "64c321bb28b3a026baaa9642add595e9",
+    "semantic_hash": "64c321bb28b3a026baaa9642add595e9"
+  },
+  "index.html": {
+    "mtime": 1785509051.134379,
+    "ast_hash": "cd12dee1ec87c29c4d95687ce65bba3e",
+    "semantic_hash": "cd12dee1ec87c29c4d95687ce65bba3e"
+  },
+  ".kilo/plans/1785669327659-live-predicted-balance-mode.md": {
+    "mtime": 1785670439.4841056,
+    "ast_hash": "f8ed8bcf03a83589d5907016b3b9f62a",
+    "semantic_hash": "f8ed8bcf03a83589d5907016b3b9f62a"
   }
 }

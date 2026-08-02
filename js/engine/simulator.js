@@ -48,7 +48,7 @@ const Simulator = (() => {
       const balanceBefore = Calculator.fmt(balance);
 
       // ── Step 1: Daily Income ─────────────────────────────────
-      const dailyIncome = Calculator.getDailyIncome(day, config);
+      const dailyIncome = config.incomeDailyEnabled !== false ? Calculator.getDailyIncome(day, config) : 0;
       balance += dailyIncome;
       totalDailyIncome = Calculator.fmt(totalDailyIncome + dailyIncome);
 
