@@ -1,7 +1,7 @@
 # Graph Report - .  (2026-08-02)
 
 ## Corpus Check
-- Corpus is ~14,278 words - fits in a single context window. You may not need a graph.
+- Corpus is ~14,280 words - fits in a single context window. You may not need a graph.
 
 ## Summary
 - 38 nodes · 34 edges · 12 communities (5 shown, 7 thin omitted)
@@ -9,15 +9,15 @@
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- Live Balance Mode
-- Graphify Documentation
+- Live Predicted Balance
+- Graphify Config
 - Board Package Config
-- HTTP Client
-- Environment Config
+- Axios Dependency
+- Dotenv Dependency
 - Firebase Admin
-- Task Scheduler
-- Browser Automation
-- Firestore Index
+- Node Cron
+- Puppeteer
+- Firebase Firestore
 - Board README
 - CallMeBot API
 
@@ -47,11 +47,11 @@
 
 ## Communities (12 total, 7 thin omitted)
 
-### Community 0 - "Live Balance Mode"
+### Community 0 - "Live Predicted Balance"
 Cohesion: 0.36
 Nodes (8): Actual Balance, Bot Balance Scrape, Firestore botState, graphify update, Live Mode, localStorage persistence, Predicted Balance, Simulation Engine
 
-### Community 1 - "Graphify Documentation"
+### Community 1 - "Graphify Config"
 Cohesion: 0.29
 Nodes (7): GRAPH_REPORT.md, graphify, graphify explain CLI, graphify-out directory, graphify query CLI, graphify skill, graphify workflow
 
@@ -59,7 +59,7 @@ Nodes (7): GRAPH_REPORT.md, graphify, graphify explain CLI, graphify-out directo
 Cohesion: 0.29
 Nodes (6): description, main, name, scripts, start, version
 
-### Community 3 - "HTTP Client"
+### Community 3 - "Axios Dependency"
 Cohesion: 0.67
 Nodes (3): axios, dependencies, axios
 
@@ -71,7 +71,7 @@ Nodes (3): axios, dependencies, axios
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `HTTP Client` to `Board Package Config`, `Environment Config`, `Firebase Admin`, `Task Scheduler`, `Browser Automation`?**
+- **Why does `dependencies` connect `Axios Dependency` to `Board Package Config`, `Dotenv Dependency`, `Firebase Admin`, `Node Cron`, `Puppeteer`?**
   _High betweenness centrality (0.165) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `description` to the rest of the system?**
   _21 weakly-connected nodes found - possible documentation gaps or missing edges._

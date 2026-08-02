@@ -1,3 +1,0 @@
-D:\Investation\.agents\rules\graphify.md
-D:\Investation\.agents\workflows\graphify.md
-D:\Investation\.kilo\plans\1785669327659-live-predicted-balance-mode.md

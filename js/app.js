@@ -72,9 +72,22 @@ const App = (() => {
   }
 
   // ── Initialization ────────────────────────────────────────────────────────
-  function init() {
+  async function init() {
     loadConfig();          // restore last session
     DetailUI.init();
+
+    if (typeof FirebaseDB !== 'undefined') {
+      try {
+        const fbBalance = await FirebaseDB.getCurrentBalance();
+        if (fbBalance !== null && fbBalance !== _config.initialBalance) {
+          _config.initialBalance = fbBalance;
+          saveConfig();
+        }
+      } catch (e) {
+        console.error("Failed to fetch Firebase balance on init:", e);
+      }
+    }
+
     renderConfigPanel();
     renderLanding();
 
@@ -788,7 +801,7 @@ const App = (() => {
 })();
 
 // ── Bootstrap + Auth Guard ────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const overlay   = document.getElementById('auth-overlay');
   const authInput = document.getElementById('auth-input');
   const authBtn   = document.getElementById('auth-btn');
@@ -809,7 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (ok) {
         sessionStorage.setItem(SESSION_KEY, '1');
         overlay.style.display = 'none';
-        App.init();
+        await App.init();
       } else {
         authError.style.display = 'block';
         authInput.value = '';
@@ -820,7 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.warn('Auth offline, skipping:', e);
       sessionStorage.setItem(SESSION_KEY, '1');
       overlay.style.display = 'none';
-      App.init();
+        await App.init();
     }
 
     authBtn.disabled = false;
@@ -849,7 +862,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // If already authenticated this session → skip overlay
   if (sessionStorage.getItem(SESSION_KEY) === '1') {
     if (overlay) overlay.style.display = 'none';
-    App.init();
+    await App.init();
   } else {
     if (overlay) overlay.style.display = 'flex';
   }

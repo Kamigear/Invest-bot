@@ -159,6 +159,18 @@ const FirebaseDB = (() => {
                 console.error("Error listening to balance updates:", error);
             });
         },
+
+        getCurrentBalance: async () => {
+            try {
+                const doc = await db.collection('botState').doc('balance').get();
+                if (doc.exists) {
+                    return doc.data().balance;
+                }
+            } catch (error) {
+                console.error("Error getting current balance:", error);
+            }
+            return null;
+        },
         
         getDB: () => db
     };
