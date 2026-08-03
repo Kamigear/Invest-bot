@@ -780,12 +780,17 @@ const App = (() => {
           </div>
         </div>
 
-        <!-- Firebase Sync Button -->
-        <div style="display:flex;justify-content:flex-end;padding:0 4px 8px;">
+        <!-- Firebase Sync Buttons -->
+        <div style="display:flex;justify-content:flex-end;gap:8px;padding:0 4px 8px;">
           <button id="btn-sync-firebase"
             onclick="syncToFirebase(App.getConfig && App.getConfig(), App.getSchedule && App.getSchedule())"
             style="padding:8px 18px;border-radius:8px;border:none;background:linear-gradient(135deg,#4facfe,#00f2fe);color:#0f0f1a;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;">
             ☁️ Sync ke Firebase
+          </button>
+          <button id="btn-sync-from-firebase"
+            onclick="syncFromFirebase()"
+            style="padding:8px 18px;border-radius:8px;border:none;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0f0f1a;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;">
+            ⬇️ Sync dari Firebase
           </button>
         </div>
 
@@ -1097,6 +1102,61 @@ async function syncToFirebase(config, schedule) {
     console.error('Sync failed:', e);
     setTimeout(() => {
       btn.innerHTML = '☁️ Sync ke Firebase';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+}
+
+// ── Sync from Firebase Handler (one-time fetch) ────────────────────────────
+async function syncFromFirebase() {
+  const btn = document.getElementById('btn-sync-from-firebase');
+  if (!btn) return;
+
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Mengambil...';
+
+  try {
+    const result = await FirebaseDB.fetchFromFirebase();
+    
+    if (result.config) {
+      // Update config
+      if (App.setConfig) {
+        App.setConfig(result.config);
+      } else if (App.config) {
+        Object.assign(App.config, result.config);
+      }
+      console.log('Config updated from Firebase:', result.config);
+    }
+    
+    if (result.schedule && result.schedule.length > 0) {
+      // Update schedule
+      if (App.setSchedule) {
+        App.setSchedule(result.schedule);
+      } else if (App.schedule) {
+        App.schedule = result.schedule;
+      }
+      console.log('Schedule updated from Firebase:', result.schedule.length, 'entries');
+    }
+    
+    // Re-render UI
+    if (App.render) {
+      App.render();
+    }
+    
+    btn.innerHTML = '✅ Terambil!';
+    btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+    setTimeout(() => {
+      btn.innerHTML = '⬇️ Sync dari Firebase';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  } catch (e) {
+    btn.innerHTML = '❌ Gagal Ambil';
+    btn.style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
+    console.error('Fetch from Firebase failed:', e);
+    setTimeout(() => {
+      btn.innerHTML = '⬇️ Sync dari Firebase';
       btn.style.background = '';
       btn.disabled = false;
     }, 4000);

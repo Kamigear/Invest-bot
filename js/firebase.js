@@ -161,6 +161,30 @@ const FirebaseDB = (() => {
             }
         },
 
+        // One-time fetch from Firebase (for manual sync button)
+        fetchFromFirebase: async () => {
+            try {
+                const uid = _uid || 'anon';
+                const configDoc = await db.collection('users').doc(uid)
+                    .collection('investments').doc('config').get({ source: 'server' });
+                
+                const scheduleSnap = await db.collection('users').doc(uid)
+                    .collection('investments').doc('schedule')
+                    .collection('entries').orderBy('investDate', 'asc').get({ source: 'server' });
+                
+                const schedule = [];
+                scheduleSnap.forEach(doc => {
+                    schedule.push({ id: doc.id, ...doc.data() });
+                });
+                
+                console.log('Fetched from Firebase:', { config: configDoc.exists ? configDoc.data() : null, scheduleCount: schedule.length });
+                return { config: configDoc.exists ? configDoc.data() : null, schedule };
+            } catch (error) {
+                console.error('Error fetching from Firebase:', error);
+                throw error;
+            }
+        },
+
         // Real-time multi-browser sync - listen for config changes
         syncFromFirebase: async (callback) => {
             try {
