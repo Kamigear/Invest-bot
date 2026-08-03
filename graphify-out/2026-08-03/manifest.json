@@ -45,9 +45,9 @@
     "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
   },
   "js/app.js": {
-    "mtime": 1785767112.9074404,
-    "ast_hash": "bc17f3a5002a4cc543695c52affe6dcf",
-    "semantic_hash": ""
+    "mtime": 1785764791.5556812,
+    "ast_hash": "896edb7ca4ffca901670da4b8fa6b439",
+    "semantic_hash": "896edb7ca4ffca901670da4b8fa6b439"
   },
   "js/engine/calculator.js": {
     "mtime": 1785719829.2475324,
@@ -103,55 +103,5 @@
     "mtime": 1785500633.8460972,
     "ast_hash": "d0aa74498d7714febde1a8c233654d6d",
     "semantic_hash": "d0aa74498d7714febde1a8c233654d6d"
-  },
-  ".agents/rules/graphify.md": {
-    "mtime": 1785661642.884102,
-    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
-    "semantic_hash": ""
-  },
-  ".agents/workflows/graphify.md": {
-    "mtime": 1785661642.887276,
-    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
-    "semantic_hash": ""
-  },
-  ".kilo/plans/1785669327659-live-predicted-balance-mode.md": {
-    "mtime": 1785682589.6730704,
-    "ast_hash": "3d40feb355b38ca5f3cd841b75846d2b",
-    "semantic_hash": ""
-  },
-  ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md": {
-    "mtime": 1785682603.6356075,
-    "ast_hash": "75338a8ddd0ce2ea05c8fd46e8736231",
-    "semantic_hash": ""
-  },
-  ".kilo/plans/1785720286196-date-based-transactions.md": {
-    "mtime": 1785732234.12897,
-    "ast_hash": "c8273af6498e0fd6058b9487649fbbec",
-    "semantic_hash": ""
-  },
-  ".kilo/plans/1785734141555-day-specific-income-entries.md": {
-    "mtime": 1785734505.9018402,
-    "ast_hash": "d97582d5b6bbd1261e600064ae2dd762",
-    "semantic_hash": ""
-  },
-  ".kilo/plans/1785734141555-realtime-finance-tracker.md": {
-    "mtime": 1785738492.4455369,
-    "ast_hash": "7a3f604c5699ee119d219b9b08762862",
-    "semantic_hash": ""
-  },
-  "AGENTS.md": {
-    "mtime": 1785661460.6750872,
-    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
-    "semantic_hash": ""
-  },
-  "Board/README.md": {
-    "mtime": 1785509018.8971853,
-    "ast_hash": "64c321bb28b3a026baaa9642add595e9",
-    "semantic_hash": ""
-  },
-  "index.html": {
-    "mtime": 1785749591.9237666,
-    "ast_hash": "ab15d945611338f0298c816c2552ffb5",
-    "semantic_hash": ""
   }
 }

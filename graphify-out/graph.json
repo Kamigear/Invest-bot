@@ -15,31 +15,6 @@
         "relation": "participate_in",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0
-      },
-      {
-        "id": "ui_orchestration",
-        "label": "UI Orchestration Layer",
-        "nodes": [
-          "js_app",
-          "js_ui_calendar",
-          "js_ui_summary",
-          "js_ui_dailylog"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.9
-      },
-      {
-        "id": "firebase_integration_flow",
-        "label": "Firebase Data Flow",
-        "nodes": [
-          "js_firebase",
-          "js_app",
-          "js_ui_dailylog"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.95
       }
     ]
   },
@@ -52,6 +27,7 @@
       "_origin": "ast",
       "id": "kilo_kilo",
       "community": 6,
+      "community_name": "kilo.json",
       "norm_label": "kilo.json"
     },
     {
@@ -62,6 +38,7 @@
       "_origin": "ast",
       "id": "kilo_kilo_schema",
       "community": 6,
+      "community_name": "kilo.json",
       "norm_label": "$schema"
     },
     {
@@ -72,6 +49,7 @@
       "_origin": "ast",
       "id": "kilo_kilo_plugin",
       "community": 6,
+      "community_name": "kilo.json",
       "norm_label": "plugin"
     },
     {
@@ -82,6 +60,7 @@
       "_origin": "ast",
       "id": "ref_file_d_investation_kilo_plugins_graphify_js",
       "community": 6,
+      "community_name": "kilo.json",
       "norm_label": "file:///d:/investation/.kilo/plugins/graphify.js"
     },
     {
@@ -92,6 +71,7 @@
       "_origin": "ast",
       "id": "kilo_kilo_snapshot",
       "community": 6,
+      "community_name": "kilo.json",
       "norm_label": "snapshot"
     },
     {
@@ -102,6 +82,7 @@
       "_origin": "ast",
       "id": "kilo_plugins_graphify",
       "community": 8,
+      "community_name": "graphify.js",
       "norm_label": "graphify.js"
     },
     {
@@ -112,6 +93,7 @@
       "_origin": "ast",
       "id": "kilo_plugins_graphify_graphifyplugin",
       "community": 8,
+      "community_name": "graphify.js",
       "norm_label": "graphifyplugin()"
     },
     {
@@ -122,6 +104,7 @@
       "_origin": "ast",
       "id": "board_alert",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "alert.js"
     },
     {
@@ -132,6 +115,7 @@
       "_origin": "ast",
       "id": "board_alert_axios",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "axios"
     },
     {
@@ -142,6 +126,7 @@
       "_origin": "ast",
       "id": "board_alert_sendalert",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "sendalert()"
     },
     {
@@ -152,6 +137,7 @@
       "_origin": "ast",
       "id": "board_executor",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "executor.js"
     },
     {
@@ -162,6 +148,7 @@
       "_origin": "ast",
       "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "{ db, runtransaction, servertimestamp, getdoc, setdoc }"
     },
     {
@@ -172,6 +159,7 @@
       "_origin": "ast",
       "id": "board_executor_sendalert",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "{ sendalert }"
     },
     {
@@ -182,6 +170,7 @@
       "_origin": "ast",
       "id": "board_executor_executeinvest",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "{ executeinvest }"
     },
     {
@@ -192,6 +181,7 @@
       "_origin": "ast",
       "id": "board_executor_rundailyjob",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "rundailyjob()"
     },
     {
@@ -202,6 +192,7 @@
       "_origin": "ast",
       "id": "board_firebase",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "firebase.js"
     },
     {
@@ -212,6 +203,7 @@
       "_origin": "ast",
       "id": "board_firebase_admin",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "admin"
     },
     {
@@ -222,6 +214,7 @@
       "_origin": "ast",
       "id": "board_firebase_db",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "db"
     },
     {
@@ -232,6 +225,7 @@
       "_origin": "ast",
       "id": "board_firebase_getdoc",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "getdoc()"
     },
     {
@@ -242,6 +236,7 @@
       "_origin": "ast",
       "id": "board_firebase_setdoc",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "setdoc()"
     },
     {
@@ -252,6 +247,7 @@
       "_origin": "ast",
       "id": "board_firebase_runtransaction",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "runtransaction()"
     },
     {
@@ -261,7 +257,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "board_firebase_servertimestamp",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "servertimestamp()"
     },
     {
@@ -272,6 +269,7 @@
       "_origin": "ast",
       "id": "board_firebase_onsnapshot",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "onsnapshot()"
     },
     {
@@ -281,7 +279,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_index",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "index.js"
     },
     {
@@ -291,7 +290,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_index_cron",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "cron"
     },
     {
@@ -301,7 +301,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "board_index_puppeteer",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "puppeteer"
     },
     {
@@ -311,7 +312,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "board_index_rundailyjob",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "{ rundailyjob }"
     },
     {
@@ -321,7 +323,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "board_index_sendalert",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "{ sendalert }"
     },
     {
@@ -331,7 +334,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "board_index_db_servertimestamp",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "{ db, servertimestamp }"
     },
     {
@@ -341,7 +345,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "board_index_sleep",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "sleep()"
     },
     {
@@ -351,7 +356,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "board_index_waitforturn",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "waitforturn()"
     },
     {
@@ -361,7 +367,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "board_index_openbrowser",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "openbrowser()"
     },
     {
@@ -371,7 +378,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "board_index_runtask1",
-      "community": 4,
+      "community": 1,
+      "community_name": "index.js",
       "norm_label": "runtask1()"
     },
     {
@@ -382,6 +390,7 @@
       "_origin": "ast",
       "id": "board_index_start",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "start()"
     },
     {
@@ -392,6 +401,7 @@
       "_origin": "ast",
       "id": "board_investor",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "investor.js"
     },
     {
@@ -402,6 +412,7 @@
       "_origin": "ast",
       "id": "board_investor_puppeteer",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "puppeteer"
     },
     {
@@ -412,6 +423,7 @@
       "_origin": "ast",
       "id": "board_investor_executeinvest",
       "community": 1,
+      "community_name": "index.js",
       "norm_label": "executeinvest()"
     },
     {
@@ -421,7 +433,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_package",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "package.json"
     },
     {
@@ -431,7 +444,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_package_name",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "name"
     },
     {
@@ -441,7 +455,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "board_package_version",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "version"
     },
     {
@@ -451,7 +466,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "board_package_description",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "description"
     },
     {
@@ -461,7 +477,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "board_package_main",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "main"
     },
     {
@@ -471,7 +488,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "board_package_scripts",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "scripts"
     },
     {
@@ -481,7 +499,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "board_package_scripts_start",
-      "community": 5,
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "start"
     },
     {
@@ -492,6 +511,7 @@
       "_origin": "ast",
       "id": "board_package_dependencies",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "dependencies"
     },
     {
@@ -502,6 +522,7 @@
       "_origin": "ast",
       "id": "board_package_dependencies_axios",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "axios"
     },
     {
@@ -512,6 +533,7 @@
       "_origin": "ast",
       "id": "axios",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "axios"
     },
     {
@@ -522,6 +544,7 @@
       "_origin": "ast",
       "id": "board_package_dependencies_dotenv",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "dotenv"
     },
     {
@@ -532,6 +555,7 @@
       "_origin": "ast",
       "id": "dotenv",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "dotenv"
     },
     {
@@ -542,6 +566,7 @@
       "_origin": "ast",
       "id": "board_package_dependencies_firebase_admin",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "firebase-admin"
     },
     {
@@ -552,6 +577,7 @@
       "_origin": "ast",
       "id": "firebase_admin",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "firebase-admin"
     },
     {
@@ -562,6 +588,7 @@
       "_origin": "ast",
       "id": "board_package_dependencies_node_cron",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "node-cron"
     },
     {
@@ -572,6 +599,7 @@
       "_origin": "ast",
       "id": "node_cron",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "node-cron"
     },
     {
@@ -582,6 +610,7 @@
       "_origin": "ast",
       "id": "board_package_dependencies_puppeteer",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "puppeteer"
     },
     {
@@ -592,6 +621,7 @@
       "_origin": "ast",
       "id": "puppeteer",
       "community": 3,
+      "community_name": "package.json",
       "norm_label": "puppeteer"
     },
     {
@@ -601,7 +631,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "js_app",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "app.js"
     },
     {
@@ -611,7 +642,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "js_app_livemode",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "livemode"
     },
     {
@@ -621,7 +653,8 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "js_app_app",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "app"
     },
     {
@@ -631,7 +664,8 @@
       "source_location": "L1015",
       "_origin": "ast",
       "id": "js_app_trylogin",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "trylogin()"
     },
     {
@@ -641,7 +675,8 @@
       "source_location": "L1044",
       "_origin": "ast",
       "id": "js_app_setuppassword",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "setuppassword()"
     },
     {
@@ -651,7 +686,8 @@
       "source_location": "L1083",
       "_origin": "ast",
       "id": "js_app_synctofirebase",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "synctofirebase()"
     },
     {
@@ -661,7 +697,8 @@
       "source_location": "L1112",
       "_origin": "ast",
       "id": "js_app_syncfromfirebase",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "syncfromfirebase()"
     },
     {
@@ -672,6 +709,7 @@
       "_origin": "ast",
       "id": "js_engine_calculator",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "calculator.js"
     },
     {
@@ -682,6 +720,7 @@
       "_origin": "ast",
       "id": "js_engine_calculator_calculator",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "calculator"
     },
     {
@@ -692,6 +731,7 @@
       "_origin": "ast",
       "id": "js_engine_ledger",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "ledger.js"
     },
     {
@@ -702,6 +742,7 @@
       "_origin": "ast",
       "id": "js_engine_ledger_ledger",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "ledger"
     },
     {
@@ -712,6 +753,7 @@
       "_origin": "ast",
       "id": "js_engine_optimizer",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "optimizer.js"
     },
     {
@@ -722,6 +764,7 @@
       "_origin": "ast",
       "id": "js_engine_optimizer_optimizer",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "optimizer"
     },
     {
@@ -732,6 +775,7 @@
       "_origin": "ast",
       "id": "js_engine_simulator",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "simulator.js"
     },
     {
@@ -742,6 +786,7 @@
       "_origin": "ast",
       "id": "js_engine_simulator_simulator",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "simulator"
     },
     {
@@ -752,6 +797,7 @@
       "_origin": "ast",
       "id": "js_export_exporters",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "exporters.js"
     },
     {
@@ -762,6 +808,7 @@
       "_origin": "ast",
       "id": "js_export_exporters_exportcsv",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "exportcsv"
     },
     {
@@ -772,6 +819,7 @@
       "_origin": "ast",
       "id": "js_export_exporters_exportexcel",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "exportexcel"
     },
     {
@@ -782,6 +830,7 @@
       "_origin": "ast",
       "id": "js_export_exporters_exportpdf",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "exportpdf"
     },
     {
@@ -791,7 +840,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "js_firebase",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "firebase.js"
     },
     {
@@ -801,7 +851,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "js_firebase_firebasedb",
-      "community": 2,
+      "community": 0,
+      "community_name": "index.html",
       "norm_label": "firebasedb"
     },
     {
@@ -812,6 +863,7 @@
       "_origin": "ast",
       "id": "js_ui_bot_status",
       "community": 7,
+      "community_name": "bot_status.js",
       "norm_label": "bot_status.js"
     },
     {
@@ -822,6 +874,7 @@
       "_origin": "ast",
       "id": "js_ui_bot_status_botstatusui",
       "community": 7,
+      "community_name": "bot_status.js",
       "norm_label": "botstatusui"
     },
     {
@@ -832,6 +885,7 @@
       "_origin": "ast",
       "id": "js_ui_calendar",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "calendar.js"
     },
     {
@@ -842,6 +896,7 @@
       "_origin": "ast",
       "id": "js_ui_calendar_calendarui",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "calendarui"
     },
     {
@@ -852,6 +907,7 @@
       "_origin": "ast",
       "id": "js_ui_comparison",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "comparison.js"
     },
     {
@@ -862,6 +918,7 @@
       "_origin": "ast",
       "id": "js_ui_comparison_comparisonui",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "comparisonui"
     },
     {
@@ -872,6 +929,7 @@
       "_origin": "ast",
       "id": "js_ui_detail",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "detail.js"
     },
     {
@@ -882,6 +940,7 @@
       "_origin": "ast",
       "id": "js_ui_detail_detailui",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "detailui"
     },
     {
@@ -892,6 +951,7 @@
       "_origin": "ast",
       "id": "js_ui_summary",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "summary.js"
     },
     {
@@ -902,79 +962,968 @@
       "_origin": "ast",
       "id": "js_ui_summary_summaryui",
       "community": 0,
+      "community_name": "index.html",
       "norm_label": "summaryui"
     },
     {
-      "label": "AGENTS.md",
+      "label": "graphify.md",
       "file_type": "document",
-      "source_file": "AGENTS.md",
-      "id": "agents_md",
-      "community": 9,
-      "norm_label": "agents.md"
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_rules_graphify",
+      "community": 14,
+      "community_name": "graphify.md",
+      "norm_label": "graphify.md"
     },
     {
-      "label": "index.html",
-      "file_type": "code",
-      "source_file": "index.html",
-      "id": "index_html",
-      "community": 0,
-      "norm_label": "index.html"
-    },
-    {
-      "label": "js/ui/dailyLog.js",
-      "file_type": "code",
-      "source_file": "js/ui/dailyLog.js",
-      "id": "js_ui_dailylog",
-      "community": 2,
-      "norm_label": "js/ui/dailylog.js"
-    },
-    {
-      "label": "Board/README.md",
+      "label": "graphify",
       "file_type": "document",
-      "source_file": "Board/README.md",
-      "id": "board_readme",
-      "community": 2,
-      "norm_label": "board/readme.md"
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_rules_graphify_graphify",
+      "community": 14,
+      "community_name": "graphify.md",
+      "norm_label": "graphify"
     },
     {
-      "label": "Plan: Live Predicted Balance Mode",
+      "label": "graphify.md",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_workflows_graphify",
+      "community": 15,
+      "community_name": "graphify.md",
+      "norm_label": "graphify.md"
+    },
+    {
+      "label": "Workflow: graphify",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_workflows_graphify_workflow_graphify",
+      "community": 15,
+      "community_name": "graphify.md",
+      "norm_label": "workflow: graphify"
+    },
+    {
+      "label": "1785669327659-live-predicted-balance-mode.md",
       "file_type": "document",
       "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
-      "id": "plan_live_mode",
-      "community": 0,
-      "norm_label": "plan: live predicted balance mode"
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "1785669327659-live-predicted-balance-mode.md"
     },
     {
-      "label": "Plan: Fix Bot State Balance",
+      "label": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "plan: live \"actual follows predicted\" balance mode (option a)"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_goal",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "goal"
+    },
+    {
+      "label": "Key Decisions",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_key_decisions",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "key decisions"
+    },
+    {
+      "label": "Data Flow",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_data_flow",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "data flow"
+    },
+    {
+      "label": "Tasks (ordered)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_tasks_ordered",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "tasks (ordered)"
+    },
+    {
+      "label": "Risks & Edge Cases",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_risks_edge_cases",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "risks & edge cases"
+    },
+    {
+      "label": "Validation",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_validation",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "validation"
+    },
+    {
+      "label": "Open Questions",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_open_questions",
+      "community": 11,
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "norm_label": "open questions"
+    },
+    {
+      "label": "1785677999510-fix-bot-state-as-saldo-awal.md",
       "file_type": "document",
       "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
-      "id": "plan_fix_bot_state",
-      "community": 0,
-      "norm_label": "plan: fix bot state balance"
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "1785677999510-fix-bot-state-as-saldo-awal.md"
+    },
+    {
+      "label": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "plan: fix bot state balance being used as saldo awal"
+    },
+    {
+      "label": "Problem",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_problem",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "problem"
+    },
+    {
+      "label": "Architecture: Saldo Awal vs Saldo Aktual",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_architecture_saldo_awal_vs_saldo_aktual",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "architecture: saldo awal vs saldo aktual"
+    },
+    {
+      "label": "Tasks",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "tasks"
+    },
+    {
+      "label": "1. Remove debug logging (cleanup from investigation)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_1_remove_debug_logging_cleanup_from_investigation",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "1. remove debug logging (cleanup from investigation)"
+    },
+    {
+      "label": "2. Stop using Firebase bot state as Saldo Awal",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_2_stop_using_firebase_bot_state_as_saldo_awal",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "2. stop using firebase bot state as saldo awal"
+    },
+    {
+      "label": "3. Stop auto-updating Saldo Awal on `onSnapshot` events",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_3_stop_auto_updating_saldo_awal_on_onsnapshot_events",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "3. stop auto-updating saldo awal on `onsnapshot` events"
+    },
+    {
+      "label": "4. Add explicit \"Sync Saldo Awal from Bot\" button (opt-in)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_4_add_explicit_sync_saldo_awal_from_bot_button_opt_in",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "4. add explicit \"sync saldo awal from bot\" button (opt-in)"
+    },
+    {
+      "label": "5. Fix LiveMode plan doc reference (informational)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_5_fix_livemode_plan_doc_reference_informational",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "5. fix livemode plan doc reference (informational)"
+    },
+    {
+      "label": "Risks & Edge Cases",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_risks_edge_cases",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "risks & edge cases"
+    },
+    {
+      "label": "Validation",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L130",
+      "_origin": "ast",
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_validation",
+      "community": 9,
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "norm_label": "validation"
+    },
+    {
+      "label": "1785720286196-date-based-transactions.md",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "1785720286196-date-based-transactions.md"
     },
     {
       "label": "Plan: Date-Based Transaction System",
       "file_type": "document",
       "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
-      "id": "plan_date_transactions",
-      "community": 10,
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "plan: date-based transaction system"
+    },
+    {
+      "label": "Status: IMPLEMENTED",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_status_implemented",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "status: implemented"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_goal",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "goal"
+    },
+    {
+      "label": "Problem",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_problem",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "problem"
+    },
+    {
+      "label": "Solution Implemented",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "solution implemented"
+    },
+    {
+      "label": "1. Simulator runs from initialBalance (unchanged)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_1_simulator_runs_from_initialbalance_unchanged",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "1. simulator runs from initialbalance (unchanged)"
+    },
+    {
+      "label": "2. Transactions are visual adjustments on specific days",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_2_transactions_are_visual_adjustments_on_specific_days",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "2. transactions are visual adjustments on specific days"
+    },
+    {
+      "label": "3. Added `Ledger.getStateAsOfDate(config, targetDate)` in `js/engine/ledger.js`",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_3_added_ledger_getstateasofdate_config_targetdate_in_js_engine_ledger_js",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "3. added `ledger.getstateasofdate(config, targetdate)` in `js/engine/ledger.js`"
+    },
+    {
+      "label": "4. Firebase Sync Button in `js/app.js`",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_4_firebase_sync_button_in_js_app_js",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "4. firebase sync button in `js/app.js`"
+    },
+    {
+      "label": "5. Removed old live mode injection logic",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_5_removed_old_live_mode_injection_logic",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "5. removed old live mode injection logic"
+    },
+    {
+      "label": "How It Works Now",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_how_it_works_now",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "how it works now"
+    },
+    {
+      "label": "Affected Files",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_affected_files",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "affected files"
+    },
+    {
+      "label": "Validation",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "kilo_plans_1785720286196_date_based_transactions_validation",
+      "community": 5,
+      "community_name": "Plan: Date-Based Transaction System",
+      "norm_label": "validation"
+    },
+    {
+      "label": "1785734141555-day-specific-income-entries.md",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "1785734141555-day-specific-income-entries.md"
     },
     {
       "label": "Plan: Day-Specific Manual Income Entries",
       "file_type": "document",
       "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
-      "id": "plan_manual_income",
-      "community": 11,
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "plan: day-specific manual income entries"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_goal",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "goal"
+    },
+    {
+      "label": "Background",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_background",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "background"
+    },
+    {
+      "label": "Data Model",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_data_model",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "data model"
+    },
+    {
+      "label": "Changes",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "changes"
+    },
+    {
+      "label": "1. `js/app.js` \u2014 Config & UI",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_1_js_app_js_config_ui",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "1. `js/app.js` \u2014 config & ui"
+    },
+    {
+      "label": "2. `js/engine/simulator.js` \u2014 Simulation Injection",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_2_js_engine_simulator_js_simulation_injection",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "2. `js/engine/simulator.js` \u2014 simulation injection"
+    },
+    {
+      "label": "3. `js/app.js` \u2014 Results Display",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_3_js_app_js_results_display",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "3. `js/app.js` \u2014 results display"
+    },
+    {
+      "label": "Validation",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_validation",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "validation"
+    },
+    {
+      "label": "Risks",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_risks",
+      "community": 10,
+      "community_name": "Plan: Day-Specific Manual Income Entries",
+      "norm_label": "risks"
+    },
+    {
+      "label": "1785734141555-realtime-finance-tracker.md",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "1785734141555-realtime-finance-tracker.md"
+    },
+    {
+      "label": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "plan: real-time finance tracker \u2014 daily income/expense panel"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_goal",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "goal"
+    },
+    {
+      "label": "Key Decisions (Resolved)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_key_decisions_resolved",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "key decisions (resolved)"
+    },
+    {
+      "label": "Architecture Overview",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_architecture_overview",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "architecture overview"
+    },
+    {
+      "label": "Data Models",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_data_models",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "data models"
+    },
+    {
+      "label": "1. Real-Time Transactions (Firestore: `users/{uid}/transactions/{id}`)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_1_real_time_transactions_firestore_users_uid_transactions_id",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "1. real-time transactions (firestore: `users/{uid}/transactions/{id}`)"
+    },
+    {
+      "label": "2. Categories (constant, local)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_2_categories_constant_local",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "2. categories (constant, local)"
+    },
+    {
+      "label": "3. Simulation `manualIncome` (unchanged, localStorage)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_3_simulation_manualincome_unchanged_localstorage",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "3. simulation `manualincome` (unchanged, localstorage)"
+    },
+    {
+      "label": "File Changes",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "file changes"
+    },
+    {
+      "label": "1. `index.html` \u2014 Remove auth overlay, add right panel structure",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L98",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_1_index_html_remove_auth_overlay_add_right_panel_structure",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "1. `index.html` \u2014 remove auth overlay, add right panel structure"
+    },
+    {
+      "label": "2. `css/style.css` \u2014 Layout & Daily Log Panel Styles",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_2_css_style_css_layout_daily_log_panel_styles",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "2. `css/style.css` \u2014 layout & daily log panel styles"
+    },
+    {
+      "label": "3. `js/app.js` \u2014 Core Orchestration",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L111",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_3_js_app_js_core_orchestration",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "3. `js/app.js` \u2014 core orchestration"
+    },
+    {
+      "label": "4. `js/firebase.js` \u2014 Extended for Transactions",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_4_js_firebase_js_extended_for_transactions",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "4. `js/firebase.js` \u2014 extended for transactions"
+    },
+    {
+      "label": "5. `js/ui/dailyLog.js` \u2014 NEW FILE",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L134",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_5_js_ui_dailylog_js_new_file",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "5. `js/ui/dailylog.js` \u2014 new file"
+    },
+    {
+      "label": "6. `js/engine/simulator.js` \u2014 UNCHANGED",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_6_js_engine_simulator_js_unchanged",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "6. `js/engine/simulator.js` \u2014 unchanged"
+    },
+    {
+      "label": "Implementation Tasks (Ordered)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L149",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "implementation tasks (ordered)"
+    },
+    {
+      "label": "Phase 1: Remove Auth & Restructure Sidebar",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_phase_1_remove_auth_restructure_sidebar",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "phase 1: remove auth & restructure sidebar"
+    },
+    {
+      "label": "Phase 2: Firebase Anonymous Auth & Transactions Collection",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L158",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_phase_2_firebase_anonymous_auth_transactions_collection",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "phase 2: firebase anonymous auth & transactions collection"
+    },
+    {
+      "label": "Phase 3: DailyLog Module & Panel UI",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_phase_3_dailylog_module_panel_ui",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "phase 3: dailylog module & panel ui"
+    },
+    {
+      "label": "Phase 4: Wire DailyLog into App",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_phase_4_wire_dailylog_into_app",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "phase 4: wire dailylog into app"
+    },
+    {
+      "label": "Phase 5: Settings Panel Cleanup",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L186",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_phase_5_settings_panel_cleanup",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "phase 5: settings panel cleanup"
+    },
+    {
+      "label": "Phase 6: Polish & Validation",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L191",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_phase_6_polish_validation",
+      "community": 12,
+      "community_name": "Implementation Tasks (Ordered)",
+      "norm_label": "phase 6: polish & validation"
+    },
+    {
+      "label": "Validation Checklist",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L202",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_validation_checklist",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "validation checklist"
+    },
+    {
+      "label": "Risks & Mitigations",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L221",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_risks_mitigations",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "risks & mitigations"
+    },
+    {
+      "label": "Future Enhancements (Out of Scope)",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L233",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_future_enhancements_out_of_scope",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "future enhancements (out of scope)"
+    },
+    {
+      "label": "File Summary",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L243",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_file_summary",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "file summary"
+    },
+    {
+      "label": "Graphify Update",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L256",
+      "_origin": "ast",
+      "id": "kilo_plans_1785734141555_realtime_finance_tracker_graphify_update",
+      "community": 4,
+      "community_name": "Plan: Real-Time Finance Tracker \u2014 Daily Income/Expense Panel",
+      "norm_label": "graphify update"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents",
+      "community": 13,
+      "community_name": "AGENTS.md",
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_graphify",
+      "community": 13,
+      "community_name": "AGENTS.md",
+      "norm_label": "graphify"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "Board/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "board_readme",
+      "community": 2,
+      "community_name": "Invest Bot",
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Invest Bot",
+      "file_type": "document",
+      "source_file": "Board/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "board_readme_invest_bot",
+      "community": 2,
+      "community_name": "Invest Bot",
+      "norm_label": "invest bot"
+    },
+    {
+      "label": "Setup di OrangePi",
+      "file_type": "document",
+      "source_file": "Board/README.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "board_readme_setup_di_orangepi",
+      "community": 2,
+      "community_name": "Invest Bot",
+      "norm_label": "setup di orangepi"
+    },
+    {
+      "label": "Architecture & Logic",
+      "file_type": "document",
+      "source_file": "Board/README.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "board_readme_architecture_logic",
+      "community": 2,
+      "community_name": "Invest Bot",
+      "norm_label": "architecture & logic"
+    },
+    {
+      "label": "index.html",
+      "file_type": "code",
+      "source_file": "index.html",
+      "community": 0,
+      "norm_label": "index.html",
+      "id": "index_html",
+      "community_name": "index.html"
+    },
+    {
+      "label": "Plan: Live Predicted Balance Mode",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "community": 0,
+      "norm_label": "plan: live predicted balance mode",
+      "id": "plan_live_mode",
+      "community_name": "index.html"
+    },
+    {
+      "label": "Plan: Fix Bot State Balance",
+      "file_type": "document",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "community": 0,
+      "norm_label": "plan: fix bot state balance",
+      "id": "plan_fix_bot_state",
+      "community_name": "index.html"
     },
     {
       "label": "Plan: Real-Time Finance Tracker",
       "file_type": "document",
       "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "community": 0,
+      "norm_label": "plan: real-time finance tracker",
       "id": "plan_finance_tracker",
-      "community": 2,
-      "norm_label": "plan: real-time finance tracker"
+      "community_name": "index.html"
     }
   ],
   "links": [
@@ -1973,14 +2922,6 @@
       "target": "js_firebase"
     },
     {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "js/app.js",
-      "source": "js_app",
-      "target": "js_ui_dailylog"
-    },
-    {
       "relation": "cites",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -2348,12 +3289,829 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "cites",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_rules_graphify",
+      "target": "agents_rules_graphify_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_workflows_graphify",
+      "target": "agents_workflows_graphify_workflow_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_data_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_key_decisions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_open_questions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_risks_edge_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_tasks_ordered",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "target": "kilo_plans_1785669327659_live_predicted_balance_mode_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_architecture_saldo_awal_vs_saldo_aktual",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_risks_edge_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_1_remove_debug_logging_cleanup_from_investigation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_2_stop_using_firebase_bot_state_as_saldo_awal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_3_stop_auto_updating_saldo_awal_on_onsnapshot_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_4_add_explicit_sync_saldo_awal_from_bot_button_opt_in",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "target": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_5_fix_livemode_plan_doc_reference_informational",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions",
+      "target": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_affected_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_how_it_works_now",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_status_implemented",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "target": "kilo_plans_1785720286196_date_based_transactions_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "target": "kilo_plans_1785720286196_date_based_transactions_1_simulator_runs_from_initialbalance_unchanged",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "target": "kilo_plans_1785720286196_date_based_transactions_2_transactions_are_visual_adjustments_on_specific_days",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "target": "kilo_plans_1785720286196_date_based_transactions_3_added_ledger_getstateasofdate_config_targetdate_in_js_engine_ledger_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "target": "kilo_plans_1785720286196_date_based_transactions_4_firebase_sync_button_in_js_app_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "target": "kilo_plans_1785720286196_date_based_transactions_5_removed_old_live_mode_injection_logic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_background",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_data_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_risks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_1_js_app_js_config_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_2_js_engine_simulator_js_simulation_injection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "target": "kilo_plans_1785734141555_day_specific_income_entries_3_js_app_js_results_display",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
-      "source": "plan_finance_tracker",
-      "target": "js_ui_dailylog"
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_architecture_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_data_models",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L243",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_file_summary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L233",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_future_enhancements_out_of_scope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L256",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_graphify_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_key_decisions_resolved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L221",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_risks_mitigations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L202",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_plan_real_time_finance_tracker_daily_income_expense_panel",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_validation_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_data_models",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_1_real_time_transactions_firestore_users_uid_transactions_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_data_models",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_2_categories_constant_local",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_data_models",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_3_simulation_manualincome_unchanged_localstorage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_1_index_html_remove_auth_overlay_add_right_panel_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_2_css_style_css_layout_daily_log_panel_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_3_js_app_js_core_orchestration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_4_js_firebase_js_extended_for_transactions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_5_js_ui_dailylog_js_new_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_file_changes",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_6_js_engine_simulator_js_unchanged",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_phase_1_remove_auth_restructure_sidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L158",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_phase_2_firebase_anonymous_auth_transactions_collection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L165",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_phase_3_dailylog_module_panel_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L175",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_phase_4_wire_dailylog_into_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L186",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_phase_5_settings_panel_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+      "source_location": "L191",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "kilo_plans_1785734141555_realtime_finance_tracker_implementation_tasks_ordered",
+      "target": "kilo_plans_1785734141555_realtime_finance_tracker_phase_6_polish_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents",
+      "target": "agents_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_readme",
+      "target": "board_readme_invest_bot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/README.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_readme_invest_bot",
+      "target": "board_readme_architecture_logic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_readme_invest_bot",
+      "target": "board_readme_setup_di_orangepi",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [
@@ -2369,32 +4127,7 @@
       "relation": "participate_in",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0
-    },
-    {
-      "id": "ui_orchestration",
-      "label": "UI Orchestration Layer",
-      "nodes": [
-        "js_app",
-        "js_ui_calendar",
-        "js_ui_summary",
-        "js_ui_dailylog"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.9
-    },
-    {
-      "id": "firebase_integration_flow",
-      "label": "Firebase Data Flow",
-      "nodes": [
-        "js_firebase",
-        "js_app",
-        "js_ui_dailylog"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95
     }
   ],
-  "built_at_commit": "8d2b9ef78930e70298b97ef874c8fa59460644b9"
+  "built_at_commit": "36be5796a78a024261814531990bd9cc6fe7e9c3"
 }

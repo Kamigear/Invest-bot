@@ -1119,14 +1119,17 @@ async function syncFromFirebase() {
   try {
     const result = await FirebaseDB.fetchFromFirebase();
     
-    if (result.config) {
-      // Update config
+    if (result.config && typeof result.config === 'object') {
+      // Override entire config with Firebase's version
       if (App.setConfig) {
         App.setConfig(result.config);
       } else if (App.config) {
+        // Replace entire config object
+        const keys = Object.keys(App.config);
+        for (const key of keys) delete App.config[key];
         Object.assign(App.config, result.config);
       }
-      console.log('Config updated from Firebase:', result.config);
+      console.log('Config overridden from Firebase:', result.config);
     }
     
     if (result.schedule && result.schedule.length > 0) {
@@ -1136,7 +1139,7 @@ async function syncFromFirebase() {
       } else if (App.schedule) {
         App.schedule = result.schedule;
       }
-      console.log('Schedule updated from Firebase:', result.schedule.length, 'entries');
+      console.log('Schedule overridden from Firebase:', result.schedule.length, 'entries');
     }
     
     // Re-render UI
