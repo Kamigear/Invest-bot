@@ -1,1 +1,24 @@
-{"0": "index.html", "1": "index.js", "2": "package.json", "3": "Plan: Date-Based Transaction System", "4": "app.js", "5": "Plan: Fix Bot State Balance Being Used as Saldo Awal", "6": "Plan: Day-Specific Manual Income Entries", "7": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)", "8": "graphify", "9": "kilo.json", "10": "Invest Bot", "11": "investor.js", "12": "AGENTS.md", "13": "graphify.md", "14": "bot_status.js", "15": "graphify.js", "16": "CallMeBot API", "17": "Real-time Data Synchronization", "18": "Saldo Aktual (Actual Balance)", "19": "Saldo Awal (Initial Balance)", "20": "Manual Income Data Model"}
+{
+  "0": "index.html",
+  "1": "index.js",
+  "2": "package.json",
+  "3": "Plan: Date-Based Transaction System",
+  "4": "app.js",
+  "5": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+  "6": "Plan: Day-Specific Manual Income Entries",
+  "7": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+  "8": "graphify",
+  "9": "kilo.json",
+  "10": "Invest Bot",
+  "11": "investor.js",
+  "12": "AGENTS.md",
+  "13": "graphify.md",
+  "14": "bot_status.js",
+  "15": "graphify.js",
+  "16": "CallMeBot API",
+  "17": "Real-time Data Synchronization",
+  "18": "Saldo Aktual (Actual Balance)",
+  "19": "Saldo Awal (Initial Balance)",
+  "20": "Manual Income Data Model",
+  "21": "Implementation Tasks (Ordered)"
+}

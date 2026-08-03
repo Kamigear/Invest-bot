@@ -179,6 +179,9 @@ const App = (() => {
   }
 
   // ── Initialization ────────────────────────────────────────────────────────
+  let _configUnsubscribe = null;
+  let _scheduleUnsubscribe = null;
+
   async function init() {
     loadConfig();          // restore last session
     DetailUI.init();
@@ -187,6 +190,42 @@ const App = (() => {
     LiveMode.restore();
     if (LiveMode.enabled) {
       LiveMode.start(_config);
+    }
+
+    // Setup real-time config sync from Firebase (multi-browser sync)
+    // Only set up if Firebase is available and we have a UID
+    if (FirebaseDB.isAuthReady()) {
+      try {
+        // Unsubscribe from previous listeners
+        if (_configUnsubscribe) _configUnsubscribe();
+        if (_scheduleUnsubscribe) _scheduleUnsubscribe();
+
+        // Listen for config updates from other browsers
+        _configUnsubscribe = await FirebaseDB.syncFromFirebase((remoteConfig) => {
+          const prevConfig = { ..._config };
+          _config = { ..._config, ...remoteConfig };
+
+          // Detect meaningful changes
+          const changedKeys = Object.keys(remoteConfig).filter(k => prevConfig[k] !== remoteConfig[k]);
+          if (changedKeys.length > 0) {
+            console.log('[SYNC] Config updated from Firebase:', changedKeys);
+            saveConfig();
+            App.runSimulation();
+          }
+        });
+
+        // Listen for schedule updates (investment status changes)
+        _scheduleUnsubscribe = await FirebaseDB.subscribeToScheduleUpdates((entries) => {
+          console.log('[SYNC] Schedule updates received from Firebase');
+          // Trigger UI refresh if needed
+          const summaryEl = document.querySelector('.summary-stats');
+          if (summaryEl) {
+            summaryEl.dispatchEvent(new CustomEvent('schedule-updated', { detail: { entries } }));
+          }
+        });
+      } catch (e) {
+        console.warn('Failed to setup real-time sync, continuing with local-only:', e);
+      }
     }
 
     renderConfigPanel();
@@ -936,11 +975,24 @@ const App = (() => {
     }
   }
 
+  // Cleanup function to unsubscribe from Firebase listeners
+  function cleanup() {
+    if (_configUnsubscribe) {
+      _configUnsubscribe();
+      _configUnsubscribe = null;
+    }
+    if (_scheduleUnsubscribe) {
+      _scheduleUnsubscribe();
+      _scheduleUnsubscribe = null;
+    }
+  }
+
   return {
     init,
     runSimulation,
     getConfig: () => _config,
     getSchedule: () => _baseResult?.summary?.investmentSchedule || [],
+    cleanup,
   };
 })();
 
@@ -977,7 +1029,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.warn('Auth offline, skipping:', e);
       sessionStorage.setItem(SESSION_KEY, '1');
       overlay.style.display = 'none';
-        await App.init();
+      await App.init();
     }
 
     authBtn.disabled = false;
@@ -1010,6 +1062,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   } else {
     if (overlay) overlay.style.display = 'flex';
   }
+
+  // Cleanup on window unload
+  window.addEventListener('beforeunload', () => {
+    App.cleanup?.();
+  });
+
+  // Initialize anonymous auth if needed
+  FirebaseDB.initAnonymousAuth().catch(e => {
+    console.log('Anonymous auth not required for offline mode');
+  });
 });
 
 // ── Firebase Sync Handler (called from simulate button) ───────────────────

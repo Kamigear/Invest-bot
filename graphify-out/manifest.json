@@ -1,8 +1,8 @@
 {
   "js/app.js": {
-    "mtime": 1785752903.896669,
-    "ast_hash": "11bd5397458cdc7e6e9fcf30656f1461",
-    "semantic_hash": "11bd5397458cdc7e6e9fcf30656f1461"
+    "mtime": 1785763415.0460672,
+    "ast_hash": "a7bea62b72d3af656eb2869aa407d5fa",
+    "semantic_hash": ""
   },
   "js/engine/calculator.js": {
     "mtime": 1785719829.2475324,
@@ -85,9 +85,9 @@
     "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
   },
   "js/firebase.js": {
-    "mtime": 1785739231.6325302,
-    "ast_hash": "ab98a3bbb955a024603506f0193d7b98",
-    "semantic_hash": "ab98a3bbb955a024603506f0193d7b98"
+    "mtime": 1785763375.5063922,
+    "ast_hash": "90a29482ce72aab32168155b55e452c2",
+    "semantic_hash": ""
   },
   "js/ui/bot_status.js": {
     "mtime": 1785508976.5455685,

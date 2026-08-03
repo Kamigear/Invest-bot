@@ -107,74 +107,110 @@ const FirebaseDB = (() => {
         // Config & Schedule Sync
         syncToFirebase: async (config, schedule) => {
             try {
-                // Save config
-                await db.collection('config').doc('main').set({
-                    ...config,
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
+                const uid = _uid || 'anon';
+                await db.collection('users').doc(uid).collection('investments')
+                    .doc('config').set({
+                        ...config,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true });
 
-                // Generate entryIds to fetch existing statuses
-                const entryIds = [];
-                for (const entry of schedule) {
-                    const dateObj = new Date(entry.investDate || entry.date);
-                    const yyyy = dateObj.getFullYear();
-                    const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
-                    const dd = String(dateObj.getDate()).padStart(2, '0');
-                    entryIds.push(`inv_${yyyy}-${mm}-${dd}`);
-                }
-
-                // Fetch current statuses from DB to avoid overwriting DONE/EXECUTING states
-                const existingStatuses = await FirebaseDB.getExecutionStatuses(entryIds);
-
-                // Batch write schedule (max 500)
+                const entries = schedule || [];
+                const batches = [];
                 let batch = db.batch();
                 let count = 0;
-                
-                for (const entry of schedule) {
-                    const dateObj = new Date(entry.investDate || entry.date);
+
+                for (const entry of entries) {
+                    const rawDate = entry.investDate || entry.date;
+                    const dateObj = new Date(rawDate);
                     const yyyy = dateObj.getFullYear();
                     const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
                     const dd = String(dateObj.getDate()).padStart(2, '0');
                     const entryId = `inv_${yyyy}-${mm}-${dd}`;
-                    
-                    const docRef = db.collection('executions').doc(entryId);
-                    const currentStatus = existingStatuses[entryId];
 
-                    const updateData = {
-                        entryId: entryId,
-                        investDate: entry.investDate || entry.date,
+                    const docRef = db.collection('users').doc(uid)
+                        .collection('investments').doc('schedule')
+                        .collection('entries').doc(entryId);
+
+                    batch.set(docRef, {
+                        entryId,
+                        investDate: rawDate,
                         maturityDate: entry.maturityDate,
                         amount: entry.amount,
                         expectedReturn: entry.expectedReturn,
                         profit: entry.profit,
                         balanceBefore: entry.balanceBefore,
                         generatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    };
+                    });
 
-                    // Only set status to PENDING if it wasn't already processed (DONE/EXECUTING)
-                    if (currentStatus !== 'DONE' && currentStatus !== 'EXECUTING') {
-                        updateData.status = 'PENDING';
-                    }
-                    
-                    batch.set(docRef, updateData, { merge: true });
-                    
                     count++;
                     if (count === 500) {
-                        await batch.commit();
+                        batches.push(batch);
                         batch = db.batch();
                         count = 0;
                     }
                 }
-                
-                if (count > 0) {
-                    await batch.commit();
-                }
-                
+
+                if (count > 0) batches.push(batch);
+                await Promise.all(batches.map(b => b.commit()));
+
                 console.log('Successfully synced config and schedule to Firebase');
                 return true;
             } catch (error) {
                 console.error('Error syncing to Firebase:', error);
                 throw error;
+            }
+        },
+
+        // Real-time multi-browser sync - listen for config changes
+        syncFromFirebase: async (callback) => {
+            try {
+                const uid = _uid || 'anon';
+                const unsubscribe = db.collection('users').doc(uid)
+                    .collection('investments')
+                    .doc('config')
+                    .onSnapshot(
+                        (doc) => {
+                            if (doc.exists) {
+                                const remoteConfig = doc.data();
+                                console.log('Config updated from Firebase sync', remoteConfig);
+                                if (callback) callback(remoteConfig);
+                            }
+                        },
+                        (error) => {
+                            console.error('Error listening to config changes:', error);
+                        }
+                    );
+                return unsubscribe;
+            } catch (error) {
+                console.error('Error setting up Firebase config sync:', error);
+                return null;
+            }
+        },
+
+        // Real-time multi-browser sync for schedule updates (investment decisions)
+        subscribeToScheduleUpdates: async (callback) => {
+            try {
+                const uid = _uid || 'anon';
+                const unsubscribe = db.collection('users').doc(uid)
+                    .collection('investments')
+                    .doc('schedule')
+                    .collection('entries')
+                    .onSnapshot(
+                        (snapshot) => {
+                            const entries = [];
+                            snapshot.forEach(doc => {
+                                entries.push({ id: doc.id, ...doc.data() });
+                            });
+                            if (callback) callback(entries);
+                        },
+                        (error) => {
+                            console.error('Error listening to schedule updates:', error);
+                        }
+                    );
+                return unsubscribe;
+            } catch (error) {
+                console.error('Error setting up schedule sync:', error);
+                return null;
             }
         },
         

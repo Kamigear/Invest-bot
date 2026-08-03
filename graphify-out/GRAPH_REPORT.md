@@ -1,15 +1,16 @@
-# Graph Report - .  (2026-08-03)
+# Graph Report - Investation  (2026-08-03)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 30 files · ~19,753 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 153 nodes · 150 edges · 21 communities (12 shown, 9 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.62)
+- 186 nodes · 199 edges · 22 communities (14 shown, 8 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.6)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1e327277`
+- Built from commit: `a42673b4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,46 +35,48 @@
 - Saldo Aktual (Actual Balance)
 - Saldo Awal (Initial Balance)
 - Manual Income Data Model
+- Implementation Tasks (Ordered)
 
 ## God Nodes (most connected - your core abstractions)
-1. `Plan: Live "Actual follows Predicted" Balance Mode (Option A)` - 8 edges
-2. `Plan: Date-Based Transaction System` - 8 edges
-3. `Plan: Day-Specific Manual Income Entries` - 7 edges
-4. `runTask1()` - 6 edges
-5. `graphify` - 6 edges
-6. `Plan: Fix Bot State Balance Being Used as Saldo Awal` - 6 edges
-7. `Tasks` - 6 edges
-8. `Solution Implemented` - 6 edges
-9. `start()` - 4 edges
-10. `Changes` - 4 edges
+1. `Plan: Real-Time Finance Tracker — Daily Income/Expense Panel` - 12 edges
+2. `runDailyJob()` - 9 edges
+3. `Plan: Live "Actual follows Predicted" Balance Mode (Option A)` - 8 edges
+4. `Plan: Date-Based Transaction System` - 8 edges
+5. `Plan: Day-Specific Manual Income Entries` - 7 edges
+6. `File Changes` - 7 edges
+7. `Implementation Tasks (Ordered)` - 7 edges
+8. `runTask1()` - 6 edges
+9. `graphify` - 6 edges
+10. `Plan: Fix Bot State Balance Being Used as Saldo Awal` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `graphify workflow` --conceptually_related_to--> `graphify`  [INFERRED]
   .agents/workflows/graphify.md → .agents/rules/graphify.md
+- `runDailyJob()` --calls--> `sendAlert()`  [EXTRACTED]
+  Board/executor.js → Board/alert.js
 - `start()` --calls--> `sendAlert()`  [EXTRACTED]
   Board/index.js → Board/alert.js
-- `runTask1()` --calls--> `serverTimestamp()`  [EXTRACTED]
-  Board/index.js → Board/firebase.js
-- `start()` --calls--> `runDailyJob()`  [EXTRACTED]
-  Board/index.js → Board/executor.js
+- `runDailyJob()` --calls--> `getDoc()`  [EXTRACTED]
+  Board/executor.js → Board/firebase.js
+- `runDailyJob()` --calls--> `runTransaction()`  [EXTRACTED]
+  Board/executor.js → Board/firebase.js
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
-- **Real-Time Finance Tracking Flow** — js_ui_dailylog, js_firebase, js_app [INFERRED 0.85]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_ledger, js_engine_optimizer, js_engine_simulator [EXTRACTED 0.90]
 - **UI Presentation Layer** — js_ui_calendar, js_ui_detail, js_ui_summary, js_ui_comparison [EXTRACTED 0.90]
 
-## Communities (21 total, 9 thin omitted)
+## Communities (22 total, 8 thin omitted)
 
 ### Community 0 - "index.html"
-Cohesion: 0.09
-Nodes (9): admin, db, Chart.js, Firebase SDK, Ledger, DetailUI, jsPDF, Plan: Real-Time Finance Tracker (+1 more)
+Cohesion: 0.11
+Nodes (9): Calculator, Ledger, Optimizer, ExportCSV, ExportExcel, ExportPDF, ComparisonUI, DetailUI (+1 more)
 
 ### Community 1 - "index.js"
-Cohesion: 0.15
-Nodes (17): axios, sendAlert(), { db, runTransaction, serverTimestamp, getDoc, setDoc }, { executeInvest }, runDailyJob(), { sendAlert }, serverTimestamp(), cron (+9 more)
+Cohesion: 0.12
+Nodes (25): axios, sendAlert(), { db, runTransaction, serverTimestamp, getDoc, setDoc }, { executeInvest }, runDailyJob(), { sendAlert }, admin, db (+17 more)
 
 ### Community 2 - "package.json"
 Cohesion: 0.11
@@ -84,8 +87,8 @@ Cohesion: 0.14
 Nodes (13): 1. Simulator runs from initialBalance (unchanged), 2. Transactions are visual adjustments on specific days, 3. Added `Ledger.getStateAsOfDate(config, targetDate)` in `js/engine/ledger.js`, 4. Firebase Sync Button in `js/app.js`, 5. Removed old live mode injection logic, Affected Files, Goal, How It Works Now (+5 more)
 
 ### Community 4 - "app.js"
-Cohesion: 0.17
-Nodes (8): App, LiveMode, tryLogin(), Simulator, CalendarUI, Date-Based Transaction System Plan, Fix Bot State as Saldo Awal Plan, Live Predicted Balance Mode Plan
+Cohesion: 0.16
+Nodes (11): App, LiveMode, setupPassword(), syncToFirebase(), tryLogin(), Simulator, FirebaseDB, CalendarUI (+3 more)
 
 ### Community 5 - "Plan: Fix Bot State Balance Being Used as Saldo Awal"
 Cohesion: 0.17
@@ -111,18 +114,32 @@ Nodes (4): plugin, $schema, snapshot, file:///D:/Investation/.kilo/plugins/graph
 Cohesion: 0.50
 Nodes (3): Architecture & Logic, Invest Bot, Setup di OrangePi
 
+### Community 11 - "investor.js"
+Cohesion: 0.10
+Nodes (20): 1. `index.html` — Remove auth overlay, add right panel structure, 1. Real-Time Transactions (Firestore: `users/{uid}/transactions/{id}`), 2. Categories (constant, local), 2. `css/style.css` — Layout & Daily Log Panel Styles, 3. `js/app.js` — Core Orchestration, 3. Simulation `manualIncome` (unchanged, localStorage), 4. `js/firebase.js` — Extended for Transactions, 5. `js/ui/dailyLog.js` — NEW FILE (+12 more)
+
+### Community 21 - "Implementation Tasks (Ordered)"
+Cohesion: 0.29
+Nodes (7): Implementation Tasks (Ordered), Phase 1: Remove Auth & Restructure Sidebar, Phase 2: Firebase Anonymous Auth & Transactions Collection, Phase 3: DailyLog Module & Panel UI, Phase 4: Wire DailyLog into App, Phase 5: Settings Panel Cleanup, Phase 6: Polish & Validation
+
 ## Knowledge Gaps
-- **84 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `axios`, `admin` (+79 more)
+- **111 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `axios`, `{ db, runTransaction, serverTimestamp, getDoc, setDoc }` (+106 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `Plan: Real-Time Finance Tracker — Daily Income/Expense Panel` connect `investor.js` to `Implementation Tasks (Ordered)`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `Implementation Tasks (Ordered)` connect `Implementation Tasks (Ordered)` to `investor.js`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
-  _84 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _111 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `index.html` be split into smaller, more focused modules?**
-  _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+- **Should `index.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.12258064516129032 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `Plan: Date-Based Transaction System` be split into smaller, more focused modules?**

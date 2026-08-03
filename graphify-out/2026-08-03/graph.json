@@ -54,7 +54,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Agents",
+      "community_name": "kilo.json",
       "norm_label": "kilo.json",
       "id": "kilo_kilo"
     },
@@ -65,7 +65,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Agents",
+      "community_name": "kilo.json",
       "norm_label": "$schema",
       "id": "kilo_kilo_schema"
     },
@@ -76,7 +76,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Agents",
+      "community_name": "kilo.json",
       "norm_label": "plugin",
       "id": "kilo_kilo_plugin"
     },
@@ -87,7 +87,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Agents",
+      "community_name": "kilo.json",
       "norm_label": "file:///d:/investation/.kilo/plugins/graphify.js",
       "id": "ref_file_d_investation_kilo_plugins_graphify_js"
     },
@@ -98,7 +98,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Agents",
+      "community_name": "kilo.json",
       "norm_label": "snapshot",
       "id": "kilo_kilo_snapshot"
     },
@@ -109,7 +109,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 15,
-      "community_name": "bot_status.js",
+      "community_name": "graphify.js",
       "norm_label": "graphify.js",
       "id": "kilo_plugins_graphify"
     },
@@ -120,7 +120,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 15,
-      "community_name": "bot_status.js",
+      "community_name": "graphify.js",
       "norm_label": "graphifyplugin()",
       "id": "kilo_plugins_graphify_graphifyplugin"
     },
@@ -131,7 +131,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "alert.js",
       "id": "board_alert"
     },
@@ -142,7 +142,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "axios",
       "id": "board_alert_axios"
     },
@@ -153,7 +153,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "sendalert()",
       "id": "board_alert_sendalert"
     },
@@ -164,7 +164,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "firebase.js",
       "id": "board_firebase"
     },
@@ -175,7 +175,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "admin",
       "id": "board_firebase_admin"
     },
@@ -186,7 +186,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "db",
       "id": "board_firebase_db"
     },
@@ -197,7 +197,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "getdoc()",
       "id": "board_firebase_getdoc"
     },
@@ -208,7 +208,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "setdoc()",
       "id": "board_firebase_setdoc"
     },
@@ -219,7 +219,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "runtransaction()",
       "id": "board_firebase_runtransaction"
     },
@@ -230,7 +230,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "servertimestamp()",
       "id": "board_firebase_servertimestamp"
     },
@@ -241,7 +241,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.html",
       "norm_label": "onsnapshot()",
       "id": "board_firebase_onsnapshot"
     },
@@ -252,7 +252,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "index.js",
       "id": "board_index"
     },
@@ -263,7 +263,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "cron",
       "id": "board_index_cron"
     },
@@ -274,7 +274,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "puppeteer",
       "id": "board_index_puppeteer"
     },
@@ -285,7 +285,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "{ rundailyjob }",
       "id": "board_index_rundailyjob"
     },
@@ -296,7 +296,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "{ sendalert }",
       "id": "board_index_sendalert"
     },
@@ -307,7 +307,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "{ db, servertimestamp }",
       "id": "board_index_db_servertimestamp"
     },
@@ -318,7 +318,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "sleep()",
       "id": "board_index_sleep"
     },
@@ -329,7 +329,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "waitforturn()",
       "id": "board_index_waitforturn"
     },
@@ -340,7 +340,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "openbrowser()",
       "id": "board_index_openbrowser"
     },
@@ -351,7 +351,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "runtask1()",
       "id": "board_index_runtask1"
     },
@@ -362,7 +362,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "community": 1,
-      "community_name": "Live Predicted Balance",
+      "community_name": "index.js",
       "norm_label": "start()",
       "id": "board_index_start"
     },
@@ -373,7 +373,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Live Predicted Balance",
+      "community_name": "investor.js",
       "norm_label": "investor.js",
       "id": "board_investor"
     },
@@ -384,7 +384,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Live Predicted Balance",
+      "community_name": "investor.js",
       "norm_label": "puppeteer",
       "id": "board_investor_puppeteer"
     },
@@ -395,7 +395,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Live Predicted Balance",
+      "community_name": "investor.js",
       "norm_label": "executeinvest()",
       "id": "board_investor_executeinvest"
     },
@@ -406,7 +406,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "package.json",
       "id": "board_package"
     },
@@ -417,7 +417,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "name",
       "id": "board_package_name"
     },
@@ -428,7 +428,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "version",
       "id": "board_package_version"
     },
@@ -439,7 +439,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "description",
       "id": "board_package_description"
     },
@@ -450,7 +450,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "main",
       "id": "board_package_main"
     },
@@ -461,7 +461,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "scripts",
       "id": "board_package_scripts"
     },
@@ -472,7 +472,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "start",
       "id": "board_package_scripts_start"
     },
@@ -483,7 +483,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "dependencies",
       "id": "board_package_dependencies"
     },
@@ -494,7 +494,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "axios",
       "id": "board_package_dependencies_axios"
     },
@@ -505,7 +505,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "axios",
       "id": "axios"
     },
@@ -516,7 +516,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "dotenv",
       "id": "board_package_dependencies_dotenv"
     },
@@ -527,7 +527,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "dotenv",
       "id": "dotenv"
     },
@@ -538,7 +538,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "firebase-admin",
       "id": "board_package_dependencies_firebase_admin"
     },
@@ -549,7 +549,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "firebase-admin",
       "id": "firebase_admin"
     },
@@ -560,7 +560,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "node-cron",
       "id": "board_package_dependencies_node_cron"
     },
@@ -571,7 +571,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "node-cron",
       "id": "node_cron"
     },
@@ -582,7 +582,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "puppeteer",
       "id": "board_package_dependencies_puppeteer"
     },
@@ -593,7 +593,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "community": 2,
-      "community_name": "Graphify Config",
+      "community_name": "package.json",
       "norm_label": "puppeteer",
       "id": "puppeteer"
     },
@@ -604,7 +604,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 14,
-      "community_name": "calculator.js",
+      "community_name": "bot_status.js",
       "norm_label": "bot_status.js",
       "id": "js_ui_bot_status"
     },
@@ -615,7 +615,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 14,
-      "community_name": "calculator.js",
+      "community_name": "bot_status.js",
       "norm_label": "botstatusui",
       "id": "js_ui_bot_status_botstatusui"
     },
@@ -626,7 +626,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "norm_label": "graphify.md",
       "id": "agents_rules_graphify"
     },
@@ -637,7 +637,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "norm_label": "graphify",
       "id": "agents_rules_graphify_graphify"
     },
@@ -648,7 +648,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 13,
-      "community_name": "exporters.js",
+      "community_name": "graphify.md",
       "norm_label": "graphify.md",
       "id": "agents_workflows_graphify"
     },
@@ -659,7 +659,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 13,
-      "community_name": "exporters.js",
+      "community_name": "graphify.md",
       "norm_label": "workflow: graphify",
       "id": "agents_workflows_graphify_workflow_graphify"
     },
@@ -670,7 +670,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "1785669327659-live-predicted-balance-mode.md",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode"
     },
@@ -681,7 +681,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "plan: live \"actual follows predicted\" balance mode (option a)",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a"
     },
@@ -692,7 +692,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "goal",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_goal"
     },
@@ -703,7 +703,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "key decisions",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_key_decisions"
     },
@@ -714,7 +714,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "data flow",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_data_flow"
     },
@@ -725,7 +725,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "tasks (ordered)",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_tasks_ordered"
     },
@@ -736,7 +736,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "risks & edge cases",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_risks_edge_cases"
     },
@@ -747,7 +747,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "validation",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_validation"
     },
@@ -758,7 +758,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "community": 7,
-      "community_name": "Puppeteer",
+      "community_name": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
       "norm_label": "open questions",
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_open_questions"
     },
@@ -769,7 +769,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "1785677999510-fix-bot-state-as-saldo-awal.md",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal"
     },
@@ -780,7 +780,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "plan: fix bot state balance being used as saldo awal",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal"
     },
@@ -791,7 +791,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "problem",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_problem"
     },
@@ -802,7 +802,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "architecture: saldo awal vs saldo aktual",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_architecture_saldo_awal_vs_saldo_aktual"
     },
@@ -813,7 +813,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "tasks",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks"
     },
@@ -824,7 +824,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "1. remove debug logging (cleanup from investigation)",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_1_remove_debug_logging_cleanup_from_investigation"
     },
@@ -835,7 +835,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "2. stop using firebase bot state as saldo awal",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_2_stop_using_firebase_bot_state_as_saldo_awal"
     },
@@ -846,7 +846,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "3. stop auto-updating saldo awal on `onsnapshot` events",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_3_stop_auto_updating_saldo_awal_on_onsnapshot_events"
     },
@@ -857,7 +857,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "4. add explicit \"sync saldo awal from bot\" button (opt-in)",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_4_add_explicit_sync_saldo_awal_from_bot_button_opt_in"
     },
@@ -868,7 +868,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "5. fix livemode plan doc reference (informational)",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_5_fix_livemode_plan_doc_reference_informational"
     },
@@ -879,7 +879,7 @@
       "source_location": "L124",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "risks & edge cases",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_risks_edge_cases"
     },
@@ -890,7 +890,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "community": 5,
-      "community_name": "Plan: Enhance Ledger Realtime Integration + Income/Outcome Tabs + Export",
+      "community_name": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
       "norm_label": "validation",
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_validation"
     },
@@ -901,7 +901,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "1785720286196-date-based-transactions.md",
       "id": "kilo_plans_1785720286196_date_based_transactions"
     },
@@ -912,7 +912,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "plan: date-based transaction system",
       "id": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system"
     },
@@ -923,7 +923,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "status: implemented",
       "id": "kilo_plans_1785720286196_date_based_transactions_status_implemented"
     },
@@ -934,7 +934,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "goal",
       "id": "kilo_plans_1785720286196_date_based_transactions_goal"
     },
@@ -945,7 +945,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "problem",
       "id": "kilo_plans_1785720286196_date_based_transactions_problem"
     },
@@ -956,7 +956,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "solution implemented",
       "id": "kilo_plans_1785720286196_date_based_transactions_solution_implemented"
     },
@@ -967,7 +967,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "1. simulator runs from initialbalance (unchanged)",
       "id": "kilo_plans_1785720286196_date_based_transactions_1_simulator_runs_from_initialbalance_unchanged"
     },
@@ -978,7 +978,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "2. transactions are visual adjustments on specific days",
       "id": "kilo_plans_1785720286196_date_based_transactions_2_transactions_are_visual_adjustments_on_specific_days"
     },
@@ -989,7 +989,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "3. added `ledger.getstateasofdate(config, targetdate)` in `js/engine/ledger.js`",
       "id": "kilo_plans_1785720286196_date_based_transactions_3_added_ledger_getstateasofdate_config_targetdate_in_js_engine_ledger_js"
     },
@@ -1000,7 +1000,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "4. firebase sync button in `js/app.js`",
       "id": "kilo_plans_1785720286196_date_based_transactions_4_firebase_sync_button_in_js_app_js"
     },
@@ -1011,7 +1011,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "5. removed old live mode injection logic",
       "id": "kilo_plans_1785720286196_date_based_transactions_5_removed_old_live_mode_injection_logic"
     },
@@ -1022,7 +1022,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "how it works now",
       "id": "kilo_plans_1785720286196_date_based_transactions_how_it_works_now"
     },
@@ -1033,7 +1033,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "affected files",
       "id": "kilo_plans_1785720286196_date_based_transactions_affected_files"
     },
@@ -1044,7 +1044,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Axios Dependency",
+      "community_name": "Plan: Date-Based Transaction System",
       "norm_label": "validation",
       "id": "kilo_plans_1785720286196_date_based_transactions_validation"
     },
@@ -1055,7 +1055,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "1785734141555-day-specific-income-entries.md",
       "id": "kilo_plans_1785734141555_day_specific_income_entries"
     },
@@ -1066,7 +1066,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "plan: day-specific manual income entries",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries"
     },
@@ -1077,7 +1077,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "goal",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_goal"
     },
@@ -1088,7 +1088,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "background",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_background"
     },
@@ -1099,7 +1099,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "data model",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_data_model"
     },
@@ -1110,7 +1110,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "changes",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_changes"
     },
@@ -1121,7 +1121,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "1. `js/app.js` \u2014 config & ui",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_1_js_app_js_config_ui"
     },
@@ -1132,7 +1132,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "2. `js/engine/simulator.js` \u2014 simulation injection",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_2_js_engine_simulator_js_simulation_injection"
     },
@@ -1143,7 +1143,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "3. `js/app.js` \u2014 results display",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_3_js_app_js_results_display"
     },
@@ -1154,7 +1154,7 @@
       "source_location": "L58",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "validation",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_validation"
     },
@@ -1165,7 +1165,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Node Cron",
+      "community_name": "Plan: Day-Specific Manual Income Entries",
       "norm_label": "risks",
       "id": "kilo_plans_1785734141555_day_specific_income_entries_risks"
     },
@@ -1176,7 +1176,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 12,
-      "community_name": "kilo.json",
+      "community_name": "AGENTS.md",
       "norm_label": "agents.md",
       "id": "agents"
     },
@@ -1187,7 +1187,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 12,
-      "community_name": "kilo.json",
+      "community_name": "AGENTS.md",
       "norm_label": "graphify",
       "id": "agents_graphify"
     },
@@ -1198,7 +1198,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Board README",
+      "community_name": "Invest Bot",
       "norm_label": "readme.md",
       "id": "board_readme"
     },
@@ -1209,7 +1209,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Board README",
+      "community_name": "Invest Bot",
       "norm_label": "invest bot",
       "id": "board_readme_invest_bot"
     },
@@ -1220,7 +1220,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Board README",
+      "community_name": "Invest Bot",
       "norm_label": "setup di orangepi",
       "id": "board_readme_setup_di_orangepi"
     },
@@ -1231,7 +1231,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Board README",
+      "community_name": "Invest Bot",
       "norm_label": "architecture & logic",
       "id": "board_readme_architecture_logic"
     },
@@ -1246,7 +1246,7 @@
       "contributor": null,
       "community": 8,
       "norm_label": "graphify query cli",
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "id": ".agents_rules_graphify_graphify_query"
     },
     {
@@ -1260,7 +1260,7 @@
       "contributor": null,
       "community": 8,
       "norm_label": "graphify explain cli",
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "id": ".agents_rules_graphify_graphify_explain"
     },
     {
@@ -1274,7 +1274,7 @@
       "contributor": null,
       "community": 8,
       "norm_label": "graphify-out directory",
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "id": ".agents_rules_graphify_graphify_out"
     },
     {
@@ -1288,7 +1288,7 @@
       "contributor": null,
       "community": 8,
       "norm_label": "graph_report.md",
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "id": ".agents_rules_graphify_graph_report"
     },
     {
@@ -1302,7 +1302,7 @@
       "contributor": null,
       "community": 8,
       "norm_label": "graphify workflow",
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "id": ".agents_workflows_graphify_workflow"
     },
     {
@@ -1316,7 +1316,7 @@
       "contributor": null,
       "community": 8,
       "norm_label": "graphify skill",
-      "community_name": "Firebase Firestore",
+      "community_name": "graphify",
       "id": ".agents_workflows_graphify_skill"
     },
     {
@@ -1325,7 +1325,7 @@
       "source_file": "Board/README.md",
       "community": 16,
       "norm_label": "callmebot api",
-      "community_name": "calendar.js",
+      "community_name": "CallMeBot API",
       "id": "callmebot_api"
     },
     {
@@ -1334,7 +1334,7 @@
       "source_file": null,
       "community": 19,
       "norm_label": "saldo awal (initial balance)",
-      "community_name": "detail.js",
+      "community_name": "Saldo Awal (Initial Balance)",
       "id": "concept_saldo_awal"
     },
     {
@@ -1343,7 +1343,7 @@
       "source_file": null,
       "community": 18,
       "norm_label": "saldo aktual (actual balance)",
-      "community_name": "comparison.js",
+      "community_name": "Saldo Aktual (Actual Balance)",
       "id": "concept_saldo_aktual"
     },
     {
@@ -1352,7 +1352,7 @@
       "source_file": ".kilo/plans/1785669327659-live-predicted-balance-mode.md",
       "community": 4,
       "norm_label": "live predicted balance mode plan",
-      "community_name": "Dotenv Dependency",
+      "community_name": "app.js",
       "id": "plan_live_mode"
     },
     {
@@ -1361,7 +1361,7 @@
       "source_file": ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md",
       "community": 4,
       "norm_label": "fix bot state as saldo awal plan",
-      "community_name": "Dotenv Dependency",
+      "community_name": "app.js",
       "id": "plan_fix_bot_state"
     },
     {
@@ -1370,7 +1370,7 @@
       "source_file": ".kilo/plans/1785720286196-date-based-transactions.md",
       "community": 4,
       "norm_label": "date-based transaction system plan",
-      "community_name": "graphify.md",
+      "community_name": "app.js",
       "id": "plan_date_based_tx"
     },
     {
@@ -1379,7 +1379,7 @@
       "source_file": ".kilo/plans/1785734141555-day-specific-income-entries.md",
       "community": 20,
       "norm_label": "manual income data model",
-      "community_name": "Implementation Tasks (Ordered)",
+      "community_name": "Manual Income Data Model",
       "id": "manual_income_data_model"
     },
     {
@@ -1388,9 +1388,10 @@
       "source_file": "Board/executor.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "board_executor",
       "community": 1,
-      "norm_label": "executor.js"
+      "norm_label": "executor.js",
+      "id": "board_executor",
+      "community_name": "index.js"
     },
     {
       "label": "{ db, runTransaction, serverTimestamp, getDoc, setDoc }",
@@ -1398,9 +1399,10 @@
       "source_file": "Board/executor.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
       "community": 1,
-      "norm_label": "{ db, runtransaction, servertimestamp, getdoc, setdoc }"
+      "norm_label": "{ db, runtransaction, servertimestamp, getdoc, setdoc }",
+      "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
+      "community_name": "index.js"
     },
     {
       "label": "{ sendAlert }",
@@ -1408,9 +1410,10 @@
       "source_file": "Board/executor.js",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "board_executor_sendalert",
       "community": 1,
-      "norm_label": "{ sendalert }"
+      "norm_label": "{ sendalert }",
+      "id": "board_executor_sendalert",
+      "community_name": "index.js"
     },
     {
       "label": "{ executeInvest }",
@@ -1418,9 +1421,10 @@
       "source_file": "Board/executor.js",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "board_executor_executeinvest",
       "community": 1,
-      "norm_label": "{ executeinvest }"
+      "norm_label": "{ executeinvest }",
+      "id": "board_executor_executeinvest",
+      "community_name": "index.js"
     },
     {
       "label": "runDailyJob()",
@@ -1428,9 +1432,10 @@
       "source_file": "Board/executor.js",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "board_executor_rundailyjob",
       "community": 1,
-      "norm_label": "rundailyjob()"
+      "norm_label": "rundailyjob()",
+      "id": "board_executor_rundailyjob",
+      "community_name": "index.js"
     },
     {
       "label": "app.js",
@@ -1438,9 +1443,10 @@
       "source_file": "js/app.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_app",
       "community": 4,
-      "norm_label": "app.js"
+      "norm_label": "app.js",
+      "id": "js_app",
+      "community_name": "app.js"
     },
     {
       "label": "LiveMode",
@@ -1448,9 +1454,10 @@
       "source_file": "js/app.js",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "js_app_livemode",
       "community": 4,
-      "norm_label": "livemode"
+      "norm_label": "livemode",
+      "id": "js_app_livemode",
+      "community_name": "app.js"
     },
     {
       "label": "App",
@@ -1458,9 +1465,10 @@
       "source_file": "js/app.js",
       "source_location": "L106",
       "_origin": "ast",
-      "id": "js_app_app",
       "community": 4,
-      "norm_label": "app"
+      "norm_label": "app",
+      "id": "js_app_app",
+      "community_name": "app.js"
     },
     {
       "label": "tryLogin()",
@@ -1468,9 +1476,10 @@
       "source_file": "js/app.js",
       "source_location": "L958",
       "_origin": "ast",
-      "id": "js_app_trylogin",
       "community": 4,
-      "norm_label": "trylogin()"
+      "norm_label": "trylogin()",
+      "id": "js_app_trylogin",
+      "community_name": "app.js"
     },
     {
       "label": "setupPassword()",
@@ -1478,9 +1487,10 @@
       "source_file": "js/app.js",
       "source_location": "L987",
       "_origin": "ast",
-      "id": "js_app_setuppassword",
       "community": 4,
-      "norm_label": "setuppassword()"
+      "norm_label": "setuppassword()",
+      "id": "js_app_setuppassword",
+      "community_name": "app.js"
     },
     {
       "label": "syncToFirebase()",
@@ -1488,9 +1498,10 @@
       "source_file": "js/app.js",
       "source_location": "L1016",
       "_origin": "ast",
-      "id": "js_app_synctofirebase",
       "community": 4,
-      "norm_label": "synctofirebase()"
+      "norm_label": "synctofirebase()",
+      "id": "js_app_synctofirebase",
+      "community_name": "app.js"
     },
     {
       "label": "ledger.js",
@@ -1498,9 +1509,10 @@
       "source_file": "js/engine/ledger.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_engine_ledger",
       "community": 0,
-      "norm_label": "ledger.js"
+      "norm_label": "ledger.js",
+      "id": "js_engine_ledger",
+      "community_name": "index.html"
     },
     {
       "label": "Ledger",
@@ -1508,9 +1520,10 @@
       "source_file": "js/engine/ledger.js",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "js_engine_ledger_ledger",
       "community": 0,
-      "norm_label": "ledger"
+      "norm_label": "ledger",
+      "id": "js_engine_ledger_ledger",
+      "community_name": "index.html"
     },
     {
       "label": "simulator.js",
@@ -1518,9 +1531,10 @@
       "source_file": "js/engine/simulator.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_engine_simulator",
       "community": 4,
-      "norm_label": "simulator.js"
+      "norm_label": "simulator.js",
+      "id": "js_engine_simulator",
+      "community_name": "app.js"
     },
     {
       "label": "Simulator",
@@ -1528,9 +1542,10 @@
       "source_file": "js/engine/simulator.js",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "js_engine_simulator_simulator",
       "community": 4,
-      "norm_label": "simulator"
+      "norm_label": "simulator",
+      "id": "js_engine_simulator_simulator",
+      "community_name": "app.js"
     },
     {
       "label": "calendar.js",
@@ -1538,9 +1553,10 @@
       "source_file": "js/ui/calendar.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_ui_calendar",
       "community": 4,
-      "norm_label": "calendar.js"
+      "norm_label": "calendar.js",
+      "id": "js_ui_calendar",
+      "community_name": "app.js"
     },
     {
       "label": "CalendarUI",
@@ -1548,9 +1564,10 @@
       "source_file": "js/ui/calendar.js",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "js_ui_calendar_calendarui",
       "community": 4,
-      "norm_label": "calendarui"
+      "norm_label": "calendarui",
+      "id": "js_ui_calendar_calendarui",
+      "community_name": "app.js"
     },
     {
       "label": "detail.js",
@@ -1558,9 +1575,10 @@
       "source_file": "js/ui/detail.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_ui_detail",
       "community": 0,
-      "norm_label": "detail.js"
+      "norm_label": "detail.js",
+      "id": "js_ui_detail",
+      "community_name": "index.html"
     },
     {
       "label": "DetailUI",
@@ -1568,9 +1586,10 @@
       "source_file": "js/ui/detail.js",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "js_ui_detail_detailui",
       "community": 0,
-      "norm_label": "detailui"
+      "norm_label": "detailui",
+      "id": "js_ui_detail_detailui",
+      "community_name": "index.html"
     },
     {
       "label": "Plan: Real-Time Finance Tracker",
@@ -1581,9 +1600,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "plan_realtime_finance_tracker",
       "community": 0,
-      "norm_label": "plan: real-time finance tracker"
+      "norm_label": "plan: real-time finance tracker",
+      "id": "plan_realtime_finance_tracker",
+      "community_name": "index.html"
     },
     {
       "label": "Real-time Data Synchronization",
@@ -1594,97 +1614,109 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_realtime_sync",
       "community": 17,
-      "norm_label": "real-time data synchronization"
+      "norm_label": "real-time data synchronization",
+      "id": "concept_realtime_sync",
+      "community_name": "Real-time Data Synchronization"
     },
     {
       "label": "index.html",
       "file_type": "code",
       "source_file": "index.html",
-      "id": "index_html",
       "community": 0,
-      "norm_label": "index.html"
+      "norm_label": "index.html",
+      "id": "index_html",
+      "community_name": "index.html"
     },
     {
       "label": "style.css",
       "file_type": "code",
       "source_file": "css/style.css",
-      "id": "css_style_css",
       "community": 0,
-      "norm_label": "style.css"
+      "norm_label": "style.css",
+      "id": "css_style_css",
+      "community_name": "index.html"
     },
     {
       "label": "calculator.js",
       "file_type": "code",
       "source_file": "js/engine/calculator.js",
-      "id": "js_engine_calculator",
       "community": 0,
-      "norm_label": "calculator.js"
+      "norm_label": "calculator.js",
+      "id": "js_engine_calculator",
+      "community_name": "index.html"
     },
     {
       "label": "optimizer.js",
       "file_type": "code",
       "source_file": "js/engine/optimizer.js",
-      "id": "js_engine_optimizer",
       "community": 0,
-      "norm_label": "optimizer.js"
+      "norm_label": "optimizer.js",
+      "id": "js_engine_optimizer",
+      "community_name": "index.html"
     },
     {
       "label": "summary.js",
       "file_type": "code",
       "source_file": "js/ui/summary.js",
-      "id": "js_ui_summary",
       "community": 0,
-      "norm_label": "summary.js"
+      "norm_label": "summary.js",
+      "id": "js_ui_summary",
+      "community_name": "index.html"
     },
     {
       "label": "comparison.js",
       "file_type": "code",
       "source_file": "js/ui/comparison.js",
-      "id": "js_ui_comparison",
       "community": 0,
-      "norm_label": "comparison.js"
+      "norm_label": "comparison.js",
+      "id": "js_ui_comparison",
+      "community_name": "index.html"
     },
     {
       "label": "exporters.js",
       "file_type": "code",
       "source_file": "js/export/exporters.js",
-      "id": "js_export_exporters",
       "community": 0,
-      "norm_label": "exporters.js"
+      "norm_label": "exporters.js",
+      "id": "js_export_exporters",
+      "community_name": "index.html"
     },
     {
       "label": "Chart.js",
       "file_type": "code",
       "source_file": "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js",
-      "id": "chart_js",
       "community": 0,
-      "norm_label": "chart.js"
+      "norm_label": "chart.js",
+      "id": "chart_js",
+      "community_name": "index.html"
     },
     {
       "label": "SheetJS",
       "file_type": "code",
       "source_file": "https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js",
-      "id": "sheet_js",
       "community": 0,
-      "norm_label": "sheetjs"
+      "norm_label": "sheetjs",
+      "id": "sheet_js",
+      "community_name": "index.html"
     },
     {
       "label": "jsPDF",
       "file_type": "code",
       "source_file": "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
-      "id": "jspdf",
       "community": 0,
-      "norm_label": "jspdf"
+      "norm_label": "jspdf",
+      "id": "jspdf",
+      "community_name": "index.html"
     },
     {
       "label": "Firebase SDK",
       "file_type": "code",
       "source_file": "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js",
-      "id": "firebase_sdk",
       "community": 0,
-      "norm_label": "firebase sdk"
+      "norm_label": "firebase sdk",
+      "id": "firebase_sdk",
+      "community_name": "index.html"
     }
   ],
   "links": [
@@ -1886,6 +1918,14 @@
       "target": "board_firebase_setdoc"
     },
     {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source": "board_firebase",
+      "target": "firebase_sdk"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -1904,14 +1944,6 @@
       "source_file": "index.html",
       "source": "index_html",
       "target": "board_firebase"
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source": "board_firebase",
-      "target": "firebase_sdk"
     },
     {
       "relation": "references",
@@ -3011,9 +3043,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "board_executor",
-      "target": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
-      "confidence_score": 1.0
+      "target": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc"
     },
     {
       "relation": "contains",
@@ -3022,9 +3054,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "board_executor",
-      "target": "board_executor_executeinvest",
-      "confidence_score": 1.0
+      "target": "board_executor_executeinvest"
     },
     {
       "relation": "indirect_call",
@@ -3034,9 +3066,9 @@
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
+      "confidence_score": 0.5,
       "source": "board_executor",
-      "target": "board_executor_rundailyjob",
-      "confidence_score": 0.5
+      "target": "board_executor_rundailyjob"
     },
     {
       "relation": "contains",
@@ -3045,9 +3077,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "board_executor",
-      "target": "board_executor_sendalert",
-      "confidence_score": 1.0
+      "target": "board_executor_sendalert"
     },
     {
       "relation": "references",
@@ -3064,9 +3096,9 @@
       "source_location": "L106",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_app",
-      "confidence_score": 1.0
+      "target": "js_app_app"
     },
     {
       "relation": "contains",
@@ -3075,9 +3107,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_livemode",
-      "confidence_score": 1.0
+      "target": "js_app_livemode"
     },
     {
       "relation": "contains",
@@ -3086,9 +3118,9 @@
       "source_location": "L987",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_setuppassword",
-      "confidence_score": 1.0
+      "target": "js_app_setuppassword"
     },
     {
       "relation": "contains",
@@ -3097,9 +3129,9 @@
       "source_location": "L1016",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_synctofirebase",
-      "confidence_score": 1.0
+      "target": "js_app_synctofirebase"
     },
     {
       "relation": "contains",
@@ -3108,9 +3140,9 @@
       "source_location": "L958",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_trylogin",
-      "confidence_score": 1.0
+      "target": "js_app_trylogin"
     },
     {
       "relation": "calls",
@@ -3155,9 +3187,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_engine_ledger",
-      "target": "js_engine_ledger_ledger",
-      "confidence_score": 1.0
+      "target": "js_engine_ledger_ledger"
     },
     {
       "relation": "references",
@@ -3174,9 +3206,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_engine_simulator",
-      "target": "js_engine_simulator_simulator",
-      "confidence_score": 1.0
+      "target": "js_engine_simulator_simulator"
     },
     {
       "relation": "references",
@@ -3193,9 +3225,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_ui_calendar",
-      "target": "js_ui_calendar_calendarui",
-      "confidence_score": 1.0
+      "target": "js_ui_calendar_calendarui"
     },
     {
       "relation": "references",
@@ -3212,9 +3244,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_ui_detail",
-      "target": "js_ui_detail_detailui",
-      "confidence_score": 1.0
+      "target": "js_ui_detail_detailui"
     },
     {
       "relation": "references",
