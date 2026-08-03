@@ -1,6 +1,31 @@
 {
   "communities": {
     "0": [
+      "board_firebase",
+      "board_firebase_admin",
+      "board_firebase_db",
+      "board_firebase_getdoc",
+      "board_firebase_onsnapshot",
+      "board_firebase_runtransaction",
+      "board_firebase_setdoc",
+      "chart_js",
+      "css_style_css",
+      "firebase_sdk",
+      "index_html",
+      "js_engine_calculator",
+      "js_engine_ledger",
+      "js_engine_ledger_ledger",
+      "js_engine_optimizer",
+      "js_export_exporters",
+      "js_ui_comparison",
+      "js_ui_detail",
+      "js_ui_detail_detailui",
+      "js_ui_summary",
+      "jspdf",
+      "plan_realtime_finance_tracker",
+      "sheet_js"
+    ],
+    "1": [
       "board_alert",
       "board_alert_axios",
       "board_alert_sendalert",
@@ -9,14 +34,7 @@
       "board_executor_executeinvest",
       "board_executor_rundailyjob",
       "board_executor_sendalert",
-      "board_firebase",
-      "board_firebase_admin",
-      "board_firebase_db",
-      "board_firebase_getdoc",
-      "board_firebase_onsnapshot",
-      "board_firebase_runtransaction",
       "board_firebase_servertimestamp",
-      "board_firebase_setdoc",
       "board_index",
       "board_index_cron",
       "board_index_db_servertimestamp",
@@ -27,12 +45,9 @@
       "board_index_sendalert",
       "board_index_sleep",
       "board_index_start",
-      "board_index_waitforturn",
-      "board_investor",
-      "board_investor_executeinvest",
-      "board_investor_puppeteer"
+      "board_index_waitforturn"
     ],
-    "1": [
+    "2": [
       "axios",
       "board_package",
       "board_package_dependencies",
@@ -52,26 +67,6 @@
       "node_cron",
       "puppeteer"
     ],
-    "2": [
-      "js_ui_dailylog",
-      "js_ui_dailylog_bindeditform",
-      "js_ui_dailylog_bindfilters",
-      "js_ui_dailylog_bindquickaddform",
-      "js_ui_dailylog_bindtransactionlist",
-      "js_ui_dailylog_calculatesummary",
-      "js_ui_dailylog_formatdate",
-      "js_ui_dailylog_getcategoryinfo",
-      "js_ui_dailylog_getdatekey",
-      "js_ui_dailylog_getfilteredtransactions",
-      "js_ui_dailylog_groupbydate",
-      "js_ui_dailylog_init",
-      "js_ui_dailylog_render",
-      "js_ui_dailylog_rendercategorychips",
-      "js_ui_dailylog_renderfilters",
-      "js_ui_dailylog_renderquickaddform",
-      "js_ui_dailylog_rendertransactionlist",
-      "js_ui_dailylog_settransactions"
-    ],
     "3": [
       "kilo_plans_1785720286196_date_based_transactions",
       "kilo_plans_1785720286196_date_based_transactions_1_simulator_runs_from_initialbalance_unchanged",
@@ -89,18 +84,19 @@
       "kilo_plans_1785720286196_date_based_transactions_validation"
     ],
     "4": [
-      "concept_realtime_sync",
-      "index_html",
       "js_app",
       "js_app_app",
       "js_app_livemode",
+      "js_app_setuppassword",
       "js_app_synctofirebase",
-      "js_app_todayiso",
-      "js_firebase",
-      "js_firebase_firebasedb",
+      "js_app_trylogin",
+      "js_engine_simulator",
+      "js_engine_simulator_simulator",
+      "js_ui_calendar",
+      "js_ui_calendar_calendarui",
+      "plan_date_based_tx",
       "plan_fix_bot_state",
-      "plan_live_mode",
-      "plan_realtime_finance_tracker"
+      "plan_live_mode"
     ],
     "5": [
       "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal",
@@ -164,10 +160,9 @@
       "board_readme_setup_di_orangepi"
     ],
     "11": [
-      "js_export_exporters",
-      "js_export_exporters_exportcsv",
-      "js_export_exporters_exportexcel",
-      "js_export_exporters_exportpdf"
+      "board_investor",
+      "board_investor_executeinvest",
+      "board_investor_puppeteer"
     ],
     "12": [
       "agents",
@@ -178,64 +173,42 @@
       "agents_workflows_graphify_workflow_graphify"
     ],
     "14": [
-      "js_engine_simulator",
-      "plan_date_based_tx"
-    ],
-    "15": [
       "js_ui_bot_status",
       "js_ui_bot_status_botstatusui"
     ],
-    "16": [
-      "js_ui_comparison",
-      "js_ui_comparison_comparisonui"
-    ],
-    "17": [
-      "js_ui_detail",
-      "js_ui_detail_detailui"
-    ],
-    "18": [
-      "js_ui_summary",
-      "js_ui_summary_summaryui"
-    ],
-    "19": [
+    "15": [
       "kilo_plugins_graphify",
       "kilo_plugins_graphify_graphifyplugin"
     ],
-    "20": [
+    "16": [
       "callmebot_api"
     ],
-    "21": [
+    "17": [
+      "concept_realtime_sync"
+    ],
+    "18": [
       "concept_saldo_aktual"
     ],
-    "22": [
+    "19": [
       "concept_saldo_awal"
     ],
-    "23": [
-      "js_engine_calculator"
-    ],
-    "24": [
-      "js_engine_optimizer"
-    ],
-    "25": [
-      "js_ui_calendar"
-    ],
-    "26": [
+    "20": [
       "manual_income_data_model"
     ]
   },
   "cohesion": {
-    "0": 0.12873563218390804,
-    "1": 0.1111111111111111,
-    "2": 0.24183006535947713,
+    "0": 0.09090909090909091,
+    "1": 0.15263157894736842,
+    "2": 0.1111111111111111,
     "3": 0.14285714285714285,
-    "4": 0.18181818181818182,
+    "4": 0.16666666666666666,
     "5": 0.16666666666666666,
     "6": 0.18181818181818182,
     "7": 0.2222222222222222,
     "8": 0.25,
     "9": 0.4,
     "10": 0.5,
-    "11": 0.5,
+    "11": 0.6666666666666666,
     "12": 1.0,
     "13": 1.0,
     "14": 1.0,
@@ -244,25 +217,9 @@
     "17": 1.0,
     "18": 1.0,
     "19": 1.0,
-    "20": 1.0,
-    "21": 1.0,
-    "22": 1.0,
-    "23": 1.0,
-    "24": 1.0,
-    "25": 1.0,
-    "26": 1.0
+    "20": 1.0
   },
   "gods": [
-    {
-      "id": "js_ui_dailylog_render",
-      "label": "render()",
-      "degree": 10
-    },
-    {
-      "id": "board_executor_rundailyjob",
-      "label": "runDailyJob()",
-      "degree": 9
-    },
     {
       "id": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
       "label": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
@@ -276,11 +233,6 @@
     {
       "id": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
       "label": "Plan: Day-Specific Manual Income Entries",
-      "degree": 7
-    },
-    {
-      "id": "js_ui_dailylog_rendertransactionlist",
-      "label": "renderTransactionList()",
       "degree": 7
     },
     {
@@ -302,20 +254,24 @@
       "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
       "label": "Tasks",
       "degree": 6
+    },
+    {
+      "id": "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "label": "Solution Implemented",
+      "degree": 6
+    },
+    {
+      "id": "board_index_start",
+      "label": "start()",
+      "degree": 4
+    },
+    {
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "label": "Changes",
+      "degree": 4
     }
   ],
   "surprises": [
-    {
-      "source": "Date-Based Transaction System Plan",
-      "target": "Simulator Engine",
-      "source_files": [
-        ".kilo/plans/1785720286196-date-based-transactions.md",
-        "js/engine/simulator.js"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "cites",
-      "why": "crosses file types (doc \u2194 code); connects across different repos/directories"
-    },
     {
       "source": "graphify workflow",
       "target": "graphify",
@@ -326,17 +282,6 @@
       "confidence": "INFERRED",
       "relation": "conceptually_related_to",
       "why": "inferred connection - not explicitly stated in source; peripheral node `graphify workflow` unexpectedly reaches hub `graphify`"
-    },
-    {
-      "source": "runDailyJob()",
-      "target": "sendAlert()",
-      "source_files": [
-        "Board/executor.js",
-        "Board/alert.js"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "cross-file semantic connection"
     },
     {
       "source": "start()",
@@ -350,11 +295,22 @@
       "why": "cross-file semantic connection"
     },
     {
-      "source": "runDailyJob()",
-      "target": "getDoc()",
+      "source": "runTask1()",
+      "target": "serverTimestamp()",
       "source_files": [
-        "Board/executor.js",
+        "Board/index.js",
         "Board/firebase.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "start()",
+      "target": "runDailyJob()",
+      "source_files": [
+        "Board/index.js",
+        "Board/executor.js"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
@@ -362,7 +318,7 @@
     }
   ],
   "tokens": {
-    "input": 5173,
-    "output": 2060
+    "input": 2182,
+    "output": 1504
   }
 }

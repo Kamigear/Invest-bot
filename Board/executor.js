@@ -76,34 +76,50 @@ async function runDailyJob() {
       return;
     }
 
-    // 10. Call investor
-    const result = await executeInvest(scheduleEntry);
+// 10. Check if investing is enabled
+     const INVEST_ENABLED = process.env.INVEST_ENABLED === 'true' || process.env.INVEST_ENABLED === '1' || true;
+     if (!INVEST_ENABLED) {
+       console.log('Investasi dinonaktifkan melalui variabel lingkungan INVEST_ENABLED=false. Menandai sebagai DONE tanpa investasi.');
+       await setDoc(`executions/${entryId}`, {
+         status: 'DONE',
+         executedAt: serverTimestamp(),
+         notes: JSON.stringify({ skipped: true, reason: 'Investasi disabled via ENV' })
+       }, { merge: true });
+       await setDoc(`schedules/${entryId}`, {
+         status: 'DONE'
+       }, { merge: true });
+       await sendAlert('ℹ️ Investasi hari ini dilewati karena fitur dinonaktifkan (INVEST_ENABLED=false).');
+       return;
+     }
 
-    if (result.success) {
-      await setDoc(`executions/${entryId}`, {
-        status: 'DONE',
-        executedAt: serverTimestamp(),
-        notes: JSON.stringify(result.data)
-      }, { merge: true });
-      
-      await setDoc(`schedules/${entryId}`, {
-        status: 'DONE'
-      }, { merge: true });
+     // 10. Call investor
+     const result = await executeInvest(scheduleEntry);
 
-      await sendAlert(`✅ Invest berhasil! ${scheduleEntry.amount} poin → Cair ${scheduleEntry.expectedReturn} tgl ${scheduleEntry.maturityDate}`);
-    } else {
-      await setDoc(`executions/${entryId}`, {
-        status: 'FAILED',
-        failedAt: serverTimestamp(),
-        error: result.error
-      }, { merge: true });
+     if (result.success) {
+       await setDoc(`executions/${entryId}`, {
+         status: 'DONE',
+         executedAt: serverTimestamp(),
+         notes: JSON.stringify(result.data)
+       }, { merge: true });
+       
+       await setDoc(`schedules/${entryId}`, {
+         status: 'DONE'
+       }, { merge: true });
 
-      await setDoc(`schedules/${entryId}`, {
-        status: 'FAILED'
-      }, { merge: true });
+       await sendAlert(`✅ Invest berhasil! ${scheduleEntry.amount} poin → Cair ${scheduleEntry.expectedReturn} tgl ${scheduleEntry.maturityDate}`);
+     } else {
+       await setDoc(`executions/${entryId}`, {
+         status: 'FAILED',
+         failedAt: serverTimestamp(),
+         error: result.error
+       }, { merge: true });
 
-      await sendAlert(`❌ GAGAL invest hari ini! Error: ${result.error}`);
-    }
+       await setDoc(`schedules/${entryId}`, {
+         status: 'FAILED'
+       }, { merge: true });
+
+       await sendAlert(`❌ GAGAL invest hari ini! Error: ${result.error}`);
+     }
 
   } catch (error) {
     console.error('Error in runDailyJob:', error);

@@ -153,6 +153,7 @@ const App = (() => {
   let _activeTab = 'calendar';
 
   const STORAGE_KEY = 'investcalc_config_v1';
+  let _selectedLedgerDate = Ledger.todayISO();
 
   // ── Persistence ──────────────────────────────────────────────────────────
   function saveConfig() {
@@ -188,73 +189,22 @@ const App = (() => {
       LiveMode.start(_config);
     }
 
-    let _firebaseBalanceInitialized = false;
-
-    if (typeof FirebaseDB !== 'undefined') {
-      try {
-        const fbBalance = await FirebaseDB.getCurrentBalance();
-        console.debug('[DEBUG] Firebase getCurrentBalance:', fbBalance, '| localStorage initialBalance:', _config.initialBalance);
-        if (fbBalance !== null && fbBalance !== _config.initialBalance) {
-          console.debug('[DEBUG] Updating initialBalance from Firebase:', _config.initialBalance, '->', fbBalance);
-          _config.initialBalance = fbBalance;
-        }
-        _firebaseBalanceInitialized = true;
-        saveConfig();
-        console.debug('[DEBUG] Saved config to localStorage. initialBalance now:', _config.initialBalance);
-      } catch (e) {
-        console.error("Failed to fetch Firebase balance on init:", e);
-      }
-    }
-
     renderConfigPanel();
     renderLanding();
 
     // Listen for tab switching
     document.addEventListener('click', handleTabClick);
+  }
 
-    // Set up live listener for actual balance from Bot in Firestore
-    if (typeof FirebaseDB !== 'undefined') {
-      let _isInitialSnapshot = true;
-      FirebaseDB.onBalanceUpdate((balance) => {
-        console.debug('[DEBUG] onBalanceUpdate snapshot:', balance, '| current initialBalance:', _config.initialBalance, '| isInitial:', _isInitialSnapshot, '| fbInitialized:', _firebaseBalanceInitialized);
-        if (_isInitialSnapshot && _firebaseBalanceInitialized) {
-          _isInitialSnapshot = false;
-          console.debug('[DEBUG] Skipping Firestore cache snapshot (initial). balance:', balance, 'stored:', _config.initialBalance);
-          if (balance !== _config.initialBalance) {
-            console.debug('[DEBUG] Cache snapshot differs — applying. balance:', balance, 'stored:', _config.initialBalance);
-            _config.initialBalance = balance;
-            saveConfig();
-            const initialInput = document.getElementById('cfg-initial');
-            if (initialInput) {
-              initialInput.value = balance;
-            }
-            renderConfigPanel();
-            if (LiveMode.enabled) { LiveMode.resetAnchor(); }
-            runSimulation();
-          }
-          return;
-        }
-
-        _isInitialSnapshot = false;
-        if (_config.realtimeEnabled !== false && balance !== _config.initialBalance) {
-          console.debug('[DEBUG] Realtime onBalanceUpdate — diff detected. balance:', balance, 'stored:', _config.initialBalance);
-          _config.initialBalance = balance;
-          saveConfig();
-          const initialInput = document.getElementById('cfg-initial');
-          if (initialInput) {
-            initialInput.value = balance;
-          }
-          renderConfigPanel();
-
-          // Anchor live projection to today when bot reports a new balance
-          if (LiveMode.enabled) {
-            LiveMode.resetAnchor();
-          }
-
-          runSimulation();
-        }
-      });
+  function getLedgerBalanceForSelectedDate(ledgerState) {
+    const targetDate = _selectedLedgerDate || (ledgerState ? ledgerState.today : Ledger.todayISO());
+    if (_baseResult && _baseResult.records) {
+      const rec = _baseResult.records.find(r => r.date === targetDate);
+      if (rec) {
+        return rec.balanceAfter;
+      }
     }
+    return ledgerState ? ledgerState.currentBalance : _config.initialBalance;
   }
 
   // ── Config Panel ─────────────────────────────────────────────────────────
@@ -308,8 +258,8 @@ const App = (() => {
             </label>
           </div>
           <div class="ledger-balance-card">
-            <span>Saldo Aktual</span>
-            <strong>${Calculator.display(ledgerState.currentBalance)}</strong>
+            <span>Saldo Saat Ini</span>
+            <strong>${Calculator.display(getLedgerBalanceForSelectedDate(ledgerState))}</strong>
             <small>Net transaksi: ${ledgerState.netActual >= 0 ? '+' : ''}${Calculator.display(ledgerState.netActual)}</small>
           </div>
           <div class="ledger-quickset">
@@ -317,7 +267,7 @@ const App = (() => {
             <button type="button" id="btn-quickset-balance">📌 Setel</button>
           </div>
           <div class="ledger-form">
-            <input type="date" id="ledger-date" value="${ledgerState.today}"/>
+            <input type="date" id="ledger-date" value="${_selectedLedgerDate || ledgerState.today}"/>
             <select id="ledger-type">
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -645,6 +595,11 @@ const App = (() => {
       try {
         _baseResult = Simulator.run(buildRuntimeConfig());
         renderResults();
+        const ledgerState = Ledger.getState(_config);
+        const balanceEl = document.querySelector('.ledger-balance-card strong');
+        if (balanceEl) {
+          balanceEl.textContent = Calculator.display(getLedgerBalanceForSelectedDate(ledgerState));
+        }
       } catch (err) {
         console.error('Simulation error:', err);
         showError(`Terjadi kesalahan: ${err.message}`);
@@ -912,6 +867,20 @@ const App = (() => {
   }
 
   function bindLedgerEvents(panel) {
+    const dateInput = panel.querySelector('#ledger-date');
+    if (dateInput) {
+      const onDateChange = () => {
+        _selectedLedgerDate = dateInput.value;
+        const balanceEl = panel.querySelector('.ledger-balance-card strong');
+        if (balanceEl) {
+          const ledgerState = Ledger.getState(_config);
+          balanceEl.textContent = Calculator.display(getLedgerBalanceForSelectedDate(ledgerState));
+        }
+      };
+      dateInput.addEventListener('change', onDateChange);
+      dateInput.addEventListener('input', onDateChange);
+    }
+
     panel.querySelector('#btn-add-ledger')?.addEventListener('click', () => {
       const tx = {
         date: panel.querySelector('#ledger-date')?.value || Ledger.todayISO(),

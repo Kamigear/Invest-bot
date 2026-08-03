@@ -64,24 +64,24 @@ const Simulator = (() => {
       const today = addDaysISO(config.startDate, day - 1);
       const balanceBefore = Calculator.fmt(balance);
 
-      // ── Step 1: Daily Income ────────────────────────────────────
+      // ── Step 1: Weekly Bonus ────────────────────────────────────
+      const weeklyBonus = Calculator.getWeeklyBonus(today, config);
+      balance += weeklyBonus;
+      totalWeeklyBonus = Calculator.fmt(totalWeeklyBonus + weeklyBonus);
+
+      // ── Step 2: Daily Income (Linear Growth) ────────────────────
       const dailyIncome = config.incomeDailyEnabled !== false
         ? Calculator.getDailyIncome(day, config)
         : 0;
       balance += dailyIncome;
       totalDailyIncome = Calculator.fmt(totalDailyIncome + dailyIncome);
 
-      // ── Step 1.5: Manual Income (day-specific entries) ──────────
+      // ── Step 2.5: Manual Income (day-specific entries) ──────────
       const dayManualIncome = (config.manualIncome || [])
         .filter(entry => entry.day === day)
         .reduce((sum, entry) => sum + entry.amount, 0);
       balance += dayManualIncome;
       totalManualIncome = Calculator.fmt(totalManualIncome + dayManualIncome);
-
-      // ── Step 2: Weekly Bonus ────────────────────────────────────
-      const weeklyBonus = Calculator.getWeeklyBonus(today, config);
-      balance += weeklyBonus;
-      totalWeeklyBonus = Calculator.fmt(totalWeeklyBonus + weeklyBonus);
 
       // ── Step 3: Mature Investments ──────────────────────────────
       const maturedToday = [];

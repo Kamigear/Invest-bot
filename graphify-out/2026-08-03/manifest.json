@@ -1,8 +1,8 @@
 {
   "js/app.js": {
-    "mtime": 1785749150.1078112,
-    "ast_hash": "02da7c07083935f7342230033433f85c",
-    "semantic_hash": ""
+    "mtime": 1785752903.896669,
+    "ast_hash": "11bd5397458cdc7e6e9fcf30656f1461",
+    "semantic_hash": "11bd5397458cdc7e6e9fcf30656f1461"
   },
   "js/engine/calculator.js": {
     "mtime": 1785719829.2475324,
@@ -15,9 +15,9 @@
     "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
   },
   "js/engine/simulator.js": {
-    "mtime": 1785735612.7937508,
-    "ast_hash": "4a372b66563638c0f106d59781a001b1",
-    "semantic_hash": "4a372b66563638c0f106d59781a001b1"
+    "mtime": 1785754208.377296,
+    "ast_hash": "f184114216e85ac16aeee3a2c386f475",
+    "semantic_hash": "f184114216e85ac16aeee3a2c386f475"
   },
   "js/export/exporters.js": {
     "mtime": 1785487157.468014,
@@ -25,9 +25,9 @@
     "semantic_hash": "1aac1dcd3f97bac495234611de8c4088"
   },
   "js/ui/calendar.js": {
-    "mtime": 1785503221.4009018,
-    "ast_hash": "ce2fee9af5bb8d0505e60fc9cd53b4fe",
-    "semantic_hash": "ce2fee9af5bb8d0505e60fc9cd53b4fe"
+    "mtime": 1785754218.63644,
+    "ast_hash": "111b589c64420e4ae2024eae26a95eeb",
+    "semantic_hash": "111b589c64420e4ae2024eae26a95eeb"
   },
   "js/ui/comparison.js": {
     "mtime": 1785498983.2640657,
@@ -35,9 +35,9 @@
     "semantic_hash": "cbc648a43ea53fc04dd5f5df6fc451ce"
   },
   "js/ui/detail.js": {
-    "mtime": 1785498983.264586,
-    "ast_hash": "86d45ffe8ead63ff70f5da9e71acae47",
-    "semantic_hash": "86d45ffe8ead63ff70f5da9e71acae47"
+    "mtime": 1785751331.3038168,
+    "ast_hash": "d7db6df3fb18676f00ee5dbd2ec6c336",
+    "semantic_hash": "d7db6df3fb18676f00ee5dbd2ec6c336"
   },
   "js/ui/summary.js": {
     "mtime": 1785500633.8460972,
@@ -60,9 +60,9 @@
     "semantic_hash": "50b8c4f0718de28ac8c3ecf60cd2558b"
   },
   "Board/executor.js": {
-    "mtime": 1785509018.5678127,
-    "ast_hash": "37fcdb6c9acea2f65f230160b114f480",
-    "semantic_hash": "37fcdb6c9acea2f65f230160b114f480"
+    "mtime": 1785750794.4051561,
+    "ast_hash": "9e390a5ae0c00ee3e8a167fcc7891eeb",
+    "semantic_hash": "9e390a5ae0c00ee3e8a167fcc7891eeb"
   },
   "Board/firebase.js": {
     "mtime": 1785508999.2591062,
@@ -120,8 +120,8 @@
     "semantic_hash": "64c321bb28b3a026baaa9642add595e9"
   },
   "index.html": {
-    "mtime": 1785749150.0624828,
-    "ast_hash": "00520d9a51f37211fe53ecc8038e44ad",
+    "mtime": 1785749591.9237666,
+    "ast_hash": "ab15d945611338f0298c816c2552ffb5",
     "semantic_hash": ""
   },
   ".kilo/plans/1785669327659-live-predicted-balance-mode.md": {
@@ -147,11 +147,11 @@
   ".kilo/plans/1785734141555-realtime-finance-tracker.md": {
     "mtime": 1785738492.4455369,
     "ast_hash": "7a3f604c5699ee119d219b9b08762862",
-    "semantic_hash": ""
+    "semantic_hash": "7a3f604c5699ee119d219b9b08762862"
   },
   "js/engine/ledger.js": {
     "mtime": 1785748675.2075744,
     "ast_hash": "a115d0aef0bef37b3252c2fad5cb5d26",
-    "semantic_hash": ""
+    "semantic_hash": "a115d0aef0bef37b3252c2fad5cb5d26"
   }
 }

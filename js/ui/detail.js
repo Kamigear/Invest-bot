@@ -159,6 +159,14 @@ const DetailUI = (() => {
             <div class="detail-stat-label">Daily Income</div>
             <div class="detail-stat-value income-color">+${Calculator.display(r.dailyIncome)}</div>
           </div>
+          ${r.ledgerNet && r.ledgerNet !== 0 ? `
+            <div class="detail-stat" style="border: 1px dashed rgba(16,185,129,0.3); background: rgba(16,185,129,0.02);">
+              <div class="detail-stat-label">🔧 Ledger Net</div>
+              <div class="detail-stat-value" style="color: ${r.ledgerNet >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">
+                ${r.ledgerNet >= 0 ? '+' : ''}${Calculator.display(r.ledgerNet)}
+              </div>
+            </div>
+          ` : ''}
           ${r.weeklyBonus > 0 ? `
             <div class="detail-stat highlight-bonus">
               <div class="detail-stat-label">🔵 Weekly Bonus</div>
@@ -176,7 +184,7 @@ const DetailUI = (() => {
           </div>
           <div class="detail-stat">
             <div class="detail-stat-label">Saldo Tersedia</div>
-            <div class="detail-stat-value">${Calculator.display(r.balanceBefore + r.dailyIncome + r.weeklyBonus + r.generate + r.maturedTotal)}</div>
+            <div class="detail-stat-value">${Calculator.display(r.balanceBefore + r.dailyIncome + r.weeklyBonus + r.generate + r.maturedTotal + (r.ledgerNet || 0))}</div>
           </div>
           ${r.investedAmount > 0 ? `
             <div class="detail-stat highlight-invest">
@@ -200,6 +208,33 @@ const DetailUI = (() => {
 
         <!-- Matured investments today -->
         ${maturedHtml}
+
+        <!-- Ledger transactions today -->
+        ${r.ledgerTxns && r.ledgerTxns.length > 0 ? `
+          <div class="detail-section">
+            <div class="detail-section-title">🔧 Transaksi Ledger Hari Ini (${r.ledgerTxns.length})</div>
+            <table class="detail-inv-table">
+              <thead>
+                <tr>
+                  <th>Tipe</th>
+                  <th>Nominal</th>
+                  <th>Catatan</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${r.ledgerTxns.map(tx => `
+                  <tr>
+                    <td><strong>${Ledger.typeLabel(tx.type)}</strong></td>
+                    <td style="color:${['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type) ? 'var(--accent-green)' : 'var(--accent-red)'}">
+                      ${['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type) ? '+' : '-'}${Calculator.display(tx.amount)}
+                    </td>
+                    <td>${tx.note || '—'}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        ` : ''}
 
         <!-- Reasons -->
         ${reasonsHtml}

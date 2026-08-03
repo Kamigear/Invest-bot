@@ -112,6 +112,9 @@ const CalendarUI = (() => {
     if (f.isGenerateDay) badges.push('<span class="badge badge-generate">🟣 Gen</span>');
     if (f.isDelayDay) badges.push('<span class="badge badge-delay">🔴 Wait</span>');
     if (f.isSweetSpot) badges.push('<span class="badge badge-sweet">🎯</span>');
+    if (f.hasLedgerEntry) {
+      badges.push('<span class="badge" style="background:rgba(16,185,129,0.15); color:var(--accent-green); border:1px solid rgba(16,185,129,0.3); font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-flex; align-items:center; gap:2px;">🔧 Ledger</span>');
+    }
     if (badges.length === 0) badges.push('<span class="badge badge-neutral">⏸ Skip</span>');
     return badges.join('');
   }
@@ -169,6 +172,25 @@ const CalendarUI = (() => {
     `;
   }
 
+  function renderLedgerTransactionsInCell(record) {
+    if (!record.ledgerTxns || record.ledgerTxns.length === 0) return '';
+    return record.ledgerTxns.map(tx => {
+      const amt = parseFloat(tx.amount) || 0;
+      const isNegative = ['expense', 'invest'].includes(tx.type);
+      const sign = isNegative ? '−' : '+';
+      const color = isNegative ? 'var(--accent-red)' : 'var(--accent-green)';
+      const typeLabel = {
+        income: 'Income',
+        expense: 'Expense',
+        bonus: 'Bonus',
+        maturity: 'Cair',
+        invest: 'Invest',
+        adjustment: 'Adjust'
+      }[tx.type] || tx.type;
+      return `<br/><small style="color:${color}; font-size:10px; font-weight:600; display:block; margin-top:2px;">${sign}${Calculator.display(amt)} ${typeLabel}</small>`;
+    }).join('');
+  }
+
   /**
    * Render a single table row
    */
@@ -185,7 +207,10 @@ const CalendarUI = (() => {
           <span class="day-num">${record.day}</span>${record.date ? `<span class="day-date">${record.date}</span>` : ''}
         </td>
         <td class="col-num">${Calculator.display(record.balanceBefore)}</td>
-        <td class="col-num income-col">+${Calculator.display(record.dailyIncome)}</td>
+        <td class="col-num income-col">
+          +${Calculator.display(record.dailyIncome)}
+          ${renderLedgerTransactionsInCell(record)}
+        </td>
         <td class="col-num ${f.isWeeklyBonusDay ? 'bonus-highlight' : ''}">
           ${f.isWeeklyBonusDay ? `<strong>+${Calculator.display(record.weeklyBonus)}</strong>` : '—'}
         </td>
