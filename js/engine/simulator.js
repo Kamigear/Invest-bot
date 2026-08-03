@@ -2,7 +2,12 @@
 
 /**
  * Simulator — Core simulation loop.
- * Runs day-by-day and produces a full record for each day.
+ *
+ * Ledger behaviour (per plan 1785720286196-date-based-transactions):
+ * - Simulation always starts from config.initialBalance
+ * - Ledger transactions are applied ONLY on their specific date as a visual
+ *   adjustment to balance — future days continue from the algorithm prediction
+ * - Bot balance is NEVER used as saldo awal; the user sets it manually
  */
 const Simulator = (() => {
 
@@ -26,7 +31,6 @@ const Simulator = (() => {
     config.sweetSpots = Calculator.generateSweetSpots(config);
 
     const records = [];
-    let balance = config.initialBalance;
     const activeInvestments = []; // { id, startDay, amount, maturityDay, expectedReturn }
 
     // Accumulators for summary
@@ -38,31 +42,48 @@ const Simulator = (() => {
     let totalLostDecimal = 0;
     let totalWeeklyBonus = 0;
     let totalDailyIncome = 0;
+    let totalManualIncome = 0;
     let totalWaitDays = 0;
     let totalSkipDays = 0;
+    let totalLedgerNet = 0;
 
     const investmentSchedule = []; // Track all investment decisions
 
+    // Pre-index ledger transactions by ISO date for O(1) lookup per day
+    const ledgerByDate = {};
+    const ledgerTxns = config.ledgerState?.transactions || [];
+    for (const tx of ledgerTxns) {
+      if (!ledgerByDate[tx.date]) ledgerByDate[tx.date] = [];
+      ledgerByDate[tx.date].push(tx);
+    }
+
+    // Algorithm projection balance — always starts from initialBalance
+    let balance = config.initialBalance;
+
     for (let day = 1; day <= config.simulationDays; day++) {
-      const date = addDaysISO(config.startDate, day - 1);
+      const today = addDaysISO(config.startDate, day - 1);
       const balanceBefore = Calculator.fmt(balance);
 
-      // ── Step 1: Daily Income ─────────────────────────────────
-      const dailyIncome = config.incomeDailyEnabled !== false ? Calculator.getDailyIncome(day, config) : 0;
+      // ── Step 1: Daily Income ────────────────────────────────────
+      const dailyIncome = config.incomeDailyEnabled !== false
+        ? Calculator.getDailyIncome(day, config)
+        : 0;
       balance += dailyIncome;
       totalDailyIncome = Calculator.fmt(totalDailyIncome + dailyIncome);
 
-      // ── Step 2: Weekly Bonus ─────────────────────────────────
-      const weeklyBonus = Calculator.getWeeklyBonus(day, config);
+      // ── Step 1.5: Manual Income (day-specific entries) ──────────
+      const dayManualIncome = (config.manualIncome || [])
+        .filter(entry => entry.day === day)
+        .reduce((sum, entry) => sum + entry.amount, 0);
+      balance += dayManualIncome;
+      totalManualIncome = Calculator.fmt(totalManualIncome + dayManualIncome);
+
+      // ── Step 2: Weekly Bonus ────────────────────────────────────
+      const weeklyBonus = Calculator.getWeeklyBonus(today, config);
       balance += weeklyBonus;
       totalWeeklyBonus = Calculator.fmt(totalWeeklyBonus + weeklyBonus);
 
-      // ── Step 3: Generate ─────────────────────────────────────
-      const generate = Calculator.getGenerate(balance, config);
-      balance += generate;
-      totalGenerate = Calculator.fmt(totalGenerate + generate);
-
-      // ── Step 4: Mature Investments ───────────────────────────
+      // ── Step 3: Mature Investments ──────────────────────────────
       const maturedToday = [];
       let maturedTotal = 0;
 
@@ -79,7 +100,33 @@ const Simulator = (() => {
         }
       }
 
-      // ── Step 6: Optimizer Decision ───────────────────────────
+      // ── Step 3.5: Ledger Adjustments (date-specific only) ───────
+      // Transactions only affect THIS day's displayed balance.
+      // The algorithm's projection for subsequent days is NOT affected —
+      // balance continues growing from the algorithm prediction baseline.
+      const todayTxns = ledgerByDate[today] || [];
+      let ledgerIncome = 0;
+      let ledgerExpense = 0;
+      for (const tx of todayTxns) {
+        const amt = parseFloat(tx.amount) || 0;
+        if (tx.type === 'expense' || tx.type === 'invest') {
+          ledgerExpense += amt;
+        } else {
+          // income, bonus, maturity, adjustment
+          ledgerIncome += amt;
+        }
+      }
+      const ledgerNet = Calculator.fmt(ledgerIncome - ledgerExpense);
+      // Apply to balance for THIS day only; algorithm continues from here
+      balance += ledgerNet;
+      totalLedgerNet = Calculator.fmt(totalLedgerNet + ledgerNet);
+
+      // ── Step 4: Generate (after ALL inflows incl. ledger) ───────
+      const generate = Calculator.getGenerate(balance, config);
+      balance += generate;
+      totalGenerate = Calculator.fmt(totalGenerate + generate);
+
+      // ── Step 5: Optimizer Decision ──────────────────────────────
       const result = Optimizer.decide(day, balance, [...activeInvestments], config, balanceBefore);
 
       let investedAmount = 0;
@@ -105,13 +152,13 @@ const Simulator = (() => {
         investmentSchedule.push({
           id: inv.id,
           investDay: day,
-          investDate: date,
+          investDate: today,
           amount: investedAmount,
           maturityDay: inv.maturityDay,
           maturityDate: addDaysISO(config.startDate, inv.maturityDay - 1),
           expectedReturn: inv.expectedReturn,
           profit: Calculator.fmt(inv.expectedReturn - investedAmount),
-          balanceBefore: balanceBefore,
+          balanceBefore,
         });
       } else if (result.decision === 'WAIT') {
         totalWaitDays++;
@@ -119,19 +166,20 @@ const Simulator = (() => {
         totalSkipDays++;
       }
 
-      // ── Step 7: Compute Post-Day State ───────────────────────
+      // ── Step 6: Compute Post-Day State ──────────────────────────
       const balanceAfter = Calculator.fmt(balance);
       const activeClones = activeInvestments.map(inv => ({ ...inv }));
       const totalActiveExpected = activeClones.reduce((s, inv) => s + inv.expectedReturn, 0);
       const totalAssets = Calculator.fmt(balanceAfter + totalActiveExpected);
 
-      // ── Step 8: Build Day Record ─────────────────────────────
+      // ── Step 7: Build Day Record ────────────────────────────────
       records.push({
         day,
-        date,
+        date: today,
         balanceBefore,
         balanceAfter,
         dailyIncome: Calculator.fmt(dailyIncome),
+        manualIncome: Calculator.fmt(dayManualIncome),
         weeklyBonus: Calculator.fmt(weeklyBonus),
         generate: Calculator.fmt(generate),
         investedAmount: Calculator.fmt(investedAmount),
@@ -141,6 +189,8 @@ const Simulator = (() => {
         activeInvestments: activeClones,
         activeCount: activeClones.length,
         totalAssets,
+        ledgerNet,
+        ledgerTxns: todayTxns,
         decision: result.decision,
         decisionLabel: getDecisionLabel(result, config),
         waitDays: result.waitDays || 0,
@@ -154,11 +204,13 @@ const Simulator = (() => {
           isGenerateDay: generate > 0,
           isDelayDay: result.decision === 'WAIT',
           isSweetSpot: result.flags?.isSweetSpot || false,
+          isManualIncomeDay: dayManualIncome > 0,
+          hasLedgerEntry: todayTxns.length > 0,
         },
       });
     }
 
-    // ── Final Summary ─────────────────────────────────────────
+    // ── Final Summary ────────────────────────────────────────────
     const finalRecord = records[records.length - 1];
     const efficiency = totalInvestedAmount > 0
       ? Calculator.fmt(((totalInvestedAmount - totalLostDecimal) / totalInvestedAmount) * 100)
@@ -167,9 +219,7 @@ const Simulator = (() => {
     const summary = {
       simulationDays: config.simulationDays,
       startDate: config.startDate || '',
-      isRealtime: config.realtimeEnabled !== false && !!config.ledgerState,
-      actualTransactionCount: config.ledgerState?.transactions?.length || 0,
-      actualNet: config.ledgerState?.netActual || 0,
+      isRealtime: false,
       initialBalance: config.initialBalance,
       finalBalance: Calculator.fmt(balance),
       finalTotalAssets: finalRecord?.totalAssets ?? 0,
@@ -181,16 +231,16 @@ const Simulator = (() => {
       totalLostDecimal,
       totalWeeklyBonus,
       totalDailyIncome,
+      totalManualIncome,
+      totalLedgerNet,
       totalWaitDays,
       totalSkipDays,
       efficiency,
       investmentSchedule,
-      // Comparison with "invest every day" strategy
       baselineAssets: calcBaselineAssets(config),
-      outperformancePct: 0, // Will be filled after baseline
+      outperformancePct: 0,
     };
 
-    // Calculate outperformance vs baseline
     summary.outperformancePct = summary.baselineAssets > 0
       ? Calculator.fmt(((summary.finalTotalAssets - summary.baselineAssets) / summary.baselineAssets) * 100)
       : 0;
@@ -198,9 +248,6 @@ const Simulator = (() => {
     return { records, summary };
   }
 
-  /**
-   * Get human-readable decision label
-   */
   function getDecisionLabel(result, config) {
     if (result.decision === 'INVEST') {
       if (result.flags?.isSweetSpot) return '🎯 Sweet Spot';
@@ -219,12 +266,12 @@ const Simulator = (() => {
     let totalReturn = 0;
 
     for (let day = 1; day <= config.simulationDays; day++) {
+      const date = addDaysISO(config.startDate, day - 1);
       const balanceBefore = balance;
       balance += Calculator.getDailyIncome(day, config);
-      balance += Calculator.getWeeklyBonus(day, config);
+      balance += Calculator.getWeeklyBonus(date, config);
       balance += Calculator.getGenerate(balance, config);
 
-      // Mature
       for (let i = activeInv.length - 1; i >= 0; i--) {
         if (activeInv[i].maturityDay <= day) {
           const ret = Calculator.getReturnAmount(activeInv[i].amount, config);
@@ -234,14 +281,10 @@ const Simulator = (() => {
         }
       }
 
-      // Invest every day if possible using findBestAmount
       const amt = Optimizer.findBestAmount(balance, balanceBefore, config);
       if (amt >= config.minInvest) {
         balance -= amt;
-        activeInv.push({
-          amount: amt,
-          maturityDay: day + config.investDuration,
-        });
+        activeInv.push({ amount: amt, maturityDay: day + config.investDuration });
       }
     }
 

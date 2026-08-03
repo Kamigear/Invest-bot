@@ -1,0 +1,368 @@
+{
+  "communities": {
+    "0": [
+      "board_alert",
+      "board_alert_axios",
+      "board_alert_sendalert",
+      "board_executor",
+      "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
+      "board_executor_executeinvest",
+      "board_executor_rundailyjob",
+      "board_executor_sendalert",
+      "board_firebase",
+      "board_firebase_admin",
+      "board_firebase_db",
+      "board_firebase_getdoc",
+      "board_firebase_onsnapshot",
+      "board_firebase_runtransaction",
+      "board_firebase_servertimestamp",
+      "board_firebase_setdoc",
+      "board_index",
+      "board_index_cron",
+      "board_index_db_servertimestamp",
+      "board_index_openbrowser",
+      "board_index_puppeteer",
+      "board_index_rundailyjob",
+      "board_index_runtask1",
+      "board_index_sendalert",
+      "board_index_sleep",
+      "board_index_start",
+      "board_index_waitforturn",
+      "board_investor",
+      "board_investor_executeinvest",
+      "board_investor_puppeteer"
+    ],
+    "1": [
+      "axios",
+      "board_package",
+      "board_package_dependencies",
+      "board_package_dependencies_axios",
+      "board_package_dependencies_dotenv",
+      "board_package_dependencies_firebase_admin",
+      "board_package_dependencies_node_cron",
+      "board_package_dependencies_puppeteer",
+      "board_package_description",
+      "board_package_main",
+      "board_package_name",
+      "board_package_scripts",
+      "board_package_scripts_start",
+      "board_package_version",
+      "dotenv",
+      "firebase_admin",
+      "node_cron",
+      "puppeteer"
+    ],
+    "2": [
+      "js_ui_dailylog",
+      "js_ui_dailylog_bindeditform",
+      "js_ui_dailylog_bindfilters",
+      "js_ui_dailylog_bindquickaddform",
+      "js_ui_dailylog_bindtransactionlist",
+      "js_ui_dailylog_calculatesummary",
+      "js_ui_dailylog_formatdate",
+      "js_ui_dailylog_getcategoryinfo",
+      "js_ui_dailylog_getdatekey",
+      "js_ui_dailylog_getfilteredtransactions",
+      "js_ui_dailylog_groupbydate",
+      "js_ui_dailylog_init",
+      "js_ui_dailylog_render",
+      "js_ui_dailylog_rendercategorychips",
+      "js_ui_dailylog_renderfilters",
+      "js_ui_dailylog_renderquickaddform",
+      "js_ui_dailylog_rendertransactionlist",
+      "js_ui_dailylog_settransactions"
+    ],
+    "3": [
+      "kilo_plans_1785720286196_date_based_transactions",
+      "kilo_plans_1785720286196_date_based_transactions_1_simulator_runs_from_initialbalance_unchanged",
+      "kilo_plans_1785720286196_date_based_transactions_2_transactions_are_visual_adjustments_on_specific_days",
+      "kilo_plans_1785720286196_date_based_transactions_3_added_ledger_getstateasofdate_config_targetdate_in_js_engine_ledger_js",
+      "kilo_plans_1785720286196_date_based_transactions_4_firebase_sync_button_in_js_app_js",
+      "kilo_plans_1785720286196_date_based_transactions_5_removed_old_live_mode_injection_logic",
+      "kilo_plans_1785720286196_date_based_transactions_affected_files",
+      "kilo_plans_1785720286196_date_based_transactions_goal",
+      "kilo_plans_1785720286196_date_based_transactions_how_it_works_now",
+      "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "kilo_plans_1785720286196_date_based_transactions_problem",
+      "kilo_plans_1785720286196_date_based_transactions_solution_implemented",
+      "kilo_plans_1785720286196_date_based_transactions_status_implemented",
+      "kilo_plans_1785720286196_date_based_transactions_validation"
+    ],
+    "4": [
+      "concept_realtime_sync",
+      "index_html",
+      "js_app",
+      "js_app_app",
+      "js_app_livemode",
+      "js_app_synctofirebase",
+      "js_app_todayiso",
+      "js_firebase",
+      "js_firebase_firebasedb",
+      "plan_fix_bot_state",
+      "plan_live_mode",
+      "plan_realtime_finance_tracker"
+    ],
+    "5": [
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_1_remove_debug_logging_cleanup_from_investigation",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_2_stop_using_firebase_bot_state_as_saldo_awal",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_3_stop_auto_updating_saldo_awal_on_onsnapshot_events",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_4_add_explicit_sync_saldo_awal_from_bot_button_opt_in",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_5_fix_livemode_plan_doc_reference_informational",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_architecture_saldo_awal_vs_saldo_aktual",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_problem",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_risks_edge_cases",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_validation"
+    ],
+    "6": [
+      "kilo_plans_1785734141555_day_specific_income_entries",
+      "kilo_plans_1785734141555_day_specific_income_entries_1_js_app_js_config_ui",
+      "kilo_plans_1785734141555_day_specific_income_entries_2_js_engine_simulator_js_simulation_injection",
+      "kilo_plans_1785734141555_day_specific_income_entries_3_js_app_js_results_display",
+      "kilo_plans_1785734141555_day_specific_income_entries_background",
+      "kilo_plans_1785734141555_day_specific_income_entries_changes",
+      "kilo_plans_1785734141555_day_specific_income_entries_data_model",
+      "kilo_plans_1785734141555_day_specific_income_entries_goal",
+      "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "kilo_plans_1785734141555_day_specific_income_entries_risks",
+      "kilo_plans_1785734141555_day_specific_income_entries_validation"
+    ],
+    "7": [
+      "kilo_plans_1785669327659_live_predicted_balance_mode",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_data_flow",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_goal",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_key_decisions",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_open_questions",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_risks_edge_cases",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_tasks_ordered",
+      "kilo_plans_1785669327659_live_predicted_balance_mode_validation"
+    ],
+    "8": [
+      ".agents_rules_graphify_graph_report",
+      ".agents_rules_graphify_graphify_explain",
+      ".agents_rules_graphify_graphify_out",
+      ".agents_rules_graphify_graphify_query",
+      ".agents_workflows_graphify_skill",
+      ".agents_workflows_graphify_workflow",
+      "agents_rules_graphify",
+      "agents_rules_graphify_graphify"
+    ],
+    "9": [
+      "kilo_kilo",
+      "kilo_kilo_plugin",
+      "kilo_kilo_schema",
+      "kilo_kilo_snapshot",
+      "ref_file_d_investation_kilo_plugins_graphify_js"
+    ],
+    "10": [
+      "board_readme",
+      "board_readme_architecture_logic",
+      "board_readme_invest_bot",
+      "board_readme_setup_di_orangepi"
+    ],
+    "11": [
+      "js_export_exporters",
+      "js_export_exporters_exportcsv",
+      "js_export_exporters_exportexcel",
+      "js_export_exporters_exportpdf"
+    ],
+    "12": [
+      "agents",
+      "agents_graphify"
+    ],
+    "13": [
+      "agents_workflows_graphify",
+      "agents_workflows_graphify_workflow_graphify"
+    ],
+    "14": [
+      "js_engine_simulator",
+      "plan_date_based_tx"
+    ],
+    "15": [
+      "js_ui_bot_status",
+      "js_ui_bot_status_botstatusui"
+    ],
+    "16": [
+      "js_ui_comparison",
+      "js_ui_comparison_comparisonui"
+    ],
+    "17": [
+      "js_ui_detail",
+      "js_ui_detail_detailui"
+    ],
+    "18": [
+      "js_ui_summary",
+      "js_ui_summary_summaryui"
+    ],
+    "19": [
+      "kilo_plugins_graphify",
+      "kilo_plugins_graphify_graphifyplugin"
+    ],
+    "20": [
+      "callmebot_api"
+    ],
+    "21": [
+      "concept_saldo_aktual"
+    ],
+    "22": [
+      "concept_saldo_awal"
+    ],
+    "23": [
+      "js_engine_calculator"
+    ],
+    "24": [
+      "js_engine_optimizer"
+    ],
+    "25": [
+      "js_ui_calendar"
+    ],
+    "26": [
+      "manual_income_data_model"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12873563218390804,
+    "1": 0.1111111111111111,
+    "2": 0.24183006535947713,
+    "3": 0.14285714285714285,
+    "4": 0.18181818181818182,
+    "5": 0.16666666666666666,
+    "6": 0.18181818181818182,
+    "7": 0.2222222222222222,
+    "8": 0.25,
+    "9": 0.4,
+    "10": 0.5,
+    "11": 0.5,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0
+  },
+  "gods": [
+    {
+      "id": "js_ui_dailylog_render",
+      "label": "render()",
+      "degree": 10
+    },
+    {
+      "id": "board_executor_rundailyjob",
+      "label": "runDailyJob()",
+      "degree": 9
+    },
+    {
+      "id": "kilo_plans_1785669327659_live_predicted_balance_mode_plan_live_actual_follows_predicted_balance_mode_option_a",
+      "label": "Plan: Live \"Actual follows Predicted\" Balance Mode (Option A)",
+      "degree": 8
+    },
+    {
+      "id": "kilo_plans_1785720286196_date_based_transactions_plan_date_based_transaction_system",
+      "label": "Plan: Date-Based Transaction System",
+      "degree": 8
+    },
+    {
+      "id": "kilo_plans_1785734141555_day_specific_income_entries_plan_day_specific_manual_income_entries",
+      "label": "Plan: Day-Specific Manual Income Entries",
+      "degree": 7
+    },
+    {
+      "id": "js_ui_dailylog_rendertransactionlist",
+      "label": "renderTransactionList()",
+      "degree": 7
+    },
+    {
+      "id": "board_index_runtask1",
+      "label": "runTask1()",
+      "degree": 6
+    },
+    {
+      "id": "agents_rules_graphify_graphify",
+      "label": "graphify",
+      "degree": 6
+    },
+    {
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_plan_fix_bot_state_balance_being_used_as_saldo_awal",
+      "label": "Plan: Fix Bot State Balance Being Used as Saldo Awal",
+      "degree": 6
+    },
+    {
+      "id": "kilo_plans_1785677999510_fix_bot_state_as_saldo_awal_tasks",
+      "label": "Tasks",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Date-Based Transaction System Plan",
+      "target": "Simulator Engine",
+      "source_files": [
+        ".kilo/plans/1785720286196-date-based-transactions.md",
+        "js/engine/simulator.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "cites",
+      "why": "crosses file types (doc \u2194 code); connects across different repos/directories"
+    },
+    {
+      "source": "graphify workflow",
+      "target": "graphify",
+      "source_files": [
+        ".agents/workflows/graphify.md",
+        ".agents/rules/graphify.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `graphify workflow` unexpectedly reaches hub `graphify`"
+    },
+    {
+      "source": "runDailyJob()",
+      "target": "sendAlert()",
+      "source_files": [
+        "Board/executor.js",
+        "Board/alert.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "start()",
+      "target": "sendAlert()",
+      "source_files": [
+        "Board/index.js",
+        "Board/alert.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "runDailyJob()",
+      "target": "getDoc()",
+      "source_files": [
+        "Board/executor.js",
+        "Board/firebase.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 5173,
+    "output": 2060
+  }
+}

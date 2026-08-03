@@ -8,7 +8,7 @@ Current state: simulation is a static 90-day batch run once on load / bot-balanc
 ## Key Decisions
 1. **Advancement = wall-clock.** `currentSimDay = floor((todayReal - liveStartDate) / 86400000)`, clamped to `[0, simulationDays]`. Recompute lazily on every simulation run; no high-frequency ticker needed (each `runSimulation` is cheap over 90 days).
 2. **Displayed "Saldo Aktual" = projected balance at the live day.** `records[currentSimDay].balanceAfter` becomes the live actual balance. (Alternative available: `totalAssets` = cash + active expected returns; default to `balanceAfter`.)
-3. **Bot-scraped balance = ground-truth anchor.** `FirebaseDB.onBalanceUpdate` (`js/firebase.js:153`) sets `initialBalance` AND resets `liveStartDate = today`, restarting the projection forward from today. Live projection only advances *between* bot snapshots. (Bot itself is untouched — display-side only.)
+3. **Bot-scraped balance = Saldo Aktual (display only), NOT Saldo Awal.** `FirebaseDB.onBalanceUpdate` (`js/firebase.js:153`) stores the bot balance as `botActualBalance` for display. It does NOT overwrite `initialBalance` (Saldo Awal). Saldo Awal is only changed by user input in `#cfg-initial` or via the explicit "🔄 Sync Saldo Awal from Bot" button. Live mode anchors `liveStartDate = today` on bot snapshots, but `initialBalance` remains user-controlled.
 4. **Add/subtract already recalculates.** `js/app.js:bindLedgerEvents` (Tambah / quickset / delete) already calls `runSimulation()`. No new trigger needed; just ensure live mode stays active across the rerun.
 5. **Persist live state** to `localStorage` key `investcalc_livemode_v1` = `{ enabled, liveStartDate }`.
 6. **Out of scope:** pushing the live projection back to the bot (Board runs headless on OrangePi; sync already flows bot→browser).
@@ -19,8 +19,9 @@ Current state: simulation is a static 90-day batch run once on load / bot-balanc
         │ onSnapshot (js/firebase.js:153)
         ▼
 App.init → onBalanceUpdate callback
-        │ sets initialBalance + liveStartDate=today          (anchor actual)
-        ▼
+         │ stores botActualBalance (display) + resets liveStartDate=today  (anchor actual)
+         │ does NOT overwrite initialBalance (Saldo Awal)
+         ▼
 buildRuntimeConfig() (+ Ledger.getState) → Simulator.run
         │ produces records[] with balanceAfter per day
         ▼

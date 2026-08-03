@@ -1,7 +1,7 @@
 # Graph Report - Investation  (2026-08-03)
 
 ## Corpus Check
-- 30 files · ~19,137 words
+- 30 files · ~19,148 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

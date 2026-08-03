@@ -1,6 +1,16 @@
 'use strict';
 
 const Calculator = (() => {
+  function addDaysISO(startDate, offset) {
+    if (!startDate) return '';
+    const [year, month, day] = startDate.split('-').map(Number);
+    const date = new Date(year, month - 1, day + offset);
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + d;
+  }
+
   /**
    * Get daily income for a given simulation day
    * @param {number} day - Current simulation day (1-indexed)
@@ -23,14 +33,20 @@ const Calculator = (() => {
   }
 
   /**
-   * Get weekly bonus for a given day
+   * Get weekly bonus for a given date (triggers on Monday)
    */
-  function getWeeklyBonus(day, config) {
+  function getWeeklyBonus(dateOrDay, config) {
     if (!config.weeklyBonusEnabled) return 0;
-    if (day % config.weeklyBonusInterval === 0) {
-      return config.weeklyBonus;
+    // Accept either date string (YYYY-MM-DD) or day number (for backward compat)
+    let isMonday = false;
+    if (typeof dateOrDay === 'string' && dateOrDay.includes('-')) {
+      const d = new Date(dateOrDay + 'T00:00:00');
+      isMonday = d.getDay() === 1; // 0=Sun, 1=Mon
+    } else {
+      // Fallback: legacy day number — treat day 1 as Monday
+      isMonday = ((dateOrDay - 1) % config.weeklyBonusInterval) === 0;
     }
-    return 0;
+    return isMonday ? config.weeklyBonus : 0;
   }
 
   /**
@@ -72,8 +88,9 @@ const Calculator = (() => {
     for (let d = 1; d <= days; d++) {
       lastDayBalanceBefore = balance;
       const futureDay = startDay + d;
+      const date = config.startDate ? addDaysISO(config.startDate, futureDay - 1) : null;
       const income = getDailyIncome(futureDay, config);
-      const bonus = getWeeklyBonus(futureDay, config);
+      const bonus = getWeeklyBonus(date || futureDay, config);
       balance += income + bonus;
       const generate = getGenerate(balance, config);
       balance += generate;

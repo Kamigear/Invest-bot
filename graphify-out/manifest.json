@@ -1,13 +1,13 @@
 {
   "js/app.js": {
-    "mtime": 1785680349.5537097,
-    "ast_hash": "af36193ee61484418a99f1e084212770",
+    "mtime": 1785749450.940044,
+    "ast_hash": "525c9faf8dcbd87a9d3141eef7eca904",
     "semantic_hash": ""
   },
   "js/engine/calculator.js": {
-    "mtime": 1785499032.439246,
-    "ast_hash": "cce1a1f198c7a9bc6ec2fb689f1851d8",
-    "semantic_hash": "cce1a1f198c7a9bc6ec2fb689f1851d8"
+    "mtime": 1785719829.2475324,
+    "ast_hash": "65520d80529c69b9fc682ab7cef5e1e2",
+    "semantic_hash": "65520d80529c69b9fc682ab7cef5e1e2"
   },
   "js/engine/optimizer.js": {
     "mtime": 1785663963.2058377,
@@ -15,9 +15,9 @@
     "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
   },
   "js/engine/simulator.js": {
-    "mtime": 1785673867.4085917,
-    "ast_hash": "70574976489ffe82e4ddfe03d968c871",
-    "semantic_hash": ""
+    "mtime": 1785735612.7937508,
+    "ast_hash": "4a372b66563638c0f106d59781a001b1",
+    "semantic_hash": "4a372b66563638c0f106d59781a001b1"
   },
   "js/export/exporters.js": {
     "mtime": 1785487157.468014,
@@ -72,7 +72,7 @@
   "Board/index.js": {
     "mtime": 1785673263.0710075,
     "ast_hash": "33efe70120ca2d8313ddb40b1c685ac7",
-    "semantic_hash": ""
+    "semantic_hash": "33efe70120ca2d8313ddb40b1c685ac7"
   },
   "Board/investor.js": {
     "mtime": 1785511147.2326455,
@@ -84,15 +84,10 @@
     "ast_hash": "d54b6e2630a2b95563d63123e5414823",
     "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
   },
-  "js/engine/ledger.js": {
-    "mtime": 1785502100.431905,
-    "ast_hash": "d127f52ce442ac9445ec7352d2fb88cd",
-    "semantic_hash": "d127f52ce442ac9445ec7352d2fb88cd"
-  },
   "js/firebase.js": {
-    "mtime": 1785672780.9136178,
-    "ast_hash": "91d487e649f81d4011f137236dbeb808",
-    "semantic_hash": "91d487e649f81d4011f137236dbeb808"
+    "mtime": 1785739231.6325302,
+    "ast_hash": "ab98a3bbb955a024603506f0193d7b98",
+    "semantic_hash": "ab98a3bbb955a024603506f0193d7b98"
   },
   "js/ui/bot_status.js": {
     "mtime": 1785508976.5455685,
@@ -125,13 +120,38 @@
     "semantic_hash": "64c321bb28b3a026baaa9642add595e9"
   },
   "index.html": {
-    "mtime": 1785509051.134379,
-    "ast_hash": "cd12dee1ec87c29c4d95687ce65bba3e",
-    "semantic_hash": "cd12dee1ec87c29c4d95687ce65bba3e"
+    "mtime": 1785749591.9237666,
+    "ast_hash": "ab15d945611338f0298c816c2552ffb5",
+    "semantic_hash": ""
   },
   ".kilo/plans/1785669327659-live-predicted-balance-mode.md": {
-    "mtime": 1785670439.4841056,
-    "ast_hash": "f8ed8bcf03a83589d5907016b3b9f62a",
-    "semantic_hash": "f8ed8bcf03a83589d5907016b3b9f62a"
+    "mtime": 1785682589.6730704,
+    "ast_hash": "3d40feb355b38ca5f3cd841b75846d2b",
+    "semantic_hash": "3d40feb355b38ca5f3cd841b75846d2b"
+  },
+  ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md": {
+    "mtime": 1785682603.6356075,
+    "ast_hash": "75338a8ddd0ce2ea05c8fd46e8736231",
+    "semantic_hash": "75338a8ddd0ce2ea05c8fd46e8736231"
+  },
+  ".kilo/plans/1785720286196-date-based-transactions.md": {
+    "mtime": 1785732234.12897,
+    "ast_hash": "c8273af6498e0fd6058b9487649fbbec",
+    "semantic_hash": "c8273af6498e0fd6058b9487649fbbec"
+  },
+  ".kilo/plans/1785734141555-day-specific-income-entries.md": {
+    "mtime": 1785734505.9018402,
+    "ast_hash": "d97582d5b6bbd1261e600064ae2dd762",
+    "semantic_hash": "d97582d5b6bbd1261e600064ae2dd762"
+  },
+  ".kilo/plans/1785734141555-realtime-finance-tracker.md": {
+    "mtime": 1785738492.4455369,
+    "ast_hash": "7a3f604c5699ee119d219b9b08762862",
+    "semantic_hash": ""
+  },
+  "js/engine/ledger.js": {
+    "mtime": 1785748675.2075744,
+    "ast_hash": "a115d0aef0bef37b3252c2fad5cb5d26",
+    "semantic_hash": ""
   }
 }

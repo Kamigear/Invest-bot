@@ -13,6 +13,32 @@ const FirebaseDB = (() => {
         firebase.initializeApp(firebaseConfig);
     }
     const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    let _uid = null;
+    let _authReady = false;
+
+    // Initialize anonymous auth
+    async function initAnonymousAuth() {
+        try {
+            const result = await auth.signInAnonymously();
+            _uid = result.user.uid;
+            _authReady = true;
+            console.log('Anonymous auth initialized:', _uid);
+            return _uid;
+        } catch (error) {
+            console.error('Anonymous auth failed:', error);
+            throw error;
+        }
+    }
+
+    function getUid() {
+        return _uid;
+    }
+
+    function isAuthReady() {
+        return _authReady;
+    }
 
     // Helper to hash password
     async function hashPassword(password) {
@@ -24,7 +50,61 @@ const FirebaseDB = (() => {
         return hashHex;
     }
 
+    // Transaction CRUD
+    function getTransactionsRef(uid) {
+        return db.collection('users').doc(uid).collection('transactions');
+    }
+
+    async function addTransaction(uid, data) {
+        const ref = getTransactionsRef(uid);
+        const docRef = await ref.add({
+            ...data,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        return { id: docRef.id, ...data };
+    }
+
+    async function updateTransaction(uid, id, data) {
+        const ref = getTransactionsRef(uid).doc(id);
+        await ref.update({
+            ...data,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        return { id, ...data };
+    }
+
+    async function deleteTransaction(uid, id) {
+        const ref = getTransactionsRef(uid).doc(id);
+        await ref.delete();
+        return true;
+    }
+
+    function subscribeTransactions(uid, callback) {
+        const ref = getTransactionsRef(uid).orderBy('date', 'desc').orderBy('createdAt', 'desc');
+        return ref.onSnapshot(
+            { source: 'server' },
+            (snapshot) => {
+                const transactions = [];
+                snapshot.forEach(doc => {
+                    transactions.push({ id: doc.id, ...doc.data() });
+                });
+                callback(transactions);
+            },
+            (error) => {
+                console.error('Error listening to transactions:', error);
+                callback([]);
+            }
+        );
+    }
+
     return {
+        // Auth
+        initAnonymousAuth,
+        getUid,
+        isAuthReady,
+
+        // Config & Schedule Sync
         syncToFirebase: async (config, schedule) => {
             try {
                 // Save config
@@ -121,6 +201,7 @@ const FirebaseDB = (() => {
             }
         },
 
+        // Password (legacy, kept for compatibility)
         checkPassword: async (inputPassword) => {
             try {
                 const hashedInput = await hashPassword(inputPassword);
@@ -150,19 +231,23 @@ const FirebaseDB = (() => {
             }
         },
 
+        // Bot Balance
         onBalanceUpdate: (callback) => {
-            return db.collection('botState').doc('balance').onSnapshot((doc) => {
-                if (doc.exists) {
-                    callback(doc.data().balance);
+            return db.collection('botState').doc('balance').onSnapshot(
+                { source: 'server' },
+                (doc) => {
+                    if (doc.exists) {
+                        callback(doc.data().balance);
+                    }
+                }, (error) => {
+                    console.error("Error listening to balance updates:", error);
                 }
-            }, (error) => {
-                console.error("Error listening to balance updates:", error);
-            });
+            );
         },
 
         getCurrentBalance: async () => {
             try {
-                const doc = await db.collection('botState').doc('balance').get();
+                const doc = await db.collection('botState').doc('balance').get({ source: 'server' });
                 if (doc.exists) {
                     return doc.data().balance;
                 }
@@ -171,7 +256,13 @@ const FirebaseDB = (() => {
             }
             return null;
         },
-        
+
+        // Transactions
+        addTransaction,
+        updateTransaction,
+        deleteTransaction,
+        subscribeTransactions,
+
         getDB: () => db
     };
 })();
