@@ -104,15 +104,14 @@ const FirebaseDB = (() => {
         getUid,
         isAuthReady,
 
-        // Config & Schedule Sync
+        // Config & Schedule Sync (using flat paths matching Board backend)
         syncToFirebase: async (config, schedule) => {
             try {
-                const uid = _uid || 'anon';
-                await db.collection('users').doc(uid).collection('investments')
-                    .doc('config').set({
-                        ...config,
-                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }, { merge: true });
+                // Sync config to botState/config
+                await db.collection('botState').doc('config').set({
+                    ...config,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
 
                 const entries = schedule || [];
                 const batches = [];
@@ -127,9 +126,19 @@ const FirebaseDB = (() => {
                     const dd = String(dateObj.getDate()).padStart(2, '0');
                     const entryId = `inv_${yyyy}-${mm}-${dd}`;
 
-                    const docRef = db.collection('users').doc(uid)
-                        .collection('investments').doc('schedule')
-                        .collection('entries').doc(entryId);
+                    // Use flat path matching Board backend: schedules/${entryId}
+                    const docRef = db.collection('schedules').doc(entryId);
+
+                    // Check existing document status - skip if DONE or EXECUTING
+                    const existingDoc = await docRef.get();
+                    if (existingDoc.exists) {
+                        const existingData = existingDoc.data();
+                        const status = existingData.status;
+                        if (status === 'DONE' || status === 'EXECUTING') {
+                            console.log(`Skipping ${entryId}: status is ${status}`);
+                            continue;
+                        }
+                    }
 
                     batch.set(docRef, {
                         entryId,
@@ -161,16 +170,14 @@ const FirebaseDB = (() => {
             }
         },
 
-        // One-time fetch from Firebase (for manual sync button)
+        // One-time fetch from Firebase (for manual sync button) - using flat paths
         fetchFromFirebase: async () => {
             try {
-                const uid = _uid || 'anon';
-                const configDoc = await db.collection('users').doc(uid)
-                    .collection('investments').doc('config').get({ source: 'server' });
+                const configDoc = await db.collection('botState').doc('config').get({ source: 'server' });
                 
-                const scheduleSnap = await db.collection('users').doc(uid)
-                    .collection('investments').doc('schedule')
-                    .collection('entries').orderBy('investDate', 'asc').get({ source: 'server' });
+                const scheduleSnap = await db.collection('schedules')
+                    .orderBy('investDate', 'asc')
+                    .get({ source: 'server' });
                 
                 const schedule = [];
                 scheduleSnap.forEach(doc => {
@@ -185,13 +192,10 @@ const FirebaseDB = (() => {
             }
         },
 
-        // Real-time multi-browser sync - listen for config changes
+        // Real-time multi-browser sync - listen for config changes (flat path)
         syncFromFirebase: async (callback) => {
             try {
-                const uid = _uid || 'anon';
-                const unsubscribe = db.collection('users').doc(uid)
-                    .collection('investments')
-                    .doc('config')
+                const unsubscribe = db.collection('botState').doc('config')
                     .onSnapshot(
                         (doc) => {
                             if (doc.exists) {
@@ -211,14 +215,11 @@ const FirebaseDB = (() => {
             }
         },
 
-        // Real-time multi-browser sync for schedule updates (investment decisions)
+        // Real-time multi-browser sync for schedule updates (investment decisions) - flat path
         subscribeToScheduleUpdates: async (callback) => {
             try {
-                const uid = _uid || 'anon';
-                const unsubscribe = db.collection('users').doc(uid)
-                    .collection('investments')
-                    .doc('schedule')
-                    .collection('entries')
+                const unsubscribe = db.collection('schedules')
+                    .orderBy('investDate', 'asc')
                     .onSnapshot(
                         (snapshot) => {
                             const entries = [];
@@ -326,3 +327,4 @@ const FirebaseDB = (() => {
         getDB: () => db
     };
 })();
+

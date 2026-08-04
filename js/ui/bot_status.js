@@ -170,18 +170,18 @@ const BotStatusUI = (() => {
             }
             
             // Get heartbeat
-            db.collection('config').doc('heartbeat').get().then(doc => {
+            db.collection('botState').doc('balance').get().then(doc => {
                 const hbSpan = document.querySelector('#bot-heartbeat span');
                 if (doc.exists && hbSpan) {
                     const data = doc.data();
-                    const date = data.lastSeen ? data.lastSeen.toDate() : new Date();
+                    const date = data.lastUpdated ? data.lastUpdated.toDate() : new Date();
                     hbSpan.textContent = date.toLocaleString();
                 }
             }).catch(err => console.error("Error fetching heartbeat:", err));
             
             // Set up snapshot listener for executions (auto refresh)
             unsubscribe = db.collection('executions')
-                .orderBy('investDate', 'asc')
+                .orderBy('entryId', 'asc')
                 .limit(100) // limit for UI purposes
                 .onSnapshot((snapshot) => {
                     tbody.innerHTML = '';

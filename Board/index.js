@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer');
 const { runDailyJob } = require('./executor');
 const { sendAlert } = require('./alert');
 const { db, serverTimestamp } = require('./firebase');
+const { claimDailyReward } = require('./dailyReward');
 
 // ==========================================
 // PENGATURAN & ENVS
@@ -125,6 +126,48 @@ async function runTask1() {
 }
 
 // ==========================================
+// TUGAS 2: KLAIM DAILY REWARD
+// Login ke dashboard dan klik klaim daily reward
+// ==========================================
+async function runTask2() {
+  await waitForTurn("TUGAS 2");
+  isBrowserBusy = true;
+
+  console.log("\n===========================================");
+  console.log("--- [TUGAS 2] MEMULAI PROSES KLAIM DAILY REWARD ---");
+  console.log("===========================================");
+
+  // Check if daily reward is enabled
+  const DAILY_REWARD_ENABLED = process.env.DAILY_REWARD_ENABLED !== 'false' && process.env.DAILY_REWARD_ENABLED !== '0';
+  if (!DAILY_REWARD_ENABLED) {
+    console.log('[INFO] [TUGAS 2] Daily reward dilewati (DAILY_REWARD_ENABLED=false).');
+    isBrowserBusy = false;
+    return;
+  }
+
+  try {
+    const result = await claimDailyReward();
+
+    if (result.success) {
+      if (result.alreadyClaimed) {
+        console.log('[SUKSES] [TUGAS 2] Daily reward sudah diklaim hari ini.');
+      } else {
+        console.log(`[SUKSES] [TUGAS 2] Daily reward berhasil diklaim! Response: "${result.data}"`);
+      }
+    } else {
+      console.error(`[ERROR] [TUGAS 2] Gagal klaim daily reward: ${result.error}`);
+      await sendAlert(`❌ Daily reward gagal diklaim: ${result.error}`);
+    }
+  } catch (e) {
+    console.error(`[ERROR] [TUGAS 2] Proses terhenti karena kesalahan: ${e.message}`);
+    await sendAlert(`❌ TUGAS 2 ERROR: ${e.message}`);
+  } finally {
+    isBrowserBusy = false;
+    console.log("[INFO] [TUGAS 2] Selesai.\n");
+  }
+}
+
+// ==========================================
 // SISTEM PENJADWALAN & START PROGRAM
 // ==========================================
 function start() {
@@ -136,8 +179,9 @@ function start() {
   console.log("\n[SISTEM] Mengeksekusi rutinitas awal saat booting...");
   (async () => {
     try {
-      await runTask1();
-      await runDailyJob();
+      await runTask1();       // Cek saldo & Klaim Easter Egg
+      await runTask2();       // Klaim daily reward
+      await runDailyJob();    // Cek & eksekusi investasi
       console.log("[SISTEM] Rutinitas awal selesai. Bot kembali ke mode siaga (Cron).\n");
     } catch (err) {
       console.error("[ERROR] Terjadi kesalahan saat rutinitas awal:", err);
@@ -148,6 +192,7 @@ function start() {
   cron.schedule(cronSchedule, async () => {
     console.log(`\n[${new Date().toISOString()}] === MEMULAI RUTINITAS HARIAN BOT ===`);
     await runTask1();    // Cek saldo & Klaim Easter Egg
+    await runTask2();    // Klaim daily reward
     await runDailyJob(); // Cek jadwal investasi di Firebase -> eksekusi jika ada
     console.log(`[${new Date().toISOString()}] === RUTINITAS HARIAN SELESAI ===\n`);
   });
@@ -172,4 +217,4 @@ if (require.main === module) {
   start();
 }
 
-module.exports = { start };
+module.exports = { start, runTask1, runTask2 };

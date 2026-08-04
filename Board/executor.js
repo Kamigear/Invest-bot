@@ -64,9 +64,15 @@ async function runDailyJob() {
       }
       
       t.set(execRef, {
+        entryId: entryId,
         status: 'EXECUTING',
         executingAt: serverTimestamp(),
-        botVersion: version
+        botVersion: version,
+        // Copy schedule fields for UI display
+        amount: scheduleEntry.amount,
+        expectedReturn: scheduleEntry.expectedReturn,
+        maturityDate: scheduleEntry.maturityDate,
+        investDate: today
       });
       return true;
     });
@@ -77,7 +83,7 @@ async function runDailyJob() {
     }
 
 // 10. Check if investing is enabled
-     const INVEST_ENABLED = process.env.INVEST_ENABLED === 'true' || process.env.INVEST_ENABLED === '1' || true;
+     const INVEST_ENABLED = process.env.INVEST_ENABLED !== 'false' && process.env.INVEST_ENABLED !== '0';
      if (!INVEST_ENABLED) {
        console.log('Investasi dinonaktifkan melalui variabel lingkungan INVEST_ENABLED=false. Menandai sebagai DONE tanpa investasi.');
        await setDoc(`executions/${entryId}`, {

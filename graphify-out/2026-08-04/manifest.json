@@ -20,8 +20,8 @@
     "semantic_hash": "50b8c4f0718de28ac8c3ecf60cd2558b"
   },
   "Board/executor.js": {
-    "mtime": 1785804930.055232,
-    "ast_hash": "4d9c1976c000773fa73833df82ae0a3c",
+    "mtime": 1785802372.0575862,
+    "ast_hash": "de1ba8a73826b42ce1c80ab5e3a20754",
     "semantic_hash": ""
   },
   "Board/firebase.js": {
@@ -30,9 +30,9 @@
     "semantic_hash": "1f6e9288008386f258c3355d73995e91"
   },
   "Board/index.js": {
-    "mtime": 1785805789.9819663,
-    "ast_hash": "a71b0a17787f8122d1bde4ff13c4534e",
-    "semantic_hash": ""
+    "mtime": 1785673263.0710075,
+    "ast_hash": "33efe70120ca2d8313ddb40b1c685ac7",
+    "semantic_hash": "33efe70120ca2d8313ddb40b1c685ac7"
   },
   "Board/investor.js": {
     "mtime": 1785511147.2326455,
@@ -75,8 +75,8 @@
     "semantic_hash": "1aac1dcd3f97bac495234611de8c4088"
   },
   "js/firebase.js": {
-    "mtime": 1785809144.2272515,
-    "ast_hash": "16e192d5af951eb5e877301e5925eaf8",
+    "mtime": 1785803271.3445299,
+    "ast_hash": "8a3c53b1ee18582f8c81de1f7178a88e",
     "semantic_hash": ""
   },
   "js/ui/bot_status.js": {
@@ -152,11 +152,6 @@
   "index.html": {
     "mtime": 1785749591.9237666,
     "ast_hash": "ab15d945611338f0298c816c2552ffb5",
-    "semantic_hash": ""
-  },
-  "Board/dailyReward.js": {
-    "mtime": 1785805339.0207648,
-    "ast_hash": "dc31726b8641978f7dbd36d09c2a9ff0",
     "semantic_hash": ""
   }
 }

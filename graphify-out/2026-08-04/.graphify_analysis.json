@@ -1,0 +1,250 @@
+{
+  "communities": {
+    "0": [
+      "index_html",
+      "js_engine_calculator",
+      "js_engine_calculator_calculator",
+      "js_engine_ledger",
+      "js_engine_ledger_ledger",
+      "js_engine_optimizer",
+      "js_engine_optimizer_optimizer",
+      "js_engine_simulator",
+      "js_engine_simulator_simulator",
+      "js_export_exporters",
+      "js_export_exporters_exportcsv",
+      "js_export_exporters_exportexcel",
+      "js_export_exporters_exportpdf",
+      "js_ui_calendar",
+      "js_ui_calendar_calendarui",
+      "js_ui_comparison",
+      "js_ui_comparison_comparisonui",
+      "js_ui_detail",
+      "js_ui_detail_detailui",
+      "js_ui_summary",
+      "js_ui_summary_summaryui",
+      "plan_fix_bot_state",
+      "plan_live_mode"
+    ],
+    "1": [
+      "board_alert",
+      "board_alert_axios",
+      "board_alert_sendalert",
+      "board_executor",
+      "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
+      "board_executor_executeinvest",
+      "board_executor_rundailyjob",
+      "board_executor_sendalert",
+      "board_firebase",
+      "board_firebase_admin",
+      "board_firebase_db",
+      "board_firebase_getdoc",
+      "board_firebase_onsnapshot",
+      "board_firebase_runtransaction",
+      "board_firebase_setdoc",
+      "board_index_start",
+      "board_investor",
+      "board_investor_executeinvest",
+      "board_investor_puppeteer"
+    ],
+    "2": [
+      "board_readme",
+      "js_app",
+      "js_app_app",
+      "js_app_livemode",
+      "js_app_setuppassword",
+      "js_app_syncfromfirebase",
+      "js_app_synctofirebase",
+      "js_app_trylogin",
+      "js_firebase",
+      "js_firebase_firebasedb",
+      "js_ui_dailylog",
+      "plan_finance_tracker"
+    ],
+    "3": [
+      "axios",
+      "board_package_dependencies",
+      "board_package_dependencies_axios",
+      "board_package_dependencies_dotenv",
+      "board_package_dependencies_firebase_admin",
+      "board_package_dependencies_node_cron",
+      "board_package_dependencies_puppeteer",
+      "dotenv",
+      "firebase_admin",
+      "node_cron",
+      "puppeteer"
+    ],
+    "4": [
+      "board_firebase_servertimestamp",
+      "board_index",
+      "board_index_cron",
+      "board_index_db_servertimestamp",
+      "board_index_openbrowser",
+      "board_index_puppeteer",
+      "board_index_rundailyjob",
+      "board_index_runtask1",
+      "board_index_sendalert",
+      "board_index_sleep",
+      "board_index_waitforturn"
+    ],
+    "5": [
+      "board_package",
+      "board_package_description",
+      "board_package_main",
+      "board_package_name",
+      "board_package_scripts",
+      "board_package_scripts_start",
+      "board_package_version"
+    ],
+    "6": [
+      "kilo_kilo",
+      "kilo_kilo_plugin",
+      "kilo_kilo_schema",
+      "kilo_kilo_snapshot",
+      "ref_file_d_investation_kilo_plugins_graphify_js"
+    ],
+    "7": [
+      "js_ui_bot_status",
+      "js_ui_bot_status_botstatusui"
+    ],
+    "8": [
+      "kilo_plugins_graphify",
+      "kilo_plugins_graphify_graphifyplugin"
+    ],
+    "9": [
+      "agents_md"
+    ],
+    "10": [
+      "plan_date_transactions"
+    ],
+    "11": [
+      "plan_manual_income"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09881422924901186,
+    "1": 0.17543859649122806,
+    "2": 0.2727272727272727,
+    "3": 0.18181818181818182,
+    "4": 0.2727272727272727,
+    "5": 0.2857142857142857,
+    "6": 0.4,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0
+  },
+  "gods": [
+    {
+      "id": "board_executor_rundailyjob",
+      "label": "runDailyJob()",
+      "degree": 9
+    },
+    {
+      "id": "board_index_runtask1",
+      "label": "runTask1()",
+      "degree": 6
+    },
+    {
+      "id": "board_alert_sendalert",
+      "label": "sendAlert()",
+      "degree": 5
+    },
+    {
+      "id": "board_firebase_servertimestamp",
+      "label": "serverTimestamp()",
+      "degree": 5
+    },
+    {
+      "id": "js_firebase_firebasedb",
+      "label": "FirebaseDB",
+      "degree": 5
+    },
+    {
+      "id": "board_index_start",
+      "label": "start()",
+      "degree": 4
+    },
+    {
+      "id": "board_firebase_db",
+      "label": "db",
+      "degree": 3
+    },
+    {
+      "id": "board_firebase_getdoc",
+      "label": "getDoc()",
+      "degree": 3
+    },
+    {
+      "id": "board_firebase_setdoc",
+      "label": "setDoc()",
+      "degree": 3
+    },
+    {
+      "id": "board_firebase_runtransaction",
+      "label": "runTransaction()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Plan: Real-Time Finance Tracker",
+      "target": "js/ui/dailyLog.js",
+      "source_files": [
+        ".kilo/plans/1785734141555-realtime-finance-tracker.md",
+        "js/ui/dailyLog.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "cites",
+      "why": "crosses file types (code \u2194 doc); connects across different repos/directories"
+    },
+    {
+      "source": "runDailyJob()",
+      "target": "serverTimestamp()",
+      "source_files": [
+        "Board/executor.js",
+        "Board/firebase.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "setupPassword()",
+      "target": "FirebaseDB",
+      "source_files": [
+        "js/app.js",
+        "js/firebase.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "peripheral node `setupPassword()` unexpectedly reaches hub `FirebaseDB`"
+    },
+    {
+      "source": "syncToFirebase()",
+      "target": "FirebaseDB",
+      "source_files": [
+        "js/app.js",
+        "js/firebase.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "peripheral node `syncToFirebase()` unexpectedly reaches hub `FirebaseDB`"
+    },
+    {
+      "source": "runDailyJob()",
+      "target": "sendAlert()",
+      "source_files": [
+        "Board/executor.js",
+        "Board/alert.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 12751,
+    "output": 1782
+  }
+}
