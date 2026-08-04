@@ -1,7 +1,8 @@
 const admin = require('firebase-admin');
+const { Logger } = require('./logger');
 
 if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-  console.warn("WARNING: GOOGLE_APPLICATION_CREDENTIALS not set.");
+  Logger.warning('GOOGLE_APPLICATION_CREDENTIALS not set', { env: process.env.NODE_ENV || 'unset' });
 }
 
 admin.initializeApp({

@@ -5,6 +5,7 @@ const { runDailyJob } = require('./executor');
 const { sendAlert } = require('./alert');
 const { db, serverTimestamp } = require('./firebase');
 const { claimDailyReward } = require('./dailyReward');
+const { Logger } = require('./logger');
 
 // ==========================================
 // PENGATURAN & ENVS
@@ -17,21 +18,21 @@ const cronSchedule = process.env.BOT_CRON_SCHEDULE || '0 6 * * *';
 // ==========================================
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-let isBrowserBusy = false; 
+let isBrowserBusy = false;
 
 async function waitForTurn(taskName) {
   if (isBrowserBusy) {
-    console.log(`[SISTEM] ${taskName} sedang mengantre, menunggu sesi browser lain selesai...`);
+    Logger.warning(`${taskName} sedang mengantre, menunggu sesi browser lain selesai...`, { taskName });
   }
   while (isBrowserBusy) {
-    await sleep(1000); 
+    await sleep(1000);
   }
 }
 
 async function openBrowser() {
   const browser = await puppeteer.launch({
     headless: "new",
-    executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', 
+    executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -47,27 +48,25 @@ async function openBrowser() {
 
 // ==========================================
 // TUGAS 1: CEK SALDO & KLAIM EASTER EGG
-// Membaca saldo aktual, menyimpannya ke Firebase, lalu mengklaim poin
 // ==========================================
 async function runTask1() {
-  await waitForTurn("TUGAS 1");
+  await waitForTurn("TUGAS_1");
   isBrowserBusy = true;
-  
-  console.log("\n===========================================");
-  console.log("--- [TUGAS 1] MEMULAI PROSES CEK SALDO & KLAIM EASTER EGG ---");
-  console.log("===========================================");
-  
+
+  Logger.info("Memulai proses cek saldo & klaim easter egg", { task: "TUGAS_1" });
+
   let browser;
   try {
     const setup = await openBrowser();
     browser = setup.browser;
     const page = setup.page;
 
-    console.log("[INFO] [TUGAS 1] Membuka halaman utama...");
+    Logger.info("Membuka halaman utama", { task: "TUGAS_1", url: "https://boardleaders.rf.gd/" });
+
     await page.goto('https://boardleaders.rf.gd/', { waitUntil: 'networkidle2', timeout: 60000 });
 
-    // ── Ambil saldo aktual sebelum klaim ──────────────────────────
-    console.log("[INFO] [TUGAS 1] Memindai saldo terkini dari tabel klasemen...");
+    Logger.info("Memindai saldo terkini dari tabel klasemen", { task: "TUGAS_1", prefix: PREFIX_NAME });
+
     const balance = await page.evaluate((prefix) => {
       const rows = Array.from(document.querySelectorAll('tr'));
       for (const row of rows) {
@@ -80,67 +79,62 @@ async function runTask1() {
     }, PREFIX_NAME);
 
     if (balance !== null) {
-      console.log(`[SUKSES] [TUGAS 1] Saldo saat ini berhasil ditarik: ${balance}`);
+      Logger.success(`Saldo berhasil ditarik: ${balance}`, { task: "TUGAS_1", balance });
       await db.collection('botState').doc('balance').set({
         balance: balance,
         lastUpdated: serverTimestamp()
       }, { merge: true });
-      console.log("[INFO] [TUGAS 1] Saldo berhasil disimpan/diperbarui ke Firebase.");
+      Logger.info("Saldo berhasil disimpan ke Firebase", { task: "TUGAS_1", collection: "botState/balance" });
     } else {
-      console.log("[PERINGATAN] [TUGAS 1] Gagal menemukan data saldo untuk prefix yang ditentukan.");
+      Logger.warning("Gagal menemukan data saldo untuk prefix yang ditentukan", { task: "TUGAS_1", prefix: PREFIX_NAME });
     }
 
-    // ── Klaim Easter Egg ──────────────────────────────────────────
-    console.log("[INFO] [TUGAS 1] Mencari elemen tombol Easter Egg...");
+    Logger.info("Mencari elemen tombol Easter Egg", { task: "TUGAS_1" });
     await page.waitForSelector('.easter-egg', { visible: true, timeout: 30000 });
     await page.click('.easter-egg');
-    
-    console.log("[INFO] [TUGAS 1] Mengisi formulir klaim...");
+
+    Logger.info("Mengisi formulir klaim", { task: "TUGAS_1" });
     await page.waitForSelector('#eggModal', { visible: true, timeout: 10000 });
     await page.select('select[name="class_id"]', '4');
     await page.type('input[name="rep_password"]', '104anakmrkalebyangkerenbngtwowamazinggantengnice');
     await page.click('button[name="claim_egg"]');
-    
-    console.log("[INFO] [TUGAS 1] Formulir klaim terkirim. Menunggu respons server...");
-    await sleep(3000); 
-    
+
+    Logger.info("Formulir klaim terkirim, menunggu respons server", { task: "TUGAS_1" });
+    await sleep(3000);
+
     const alertText = await page.evaluate(() => {
       const el = document.querySelector('.alert');
       return el ? el.innerText.trim() : null;
     });
 
     if (alertText) {
-      console.log(`[INFO] [TUGAS 1] Respons server: "${alertText}"`);
+      Logger.info(`Respons server: "${alertText}"`, { task: "TUGAS_1", response: alertText });
     } else {
-      console.log("[SUKSES] [TUGAS 1] Proses klaim selesai (Tidak ada pesan error/peringatan dari server).");
+      Logger.success("Proses klaim selesai (tidak ada pesan error/peringatan)", { task: "TUGAS_1" });
     }
-  } catch (e) {
-    console.error(`[ERROR] [TUGAS 1] Proses terhenti karena kesalahan: ${e.message}`);
+  } catch (error) {
+    Logger.error(`Proses terhenti karena kesalahan: ${error.message}`, { task: "TUGAS_1", error: error.message });
   } finally {
     if (browser) {
       await browser.close();
-      console.log("[INFO] [TUGAS 1] Sesi browser ditutup dan memori dibebaskan.\n");
+      Logger.info("Sesi browser ditutup dan memori dibersihkan", { task: "TUGAS_1" });
     }
-    isBrowserBusy = false; 
+    isBrowserBusy = false;
   }
 }
 
 // ==========================================
 // TUGAS 2: KLAIM DAILY REWARD
-// Login ke dashboard dan klik klaim daily reward
 // ==========================================
 async function runTask2() {
-  await waitForTurn("TUGAS 2");
+  await waitForTurn("TUGAS_2");
   isBrowserBusy = true;
 
-  console.log("\n===========================================");
-  console.log("--- [TUGAS 2] MEMULAI PROSES KLAIM DAILY REWARD ---");
-  console.log("===========================================");
+  Logger.info("Memulai proses klaim daily reward", { task: "TUGAS_2" });
 
-  // Check if daily reward is enabled
   const DAILY_REWARD_ENABLED = process.env.DAILY_REWARD_ENABLED !== 'false' && process.env.DAILY_REWARD_ENABLED !== '0';
   if (!DAILY_REWARD_ENABLED) {
-    console.log('[INFO] [TUGAS 2] Daily reward dilewati (DAILY_REWARD_ENABLED=false).');
+    Logger.info("Daily reward dilewati (fitur dinonaktifkan)", { task: "TUGAS_2", enabled: false });
     isBrowserBusy = false;
     return;
   }
@@ -150,20 +144,20 @@ async function runTask2() {
 
     if (result.success) {
       if (result.alreadyClaimed) {
-        console.log('[SUKSES] [TUGAS 2] Daily reward sudah diklaim hari ini.');
+        Logger.success("Daily reward sudah diklaim hari ini", { task: "TUGAS_2", alreadyClaimed: true });
       } else {
-        console.log(`[SUKSES] [TUGAS 2] Daily reward berhasil diklaim! Response: "${result.data}"`);
+        Logger.success(`Daily reward berhasil diklaim: ${result.data}`, { task: "TUGAS_2", data: result.data });
       }
     } else {
-      console.error(`[ERROR] [TUGAS 2] Gagal klaim daily reward: ${result.error}`);
+      Logger.error(`Gagal klaim daily reward: ${result.error}`, { task: "TUGAS_2", error: result.error });
       await sendAlert(`❌ Daily reward gagal diklaim: ${result.error}`);
     }
-  } catch (e) {
-    console.error(`[ERROR] [TUGAS 2] Proses terhenti karena kesalahan: ${e.message}`);
-    await sendAlert(`❌ TUGAS 2 ERROR: ${e.message}`);
+  } catch (error) {
+    Logger.critical(`Proses terhenti karena kesalahan: ${error.message}`, { task: "TUGAS_2", error: error.message });
+    await sendAlert(`❌ TUGAS 2 ERROR: ${error.message}`);
   } finally {
     isBrowserBusy = false;
-    console.log("[INFO] [TUGAS 2] Selesai.\n");
+    Logger.info("Selesai", { task: "TUGAS_2" });
   }
 }
 
@@ -171,45 +165,43 @@ async function runTask2() {
 // SISTEM PENJADWALAN & START PROGRAM
 // ==========================================
 function start() {
-  console.log("=== SISTEM BOT OTOMATISASI AKTIF ===");
-  console.log(`Menunggu jadwal eksekusi berjalan... (Jadwal Cron: ${cronSchedule})\n`);
-  sendAlert(`🤖 Bot berhasil dinyalakan!\nJadwal eksekusi: ${cronSchedule}\nMengeksekusi run pertama saat boot...`);
+  Logger.info("Sistem bot otomatisasi aktif", { cronSchedule });
+  sendAlert(`Bot berhasil dinyalakan!\nJadwal eksekusi: ${cronSchedule}\nMengeksekusi run pertama saat boot...`);
 
-  // FITUR OVERRIDE: Jalankan satu kali saat bot baru dinyalakan
-  console.log("\n[SISTEM] Mengeksekusi rutinitas awal saat booting...");
+  Logger.info("Mengeksekusi rutinitas awal saat booting", { phase: "boot" });
+
   (async () => {
     try {
-      await runTask1();       // Cek saldo & Klaim Easter Egg
-      await runTask2();       // Klaim daily reward
-      await runDailyJob();    // Cek & eksekusi investasi
-      console.log("[SISTEM] Rutinitas awal selesai. Bot kembali ke mode siaga (Cron).\n");
-    } catch (err) {
-      console.error("[ERROR] Terjadi kesalahan saat rutinitas awal:", err);
+      await runTask1();
+      await runTask2();
+      await runDailyJob();
+      Logger.success("Rutinitas awal selesai. Bot kembali ke mode siaga (Cron)", { phase: "boot" });
+    } catch (error) {
+      Logger.critical("Terjadi kesalahan saat rutinitas awal", { phase: "boot", error: error.message });
     }
   })();
 
-  // Mode Siaga: Satu cron untuk mengeksekusi urutan tugas harian sesuai jadwal
   cron.schedule(cronSchedule, async () => {
-    console.log(`\n[${new Date().toISOString()}] === MEMULAI RUTINITAS HARIAN BOT ===`);
-    await runTask1();    // Cek saldo & Klaim Easter Egg
-    await runTask2();    // Klaim daily reward
-    await runDailyJob(); // Cek jadwal investasi di Firebase -> eksekusi jika ada
-    console.log(`[${new Date().toISOString()}] === RUTINITAS HARIAN SELESAI ===\n`);
+    Logger.info("=== MEMULAI RUTINITAS HARIAN BOT ===", { triggeredAt: new Date().toISOString() });
+    await runTask1();
+    await runTask2();
+    await runDailyJob();
+    Logger.info("=== RUTINITAS HARIAN SELESAI ===", { triggeredAt: new Date().toISOString() });
   });
 }
 
 process.on('uncaughtException', (error) => {
-  console.error('[CRITICAL ERROR] Uncaught Exception:', error);
+  Logger.critical("Bot crash (mendadak berhenti)", { error: error.message });
   sendAlert(`❌ BOT CRASH (Mendadak Berhenti): ${error.message}`);
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-  console.error('[CRITICAL ERROR] Unhandled Rejection at:', promise, 'reason:', reason);
+  Logger.critical("Bot crash (proses ditolak)", { reason, promise: promise.toString() });
   sendAlert(`❌ BOT CRASH (Proses Ditolak): ${reason}`);
 });
 
 process.on('SIGINT', () => {
-  console.log("\n[SISTEM] Proses bot dihentikan secara manual (SIGINT).");
+  Logger.info("Proses bot dihentikan secara manual (SIGINT)", { signal: "SIGINT" });
   process.exit(0);
 });
 

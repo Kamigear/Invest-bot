@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { Logger } = require('./logger');
 
 /**
  * Automate investment form submission on rep_panel.php using Puppeteer
@@ -12,8 +13,8 @@ async function executeInvest(entry) {
     const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
     const chromPath = process.env.CHROMIUM_PATH || '/usr/bin/chromium';
 
-    console.log(`[INVESTOR] Memulai proses investasi ${entry.amount} poin...`);
-    
+    Logger.info("Memulai proses investasi", { amount: entry.amount, expectedReturn: entry.maturityDate, plan: "30 days" });
+
     browser = await puppeteer.launch({
       headless: "new",
       executablePath: chromPath,
@@ -25,20 +26,22 @@ async function executeInvest(entry) {
         '--disable-software-rasterizer'
       ]
     });
-    
+
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-    
-    console.log("[INVESTOR] Membuka halaman login rep_panel.php...");
+
+    Logger.info("Membuka halaman login rep_panel.php", { url: panelUrl });
+
     await page.goto(panelUrl, { waitUntil: 'networkidle2', timeout: 60000 });
 
-    console.log("[INVESTOR] Mengisi data login...");
+    Logger.info("Mengisi data login", { classId });
+
     await page.waitForSelector('select[name="class_id"]', { visible: true, timeout: 15000 });
     await page.select('select[name="class_id"]', classId);
     await page.type('input[name="password"]', password);
-    
+
     await Promise.all([
-      page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }), 
+      page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
       page.click('button[name="login"]')
     ]);
 
@@ -47,29 +50,29 @@ async function executeInvest(entry) {
     });
 
     if (loginFailed) {
+      Logger.error("Login ditolak", { error: "Password salah atau class_id tidak cocok" });
       return { success: false, data: null, error: "Login Ditolak! Password salah atau class_id tidak cocok." };
     }
-    console.log("[INVESTOR] Login Sukses! Mengisi form investasi...");
 
-    // Wait for the investment form fields
+    Logger.success("Login sukses, mengisi form investasi", { amount: entry.amount });
+
     await page.waitForSelector('input[name="amount"]', { visible: true, timeout: 15000 });
-    
-    // Fill the investment amount
+
     await page.$eval('input[name="amount"]', el => el.value = '');
     await page.type('input[name="amount"]', String(entry.amount));
-    
-    // Select the investment plan (30 days)
+
     await page.select('select[name="plan"]', '30');
-    
-    // Submit the form
-    console.log("[INVESTOR] Mengklik tombol Invest...");
+
+    Logger.info("Mengklik tombol Invest", { amount: entry.amount });
+
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
       page.click('button.btn-green')
     ]);
 
-    console.log("[INVESTOR] Form investasi dikirim. Mengecek respon...");
-    await new Promise(resolve => setTimeout(resolve, 3000)); // sleep 3s to let page process
+    Logger.info("Form investasi dikirim, menunggu respons server", { amount: entry.amount });
+
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
     const alertText = await page.evaluate(() => {
       const el = document.querySelector('.alert');
@@ -77,24 +80,26 @@ async function executeInvest(entry) {
     });
 
     if (alertText) {
-      console.log(`[INVESTOR SERVER RESPONSE]: "${alertText}"`);
-      // Check if it's an error message or success message
+      Logger.info(`Respons server: "${alertText}"`, { serverResponse: alertText });
       const lowerAlert = alertText.toLowerCase();
       if (lowerAlert.includes('error') || lowerAlert.includes('fail') || lowerAlert.includes('gagal') || lowerAlert.includes('tidak cukup')) {
+        Logger.error("Investasi gagal berdasarkan respons server", { serverResponse: alertText });
         return { success: false, data: null, error: `Pesan server: ${alertText}` };
       }
+      Logger.success("Investasi berhasil berdasarkan respons server", { serverResponse: alertText });
       return { success: true, data: alertText, error: null };
     }
 
+    Logger.success("Investasi berhasil disubmit (tidak ada pesan error dari server)", { amount: entry.amount });
     return { success: true, data: "Investasi berhasil disubmit (tidak ada pesan error dari server)", error: null };
 
   } catch (error) {
-    console.error(`[INVESTOR CRITICAL ERROR]: ${error.message}`);
+    Logger.critical("Critical error dalam proses investasi", { error: error.message, stack: error.stack });
     return { success: false, data: null, error: error.message };
   } finally {
     if (browser) {
       await browser.close();
-      console.log("[INVESTOR] Browser ditutup.");
+      Logger.info("Browser ditutup", { component: "investor" });
     }
   }
 }

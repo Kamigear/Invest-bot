@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
+const { Logger } = require('./logger');
 
 /**
  * Automate daily reward claim on the rep_panel.php dashboard
- * Logs in and clicks the daily reward button
+ * Daily reward is auto-claimed upon login, no separate button needed
  */
 async function claimDailyReward() {
   let browser;
@@ -12,7 +13,7 @@ async function claimDailyReward() {
     const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
     const chromPath = process.env.CHROMIUM_PATH || '/usr/bin/chromium';
 
-    console.log('[DAILY_REWARD] Memulai proses klaim daily reward...');
+    Logger.info("Memulai proses klaim daily reward", { panelUrl });
 
     browser = await puppeteer.launch({
       headless: "new",
@@ -29,10 +30,12 @@ async function claimDailyReward() {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-    console.log('[DAILY_REWARD] Membuka halaman login...');
+    Logger.info("Membuka halaman login", { url: panelUrl });
+
     await page.goto(panelUrl, { waitUntil: 'networkidle2', timeout: 60000 });
 
-    console.log('[DAILY_REWARD] Mengisi data login...');
+    Logger.info("Mengisi data login", { classId });
+
     await page.waitForSelector('select[name="class_id"]', { visible: true, timeout: 15000 });
     await page.select('select[name="class_id"]', classId);
     await page.type('input[name="password"]', password);
@@ -42,91 +45,45 @@ async function claimDailyReward() {
       page.click('button[name="login"]')
     ]);
 
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
     const loginFailed = await page.evaluate(() => {
       return document.body.innerText.includes('Invalid credential configuration profile');
     });
 
     if (loginFailed) {
+      Logger.error("Login ditolak", { error: "Password salah atau class_id tidak cocok" });
       return { success: false, data: null, error: 'Login Ditolak! Password salah atau class_id tidak cocok.' };
     }
-    console.log('[DAILY_REWARD] Login sukses! Mencari tombol klaim daily reward...');
 
-    // Cari tombol daily reward - selector bisa disesuaikan
-    // Beberapa kemungkinan:
-    const rewardClaimed = await page.evaluate(() => {
-      // Cek apakah tombol klaim ada / sudah diklaim
-      const claimBtn = document.querySelector('.daily-reward-btn, .btn-claim-reward, [id*="daily"], [id*="reward"]');
+    Logger.success("Login sukses - daily reward biasanya otomatis diklaim saat login", { classId });
 
-      if (claimBtn) {
-        const btnText = claimBtn.innerText.toLowerCase();
-        const btnDisabled = claimBtn.disabled || claimBtn.classList.contains('disabled', 'claimed', 'done');
-
-        if (btnDisabled || btnText.includes('claimed') || btnText.includes('diklaim') || btnText.includes('done')) {
-          return { status: 'already_claimed', text: btnText };
-        }
-        return { status: 'available', element: claimBtn };
-      }
-
-      // Cari berdasarkan teks
-      const buttons = Array.from(document.querySelectorAll('button'));
-      for (const btn of buttons) {
-        const text = btn.innerText.toLowerCase();
-        if (text.includes('klaim') || text.includes('claim') || text.includes('daily')) {
-          const disabled = btn.disabled || btn.classList.contains('disabled', 'claimed');
-          if (disabled) {
-            return { status: 'already_claimed', text: text };
-          }
-          return { status: 'available', element: btn };
-        }
-      }
-
-      return { status: 'not_found' };
+    const responseText = await page.evaluate(() => {
+      const el = document.querySelector('.alert, .notification, #message');
+      return el ? el.innerText.trim() : null;
     });
 
-    if (rewardClaimed.status === 'already_claimed') {
-      console.log(`[DAILY_REWARD] Reward sudah diklaim: "${rewardClaimed.text}"`);
-      return { success: true, data: 'Reward sudah diklaim hari ini', error: null, alreadyClaimed: true };
-    }
-
-    if (rewardClaimed.status === 'not_found') {
-      console.log('[DAILY_REWARD] Tombol klaim daily reward tidak ditemukan.');
-      return { success: true, data: 'Tombol klaim tidak ditemukan - mungkin sudah otomatis diklaim', error: null, alreadyClaimed: true };
-    }
-
-    if (rewardClaimed.status === 'available') {
-      console.log('[DAILY_REWARD] Menekan tombol klaim daily reward...');
-
-      await Promise.all([
-        page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }).catch(() => {}),
-        rewardClaimed.element.click()
-      ]);
-
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
-      const responseText = await page.evaluate(() => {
-        const el = document.querySelector('.alert, .notification, #message');
-        return el ? el.innerText.trim() : null;
-      });
-
-      if (responseText) {
-        console.log(`[DAILY_REWARD SERVER RESPONSE]: "${responseText}"`);
-        const lowerText = responseText.toLowerCase();
-        if (lowerText.includes('error') || lowerText.includes('fail') || lowerText.includes('gagal')) {
-          return { success: false, data: null, error: `Pesan server: ${responseText}`, alreadyClaimed: false };
-        }
-        return { success: true, data: responseText, error: null, alreadyClaimed: false };
+    if (responseText) {
+      Logger.info(`Respons server: "${responseText}"`, { serverResponse: responseText });
+      const lowerText = responseText.toLowerCase();
+      if (lowerText.includes('error') || lowerText.includes('fail') || lowerText.includes('gagal')) {
+        Logger.error("Daily reward gagal berdasarkan respons server", { serverResponse: responseText });
+        return { success: false, data: null, error: `Pesan server: ${responseText}`, alreadyClaimed: false };
       }
-
-      return { success: true, data: 'Daily reward berhasil diklaim', error: null, alreadyClaimed: false };
+      Logger.success("Daily reward berhasil diklaim", { serverResponse: responseText });
+      return { success: true, data: responseText, error: null, alreadyClaimed: false };
     }
+
+    Logger.success("Daily reward selesai (tidak ada pesan error/peringatan)", { alreadyClaimed: true });
+    return { success: true, data: 'Daily reward otomatis diklaim saat login', error: null, alreadyClaimed: false };
 
   } catch (error) {
-    console.error(`[DAILY_REWARD CRITICAL ERROR]: ${error.message}`);
+    Logger.critical("Critical error dalam proses daily reward", { error: error.message, stack: error.stack });
     return { success: false, data: null, error: error.message, alreadyClaimed: false };
   } finally {
     if (browser) {
       await browser.close();
-      console.log('[DAILY_REWARD] Browser ditutup.');
+      Logger.info("Browser ditutup", { component: "dailyReward" });
     }
   }
 }

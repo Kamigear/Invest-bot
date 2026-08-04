@@ -1,0 +1,2606 @@
+{
+  "nodes": [
+    {
+      "id": "kilo_kilo",
+      "label": "kilo.json",
+      "file_type": "code",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "kilo_kilo_schema",
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "kilo_kilo_plugin",
+      "label": "plugin",
+      "file_type": "code",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "ref_file_d_investation_kilo_plugins_graphify_js",
+      "label": "file:///D:/Investation/.kilo/plugins/graphify.js",
+      "file_type": "concept",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "kilo_kilo_snapshot",
+      "label": "snapshot",
+      "file_type": "code",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "kilo_plugins_graphify",
+      "label": "graphify.js",
+      "file_type": "code",
+      "source_file": ".kilo/plugins/graphify.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "kilo_plugins_graphify_graphifyplugin",
+      "label": "GraphifyPlugin()",
+      "file_type": "code",
+      "source_file": ".kilo/plugins/graphify.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_alert",
+      "label": "alert.js",
+      "file_type": "code",
+      "source_file": "Board/alert.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_alert_axios",
+      "label": "axios",
+      "file_type": "code",
+      "source_file": "Board/alert.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_alert_logger",
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/alert.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_alert_sendalert",
+      "label": "sendAlert()",
+      "file_type": "code",
+      "source_file": "Board/alert.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_dailyreward",
+      "label": "dailyReward.js",
+      "file_type": "code",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_dailyreward_puppeteer",
+      "label": "puppeteer",
+      "file_type": "code",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_dailyreward_logger",
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_dailyreward_claimdailyreward",
+      "label": "claimDailyReward()",
+      "file_type": "code",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_executor",
+      "label": "executor.js",
+      "file_type": "code",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
+      "label": "{ db, runTransaction, serverTimestamp, getDoc, setDoc }",
+      "file_type": "code",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_executor_sendalert",
+      "label": "{ sendAlert }",
+      "file_type": "code",
+      "source_file": "Board/executor.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_executor_executeinvest",
+      "label": "{ executeInvest }",
+      "file_type": "code",
+      "source_file": "Board/executor.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_executor_logger",
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/executor.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_executor_rundailyjob",
+      "label": "runDailyJob()",
+      "file_type": "code",
+      "source_file": "Board/executor.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase",
+      "label": "firebase.js",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_admin",
+      "label": "admin",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_logger",
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_db",
+      "label": "db",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_getdoc",
+      "label": "getDoc()",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_setdoc",
+      "label": "setDoc()",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_runtransaction",
+      "label": "runTransaction()",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_servertimestamp",
+      "label": "serverTimestamp()",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_firebase_onsnapshot",
+      "label": "onSnapshot()",
+      "file_type": "code",
+      "source_file": "Board/firebase.js",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index",
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_cron",
+      "label": "cron",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_puppeteer",
+      "label": "puppeteer",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_rundailyjob",
+      "label": "{ runDailyJob }",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_sendalert",
+      "label": "{ sendAlert }",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_db_servertimestamp",
+      "label": "{ db, serverTimestamp }",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_claimdailyreward",
+      "label": "{ claimDailyReward }",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_logger",
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_sleep",
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_waitforturn",
+      "label": "waitForTurn()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L23",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_openbrowser",
+      "label": "openBrowser()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_runtask1",
+      "label": "runTask1()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L52",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_runtask2",
+      "label": "runTask2()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L129",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_index_start",
+      "label": "start()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L167",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_investor",
+      "label": "investor.js",
+      "file_type": "code",
+      "source_file": "Board/investor.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_investor_puppeteer",
+      "label": "puppeteer",
+      "file_type": "code",
+      "source_file": "Board/investor.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_investor_logger",
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/investor.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_investor_executeinvest",
+      "label": "executeInvest()",
+      "file_type": "code",
+      "source_file": "Board/investor.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger",
+      "label": "logger.js",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_os",
+      "label": "os",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_log_levels",
+      "label": "LOG_LEVELS",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_colors",
+      "label": "COLORS",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_level_icons",
+      "label": "LEVEL_ICONS",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L22",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_gettimestamp",
+      "label": "getTimestamp()",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_gethostname",
+      "label": "getHostname()",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L36",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_formatmeta",
+      "label": "formatMeta()",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L40",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_formatline",
+      "label": "formatLine()",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_logger_logger",
+      "label": "Logger",
+      "file_type": "code",
+      "source_file": "Board/logger.js",
+      "source_location": "L68",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package",
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_name",
+      "label": "name",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_version",
+      "label": "version",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_description",
+      "label": "description",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_main",
+      "label": "main",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_scripts",
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_scripts_start",
+      "label": "start",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_dependencies",
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_dependencies_axios",
+      "label": "axios",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "axios",
+      "label": "axios",
+      "file_type": "concept",
+      "source_file": "Board/package.json",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_dependencies_dotenv",
+      "label": "dotenv",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "dotenv",
+      "label": "dotenv",
+      "file_type": "concept",
+      "source_file": "Board/package.json",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_dependencies_firebase_admin",
+      "label": "firebase-admin",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "firebase_admin",
+      "label": "firebase-admin",
+      "file_type": "concept",
+      "source_file": "Board/package.json",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_dependencies_node_cron",
+      "label": "node-cron",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "node_cron",
+      "label": "node-cron",
+      "file_type": "concept",
+      "source_file": "Board/package.json",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "board_package_dependencies_puppeteer",
+      "label": "puppeteer",
+      "file_type": "code",
+      "source_file": "Board/package.json",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "puppeteer",
+      "label": "puppeteer",
+      "file_type": "concept",
+      "source_file": "Board/package.json",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app",
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app_livemode",
+      "label": "LiveMode",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app_app",
+      "label": "App",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L106",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app_trylogin",
+      "label": "tryLogin()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L1015",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app_setuppassword",
+      "label": "setupPassword()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L1044",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app_synctofirebase",
+      "label": "syncToFirebase()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L1083",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_app_syncfromfirebase",
+      "label": "syncFromFirebase()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L1112",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_calculator",
+      "label": "calculator.js",
+      "file_type": "code",
+      "source_file": "js/engine/calculator.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_calculator_calculator",
+      "label": "Calculator",
+      "file_type": "code",
+      "source_file": "js/engine/calculator.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_ledger",
+      "label": "ledger.js",
+      "file_type": "code",
+      "source_file": "js/engine/ledger.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_ledger_ledger",
+      "label": "Ledger",
+      "file_type": "code",
+      "source_file": "js/engine/ledger.js",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_optimizer",
+      "label": "optimizer.js",
+      "file_type": "code",
+      "source_file": "js/engine/optimizer.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_optimizer_optimizer",
+      "label": "Optimizer",
+      "file_type": "code",
+      "source_file": "js/engine/optimizer.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_simulator",
+      "label": "simulator.js",
+      "file_type": "code",
+      "source_file": "js/engine/simulator.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_engine_simulator_simulator",
+      "label": "Simulator",
+      "file_type": "code",
+      "source_file": "js/engine/simulator.js",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_export_exporters",
+      "label": "exporters.js",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_export_exporters_exportcsv",
+      "label": "ExportCSV",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_export_exporters_exportexcel",
+      "label": "ExportExcel",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L46",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_export_exporters_exportpdf",
+      "label": "ExportPDF",
+      "file_type": "code",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L93",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firebase",
+      "label": "firebase.js",
+      "file_type": "code",
+      "source_file": "js/firebase.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_firebase_firebasedb",
+      "label": "FirebaseDB",
+      "file_type": "code",
+      "source_file": "js/firebase.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_bot_status",
+      "label": "bot_status.js",
+      "file_type": "code",
+      "source_file": "js/ui/bot_status.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_bot_status_botstatusui",
+      "label": "BotStatusUI",
+      "file_type": "code",
+      "source_file": "js/ui/bot_status.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_calendar",
+      "label": "calendar.js",
+      "file_type": "code",
+      "source_file": "js/ui/calendar.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_calendar_calendarui",
+      "label": "CalendarUI",
+      "file_type": "code",
+      "source_file": "js/ui/calendar.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_comparison",
+      "label": "comparison.js",
+      "file_type": "code",
+      "source_file": "js/ui/comparison.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_comparison_comparisonui",
+      "label": "ComparisonUI",
+      "file_type": "code",
+      "source_file": "js/ui/comparison.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_detail",
+      "label": "detail.js",
+      "file_type": "code",
+      "source_file": "js/ui/detail.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_detail_detailui",
+      "label": "DetailUI",
+      "file_type": "code",
+      "source_file": "js/ui/detail.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_summary",
+      "label": "summary.js",
+      "file_type": "code",
+      "source_file": "js/ui/summary.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_ui_summary_summaryui",
+      "label": "SummaryUI",
+      "file_type": "code",
+      "source_file": "js/ui/summary.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "kilo_kilo",
+      "target": "kilo_kilo_schema",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "kilo_kilo",
+      "target": "kilo_kilo_plugin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "kilo_kilo_plugin",
+      "target": "ref_file_d_investation_kilo_plugins_graphify_js",
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "kilo_kilo",
+      "target": "kilo_kilo_snapshot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/kilo.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "kilo_plugins_graphify",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plugins/graphify.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "kilo_plugins_graphify",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plugins/graphify.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "kilo_plugins_graphify",
+      "target": "kilo_plugins_graphify_graphifyplugin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".kilo/plugins/graphify.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "ref_axios",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/alert.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "board_alert_axios",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/alert.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "board_logger",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/alert.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "board_logger_logger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/alert.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "board_alert_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/alert.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "board_alert_sendalert",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/alert.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_alert",
+      "target": "board_alert_sendalert",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/alert.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "ref_puppeteer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "board_dailyreward_puppeteer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "board_logger",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "board_logger_logger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "board_dailyreward_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "board_dailyreward_claimdailyreward",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_dailyreward",
+      "target": "board_dailyreward_claimdailyreward",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/dailyReward.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_firebase",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_firebase_db",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_firebase_runtransaction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_firebase_servertimestamp",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_firebase_getdoc",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_firebase_setdoc",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_alert",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_alert_sendalert",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_executor_sendalert",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_investor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_investor_executeinvest",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_executor_executeinvest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_logger",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_logger_logger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_executor_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_executor_rundailyjob",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/executor.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor",
+      "target": "board_executor_rundailyjob",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/executor.js",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "ref_firebase_admin",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_admin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_logger",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_logger_logger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_db",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_getdoc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_setdoc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_runtransaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_servertimestamp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_onsnapshot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_getdoc",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_setdoc",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_runtransaction",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_servertimestamp",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_firebase",
+      "target": "board_firebase_onsnapshot",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/firebase.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "ref_node_cron",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_cron",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "ref_puppeteer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_puppeteer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_executor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_executor_rundailyjob",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_rundailyjob",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_alert",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_alert_sendalert",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_sendalert",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_firebase",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_firebase_db",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_firebase_servertimestamp",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_db_servertimestamp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_dailyreward",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_dailyreward_claimdailyreward",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_claimdailyreward",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_logger",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_logger_logger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_sleep",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_waitforturn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_openbrowser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_runtask1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_runtask2",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_start",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_waitforturn",
+      "target": "board_index_sleep",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask1",
+      "target": "board_index_waitforturn",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask1",
+      "target": "board_index_openbrowser",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask1",
+      "target": "board_index_sleep",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask2",
+      "target": "board_index_waitforturn",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_start",
+      "target": "board_index_runtask1",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L175",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_start",
+      "target": "board_index_runtask2",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L176",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_start",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/index.js",
+      "source_location": "L212",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_runtask1",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/index.js",
+      "source_location": "L212",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index",
+      "target": "board_index_runtask2",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/index.js",
+      "source_location": "L212",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "ref_puppeteer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/investor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "board_investor_puppeteer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/investor.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "board_logger",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/investor.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "board_logger_logger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/investor.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "board_investor_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/investor.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "board_investor_executeinvest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/investor.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_investor",
+      "target": "board_investor_executeinvest",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "Board/investor.js",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "ref_os",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_os",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_log_levels",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_colors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_level_icons",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_gettimestamp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_gethostname",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_formatmeta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_formatline",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger",
+      "target": "board_logger_logger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger_formatline",
+      "target": "board_logger_gettimestamp",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger_formatline",
+      "target": "board_logger_gethostname",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_logger_formatline",
+      "target": "board_logger_formatmeta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/logger.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package",
+      "target": "board_package_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package",
+      "target": "board_package_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package",
+      "target": "board_package_description",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package",
+      "target": "board_package_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package",
+      "target": "board_package_scripts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_scripts",
+      "target": "board_package_scripts_start",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package",
+      "target": "board_package_dependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies",
+      "target": "board_package_dependencies_axios",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies_axios",
+      "target": "axios",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies",
+      "target": "board_package_dependencies_dotenv",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies_dotenv",
+      "target": "dotenv",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies",
+      "target": "board_package_dependencies_firebase_admin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies_firebase_admin",
+      "target": "firebase_admin",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies",
+      "target": "board_package_dependencies_node_cron",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies_node_cron",
+      "target": "node_cron",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies",
+      "target": "board_package_dependencies_puppeteer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_package_dependencies_puppeteer",
+      "target": "puppeteer",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app",
+      "target": "js_app_livemode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app",
+      "target": "js_app_app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app",
+      "target": "js_app_trylogin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L1015",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app",
+      "target": "js_app_setuppassword",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L1044",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app",
+      "target": "js_app_synctofirebase",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L1083",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app",
+      "target": "js_app_syncfromfirebase",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L1112",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_engine_calculator",
+      "target": "js_engine_calculator_calculator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/calculator.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_engine_ledger",
+      "target": "js_engine_ledger_ledger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/ledger.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_engine_optimizer",
+      "target": "js_engine_optimizer_optimizer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/optimizer.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_engine_simulator",
+      "target": "js_engine_simulator_simulator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/engine/simulator.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_export_exporters",
+      "target": "js_export_exporters_exportcsv",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_export_exporters",
+      "target": "js_export_exporters_exportexcel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_export_exporters",
+      "target": "js_export_exporters_exportpdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/export/exporters.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_firebase",
+      "target": "js_firebase_firebasedb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/firebase.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_ui_bot_status",
+      "target": "js_ui_bot_status_botstatusui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/bot_status.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_ui_calendar",
+      "target": "js_ui_calendar_calendarui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/calendar.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_ui_comparison",
+      "target": "js_ui_comparison_comparisonui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/comparison.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_ui_detail",
+      "target": "js_ui_detail_detailui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/detail.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_ui_summary",
+      "target": "js_ui_summary_summaryui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/summary.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor_rundailyjob",
+      "target": "board_firebase_setdoc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/executor.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor_rundailyjob",
+      "target": "board_firebase_servertimestamp",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/executor.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor_rundailyjob",
+      "target": "board_firebase_getdoc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/executor.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor_rundailyjob",
+      "target": "board_alert_sendalert",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/executor.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor_rundailyjob",
+      "target": "board_firebase_runtransaction",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/executor.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_executor_rundailyjob",
+      "target": "board_investor_executeinvest",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/executor.js",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask1",
+      "target": "board_firebase_servertimestamp",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/index.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask2",
+      "target": "board_dailyreward_claimdailyreward",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/index.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_runtask2",
+      "target": "board_alert_sendalert",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/index.js",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_start",
+      "target": "board_alert_sendalert",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/index.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "board_index_start",
+      "target": "board_executor_rundailyjob",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/index.js",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app_trylogin",
+      "target": "js_firebase_firebasedb",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1022",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app_trylogin",
+      "target": "js_app_app",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1026",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app_setuppassword",
+      "target": "js_firebase_firebasedb",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1050",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app_synctofirebase",
+      "target": "js_firebase_firebasedb",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1091",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app_syncfromfirebase",
+      "target": "js_firebase_firebasedb",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1120",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "js_app_syncfromfirebase",
+      "target": "js_app_app",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1125",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

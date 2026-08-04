@@ -1,53 +1,72 @@
 {
   "communities": {
     "0": [
-      "index_html",
-      "js_engine_calculator",
-      "js_engine_calculator_calculator",
-      "js_engine_ledger",
-      "js_engine_ledger_ledger",
-      "js_engine_optimizer",
-      "js_engine_optimizer_optimizer",
-      "js_engine_simulator",
-      "js_engine_simulator_simulator",
-      "js_export_exporters",
-      "js_export_exporters_exportcsv",
-      "js_export_exporters_exportexcel",
-      "js_export_exporters_exportpdf",
-      "js_ui_calendar",
-      "js_ui_calendar_calendarui",
-      "js_ui_comparison",
-      "js_ui_comparison_comparisonui",
-      "js_ui_detail",
-      "js_ui_detail_detailui",
-      "js_ui_summary",
-      "js_ui_summary_summaryui",
-      "plan_fix_bot_state",
-      "plan_live_mode"
-    ],
-    "1": [
       "board_alert",
       "board_alert_axios",
+      "board_alert_logger",
+      "board_dailyreward",
+      "board_dailyreward_logger",
+      "board_dailyreward_puppeteer",
+      "board_investor",
+      "board_investor_logger",
+      "board_investor_puppeteer",
+      "board_logger",
+      "board_logger_colors",
+      "board_logger_formatline",
+      "board_logger_formatmeta",
+      "board_logger_gethostname",
+      "board_logger_gettimestamp",
+      "board_logger_level_icons",
+      "board_logger_log_levels",
+      "board_logger_logger",
+      "board_logger_os"
+    ],
+    "1": [
+      "axios",
+      "board_package",
+      "board_package_dependencies",
+      "board_package_dependencies_axios",
+      "board_package_dependencies_dotenv",
+      "board_package_dependencies_firebase_admin",
+      "board_package_dependencies_node_cron",
+      "board_package_dependencies_puppeteer",
+      "board_package_description",
+      "board_package_main",
+      "board_package_name",
+      "board_package_scripts",
+      "board_package_scripts_start",
+      "board_package_version",
+      "dotenv",
+      "firebase_admin",
+      "node_cron",
+      "puppeteer"
+    ],
+    "2": [
       "board_alert_sendalert",
       "board_executor",
       "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
       "board_executor_executeinvest",
+      "board_executor_logger",
       "board_executor_rundailyjob",
       "board_executor_sendalert",
       "board_firebase",
       "board_firebase_admin",
       "board_firebase_db",
       "board_firebase_getdoc",
+      "board_firebase_logger",
       "board_firebase_onsnapshot",
       "board_firebase_runtransaction",
+      "board_firebase_servertimestamp",
       "board_firebase_setdoc",
       "board_index_start",
-      "board_investor",
-      "board_investor_executeinvest",
-      "board_investor_puppeteer"
+      "board_investor_executeinvest"
     ],
-    "2": [
+    "3": [
       "board_readme",
+      "board_readme_architecture_logic",
+      "board_readme_invest_bot",
+      "board_readme_setup_di_orangepi",
+      "index_html",
       "js_app",
       "js_app_app",
       "js_app_livemode",
@@ -57,88 +76,154 @@
       "js_app_trylogin",
       "js_firebase",
       "js_firebase_firebasedb",
-      "js_ui_dailylog",
-      "plan_finance_tracker"
-    ],
-    "3": [
-      "axios",
-      "board_package_dependencies",
-      "board_package_dependencies_axios",
-      "board_package_dependencies_dotenv",
-      "board_package_dependencies_firebase_admin",
-      "board_package_dependencies_node_cron",
-      "board_package_dependencies_puppeteer",
-      "dotenv",
-      "firebase_admin",
-      "node_cron",
-      "puppeteer"
+      "js_ui_summary",
+      "js_ui_summary_summaryui"
     ],
     "4": [
-      "board_firebase_servertimestamp",
+      "board_dailyreward_claimdailyreward",
       "board_index",
+      "board_index_claimdailyreward",
       "board_index_cron",
       "board_index_db_servertimestamp",
+      "board_index_logger",
       "board_index_openbrowser",
       "board_index_puppeteer",
       "board_index_rundailyjob",
       "board_index_runtask1",
+      "board_index_runtask2",
       "board_index_sendalert",
       "board_index_sleep",
       "board_index_waitforturn"
     ],
     "5": [
-      "board_package",
-      "board_package_description",
-      "board_package_main",
-      "board_package_name",
-      "board_package_scripts",
-      "board_package_scripts_start",
-      "board_package_version"
+      "_agents_rules_graphify_get_node",
+      "_agents_rules_graphify_graphify",
+      "_agents_rules_graphify_graphify_explain",
+      "_agents_rules_graphify_graphify_path",
+      "_agents_rules_graphify_graphify_query",
+      "_agents_rules_graphify_graphify_update",
+      "_agents_rules_graphify_query_graph",
+      "_agents_rules_graphify_shortest_path",
+      "_agents_workflows_graphify_workflow",
+      "graphify_out_graph_json",
+      "graphify_out_graph_report_md",
+      "graphify_out_wiki_index_md"
     ],
     "6": [
+      "js_engine_calculator",
+      "js_engine_calculator_calculator",
+      "js_engine_optimizer",
+      "js_engine_optimizer_optimizer",
+      "js_engine_simulator",
+      "js_engine_simulator_simulator"
+    ],
+    "7": [
       "kilo_kilo",
       "kilo_kilo_plugin",
       "kilo_kilo_schema",
       "kilo_kilo_snapshot",
       "ref_file_d_investation_kilo_plugins_graphify_js"
     ],
-    "7": [
+    "8": [
+      "js_export_exporters",
+      "js_export_exporters_exportcsv",
+      "js_export_exporters_exportexcel",
+      "js_export_exporters_exportpdf"
+    ],
+    "9": [
+      "js_engine_ledger",
+      "js_engine_ledger_ledger"
+    ],
+    "10": [
       "js_ui_bot_status",
       "js_ui_bot_status_botstatusui"
     ],
-    "8": [
+    "11": [
+      "js_ui_calendar",
+      "js_ui_calendar_calendarui"
+    ],
+    "12": [
+      "js_ui_comparison",
+      "js_ui_comparison_comparisonui"
+    ],
+    "13": [
+      "js_ui_detail",
+      "js_ui_detail_detailui"
+    ],
+    "14": [
       "kilo_plugins_graphify",
       "kilo_plugins_graphify_graphifyplugin"
     ],
-    "9": [
+    "15": [
       "agents_md"
     ],
-    "10": [
+    "16": [
+      "concept_live_mode"
+    ],
+    "17": [
+      "concept_realtime_finance_tracker"
+    ],
+    "18": [
       "plan_date_transactions"
     ],
-    "11": [
+    "19": [
+      "plan_finance_tracker"
+    ],
+    "20": [
+      "plan_fix_bot_state"
+    ],
+    "21": [
+      "plan_live_mode"
+    ],
+    "22": [
       "plan_manual_income"
     ]
   },
   "cohesion": {
-    "0": 0.09881422924901186,
-    "1": 0.17543859649122806,
-    "2": 0.2727272727272727,
-    "3": 0.18181818181818182,
-    "4": 0.2727272727272727,
-    "5": 0.2857142857142857,
+    "0": 0.14035087719298245,
+    "1": 0.1111111111111111,
+    "2": 0.1895424836601307,
+    "3": 0.16666666666666666,
+    "4": 0.2087912087912088,
+    "5": 0.16666666666666666,
     "6": 0.4,
-    "7": 1.0,
-    "8": 1.0,
+    "7": 0.4,
+    "8": 0.5,
     "9": 1.0,
     "10": 1.0,
-    "11": 1.0
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0
   },
   "gods": [
+    {
+      "id": "_agents_rules_graphify_graphify",
+      "label": "graphify Rules",
+      "degree": 11
+    },
     {
       "id": "board_executor_rundailyjob",
       "label": "runDailyJob()",
       "degree": 9
+    },
+    {
+      "id": "board_logger_logger",
+      "label": "Logger",
+      "degree": 7
+    },
+    {
+      "id": "board_alert_sendalert",
+      "label": "sendAlert()",
+      "degree": 6
     },
     {
       "id": "board_index_runtask1",
@@ -146,13 +231,18 @@
       "degree": 6
     },
     {
-      "id": "board_alert_sendalert",
-      "label": "sendAlert()",
+      "id": "board_firebase_servertimestamp",
+      "label": "serverTimestamp()",
       "degree": 5
     },
     {
-      "id": "board_firebase_servertimestamp",
-      "label": "serverTimestamp()",
+      "id": "board_index_runtask2",
+      "label": "runTask2()",
+      "degree": 5
+    },
+    {
+      "id": "board_index_start",
+      "label": "start()",
       "degree": 5
     },
     {
@@ -161,90 +251,70 @@
       "degree": 5
     },
     {
-      "id": "board_index_start",
-      "label": "start()",
+      "id": "board_index_waitforturn",
+      "label": "waitForTurn()",
       "degree": 4
-    },
-    {
-      "id": "board_firebase_db",
-      "label": "db",
-      "degree": 3
-    },
-    {
-      "id": "board_firebase_getdoc",
-      "label": "getDoc()",
-      "degree": 3
-    },
-    {
-      "id": "board_firebase_setdoc",
-      "label": "setDoc()",
-      "degree": 3
-    },
-    {
-      "id": "board_firebase_runtransaction",
-      "label": "runTransaction()",
-      "degree": 3
     }
   ],
   "surprises": [
     {
-      "source": "Plan: Real-Time Finance Tracker",
-      "target": "js/ui/dailyLog.js",
+      "source": "graphify Rules",
+      "target": "graphify-out/graph.json",
       "source_files": [
-        ".kilo/plans/1785734141555-realtime-finance-tracker.md",
-        "js/ui/dailyLog.js"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "cites",
-      "why": "crosses file types (code \u2194 doc); connects across different repos/directories"
-    },
-    {
-      "source": "runDailyJob()",
-      "target": "serverTimestamp()",
-      "source_files": [
-        "Board/executor.js",
-        "Board/firebase.js"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
-    },
-    {
-      "source": "setupPassword()",
-      "target": "FirebaseDB",
-      "source_files": [
-        "js/app.js",
-        "js/firebase.js"
+        ".agents/rules/graphify.md",
+        "graphify-out/graph.json"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "peripheral node `setupPassword()` unexpectedly reaches hub `FirebaseDB`"
+      "why": "crosses file types (code \u2194 doc); connects across different repos/directories; peripheral node `graphify-out/graph.json` unexpectedly reaches hub `graphify Rules`"
     },
     {
-      "source": "syncToFirebase()",
-      "target": "FirebaseDB",
+      "source": "graphify Rules",
+      "target": "graphify-out/wiki/index.md",
       "source_files": [
-        "js/app.js",
-        "js/firebase.js"
+        ".agents/rules/graphify.md",
+        "graphify-out/wiki/index.md"
       ],
       "confidence": "EXTRACTED",
       "relation": "references",
-      "why": "peripheral node `syncToFirebase()` unexpectedly reaches hub `FirebaseDB`"
+      "why": "connects across different repos/directories; peripheral node `graphify-out/wiki/index.md` unexpectedly reaches hub `graphify Rules`"
     },
     {
-      "source": "runDailyJob()",
+      "source": "graphify Rules",
+      "target": "graphify-out/GRAPH_REPORT.md",
+      "source_files": [
+        ".agents/rules/graphify.md",
+        "graphify-out/GRAPH_REPORT.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; peripheral node `graphify-out/GRAPH_REPORT.md` unexpectedly reaches hub `graphify Rules`"
+    },
+    {
+      "source": "graphify Workflow",
+      "target": "graphify Rules",
+      "source_files": [
+        ".agents/workflows/graphify.md",
+        ".agents/rules/graphify.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `graphify Workflow` unexpectedly reaches hub `graphify Rules`"
+    },
+    {
+      "source": "runTask2()",
       "target": "sendAlert()",
       "source_files": [
-        "Board/executor.js",
+        "Board/index.js",
         "Board/alert.js"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "why": "cross-file semantic connection"
+      "why": "bridges separate communities"
     }
   ],
   "tokens": {
-    "input": 12751,
-    "output": 1782
+    "input": 0,
+    "output": 0
   }
 }
