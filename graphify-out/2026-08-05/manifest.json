@@ -45,9 +45,9 @@
     "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
   },
   "js/app.js": {
-    "mtime": 1785923940.2857952,
-    "ast_hash": "2baf3b4ab69aeee2f73ccbf6d022e695",
-    "semantic_hash": ""
+    "mtime": 1785767112.9074404,
+    "ast_hash": "bc17f3a5002a4cc543695c52affe6dcf",
+    "semantic_hash": "bc17f3a5002a4cc543695c52affe6dcf"
   },
   "js/engine/calculator.js": {
     "mtime": 1785719829.2475324,

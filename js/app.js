@@ -150,6 +150,7 @@ const App = (() => {
 
   let _config = { ...DEFAULT_CONFIG };
   let _baseResult = null;
+  let _externalSchedule = null;
   let _activeTab = 'calendar';
 
   const STORAGE_KEY = 'investcalc_config_v1';
@@ -203,13 +204,16 @@ const App = (() => {
         // Listen for config updates from other browsers
         _configUnsubscribe = await FirebaseDB.syncFromFirebase((remoteConfig) => {
           const prevConfig = { ..._config };
-          _config = { ..._config, ...remoteConfig };
+          // Firebase config REPLACES local config entirely (merge #: keep defaults base)
+          const { updatedAt, ...cleanRemote } = remoteConfig || {};
+          _config = { ...DEFAULT_CONFIG, ...cleanRemote };
 
           // Detect meaningful changes
-          const changedKeys = Object.keys(remoteConfig).filter(k => prevConfig[k] !== remoteConfig[k]);
+          const changedKeys = Object.keys(cleanRemote).filter(k => prevConfig[k] !== cleanRemote[k]);
           if (changedKeys.length > 0) {
             console.log('[SYNC] Config updated from Firebase:', changedKeys);
             saveConfig();
+            renderConfigPanel();
             App.runSimulation();
           }
         });
@@ -996,7 +1000,27 @@ const App = (() => {
     init,
     runSimulation,
     getConfig: () => _config,
-    getSchedule: () => _baseResult?.summary?.investmentSchedule || [],
+    getSchedule: () => _externalSchedule || _baseResult?.summary?.investmentSchedule || [],
+    setConfig: (cfg) => {
+      if (!cfg || typeof cfg !== 'object') return;
+      const { updatedAt, ...cleanRemote } = cfg;
+      _config = { ...DEFAULT_CONFIG, ...cleanRemote };
+      saveConfig();
+      renderConfigPanel();
+      App.runSimulation();
+    },
+    setSchedule: (schedule) => {
+      if (!Array.isArray(schedule)) return;
+      _externalSchedule = schedule;
+      if (_baseResult) {
+        _baseResult.summary = { ..._baseResult.summary, investmentSchedule: schedule };
+        renderResults();
+      }
+    },
+    render: () => {
+      renderConfigPanel();
+      if (_baseResult) renderResults();
+    },
     cleanup,
   };
 })();
@@ -1121,24 +1145,13 @@ async function syncFromFirebase() {
     
     if (result.config && typeof result.config === 'object') {
       // Override entire config with Firebase's version
-      if (App.setConfig) {
-        App.setConfig(result.config);
-      } else if (App.config) {
-        // Replace entire config object
-        const keys = Object.keys(App.config);
-        for (const key of keys) delete App.config[key];
-        Object.assign(App.config, result.config);
-      }
+      App.setConfig(result.config);
       console.log('Config overridden from Firebase:', result.config);
     }
     
     if (result.schedule && result.schedule.length > 0) {
       // Update schedule
-      if (App.setSchedule) {
-        App.setSchedule(result.schedule);
-      } else if (App.schedule) {
-        App.schedule = result.schedule;
-      }
+      App.setSchedule(result.schedule);
       console.log('Schedule overridden from Firebase:', result.schedule.length, 'entries');
     }
     
