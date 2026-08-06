@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
 const { Logger } = require('./logger');
+const { isTransientError } = require('./retry');
 
 /**
  * Automate daily reward claim on the rep_panel.php dashboard
- * Daily reward is auto-claimed upon login, no separate button needed
+ * Daily reward is auto-claimed upon login, no separate button needed.
+ * Transient network errors are re-thrown so withRetry() can catch them.
  */
 async function claimDailyReward() {
   let browser;
@@ -78,6 +80,12 @@ async function claimDailyReward() {
     return { success: true, data: 'Daily reward otomatis diklaim saat login', error: null, alreadyClaimed: false };
 
   } catch (error) {
+    // Re-throw transient network errors so withRetry() can retry
+    if (isTransientError(error)) {
+      Logger.warning("Jaringan gagal saat klaim daily reward (re-throw untuk retry)", { error: error.message });
+      throw error;
+    }
+
     Logger.critical("Critical error dalam proses daily reward", { error: error.message, stack: error.stack });
     return { success: false, data: null, error: error.message, alreadyClaimed: false };
   } finally {

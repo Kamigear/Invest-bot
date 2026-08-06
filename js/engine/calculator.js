@@ -17,19 +17,28 @@ const Calculator = (() => {
    * @param {object} config - Simulation configuration
    */
   function getDailyIncome(day, config) {
-    switch (config.incomeType) {
-      case 'fixed':
-        return config.incomeBase;
-      case 'linear':
-        return config.incomeBase + (day - 1) * config.incomeGrowthRate;
-      case 'custom':
-        if (config.incomeCustom && config.incomeCustom[day - 1] !== undefined) {
-          return config.incomeCustom[day - 1];
-        }
-        return config.incomeBase + (day - 1) * config.incomeGrowthRate;
-      default:
-        return config.incomeBase + (day - 1) * config.incomeGrowthRate;
+    let total = 0;
+
+    // Legacy: incomeType single-select mode
+    if (!config.incomeFixedEnabled && !config.incomeLinearEnabled && config.incomeType) {
+      switch (config.incomeType) {
+        case 'fixed': return config.incomeBase;
+        case 'custom':
+          if (config.incomeCustom && config.incomeCustom[day - 1] !== undefined) return config.incomeCustom[day - 1];
+          return config.incomeBase + (day - 1) * config.incomeGrowthRate;
+        default:
+          return config.incomeBase + (day - 1) * config.incomeGrowthRate;
+      }
     }
+
+    // New mode: both fixed and linear can be enabled simultaneously
+    if (config.incomeFixedEnabled !== false) {
+      total += (config.incomeFixedAmount || 0);
+    }
+    if (config.incomeLinearEnabled !== false) {
+      total += (config.incomeBase || 0) + (day - 1) * (config.incomeGrowthRate || 0);
+    }
+    return total;
   }
 
   /**

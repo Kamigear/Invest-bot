@@ -7,11 +7,14 @@ const { db, serverTimestamp } = require('./firebase');
 const { claimDailyReward } = require('./dailyReward');
 const { Logger } = require('./logger');
 const Pending = require('./pending');
+const { withRetry, isTransientError } = require('./retry');
 
 const RETRY_INTERVAL_MS = (parseInt(process.env.RETRY_INTERVAL_MINUTES) || 15) * 60 * 1000;
 const RETRY_MAX_ATTEMPTS = parseInt(process.env.RETRY_MAX_ATTEMPTS) || 8;
+const DAILY_REWARD_MAX_ATTEMPTS = parseInt(process.env.DAILY_REWARD_MAX_ATTEMPTS) || 3;
 const CATCHUP_MISSED_DAYS = parseInt(process.env.CATCHUP_MISSED_DAYS) || 0;
 const retryTimers = new Map();
+const DAILY_REWARD_KEY = 'DAILY_REWARD';
 
 // ==========================================
 // PENGATURAN & ENVS
@@ -142,11 +145,14 @@ async function runTask2() {
   if (!DAILY_REWARD_ENABLED) {
     Logger.info("Daily reward dilewati (fitur dinonaktifkan)", { task: "TUGAS_2", enabled: false });
     isBrowserBusy = false;
-    return;
+    return { status: 'SKIPPED', task: 'TUGAS_2' };
   }
 
   try {
-    const result = await claimDailyReward();
+    const result = await withRetry(
+      () => claimDailyReward(),
+      { label: 'daily-reward', retries: 3, baseDelayMs: 5000 }
+    );
 
     if (result.success) {
       if (result.alreadyClaimed) {
@@ -154,13 +160,25 @@ async function runTask2() {
       } else {
         Logger.success(`Daily reward berhasil diklaim: ${result.data}`, { task: "TUGAS_2", data: result.data });
       }
+      Pending.clearPending('DAILY_REWARD');
+      return { status: 'COMPLETED', task: 'TUGAS_2' };
     } else {
       Logger.error(`Gagal klaim daily reward: ${result.error}`, { task: "TUGAS_2", error: result.error });
-      await sendAlert(`❌ Daily reward gagal diklaim: ${result.error}`);
+      await sendAlert(`Daily reward gagal diklaim: ${result.error}`);
+      return { status: 'FAILED', task: 'TUGAS_2' };
     }
   } catch (error) {
-    Logger.critical(`Proses terhenti karena kesalahan: ${error.message}`, { task: "TUGAS_2", error: error.message });
-    await sendAlert(`❌ TUGAS 2 ERROR: ${error.message}`);
+    const transient = isTransientError(error);
+    Logger.critical(`Proses terhenti karena kesalahan: ${error.message}`, { task: "TUGAS_2", error: error.message, transient });
+
+    if (transient) {
+      const cur = Pending.recordFailure('DAILY_REWARD', 'network', error.message);
+      await sendAlert(`Daily reward gagal (internet). Attempt #${cur.attempts}. Akan dicoba ulang.`);
+      return { status: 'NETWORK_ERROR', task: 'TUGAS_2', transient, attempts: cur.attempts };
+    }
+
+    await sendAlert(`TUGAS 2 ERROR: ${error.message}`);
+    return { status: 'ERROR', task: 'TUGAS_2', transient: false };
   } finally {
     isBrowserBusy = false;
     Logger.info("Selesai", { task: "TUGAS_2" });
@@ -225,28 +243,59 @@ async function markNetworkSkipped(entryId, attempts) {
   Pending.clearPending(entryId);
 }
 
+async function scheduleDailyRewardRetry(attempts) {
+  if (retryTimers.has(DAILY_REWARD_KEY)) return;
+
+  if (attempts >= DAILY_REWARD_MAX_ATTEMPTS) {
+    Logger.warning('Daily reward: retry maksimum tercapai', { attempts });
+    Pending.clearPending(DAILY_REWARD_KEY);
+    return;
+  }
+
+  Logger.info('Menjadwalkan retry daily reward', { nextAttempt: attempts + 1, inMinutes: RETRY_INTERVAL_MS / 60000 });
+
+  const timer = setTimeout(async () => {
+    retryTimers.delete(DAILY_REWARD_KEY);
+    try {
+      const result = await runTask2();
+      if (result && result.status === 'NETWORK_ERROR' && result.attempts) {
+        await scheduleDailyRewardRetry(result.attempts);
+      }
+    } catch (e) {
+      Logger.critical('Error saat retry daily reward', { error: e.message });
+    }
+  }, RETRY_INTERVAL_MS);
+
+  timer.unref();
+  retryTimers.set(DAILY_REWARD_KEY, timer);
+}
+
 function resumePendingRetries() {
   const today = getTodayId();
   const pending = Pending.getAllPending();
 
-  let changed = false;
-  for (const entryId of Object.keys(pending)) {
+  for (const [entryId, p] of Object.entries(pending)) {
+    const attempts = p.attempts || 0;
+
+    if (entryId === DAILY_REWARD_KEY) {
+      Logger.warning('Meresume pending daily reward', { attempts });
+      scheduleDailyRewardRetry(attempts);
+      continue;
+    }
+
     const day = entryId.replace('inv_', '');
     if (day !== today) {
       Logger.warning('Menghapus pending dari hari lama', { entryId });
       Pending.clearPending(entryId);
-      changed = true;
+      continue;
     }
-  }
-  if (changed) return;
 
-  for (const [entryId, p] of Object.entries(pending)) {
-    const attempts = p.attempts || 0;
     if (attempts >= RETRY_MAX_ATTEMPTS) {
       Logger.warning('Mencoba markNetworkSkipped untuk pending lama', { entryId, attempts });
       markNetworkSkipped(entryId, attempts);
       continue;
     }
+
     const lastAt = p.lastAttemptAt ? new Date(p.lastAttemptAt).getTime() : 0;
     const due = Date.now() - lastAt >= RETRY_INTERVAL_MS;
 
@@ -310,8 +359,12 @@ function start() {
       await scanMissedDays();
       Logger.banner('BOOT RUN dimulai');
       await runTask1();
-      await runTask2();
+      const t2 = await runTask2();
       const result = await runDailyJob();
+
+      if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
+        await scheduleDailyRewardRetry(t2.attempts);
+      }
 
       if (result && result.status === 'NETWORK_ERROR' && result.attempts) {
         await scheduleRetry(result.entryId, result.attempts);
@@ -326,8 +379,12 @@ function start() {
   cron.schedule(cronSchedule, async () => {
     Logger.banner('RUTINITAS HARIAN DIMULAI', { triggeredAt: new Date().toISOString() });
     await runTask1();
-    await runTask2();
+    const t2 = await runTask2();
     const result = await runDailyJob();
+
+    if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
+      await scheduleDailyRewardRetry(t2.attempts);
+    }
 
     if (result && result.status === 'NETWORK_ERROR' && result.attempts) {
       await scheduleRetry(result.entryId, result.attempts);

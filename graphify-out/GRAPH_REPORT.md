@@ -1,16 +1,16 @@
 # Graph Report - Investation  (2026-08-06)
 
 ## Corpus Check
-- 115 files · ~94,447 words
+- 115 files · ~94,873 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2065 nodes · 2436 edges · 150 communities (109 shown, 41 thin omitted)
+- 2068 nodes · 2450 edges · 149 communities (108 shown, 41 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 157 edges (avg confidence: 0.72)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0816d42d`
+- Built from commit: `659352c5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -117,7 +117,6 @@
 - Slide Strategies
 - generate.py
 - Slide Strategies
-- Logger
 - _run
 - retry.js
 - radius
@@ -196,7 +195,7 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (150 total, 41 thin omitted)
+## Communities (149 total, 41 thin omitted)
 
 ### Community 0 - "logger.js"
 Cohesion: 0.14
@@ -207,16 +206,16 @@ Cohesion: 0.11
 Nodes (17): axios, dependencies, axios, dotenv, firebase-admin, node-cron, puppeteer, description (+9 more)
 
 ### Community 2 - "executor.js"
-Cohesion: 0.16
-Nodes (13): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, { sendAlert }, { withRetry, isTransientError }, admin (+5 more)
+Cohesion: 0.14
+Nodes (19): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, runDailyJob(), { sendAlert }, { withRetry, isTransientError } (+11 more)
 
 ### Community 3 - "app.js"
 Cohesion: 0.17
 Nodes (11): Architecture & Logic, Invest Bot, Setup di OrangePi, App, LiveMode, setupPassword(), syncFromFirebase(), syncToFirebase() (+3 more)
 
 ### Community 4 - "index.js"
-Cohesion: 0.17
-Nodes (23): sendAlert(), runDailyJob(), serverTimestamp(), { claimDailyReward }, cron, { db, serverTimestamp }, getTodayId(), { Logger } (+15 more)
+Cohesion: 0.15
+Nodes (22): { claimDailyReward }, cron, { db, serverTimestamp }, getTodayId(), { Logger }, markNetworkSkipped(), openBrowser(), Pending (+14 more)
 
 ### Community 5 - "graphify Rules"
 Cohesion: 0.18
@@ -554,17 +553,13 @@ Nodes (9): enhance_prompt(), generate_batch(), generate_logo(), load_env(), main
 Cohesion: 0.20
 Nodes (9): Common Structures, Duarte Sparkline Pattern, Matching Strategy to Context, Product Demo (6 slides), Sales Pitch (9 slides), Search Commands, Slide Strategies, Strategy Selection (+1 more)
 
-### Community 103 - "Logger"
-Cohesion: 0.22
-Nodes (7): claimDailyReward(), { Logger }, puppeteer, executeInvest(), { Logger }, puppeteer, Logger
-
 ### Community 104 - "_run"
 Cohesion: 0.28
 Nodes (8): CompletedProcess, Path, Regression tests for validate-tokens.cjs.  The validator used to skip any line c, A hardcoded hex on the same line as a var() token is still a violation., A line that references only tokens produces no false positives., _run(), test_flags_hardcoded_hex_sharing_line_with_token(), test_token_only_line_reports_no_violation()
 
 ### Community 105 - "retry.js"
-Cohesion: 0.43
-Nodes (7): getErrorCode(), isTransientError(), { Logger }, sleep(), TRANSIENT_GRPC_CODES, TRANSIENT_NET_CODES, withRetry()
+Cohesion: 0.24
+Nodes (11): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, getErrorCode(), isTransientError(), { Logger }, sleep() (+3 more)
 
 ### Community 106 - "radius"
 Cohesion: 0.29
@@ -587,7 +582,7 @@ Cohesion: 0.43
 Nodes (3): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., TestAntiPatternGating
 
 ### Community 111 - "generate_design_system"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (5): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation.      Args:         query: Search, TestPersistence
 
 ### Community 112 - "_select_palette_for_mode"
@@ -596,7 +591,7 @@ Nodes (3): Pick the highest-ranked palette matching the resolved mode.      Only
 
 ### Community 113 - "alert.js"
 Cohesion: 0.33
-Nodes (5): axios, https, httpsAgent, { Logger }, stripEmoji()
+Nodes (6): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji()
 
 ### Community 114 - "shadow"
 Cohesion: 0.47
@@ -631,7 +626,7 @@ Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
 
 ## Knowledge Gaps
-- **990 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+985 more)
+- **992 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+987 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -649,6 +644,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 16 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestDomainDetection` and `TestPersistence`) actually correct?**
   _`DesignSystemGenerator` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
-  _990 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _992 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `logger.js` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._

@@ -40,7 +40,19 @@ function isTransientError(error) {
   if (error.syscall) return true;
 
   const msg = String(error.message || '');
-  return /(ETIMEDOUT|ENOTFOUND|ENETUNREACH|ECONNRESET|ECONNREFUSED|UNAVAILABLE|DEADLINE_EXCEEDED|network|offline|fetch failed)/i.test(msg);
+
+  // Firebase / Node network errors
+  if (/(ETIMEDOUT|ENOTFOUND|ENETUNREACH|ECONNRESET|ECONNREFUSED|UNAVAILABLE|DEADLINE_EXCEEDED|network|offline|fetch failed)/i.test(msg)) return true;
+
+  // Puppeteer / Chromium network errors
+  if (/net::ERR_(INTERNET_DISCONNECTED|NETWORK_CHANGED|CONNECTION_TIMED_OUT|NAME_NOT_RESOLVED|CONNECTION_REFUSED|CONNECTION_RESET|CONNECTION_ABORTED|PROXY_CONNECTION_FAILED)/i.test(msg)) return true;
+  if (/net::ERR_NETWORK/i.test(msg)) return true;
+  if (/navigation timeout/i.test(msg)) return true;
+  if (/Protocol error.*Connection closed/i.test(msg)) return true;
+  if (/Navigation failed.*network/i.test(msg)) return true;
+  if (/Failed to connect/i.test(msg)) return true;
+
+  return false;
 }
 
 function sleep(ms) {

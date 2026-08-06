@@ -116,9 +116,11 @@ const App = (() => {
 
     // Income
     incomeDailyEnabled: true,
-    incomeType: 'linear',      // 'fixed' | 'linear' | 'custom'
-    incomeBase: 12,
+    incomeFixedEnabled: true,
+    incomeLinearEnabled: true,
+    incomeBase: 12,            // linear base (day 1)
     incomeGrowthRate: 1,       // +1 per day for linear
+    incomeFixedAmount: 12,     // fixed daily income
 
     // Weekly Bonus
     weeklyBonusEnabled: true,
@@ -172,6 +174,11 @@ const App = (() => {
       if (raw) {
         const saved = JSON.parse(raw);
         _config = { ...DEFAULT_CONFIG, ...saved };
+        // Migrate legacy incomeType to new toggle-based config
+        if (saved.incomeType && !('incomeFixedEnabled' in saved)) {
+          _config.incomeFixedEnabled = saved.incomeType === 'fixed';
+          _config.incomeLinearEnabled = saved.incomeType !== 'fixed';
+        }
         console.debug('[DEBUG] loadConfig — initialBalance read from localStorage:', _config.initialBalance);
       } else {
         console.debug('[DEBUG] loadConfig — no localStorage entry found, using defaults. initialBalance:', _config.initialBalance);
@@ -336,15 +343,24 @@ const App = (() => {
               Aktifkan Income Harian
             </label>
           </div>
-          <div class="param-group">
-            <label for="cfg-income-type">Tipe</label>
-            <select id="cfg-income-type">
-              <option value="linear" ${_config.incomeType === 'linear' ? 'selected' : ''}>Linear (+X/hari)</option>
-              <option value="fixed" ${_config.incomeType === 'fixed' ? 'selected' : ''}>Tetap</option>
-            </select>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-income-fixed-enabled" ${_config.incomeFixedEnabled !== false ? 'checked' : ''}/>
+              Tetap (Fixed)
+            </label>
           </div>
           <div class="param-group">
-            <label for="cfg-income-base">Income Awal (Hari 1)</label>
+            <label for="cfg-income-fixed-amount">Fixed per Hari</label>
+            <input type="number" id="cfg-income-fixed-amount" value="${_config.incomeFixedAmount}" min="0" step="1"/>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-income-linear-enabled" ${_config.incomeLinearEnabled !== false ? 'checked' : ''}/>
+              Linear (+X/hari)
+            </label>
+          </div>
+          <div class="param-group">
+            <label for="cfg-income-base">Linear Base (Hari 1)</label>
             <input type="number" id="cfg-income-base" value="${_config.incomeBase}" min="0" step="1"/>
           </div>
           <div class="param-group" id="income-growth-group">
@@ -534,12 +550,14 @@ const App = (() => {
     // Run button
     panel.querySelector('#btn-run-sim')?.addEventListener('click', runSimulation);
 
-    // Income type toggle
-    panel.querySelector('#cfg-income-type')?.addEventListener('change', e => {
+    // Income toggles: show/hide fields based on enabled
+    panel.querySelector('#cfg-income-fixed-enabled')?.addEventListener('change', e => {
+      const fixedAmt = panel.querySelector('#cfg-income-fixed-amount');
+      if (fixedAmt) fixedAmt.closest('.param-group').style.display = e.target.checked ? '' : 'none';
+    });
+    panel.querySelector('#cfg-income-linear-enabled')?.addEventListener('change', e => {
       const growthGroup = panel.querySelector('#income-growth-group');
-      if (growthGroup) {
-        growthGroup.style.display = e.target.value === 'linear' ? '' : 'none';
-      }
+      if (growthGroup) growthGroup.style.display = e.target.checked ? '' : 'none';
     });
 
     // Auto-save + update sweet spots preview on any input change
@@ -579,7 +597,10 @@ const App = (() => {
       realtimeEnabled: getCheck('cfg-realtime-enabled') ?? true,
       liveModeEnabled: getCheck('cfg-live-mode-enabled') ?? false,
       startDate: get('cfg-start-date') || Ledger.todayISO(),
-      incomeType: get('cfg-income-type') || 'linear',
+      incomeType: 'linear',
+      incomeFixedEnabled: getCheck('cfg-income-fixed-enabled') ?? true,
+      incomeLinearEnabled: getCheck('cfg-income-linear-enabled') ?? true,
+      incomeFixedAmount: getNum('cfg-income-fixed-amount', 12),
       incomeBase: getNum('cfg-income-base', 12),
       incomeGrowthRate: getNum('cfg-income-growth', 1),
       incomeDailyEnabled: getCheck('cfg-income-daily-enabled') ?? true,
