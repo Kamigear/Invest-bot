@@ -36,8 +36,7 @@ const BotStatusUI = (() => {
     }
 
     return {
-        render: (containerId) => {
-            const container = document.getElementById(containerId);
+        render: (container) => {
             if (!container) return;
             
             container.innerHTML = `
@@ -170,12 +169,14 @@ const BotStatusUI = (() => {
             }
             
             // Get heartbeat
-            db.collection('botState').doc('balance').get().then(doc => {
+            db.collection('botState').doc('heartbeat').get().then(doc => {
                 const hbSpan = document.querySelector('#bot-heartbeat span');
                 if (doc.exists && hbSpan) {
                     const data = doc.data();
-                    const date = data.lastUpdated ? data.lastUpdated.toDate() : new Date();
-                    hbSpan.textContent = date.toLocaleString();
+                    const date = data.lastSeen ? data.lastSeen.toDate() : new Date();
+                    hbSpan.textContent = date.toLocaleString() + (data.version ? ` (v${data.version})` : '');
+                } else if (hbSpan) {
+                    hbSpan.textContent = 'No heartbeat yet';
                 }
             }).catch(err => console.error("Error fetching heartbeat:", err));
             

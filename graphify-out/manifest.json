@@ -80,9 +80,9 @@
     "semantic_hash": "16e192d5af951eb5e877301e5925eaf8"
   },
   "js/ui/bot_status.js": {
-    "mtime": 1785802350.1837294,
-    "ast_hash": "0fa4e0566cf7c3923e38e29ea5b8d8da",
-    "semantic_hash": "0fa4e0566cf7c3923e38e29ea5b8d8da"
+    "mtime": 1786062157.5941124,
+    "ast_hash": "9d26d823f00ffc96b720a9d64aa8f86c",
+    "semantic_hash": ""
   },
   "js/ui/calendar.js": {
     "mtime": 1785754218.63644,
@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1785749591.9237666,
-    "ast_hash": "ab15d945611338f0298c816c2552ffb5",
-    "semantic_hash": "ab15d945611338f0298c816c2552ffb5"
+    "mtime": 1786062072.1951902,
+    "ast_hash": "c025a772b3f08653f3e030a87bb4f36e",
+    "semantic_hash": ""
   },
   "Board/dailyReward.js": {
     "mtime": 1786011263.2492044,
