@@ -195,15 +195,15 @@ const BotStatusUI = (() => {
                     snapshot.forEach(doc => {
                         const data = doc.data();
                         
-                        // Format currency
-                        const formatCurr = (val) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(val || 0);
+                        // Format as plain points (no thousands separator)
+                        const formatPts = (val) => String(val || 0);
                         
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
                             <td style="font-family: monospace; font-size: 0.9em; color: var(--text-secondary, #aaa);">${data.entryId}</td>
                             <td>${data.investDate || '-'}</td>
-                            <td>${formatCurr(data.amount)}</td>
-                            <td class="text-success">${formatCurr(data.expectedReturn)}</td>
+                            <td>${formatPts(data.amount)}</td>
+                            <td class="text-success">${formatPts(data.expectedReturn)}</td>
                             <td>${getStatusBadge(data.status)}</td>
                         `;
                         tbody.appendChild(tr);
