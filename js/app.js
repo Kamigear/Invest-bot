@@ -148,6 +148,33 @@ const App = (() => {
     lookaheadDays: 7,          // How many days to look ahead
     waitThresholdPct: 0.05,    // Must be 5% better to justify waiting
     maxWaitDays: 6,            // Max consecutive days to wait
+
+    // Class Perks (toggle system — derived into the fields above)
+    perks: {
+      // Passive income → generateRate + incomeFixedAmount
+      bankbook: 0,             // 0=none, 1=bronze(0.5%), 2=silver(1%), 3=gold(1.5%)
+      vault: 0,                // 0=none, 1=tier1(+10/hari), 2=tier2(+15/hari)
+      piggyBank: false,        // +5/hari
+
+      // Investment → returnRate + investDuration
+      highYieldBond: 0,        // 0=none, 1=+2%, 2=+4%, 3=+6%
+      timeWeaver: 0,           // 0=none, 1=−12jam, 2=−24jam
+
+      // Daily login → daily reward (fase 3)
+      earlyBird: false,        // +2 daily login
+      nightOwl: false,         // +4 daily login
+      loginMultiplier: 0,      // 0=none, 1=5%, 2=10%
+
+      // Shop/auction/gacha — stored only, no simulation effect
+      auctionDiscount: 0,      // 0=none, 1=I(5%), 2=II(10%)
+      haggler: 0,              // 0=none, 1=I(2%), 2=II(4%), 3=III(6%)
+      gachaReset: false,
+      tokenOfFortune: false,
+      tokenOfLuck: false,
+      proxyBidder: false,      // MAX
+      refundReceipt: 0,        // 0=none, 1=I(10%), 2=II(20%)
+      streakSaver: false
+    }
   };
 
   let _config = { ...DEFAULT_CONFIG };
@@ -178,6 +205,12 @@ const App = (() => {
         if (saved.incomeType && !('incomeFixedEnabled' in saved)) {
           _config.incomeFixedEnabled = saved.incomeType === 'fixed';
           _config.incomeLinearEnabled = saved.incomeType !== 'fixed';
+        }
+        // Migrate old configs without perks object
+        if (!saved.perks || typeof saved.perks !== 'object') {
+          _config.perks = { ...DEFAULT_CONFIG.perks };
+        } else {
+          _config.perks = { ...DEFAULT_CONFIG.perks, ...saved.perks };
         }
         console.debug('[DEBUG] loadConfig — initialBalance read from localStorage:', _config.initialBalance);
       } else {
@@ -388,16 +421,133 @@ const App = (() => {
         </div>
 
         <div class="config-section">
-          <div class="config-section-title">⚡ Generate</div>
+          <div class="config-section-title">🃏 Class Perks</div>
+
+          <div class="config-subsection-title">💰 Passive Income</div>
+          <div class="param-group">
+            <label for="cfg-perk-bankbook">Bankbook</label>
+            <select id="cfg-perk-bankbook">
+              <option value="0" ${_config.perks.bankbook === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.bankbook === 1 ? 'selected' : ''}>Bronze (0.5%/hari)</option>
+              <option value="2" ${_config.perks.bankbook === 2 ? 'selected' : ''}>Silver (1%/hari)</option>
+              <option value="3" ${_config.perks.bankbook === 3 ? 'selected' : ''}>Gold (1.5%/hari)</option>
+            </select>
+          </div>
+          <div class="param-group">
+            <label for="cfg-perk-vault">Vault</label>
+            <select id="cfg-perk-vault">
+              <option value="0" ${_config.perks.vault === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.vault === 1 ? 'selected' : ''}>Tier I (+10/hari)</option>
+              <option value="2" ${_config.perks.vault === 2 ? 'selected' : ''}>Tier II (+15/hari)</option>
+            </select>
+          </div>
           <div class="param-group checkbox-group">
             <label>
-              <input type="checkbox" id="cfg-gen-enabled" ${_config.generateEnabled ? 'checked' : ''}/>
-              Aktifkan Generate
+              <input type="checkbox" id="cfg-perk-piggy-bank" ${_config.perks.piggyBank ? 'checked' : ''}/>
+              Piggy Bank (+5/hari)
+            </label>
+          </div>
+
+          <div class="config-subsection-title">📈 Investasi</div>
+          <div class="param-group">
+            <label for="cfg-perk-hyb">High Yield Bond</label>
+            <select id="cfg-perk-hyb">
+              <option value="0" ${_config.perks.highYieldBond === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.highYieldBond === 1 ? 'selected' : ''}>I (+2% return)</option>
+              <option value="2" ${_config.perks.highYieldBond === 2 ? 'selected' : ''}>II (+4% return)</option>
+              <option value="3" ${_config.perks.highYieldBond === 3 ? 'selected' : ''}>III (+6% return)</option>
+            </select>
+          </div>
+          <div class="param-group">
+            <label for="cfg-perk-time-weaver">Time Weaver</label>
+            <select id="cfg-perk-time-weaver">
+              <option value="0" ${_config.perks.timeWeaver === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.timeWeaver === 1 ? 'selected' : ''}>I (−12 jam)</option>
+              <option value="2" ${_config.perks.timeWeaver === 2 ? 'selected' : ''}>II (−24 jam)</option>
+            </select>
+          </div>
+
+          <div class="config-subsection-title">🎁 Daily Login</div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-early-bird" ${_config.perks.earlyBird ? 'checked' : ''}/>
+              Early Bird (+2 daily login)
+            </label>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-night-owl" ${_config.perks.nightOwl ? 'checked' : ''}/>
+              Night Owl (+4 daily login)
             </label>
           </div>
           <div class="param-group">
-            <label for="cfg-gen-rate">Generate Rate (%)</label>
-            <input type="number" id="cfg-gen-rate" value="${(_config.generateRate * 100).toFixed(1)}" min="0" max="100" step="0.1"/>
+            <label for="cfg-perk-login-mult">Login Multiplier</label>
+            <select id="cfg-perk-login-mult">
+              <option value="0" ${_config.perks.loginMultiplier === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.loginMultiplier === 1 ? 'selected' : ''}>I (5% chance double)</option>
+              <option value="2" ${_config.perks.loginMultiplier === 2 ? 'selected' : ''}>II (10% chance double)</option>
+            </select>
+          </div>
+
+          <div class="config-subsection-title">🛒 Lainnya (info saja)</div>
+          <div class="param-group">
+            <label for="cfg-perk-auction">Auction Discount</label>
+            <select id="cfg-perk-auction">
+              <option value="0" ${_config.perks.auctionDiscount === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.auctionDiscount === 1 ? 'selected' : ''}>I (5%)</option>
+              <option value="2" ${_config.perks.auctionDiscount === 2 ? 'selected' : ''}>II (10%)</option>
+            </select>
+          </div>
+          <div class="param-group">
+            <label for="cfg-perk-haggler">Hagglers License</label>
+            <select id="cfg-perk-haggler">
+              <option value="0" ${_config.perks.haggler === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.haggler === 1 ? 'selected' : ''}>I (2% diskon)</option>
+              <option value="2" ${_config.perks.haggler === 2 ? 'selected' : ''}>II (4% diskon)</option>
+              <option value="3" ${_config.perks.haggler === 3 ? 'selected' : ''}>III (6% diskon)</option>
+            </select>
+          </div>
+          <div class="param-group">
+            <label for="cfg-perk-refund">Refund Receipt</label>
+            <select id="cfg-perk-refund">
+              <option value="0" ${_config.perks.refundReceipt === 0 ? 'selected' : ''}>None</option>
+              <option value="1" ${_config.perks.refundReceipt === 1 ? 'selected' : ''}>I (10%)</option>
+              <option value="2" ${_config.perks.refundReceipt === 2 ? 'selected' : ''}>II (20%)</option>
+            </select>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-gacha-reset" ${_config.perks.gachaReset ? 'checked' : ''}/>
+              Gacha Reset
+            </label>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-token-fortune" ${_config.perks.tokenOfFortune ? 'checked' : ''}/>
+              Token of Fortune
+            </label>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-token-luck" ${_config.perks.tokenOfLuck ? 'checked' : ''}/>
+              Token of Luck
+            </label>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-proxy-bidder" ${_config.perks.proxyBidder ? 'checked' : ''}/>
+              Proxy Bidder (MAX)
+            </label>
+          </div>
+          <div class="param-group checkbox-group">
+            <label>
+              <input type="checkbox" id="cfg-perk-streak-saver" ${_config.perks.streakSaver ? 'checked' : ''}/>
+              Streak Saver
+            </label>
+          </div>
+
+          <div class="param-group" id="perks-derived-box" style="margin-top:12px;padding:10px 12px;background:rgba(0,0,0,0.2);border-radius:8px;font-size:0.85rem;">
+            <span id="perks-derived-text"></span>
           </div>
         </div>
 
@@ -544,6 +694,7 @@ const App = (() => {
 
     bindConfigEvents(panel);
     bindLedgerEvents(panel);
+    applyPerks();
   }
 
   function bindConfigEvents(panel) {
@@ -607,8 +758,6 @@ const App = (() => {
       weeklyBonusEnabled: getCheck('cfg-bonus-enabled') ?? true,
       weeklyBonus: getNum('cfg-bonus', 60),
       weeklyBonusInterval: getInt('cfg-bonus-interval', 7),
-      generateEnabled: getCheck('cfg-gen-enabled') ?? true,
-      generateRate: getNum('cfg-gen-rate', 1) / 100,
       limitToBalanceBefore: getCheck('cfg-limit-before') ?? true,
       minInvest: getNum('cfg-min-invest', 50),
       maxInvest: getNum('cfg-max-invest', 0),
@@ -620,11 +769,57 @@ const App = (() => {
       lookaheadDays: getInt('cfg-lookahead', 7),
       waitThresholdPct: getNum('cfg-wait-threshold', 5) / 100,
       maxWaitDays: getInt('cfg-max-wait', 6),
+      perks: {
+        bankbook: getInt('cfg-perk-bankbook', 0),
+        vault: getInt('cfg-perk-vault', 0),
+        piggyBank: getCheck('cfg-perk-piggy-bank') ?? false,
+        highYieldBond: getInt('cfg-perk-hyb', 0),
+        timeWeaver: getInt('cfg-perk-time-weaver', 0),
+        earlyBird: getCheck('cfg-perk-early-bird') ?? false,
+        nightOwl: getCheck('cfg-perk-night-owl') ?? false,
+        loginMultiplier: getInt('cfg-perk-login-mult', 0),
+        auctionDiscount: getInt('cfg-perk-auction', 0),
+        haggler: getInt('cfg-perk-haggler', 0),
+        gachaReset: getCheck('cfg-perk-gacha-reset') ?? false,
+        tokenOfFortune: getCheck('cfg-perk-token-fortune') ?? false,
+        tokenOfLuck: getCheck('cfg-perk-token-luck') ?? false,
+        proxyBidder: getCheck('cfg-perk-proxy-bidder') ?? false,
+        refundReceipt: getInt('cfg-perk-refund', 0),
+        streakSaver: getCheck('cfg-perk-streak-saver') ?? false,
+      },
     };
     if (_prevIB !== _config.initialBalance) {
       console.debug('[DEBUG] readConfig — initialBalance changed via DOM: ', _prevIB, '->', _config.initialBalance, '| cfg-initial value:', get('cfg-initial'));
     }
+    applyPerks();
     _config.sweetSpots = Calculator.generateSweetSpots(_config);
+  }
+
+  /**
+   * Derive simulation variables from active Class Perks.
+   * Called after readConfig() so perk toggles override the manual fields.
+   */
+  function applyPerks() {
+    const p = _config.perks || {};
+    const bankbookRates = [0, 0.005, 0.01, 0.015];
+    _config.generateEnabled = p.bankbook > 0;
+    _config.generateRate = bankbookRates[p.bankbook] || 0;
+    if (p.vault || p.piggyBank) {
+      _config.incomeFixedAmount = (p.vault === 2 ? 15 : p.vault === 1 ? 10 : 0)
+        + (p.piggyBank ? 5 : 0);
+    }
+    if (p.highYieldBond) _config.returnRate = 1.18 + [0, 0.02, 0.04, 0.06][p.highYieldBond] || 1.18;
+    if (p.timeWeaver) _config.investDuration = Math.max(1, 30 - p.timeWeaver);
+
+    const derivedEl = document.getElementById('perks-derived-text');
+    if (derivedEl) {
+      const parts = [];
+      if (_config.generateRate > 0) parts.push(`Generate ${(_config.generateRate * 100).toFixed(1)}%/hari`);
+      if (_config.incomeFixedAmount > 0) parts.push(`Income tetap ${_config.incomeFixedAmount}/hari`);
+      parts.push(`Return ${(_config.returnRate * 100).toFixed(0)}%`);
+      parts.push(`Durasi ${_config.investDuration} hari`);
+      derivedEl.textContent = 'Hasil turunan: ' + parts.join(' • ');
+    }
   }
 
   // ── Simulation ────────────────────────────────────────────────────────────

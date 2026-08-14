@@ -63,14 +63,6 @@ const ComparisonUI = (() => {
             </div>
 
             <div class="param-group">
-              <label for="wi-generate-rate">Generate Rate (%)</label>
-              <div class="input-with-badge">
-                <input type="number" id="wi-generate-rate" value="${(baseConfig.generateRate * 100).toFixed(1)}" min="0" max="100" step="0.1"/>
-                <span class="input-badge">Base: ${(baseConfig.generateRate * 100).toFixed(1)}%</span>
-              </div>
-            </div>
-
-            <div class="param-group">
               <label for="wi-return-rate">Return Rate (%)</label>
               <div class="input-with-badge">
                 <input type="number" id="wi-return-rate" value="${(baseConfig.returnRate * 100).toFixed(0)}" min="100" max="500" step="5"/>
@@ -126,7 +118,6 @@ const ComparisonUI = (() => {
           <div class="preset-list">
             <button class="preset-btn" data-preset="low-start">Saldo Awal 300</button>
             <button class="preset-btn" data-preset="high-income">Income 20/hari</button>
-            <button class="preset-btn" data-preset="high-generate">Generate 2%</button>
             <button class="preset-btn" data-preset="sweet-only">Hanya Sweet Spot</button>
             <button class="preset-btn" data-preset="fast-return">Return 7 Hari</button>
           </div>
@@ -166,7 +157,6 @@ const ComparisonUI = (() => {
       incomeBase: parseFloat(get('wi-income-base')) || baseConfig.incomeBase,
       incomeGrowthRate: parseFloat(get('wi-income-growth')) ?? baseConfig.incomeGrowthRate,
       weeklyBonus: parseFloat(get('wi-weekly-bonus')) ?? baseConfig.weeklyBonus,
-      generateRate: (parseFloat(get('wi-generate-rate')) || 0) / 100,
       returnRate: (parseFloat(get('wi-return-rate')) || 120) / 100,
       investDuration: parseInt(get('wi-invest-duration')) || baseConfig.investDuration,
       minInvest: parseFloat(get('wi-min-invest')) || baseConfig.minInvest,
@@ -188,7 +178,6 @@ const ComparisonUI = (() => {
     set('wi-income-base', baseConfig.incomeBase);
     set('wi-income-growth', baseConfig.incomeGrowthRate);
     set('wi-weekly-bonus', baseConfig.weeklyBonus);
-    set('wi-generate-rate', (baseConfig.generateRate * 100).toFixed(1));
     set('wi-return-rate', (baseConfig.returnRate * 100).toFixed(0));
     set('wi-invest-duration', baseConfig.investDuration);
     set('wi-min-invest', baseConfig.minInvest);
@@ -197,7 +186,6 @@ const ComparisonUI = (() => {
     switch (preset) {
       case 'low-start':     set('wi-initial-balance', 300); break;
       case 'high-income':   set('wi-income-base', 20); break;
-      case 'high-generate': set('wi-generate-rate', 2); break;
       case 'sweet-only':
         container.querySelector('#wi-sweet-spot-only').checked = true;
         break;

@@ -1,0 +1,602 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1785661651.407245,
+    "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
+    "semantic_hash": "5ebef3dd159986e465ab65e4014107ec"
+  },
+  ".kilo/kilo.json": {
+    "mtime": 1785672441.2713363,
+    "ast_hash": "cb34025bffd1e9cb6a083623d545a7cd",
+    "semantic_hash": "cb34025bffd1e9cb6a083623d545a7cd"
+  },
+  ".kilo/plugins/graphify.js": {
+    "mtime": 1785661460.676108,
+    "ast_hash": "be45401f665e35c6a4a049c8e612af04",
+    "semantic_hash": "be45401f665e35c6a4a049c8e612af04"
+  },
+  "Board/alert.js": {
+    "mtime": 1785820306.5282393,
+    "ast_hash": "49886587d1bb25c2cef897e888e1f5de",
+    "semantic_hash": ""
+  },
+  "Board/executor.js": {
+    "mtime": 1785985926.5955682,
+    "ast_hash": "6b2af154d1c6f4b51a0f32eedb6e2342",
+    "semantic_hash": ""
+  },
+  "Board/firebase.js": {
+    "mtime": 1785813915.039372,
+    "ast_hash": "ac90f694743acf2284ab7bfb61940088",
+    "semantic_hash": "ac90f694743acf2284ab7bfb61940088"
+  },
+  "Board/index.js": {
+    "mtime": 1786011525.2844732,
+    "ast_hash": "238774873d8f8238168471968ad5954f",
+    "semantic_hash": ""
+  },
+  "Board/investor.js": {
+    "mtime": 1785811035.501461,
+    "ast_hash": "e43fe0df919898fdd07fa31c4054da39",
+    "semantic_hash": "e43fe0df919898fdd07fa31c4054da39"
+  },
+  "Board/package.json": {
+    "mtime": 1785510725.439631,
+    "ast_hash": "d54b6e2630a2b95563d63123e5414823",
+    "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
+  },
+  "js/app.js": {
+    "mtime": 1786067844.8671923,
+    "ast_hash": "0d2eff8197c425533d94b94327e91038",
+    "semantic_hash": ""
+  },
+  "js/engine/calculator.js": {
+    "mtime": 1786009830.5479746,
+    "ast_hash": "f3ed14c66a317c98d15d8c1f1167ce15",
+    "semantic_hash": ""
+  },
+  "js/engine/ledger.js": {
+    "mtime": 1785748675.2075744,
+    "ast_hash": "a115d0aef0bef37b3252c2fad5cb5d26",
+    "semantic_hash": "a115d0aef0bef37b3252c2fad5cb5d26"
+  },
+  "js/engine/optimizer.js": {
+    "mtime": 1785663963.2058377,
+    "ast_hash": "56c899fc276a7d76026b00c34bbf23e9",
+    "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
+  },
+  "js/engine/simulator.js": {
+    "mtime": 1785754208.377296,
+    "ast_hash": "f184114216e85ac16aeee3a2c386f475",
+    "semantic_hash": "f184114216e85ac16aeee3a2c386f475"
+  },
+  "js/export/exporters.js": {
+    "mtime": 1785487157.468014,
+    "ast_hash": "1aac1dcd3f97bac495234611de8c4088",
+    "semantic_hash": "1aac1dcd3f97bac495234611de8c4088"
+  },
+  "js/firebase.js": {
+    "mtime": 1785809144.2272515,
+    "ast_hash": "16e192d5af951eb5e877301e5925eaf8",
+    "semantic_hash": "16e192d5af951eb5e877301e5925eaf8"
+  },
+  "js/ui/bot_status.js": {
+    "mtime": 1786065057.0549738,
+    "ast_hash": "0d10b3eecaff74646dd0f6f091e3058d",
+    "semantic_hash": ""
+  },
+  "js/ui/calendar.js": {
+    "mtime": 1785754218.63644,
+    "ast_hash": "111b589c64420e4ae2024eae26a95eeb",
+    "semantic_hash": "111b589c64420e4ae2024eae26a95eeb"
+  },
+  "js/ui/comparison.js": {
+    "mtime": 1785498983.2640657,
+    "ast_hash": "cbc648a43ea53fc04dd5f5df6fc451ce",
+    "semantic_hash": "cbc648a43ea53fc04dd5f5df6fc451ce"
+  },
+  "js/ui/detail.js": {
+    "mtime": 1785751331.3038168,
+    "ast_hash": "d7db6df3fb18676f00ee5dbd2ec6c336",
+    "semantic_hash": "d7db6df3fb18676f00ee5dbd2ec6c336"
+  },
+  "js/ui/summary.js": {
+    "mtime": 1785500633.8460972,
+    "ast_hash": "d0aa74498d7714febde1a8c233654d6d",
+    "semantic_hash": "d0aa74498d7714febde1a8c233654d6d"
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1785661642.884102,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1785661642.887276,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
+  },
+  ".kilo/plans/1785669327659-live-predicted-balance-mode.md": {
+    "mtime": 1785682589.6730704,
+    "ast_hash": "3d40feb355b38ca5f3cd841b75846d2b",
+    "semantic_hash": "3d40feb355b38ca5f3cd841b75846d2b"
+  },
+  ".kilo/plans/1785677999510-fix-bot-state-as-saldo-awal.md": {
+    "mtime": 1785682603.6356075,
+    "ast_hash": "75338a8ddd0ce2ea05c8fd46e8736231",
+    "semantic_hash": "75338a8ddd0ce2ea05c8fd46e8736231"
+  },
+  ".kilo/plans/1785720286196-date-based-transactions.md": {
+    "mtime": 1785732234.12897,
+    "ast_hash": "c8273af6498e0fd6058b9487649fbbec",
+    "semantic_hash": "c8273af6498e0fd6058b9487649fbbec"
+  },
+  ".kilo/plans/1785734141555-day-specific-income-entries.md": {
+    "mtime": 1785734505.9018402,
+    "ast_hash": "d97582d5b6bbd1261e600064ae2dd762",
+    "semantic_hash": "d97582d5b6bbd1261e600064ae2dd762"
+  },
+  ".kilo/plans/1785734141555-realtime-finance-tracker.md": {
+    "mtime": 1785738492.4455369,
+    "ast_hash": "7a3f604c5699ee119d219b9b08762862",
+    "semantic_hash": "7a3f604c5699ee119d219b9b08762862"
+  },
+  "AGENTS.md": {
+    "mtime": 1785661460.6750872,
+    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
+    "semantic_hash": "21ceb6533048be51308e69e7b74a35cf"
+  },
+  "Board/README.md": {
+    "mtime": 1785817024.5479963,
+    "ast_hash": "6e94821de00346876722c356f62c8942",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1786062072.1951902,
+    "ast_hash": "c025a772b3f08653f3e030a87bb4f36e",
+    "semantic_hash": ""
+  },
+  "Board/dailyReward.js": {
+    "mtime": 1786011263.2492044,
+    "ast_hash": "d062ecf1d736035d9821bf83f4c1e801",
+    "semantic_hash": ""
+  },
+  "Board/logger.js": {
+    "mtime": 1785985873.2633727,
+    "ast_hash": "faf2c13002351b504454ba25104872f9",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/scripts/tests/test_sync_brand_to_tokens.py": {
+    "mtime": 1785924198.7638764,
+    "ast_hash": "1cc075890cd68fa5c5f7463b9e1a4618",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/fetch-background.py": {
+    "mtime": 1785924198.7097175,
+    "ast_hash": "3269f2ebc8024e55b65008108910f3d4",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/generate-slide.py": {
+    "mtime": 1785924198.7132654,
+    "ast_hash": "622d80cd7d9696f269e2da6b063754f7",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/html-token-validator.py": {
+    "mtime": 1785924198.7270248,
+    "ast_hash": "1d18dae9d3d916137c50df5ec7e65039",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/search-slides.py": {
+    "mtime": 1785924198.7339616,
+    "ast_hash": "bc70c45549014b579fb2a27f3acf3d2e",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/slide-token-validator.py": {
+    "mtime": 1785924198.7486434,
+    "ast_hash": "ee5d76c06903f98a460a8661e150c5d3",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/slide_search_core.py": {
+    "mtime": 1785924198.7463124,
+    "ast_hash": "994ab50455710fce437399e86df23286",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/scripts/tests/test_validate_tokens.py": {
+    "mtime": 1785924198.7697392,
+    "ast_hash": "32a9d34bbfa0041852963c189ea0ee5c",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/templates/design-tokens-starter.json": {
+    "mtime": 1785924198.4648612,
+    "ast_hash": "a5771c378d6fea057242eeebe83a7747",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/cip/core.py": {
+    "mtime": 1785924198.6982515,
+    "ast_hash": "9fcf192c150e285ab6176a9bbacd475b",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/cip/generate.py": {
+    "mtime": 1785924198.715476,
+    "ast_hash": "5662ddd34b366544e6541686ec9c8d22",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/cip/render-html.py": {
+    "mtime": 1785924198.7307355,
+    "ast_hash": "6fe3ce567110811670f05f40d386b48f",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/cip/search.py": {
+    "mtime": 1785924198.737679,
+    "ast_hash": "21a63380316bd899c49302e1b9a59191",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/icon/generate.py": {
+    "mtime": 1785924198.7215066,
+    "ast_hash": "b142cc490fdf8a45bcf95bfe972284df",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/logo/core.py": {
+    "mtime": 1785924198.70194,
+    "ast_hash": "b8ea226dde31603e5a5e790641334055",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/logo/generate.py": {
+    "mtime": 1785924198.7249997,
+    "ast_hash": "6f973ff8ea948cb774340703c8b51b54",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/scripts/logo/search.py": {
+    "mtime": 1785924198.741423,
+    "ast_hash": "56aa8e1e15479f304a7e4709a767c98b",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/shadcn_add.py": {
+    "mtime": 1785924198.744069,
+    "ast_hash": "4eb5eb020e3b45a8f73f4a371abbdbe1",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/tailwind_config_gen.py": {
+    "mtime": 1785924198.752141,
+    "ast_hash": "cafc602e66323d217188d319c9a0412e",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/tests/coverage-ui.json": {
+    "mtime": 1785924198.4569683,
+    "ast_hash": "42c486def8b180c1e72b1e7b865b9607",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/tests/test_shadcn_add.py": {
+    "mtime": 1785924198.7602916,
+    "ast_hash": "51024123de02865d0c6dee29df6a887a",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/tests/test_tailwind_config_gen.py": {
+    "mtime": 1785924198.7667205,
+    "ast_hash": "f5d99288827b293f4b6fdb86b8b56229",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1785924198.693856,
+    "ast_hash": "41d488b60b5bfb818c4b17413f7477c3",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1785924198.7073042,
+    "ast_hash": "f261c292ddae64226b2c8b264f797898",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1785924198.7364275,
+    "ast_hash": "10012353bb7d92c645ea7ab245e461e6",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/scripts/tests/test_core.py": {
+    "mtime": 1785924198.7555532,
+    "ast_hash": "136d8ec87735cf5b77d70ad0adea59c0",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/scripts/tests/test_design_system_mode.py": {
+    "mtime": 1785924198.7576284,
+    "ast_hash": "267b7b2d413c3822139be0f684a5db18",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/scripts/validate_data.py": {
+    "mtime": 1785924198.7717464,
+    "ast_hash": "9ea4300a8385a7377457dd6d1ee99224",
+    "semantic_hash": ""
+  },
+  "Board/pending.js": {
+    "mtime": 1785985774.52724,
+    "ast_hash": "768a6340b78cd686a190b745ccbb0232",
+    "semantic_hash": ""
+  },
+  "Board/retry.js": {
+    "mtime": 1786011226.62178,
+    "ast_hash": "cecf3a5082278f007ab74d3fd65efdc2",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/banner-design/SKILL.md": {
+    "mtime": 1785924198.630856,
+    "ast_hash": "aaf11854e0f8233bb53282699334164e",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/banner-design/references/banner-sizes-and-styles.md": {
+    "mtime": 1785924198.5027382,
+    "ast_hash": "2581cbdf098909b898471bea6adabff6",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/SKILL.md": {
+    "mtime": 1785924198.6338568,
+    "ast_hash": "7d771c480a628d8abdd2749d1893c7ab",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/approval-checklist.md": {
+    "mtime": 1785924198.4968238,
+    "ast_hash": "8cedb5a9d3ddff0d5f7d98affd1fadfc",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/asset-organization.md": {
+    "mtime": 1785924198.498221,
+    "ast_hash": "8c359aaccb0d5f5a9c0daed9128fd9e9",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/brand-guideline-template.md": {
+    "mtime": 1785924198.508407,
+    "ast_hash": "40aadbb3eb6b82efb9c933951cdfe632",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/color-palette-management.md": {
+    "mtime": 1785924198.5259862,
+    "ast_hash": "b7e3dc308cfc2e65bd94ecf85fb580e7",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/consistency-checklist.md": {
+    "mtime": 1785924198.5402665,
+    "ast_hash": "e0be65fe750959b397a96d72ee939ebc",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/logo-usage-rules.md": {
+    "mtime": 1785924198.592676,
+    "ast_hash": "03cb4cb2d302a9e827fceeff93b4186a",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/messaging-framework.md": {
+    "mtime": 1785924198.5962198,
+    "ast_hash": "9390c33e1c7ddb04a39528aa5872f85f",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/typography-specifications.md": {
+    "mtime": 1785924198.6831782,
+    "ast_hash": "bc5d6e2d497b8aa2d3110de1d8463276",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/update.md": {
+    "mtime": 1785924198.685414,
+    "ast_hash": "14b943f767980c2675e19008209d9eac",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/visual-identity.md": {
+    "mtime": 1785924198.6876822,
+    "ast_hash": "0ada28b9a2e03da7fe50b95f3318f4de",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/references/voice-framework.md": {
+    "mtime": 1785924198.6890059,
+    "ast_hash": "05b79e16c373850ea5e94e0977856dbc",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/brand/templates/brand-guidelines-starter.md": {
+    "mtime": 1785924198.5117328,
+    "ast_hash": "f7a5da16b17f9792a93270626d97a978",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/SKILL.md": {
+    "mtime": 1785924198.637349,
+    "ast_hash": "399b2e5ffbeac0bc777882e340245be9",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/references/component-specs.md": {
+    "mtime": 1785924198.532014,
+    "ast_hash": "4b96207671408be2dac5b13c9e31f5bd",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/references/states-and-variants.md": {
+    "mtime": 1785924198.6702766,
+    "ast_hash": "ff0c751bff96625c6780ae076ed4558d",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design-system/references/tailwind-integration.md": {
+    "mtime": 1785924198.6752985,
+    "ast_hash": "d111e6c9b42fc6c83e353be65f1e7380",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/SKILL.md": {
+    "mtime": 1785924198.6453195,
+    "ast_hash": "d61b2326528cef1f0a8802c473840aa7",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/banner-sizes-and-styles.md": {
+    "mtime": 1785924198.5073986,
+    "ast_hash": "2581cbdf098909b898471bea6adabff6",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/cip-deliverable-guide.md": {
+    "mtime": 1785924198.518628,
+    "ast_hash": "529d95a6ced350448cff5c2c994adaf6",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/cip-design.md": {
+    "mtime": 1785924198.5196276,
+    "ast_hash": "0c7a987fa779a7058a26b92aba5c1e8c",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/cip-prompt-engineering.md": {
+    "mtime": 1785924198.5223794,
+    "ast_hash": "71a93064bf55486c3d3bbbfa512db516",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/cip-style-guide.md": {
+    "mtime": 1785924198.5238967,
+    "ast_hash": "45ddddcc2633526b10d3936407a37fdb",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/design-routing.md": {
+    "mtime": 1785924198.5528138,
+    "ast_hash": "fb2836b233f4a1a538fcf515d7746d6d",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/icon-design.md": {
+    "mtime": 1785924198.5632777,
+    "ast_hash": "629ff5002717b909f53363f5cb1cfd28",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/logo-color-psychology.md": {
+    "mtime": 1785924198.5714834,
+    "ast_hash": "c16a5c2f71bca6dffe5be145fb8e1cb4",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/logo-design.md": {
+    "mtime": 1785924198.5761926,
+    "ast_hash": "ddf37c8f5fb996f86e11052bbe55e2c5",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/logo-prompt-engineering.md": {
+    "mtime": 1785924198.5802004,
+    "ast_hash": "f2efe3315b1b88e32e3a46f76f00e975",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/logo-style-guide.md": {
+    "mtime": 1785924198.5865445,
+    "ast_hash": "87c13758b7b6ee686d46dd1ad444a3d0",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/slides-copywriting-formulas.md": {
+    "mtime": 1785924198.6560285,
+    "ast_hash": "cc6e52e1363e4df1bb56365444dc0f64",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/slides-create.md": {
+    "mtime": 1785924198.6580288,
+    "ast_hash": "0c134b4ddc19a2be22f8e378e954cf29",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/slides-html-template.md": {
+    "mtime": 1785924198.6617439,
+    "ast_hash": "8240be541e1fa33ed5a1e6f3a6f56525",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/slides-layout-patterns.md": {
+    "mtime": 1785924198.662752,
+    "ast_hash": "1fc25584d384bb44ca077016a7481109",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/slides-strategies.md": {
+    "mtime": 1785924198.663771,
+    "ast_hash": "1fb116496c22dc3e9ca8a44f86b219bb",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/slides.md": {
+    "mtime": 1785924198.6659117,
+    "ast_hash": "6c72659c3af2cdb7df76827cdfff8c2c",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/design/references/social-photos-design.md": {
+    "mtime": 1785924198.66826,
+    "ast_hash": "e4df69abcf5c9d57a219b0e264b699be",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/slides/SKILL.md": {
+    "mtime": 1785924198.6473825,
+    "ast_hash": "1d017fa64446b147cb7c84f05562520f",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/slides/references/copywriting-formulas.md": {
+    "mtime": 1785924198.5469718,
+    "ast_hash": "cc6e52e1363e4df1bb56365444dc0f64",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/slides/references/create.md": {
+    "mtime": 1785924198.5499768,
+    "ast_hash": "0c134b4ddc19a2be22f8e378e954cf29",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/slides/references/html-template.md": {
+    "mtime": 1785924198.5592704,
+    "ast_hash": "8240be541e1fa33ed5a1e6f3a6f56525",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/slides/references/layout-patterns.md": {
+    "mtime": 1785924198.565915,
+    "ast_hash": "1fc25584d384bb44ca077016a7481109",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/slides/references/slide-strategies.md": {
+    "mtime": 1785924198.6525447,
+    "ast_hash": "1fb116496c22dc3e9ca8a44f86b219bb",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/LICENSE.txt": {
+    "mtime": 1785924198.7741551,
+    "ast_hash": "175792518e4ac015ab6696d16c4f607e",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/SKILL.md": {
+    "mtime": 1785924198.650538,
+    "ast_hash": "28a3c5ed8e63a04595cc398a355a3b63",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/canvas-design-system.md": {
+    "mtime": 1785924198.5150363,
+    "ast_hash": "af9125f586c5909737dab10874f0c1e2",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/shadcn-accessibility.md": {
+    "mtime": 1785924198.6111944,
+    "ast_hash": "942f36327bb6ada5ce9a7f3d0e1877ce",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/shadcn-components.md": {
+    "mtime": 1785924198.6138504,
+    "ast_hash": "e6c281ca23ac2a97aefae71f6190f915",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/shadcn-theming.md": {
+    "mtime": 1785924198.6182206,
+    "ast_hash": "1c3f2a49a346f7e22e364f94c3b1d99c",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/tailwind-customization.md": {
+    "mtime": 1785924198.6723008,
+    "ast_hash": "214b07281279c73713262edc92cba5c4",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/tailwind-responsive.md": {
+    "mtime": 1785924198.677322,
+    "ast_hash": "0404b2ca094826682d24226231ff2fef",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/references/tailwind-utilities.md": {
+    "mtime": 1785924198.680616,
+    "ast_hash": "cc42c158e59165c86fc826c83862c97e",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/requirements.txt": {
+    "mtime": 1785924198.7761567,
+    "ast_hash": "56d0657c2d53f4edf30689d0c217efbb",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-styling/scripts/tests/requirements.txt": {
+    "mtime": 1785924198.7775347,
+    "ast_hash": "d7fb3d2ea85706944ec8609949c3a851",
+    "semantic_hash": ""
+  },
+  ".kiro/steering/ui-ux-pro-max/SKILL.md": {
+    "mtime": 1785924488.0440502,
+    "ast_hash": "bdee7e3ecdd3b7f23b6934562b50a67f",
+    "semantic_hash": ""
+  },
+  ".kilo/plans/1785750000000-class-perks-support.md": {
+    "mtime": 1786067085.1351924,
+    "ast_hash": "34ea8b47afe455d942fee1dac07c04b9",
+    "semantic_hash": ""
+  }
+}

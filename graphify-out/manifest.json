@@ -45,8 +45,8 @@
     "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
   },
   "js/app.js": {
-    "mtime": 1786009860.521208,
-    "ast_hash": "e5e556cf61c20dabf8fb46d4a30ffeae",
+    "mtime": 1786072526.4321043,
+    "ast_hash": "203e18ab2e11ffc59339a0544e570580",
     "semantic_hash": ""
   },
   "js/engine/calculator.js": {
@@ -90,9 +90,9 @@
     "semantic_hash": "111b589c64420e4ae2024eae26a95eeb"
   },
   "js/ui/comparison.js": {
-    "mtime": 1785498983.2640657,
-    "ast_hash": "cbc648a43ea53fc04dd5f5df6fc451ce",
-    "semantic_hash": "cbc648a43ea53fc04dd5f5df6fc451ce"
+    "mtime": 1786072670.9524102,
+    "ast_hash": "5f25a2667ad2a36bab57fe4760c6975d",
+    "semantic_hash": ""
   },
   "js/ui/detail.js": {
     "mtime": 1785751331.3038168,
@@ -592,6 +592,11 @@
   ".kiro/steering/ui-ux-pro-max/SKILL.md": {
     "mtime": 1785924488.0440502,
     "ast_hash": "bdee7e3ecdd3b7f23b6934562b50a67f",
+    "semantic_hash": ""
+  },
+  ".kilo/plans/1785750000000-class-perks-support.md": {
+    "mtime": 1786067085.1351924,
+    "ast_hash": "34ea8b47afe455d942fee1dac07c04b9",
     "semantic_hash": ""
   }
 }

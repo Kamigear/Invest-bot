@@ -1,16 +1,16 @@
-# Graph Report - Investation  (2026-08-06)
+# Graph Report - Investation  (2026-08-07)
 
 ## Corpus Check
-- 115 files · ~94,873 words
+- 116 files · ~96,384 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2068 nodes · 2450 edges · 149 communities (108 shown, 41 thin omitted)
+- 2078 nodes · 2459 edges · 150 communities (109 shown, 41 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 157 edges (avg confidence: 0.72)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `659352c5`
+- Built from commit: `39673271`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -117,6 +117,7 @@
 - Slide Strategies
 - generate.py
 - Slide Strategies
+- Plan: Sistem Config "Class Perks" — Toggle Semua Perk
 - _run
 - retry.js
 - radius
@@ -195,7 +196,7 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (149 total, 41 thin omitted)
+## Communities (150 total, 41 thin omitted)
 
 ### Community 0 - "logger.js"
 Cohesion: 0.14
@@ -553,6 +554,10 @@ Nodes (9): enhance_prompt(), generate_batch(), generate_logo(), load_env(), main
 Cohesion: 0.20
 Nodes (9): Common Structures, Duarte Sparkline Pattern, Matching Strategy to Context, Product Demo (6 slides), Sales Pitch (9 slides), Search Commands, Slide Strategies, Strategy Selection (+1 more)
 
+### Community 103 - "Plan: Sistem Config "Class Perks" — Toggle Semua Perk"
+Cohesion: 0.20
+Nodes (9): Data Model — `DEFAULT_CONFIG` (app.js baris 151), Fase opsional (tidak di fase 1), Goal, Helper `applyPerks()` (app.js), Perubahan file, Plan: Sistem Config "Class Perks" — Toggle Semua Perk, `readConfig()` & `saveConfig()`, UI — Section "🃏 Class Perks" (app.js, setelah section Generate ~baris 402) (+1 more)
+
 ### Community 104 - "_run"
 Cohesion: 0.28
 Nodes (8): CompletedProcess, Path, Regression tests for validate-tokens.cjs.  The validator used to skip any line c, A hardcoded hex on the same line as a var() token is still a violation., A line that references only tokens produces no false positives., _run(), test_flags_hardcoded_hex_sharing_line_with_token(), test_token_only_line_reports_no_violation()
@@ -626,7 +631,7 @@ Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
 
 ## Knowledge Gaps
-- **992 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+987 more)
+- **1000 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+995 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -644,6 +649,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 16 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestDomainDetection` and `TestPersistence`) actually correct?**
   _`DesignSystemGenerator` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
-  _992 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1000 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `logger.js` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
