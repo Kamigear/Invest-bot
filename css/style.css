@@ -1138,6 +1138,8 @@ body {
 .flag-delay    { background: rgba(239,68,68,0.15);   color: var(--accent-red);    border: 1px solid rgba(239,68,68,0.3); }
 .flag-sweet    { background: rgba(249,115,22,0.15);  color: var(--accent-orange); border: 1px solid rgba(249,115,22,0.3); }
 
+.badge-ledger-invest { background: rgba(6,182,212,0.2);  color: var(--accent-teal);  border: 1px solid rgba(6,182,212,0.4); }
+
 /* Color utilities */
 .invest-color  { color: var(--accent-green); }
 .profit-color  { color: var(--accent-blue); }
@@ -1967,4 +1969,34 @@ body {
     right: 14px;
     bottom: 14px;
   }
+}
+
+/* Perks flash feedback */
+.perks-flash {
+  animation: perksFlash 1s ease-out;
+}
+
+@keyframes perksFlash {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+  50%  { box-shadow: 0 0 0 8px rgba(16,185,129,0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+
+.perk-day-input {
+  margin-top: 4px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.perk-day-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(79,172,254,0.1);
 }

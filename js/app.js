@@ -181,6 +181,7 @@ const App = (() => {
   let _baseResult = null;
   let _externalSchedule = null;
   let _activeTab = 'calendar';
+  let _reRunTimer = null;
 
   const STORAGE_KEY = 'investcalc_config_v1';
   let _selectedLedgerDate = Ledger.todayISO();
@@ -211,6 +212,12 @@ const App = (() => {
           _config.perks = { ...DEFAULT_CONFIG.perks };
         } else {
           _config.perks = { ...DEFAULT_CONFIG.perks, ...saved.perks };
+        }
+        // Migrate old configs without perkStartDay
+        if (!saved.perkStartDay || typeof saved.perkStartDay !== 'object') {
+          _config.perkStartDay = { ...DEFAULT_CONFIG.perkStartDay };
+        } else {
+          _config.perkStartDay = { ...DEFAULT_CONFIG.perkStartDay, ...saved.perkStartDay };
         }
         console.debug('[DEBUG] loadConfig — initialBalance read from localStorage:', _config.initialBalance);
       } else {
@@ -432,6 +439,7 @@ const App = (() => {
               <option value="2" ${_config.perks.bankbook === 2 ? 'selected' : ''}>Silver (1%/hari)</option>
               <option value="3" ${_config.perks.bankbook === 3 ? 'selected' : ''}>Gold (1.5%/hari)</option>
             </select>
+            <input type="number" id="cfg-perk-bankbook-day" min="1" max="365" value="${_config.perkStartDay?.bankbook || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
           <div class="param-group">
             <label for="cfg-perk-vault">Vault</label>
@@ -440,12 +448,14 @@ const App = (() => {
               <option value="1" ${_config.perks.vault === 1 ? 'selected' : ''}>Tier I (+10/hari)</option>
               <option value="2" ${_config.perks.vault === 2 ? 'selected' : ''}>Tier II (+15/hari)</option>
             </select>
+            <input type="number" id="cfg-perk-vault-day" min="1" max="365" value="${_config.perkStartDay?.vault || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
           <div class="param-group checkbox-group">
             <label>
               <input type="checkbox" id="cfg-perk-piggy-bank" ${_config.perks.piggyBank ? 'checked' : ''}/>
               Piggy Bank (+5/hari)
             </label>
+            <input type="number" id="cfg-perk-piggy-bank-day" min="1" max="365" value="${_config.perkStartDay?.piggyBank || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
 
           <div class="config-subsection-title">📈 Investasi</div>
@@ -457,6 +467,7 @@ const App = (() => {
               <option value="2" ${_config.perks.highYieldBond === 2 ? 'selected' : ''}>II (+4% return)</option>
               <option value="3" ${_config.perks.highYieldBond === 3 ? 'selected' : ''}>III (+6% return)</option>
             </select>
+            <input type="number" id="cfg-perk-hyb-day" min="1" max="365" value="${_config.perkStartDay?.highYieldBond || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
           <div class="param-group">
             <label for="cfg-perk-time-weaver">Time Weaver</label>
@@ -465,6 +476,7 @@ const App = (() => {
               <option value="1" ${_config.perks.timeWeaver === 1 ? 'selected' : ''}>I (−12 jam)</option>
               <option value="2" ${_config.perks.timeWeaver === 2 ? 'selected' : ''}>II (−24 jam)</option>
             </select>
+            <input type="number" id="cfg-perk-time-weaver-day" min="1" max="365" value="${_config.perkStartDay?.timeWeaver || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
 
           <div class="config-subsection-title">🎁 Daily Login</div>
@@ -473,12 +485,14 @@ const App = (() => {
               <input type="checkbox" id="cfg-perk-early-bird" ${_config.perks.earlyBird ? 'checked' : ''}/>
               Early Bird (+2 daily login)
             </label>
+            <input type="number" id="cfg-perk-early-bird-day" min="1" max="365" value="${_config.perkStartDay?.earlyBird || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
           <div class="param-group checkbox-group">
             <label>
               <input type="checkbox" id="cfg-perk-night-owl" ${_config.perks.nightOwl ? 'checked' : ''}/>
               Night Owl (+4 daily login)
             </label>
+            <input type="number" id="cfg-perk-night-owl-day" min="1" max="365" value="${_config.perkStartDay?.nightOwl || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
           <div class="param-group">
             <label for="cfg-perk-login-mult">Login Multiplier</label>
@@ -487,6 +501,7 @@ const App = (() => {
               <option value="1" ${_config.perks.loginMultiplier === 1 ? 'selected' : ''}>I (5% chance double)</option>
               <option value="2" ${_config.perks.loginMultiplier === 2 ? 'selected' : ''}>II (10% chance double)</option>
             </select>
+            <input type="number" id="cfg-perk-login-mult-day" min="1" max="365" value="${_config.perkStartDay?.loginMultiplier || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
 
           <div class="config-subsection-title">🛒 Lainnya (info saja)</div>
@@ -544,6 +559,7 @@ const App = (() => {
               <input type="checkbox" id="cfg-perk-streak-saver" ${_config.perks.streakSaver ? 'checked' : ''}/>
               Streak Saver
             </label>
+            <input type="number" id="cfg-perk-streak-saver-day" min="1" max="365" value="${_config.perkStartDay?.streakSaver || 1}" class="perk-day-input" placeholder="Dari Hari"/>
           </div>
 
           <div class="param-group" id="perks-derived-box" style="margin-top:12px;padding:10px 12px;background:rgba(0,0,0,0.2);border-radius:8px;font-size:0.85rem;">
@@ -713,12 +729,22 @@ const App = (() => {
 
     // Auto-save + update sweet spots preview on any input change
     const onAnyChange = () => {
+      const prevPerks = { ...(_config.perks || {}) };
       readConfig();
       saveConfig();
       const preview = panel.querySelector('#sweet-spots-preview');
       if (preview) {
         const spots = Calculator.generateSweetSpots(_config);
         preview.textContent = spots.slice(0, 30).join(', ') + (spots.length > 30 ? '...' : '');
+      }
+      const perksChanged = Object.keys(prevPerks).some(
+        k => prevPerks[k] !== _config.perks?.[k]
+      );
+      if (perksChanged) {
+        flashPerksBox();
+        scheduleReRun(150);
+      } else {
+        scheduleReRun(500);
       }
     };
 
@@ -787,6 +813,18 @@ const App = (() => {
         refundReceipt: getInt('cfg-perk-refund', 0),
         streakSaver: getCheck('cfg-perk-streak-saver') ?? false,
       },
+
+      perkStartDay: {
+        bankbook: getInt('cfg-perk-bankbook-day', 1),
+        vault: getInt('cfg-perk-vault-day', 1),
+        piggyBank: getInt('cfg-perk-piggy-bank-day', 1),
+        highYieldBond: getInt('cfg-perk-hyb-day', 1),
+        timeWeaver: getInt('cfg-perk-time-weaver-day', 1),
+        earlyBird: getInt('cfg-perk-early-bird-day', 1),
+        nightOwl: getInt('cfg-perk-night-owl-day', 1),
+        loginMultiplier: getInt('cfg-perk-login-mult-day', 1),
+        streakSaver: getInt('cfg-perk-streak-saver-day', 1),
+      },
     };
     if (_prevIB !== _config.initialBalance) {
       console.debug('[DEBUG] readConfig — initialBalance changed via DOM: ', _prevIB, '->', _config.initialBalance, '| cfg-initial value:', get('cfg-initial'));
@@ -818,8 +856,36 @@ const App = (() => {
       if (_config.incomeFixedAmount > 0) parts.push(`Income tetap ${_config.incomeFixedAmount}/hari`);
       parts.push(`Return ${(_config.returnRate * 100).toFixed(0)}%`);
       parts.push(`Durasi ${_config.investDuration} hari`);
-      derivedEl.textContent = 'Hasil turunan: ' + parts.join(' • ');
+
+      const sd = _config.perkStartDay || {};
+      const activeParts = [];
+      if (p.bankbook > 0) activeParts.push(`Bankbook ${['', 'Bronze', 'Silver', 'Gold'][p.bankbook]} (Hari ${sd.bankbook || 1})`);
+      if (p.vault > 0) activeParts.push(`Vault ${['', 'I', 'II'][p.vault]} (Hari ${sd.vault || 1})`);
+      if (p.piggyBank) activeParts.push(`Piggy Bank (Hari ${sd.piggyBank || 1})`);
+      if (p.highYieldBond > 0) activeParts.push(`High Yield Bond ${['', 'I', 'II', 'III'][p.highYieldBond]} (Hari ${sd.highYieldBond || 1})`);
+      if (p.timeWeaver > 0) activeParts.push(`Time Weaver ${['', 'I', 'II'][p.timeWeaver]} (Hari ${sd.timeWeaver || 1})`);
+
+      const baseHtml = 'Hasil turunan: ' + parts.join(' • ');
+      const aktifHtml = activeParts.length
+        ? '<br><small style="opacity:0.7">Aktif: ' + activeParts.join(' • ') + '</small>'
+        : '';
+      derivedEl.innerHTML = baseHtml + aktifHtml;
     }
+  }
+
+  function scheduleReRun(delay) {
+    if (_reRunTimer) clearTimeout(_reRunTimer);
+    _reRunTimer = setTimeout(() => {
+      _reRunTimer = null;
+      if (_baseResult) runSimulation();
+    }, delay);
+  }
+
+  function flashPerksBox() {
+    const el = document.getElementById('perks-derived-text');
+    if (!el) return;
+    el.classList.add('perks-flash');
+    setTimeout(() => el.classList.remove('perks-flash'), 1200);
   }
 
   // ── Simulation ────────────────────────────────────────────────────────────
@@ -1221,6 +1287,8 @@ const App = (() => {
       if (!cfg || typeof cfg !== 'object') return;
       const { updatedAt, ...cleanRemote } = cfg;
       _config = { ...DEFAULT_CONFIG, ...cleanRemote };
+      _config.perks = { ...DEFAULT_CONFIG.perks, ...(cleanRemote.perks || {}) };
+      _config.perkStartDay = { ...DEFAULT_CONFIG.perkStartDay, ...(cleanRemote.perkStartDay || {}) };
       saveConfig();
       renderConfigPanel();
       App.runSimulation();

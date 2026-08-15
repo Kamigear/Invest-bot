@@ -87,7 +87,7 @@ const DetailUI = (() => {
             <tbody>
               ${r.activeInvestments.map(inv => `
                 <tr>
-                  <td>${inv.id}</td>
+                  <td>${inv.startSource === 'ledger' ? '📘 ' + inv.id : inv.id}</td>
                   <td>Hari ${inv.startDay}</td>
                   <td>${Calculator.display(inv.amount)}</td>
                   <td>Hari ${inv.maturityDay}</td>
@@ -106,7 +106,7 @@ const DetailUI = (() => {
           <div class="detail-section-title">🟡 Investasi Cair Hari Ini</div>
           ${r.maturedInvestments.map(inv => `
             <div class="matured-item">
-              <span>Investasi #${inv.id} (Hari ${inv.startDay})</span>
+              <span>${inv.startSource === 'ledger' ? '📘 Ledger Invest ' : 'Investasi #'}${inv.id} (Hari ${inv.startDay})</span>
               <span class="matured-amount">+${Calculator.display(inv.returnAmount)}</span>
             </div>
           `).join('')}
@@ -184,7 +184,7 @@ const DetailUI = (() => {
           </div>
           <div class="detail-stat">
             <div class="detail-stat-label">Saldo Tersedia</div>
-            <div class="detail-stat-value">${Calculator.display(r.balanceBefore + r.dailyIncome + r.weeklyBonus + r.generate + r.maturedTotal + (r.ledgerNet || 0))}</div>
+            <div class="detail-stat-value">${Calculator.display(r.balanceBefore + r.dailyIncome + r.weeklyBonus + r.generate + r.maturedTotal + (r.ledgerNet || 0) - (r.ledgerInvestTotal || 0))}</div>
           </div>
           ${r.investedAmount > 0 ? `
             <div class="detail-stat highlight-invest">
@@ -194,6 +194,12 @@ const DetailUI = (() => {
             <div class="detail-stat">
               <div class="detail-stat-label">Lost Decimal</div>
               <div class="detail-stat-value ${r.lostDecimal < 1 ? 'good-color' : 'warn-color'}">${Calculator.display(r.lostDecimal)}</div>
+            </div>
+          ` : ''}
+          ${r.ledgerInvestTotal > 0 ? `
+            <div class="detail-stat highlight-invest">
+              <div class="detail-stat-label">📘 Ledger Invest</div>
+              <div class="detail-stat-value">−${Calculator.display(r.ledgerInvestTotal)}</div>
             </div>
           ` : ''}
           <div class="detail-stat final-balance">
@@ -250,6 +256,7 @@ const DetailUI = (() => {
           ${r.flags.isGenerateDay ? '<span class="flag-pill flag-generate">🟣 Generate Aktif</span>' : ''}
           ${r.flags.isDelayDay ? '<span class="flag-pill flag-delay">🔴 Sengaja Menunggu</span>' : ''}
           ${r.flags.isSweetSpot ? '<span class="flag-pill flag-sweet">🎯 Sweet Spot</span>' : ''}
+          ${r.flags.hasLedgerInvestment ? '<span class="flag-pill flag-invest">📘 Ledger Invest</span>' : ''}
         </div>
       </div>
     `;

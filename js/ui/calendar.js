@@ -46,7 +46,7 @@ const CalendarUI = (() => {
     _activeFilter = filterKey;
     switch (filterKey) {
       case 'invest':
-        _filteredRecords = _records.filter(r => r.flags.isInvestDay);
+        _filteredRecords = _records.filter(r => r.flags.isInvestDay || r.flags.hasLedgerInvestment);
         break;
       case 'maturity':
         _filteredRecords = _records.filter(r => r.flags.isMaturityDay);
@@ -90,7 +90,7 @@ const CalendarUI = (() => {
   function getRowClasses(record) {
     const classes = ['cal-row'];
     const f = record.flags;
-    if (f.isInvestDay) classes.push('row-invest');
+    if (f.isInvestDay || f.hasLedgerInvestment) classes.push('row-invest');
     if (f.isMaturityDay) classes.push('row-maturity');
     if (f.isWeeklyBonusDay) classes.push('row-bonus');
     if (f.isGenerateDay && !f.isInvestDay && !f.isWeeklyBonusDay) classes.push('row-generate');
@@ -107,6 +107,7 @@ const CalendarUI = (() => {
     const badges = [];
     const f = record.flags;
     if (f.isInvestDay) badges.push('<span class="badge badge-invest">🟢 Invest</span>');
+    if (f.hasLedgerInvestment) badges.push('<span class="badge badge-ledger-invest">📘 Ledger</span>');
     if (f.isMaturityDay) badges.push('<span class="badge badge-maturity">🟡 Cair</span>');
     if (f.isWeeklyBonusDay) badges.push('<span class="badge badge-bonus">🔵 Bonus</span>');
     if (f.isGenerateDay) badges.push('<span class="badge badge-generate">🟣 Gen</span>');
@@ -217,8 +218,9 @@ const CalendarUI = (() => {
         <td class="col-num ${f.isGenerateDay ? 'generate-highlight' : ''}">
           ${record.generate > 0 ? `+${Calculator.display(record.generate)}` : '—'}
         </td>
-        <td class="col-num ${f.isInvestDay ? 'invest-highlight' : ''}">
-          ${f.isInvestDay ? `<strong>${Calculator.display(record.investedAmount)}</strong>` : '—'}
+        <td class="col-num ${f.isInvestDay || f.hasLedgerInvestment ? 'invest-highlight' : ''}">
+          ${record.investedAmount > 0 ? `<strong>${Calculator.display(record.investedAmount)}</strong>` : ''}
+          ${record.ledgerInvestTotal > 0 ? `<br/><small style="color:var(--accent-teal)">+${Calculator.display(record.ledgerInvestTotal)}</small>` : ''}
         </td>
         <td class="col-num ${f.isMaturityDay ? 'maturity-highlight' : ''}">
           ${f.isMaturityDay ? `<strong>+${Calculator.display(record.maturedTotal)}</strong>` : '—'}

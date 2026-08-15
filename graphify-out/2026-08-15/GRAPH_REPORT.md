@@ -1,7 +1,7 @@
 # Graph Report - Investation  (2026-08-15)
 
 ## Corpus Check
-- 119 files · ~98,317 words
+- 119 files · ~97,830 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -524,8 +524,8 @@ Cohesion: 0.18
 Nodes (10): Bold Dynamic, CIP Design Style Guide, Classic Traditional, Color Psychology, Corporate Minimal, Fresh Modern, Luxury Premium, Modern Tech (+2 more)
 
 ### Community 95 - "primitive"
-Cohesion: 0.18
-Nodes (11): fast, normal, slow, $type, $value, $type, $value, primitive (+3 more)
+Cohesion: 0.20
+Nodes (10): fast, normal, slow, $type, $value, $type, $value, duration (+2 more)
 
 ### Community 96 - "test_tailwind_config_gen.py"
 Cohesion: 0.20
@@ -568,8 +568,8 @@ Cohesion: 0.24
 Nodes (11): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, getErrorCode(), isTransientError(), { Logger }, sleep() (+3 more)
 
 ### Community 106 - "radius"
-Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, default, full, default
+Cohesion: 0.24
+Nodes (10): $type, $value, $type, $value, primitive, radius, shadow, full (+2 more)
 
 ### Community 107 - "Slides Reference"
 Cohesion: 0.29
@@ -600,8 +600,8 @@ Cohesion: 0.33
 Nodes (6): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji()
 
 ### Community 114 - "shadow"
-Cohesion: 0.47
-Nodes (6): sm, shadow, sm, sm, $type, $value
+Cohesion: 0.60
+Nodes (5): sm, sm, sm, $type, $value
 
 ### Community 115 - "Slides"
 Cohesion: 0.33
@@ -633,7 +633,7 @@ Nodes (3): _check_file(), main(), _read_rows()
 
 ### Community 150 - "default"
 Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+Nodes (4): $type, $value, default, default
 
 ## Knowledge Gaps
 - **1017 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1012 more)
@@ -643,7 +643,7 @@ Nodes (4): $type, $value, md, md
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `radius`, `shadow`, `File Changes`, `color`?**
+- **Why does `primitive` connect `radius` to `spacing`, `fontSize`, `File Changes`, `color`, `primitive`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Why does `BM25` connect `BM25` to `DesignSystemGenerator`, `generate_design_system`, `search`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._

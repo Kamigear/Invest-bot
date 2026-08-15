@@ -45,8 +45,8 @@
     "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
   },
   "js/app.js": {
-    "mtime": 1786793876.189612,
-    "ast_hash": "918b84a074e519db90e1cf7570c56ba8",
+    "mtime": 1786790108.054453,
+    "ast_hash": "0181f6f7b9bd553ccef0359c76b13a10",
     "semantic_hash": ""
   },
   "js/engine/calculator.js": {
@@ -65,9 +65,9 @@
     "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
   },
   "js/engine/simulator.js": {
-    "mtime": 1786797367.15516,
-    "ast_hash": "1bedb6d1e491681b3162467ae46f2cfc",
-    "semantic_hash": ""
+    "mtime": 1785754208.377296,
+    "ast_hash": "f184114216e85ac16aeee3a2c386f475",
+    "semantic_hash": "f184114216e85ac16aeee3a2c386f475"
   },
   "js/export/exporters.js": {
     "mtime": 1785487157.468014,
@@ -85,9 +85,9 @@
     "semantic_hash": ""
   },
   "js/ui/calendar.js": {
-    "mtime": 1786797571.1173036,
-    "ast_hash": "e8e79c66bd17a5bb9411251d1fa1ea4a",
-    "semantic_hash": ""
+    "mtime": 1785754218.63644,
+    "ast_hash": "111b589c64420e4ae2024eae26a95eeb",
+    "semantic_hash": "111b589c64420e4ae2024eae26a95eeb"
   },
   "js/ui/comparison.js": {
     "mtime": 1786072670.9524102,
@@ -95,14 +95,14 @@
     "semantic_hash": ""
   },
   "js/ui/detail.js": {
-    "mtime": 1786797641.929484,
-    "ast_hash": "cd014c5a95bf00029babdf1a7fbb022c",
-    "semantic_hash": ""
+    "mtime": 1785751331.3038168,
+    "ast_hash": "d7db6df3fb18676f00ee5dbd2ec6c336",
+    "semantic_hash": "d7db6df3fb18676f00ee5dbd2ec6c336"
   },
   "js/ui/summary.js": {
-    "mtime": 1786797679.900724,
-    "ast_hash": "3b464263b7cd5782a6723202f05e4754",
-    "semantic_hash": ""
+    "mtime": 1785500633.8460972,
+    "ast_hash": "d0aa74498d7714febde1a8c233654d6d",
+    "semantic_hash": "d0aa74498d7714febde1a8c233654d6d"
   },
   ".agents/rules/graphify.md": {
     "mtime": 1785661642.884102,

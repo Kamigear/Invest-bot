@@ -24,6 +24,7 @@ const SummaryUI = (() => {
           ${reserve > 0 ? statCard('🛡️', 'Saldo Cadangan', Calculator.display(Math.round(reserve), 0), 'warn') : ''}
           ${statCard('🏦', 'Total Aset Akhir', Calculator.display(Math.round(s.finalTotalAssets), 0), 'highlight')}
           ${statCard('📈', 'Total Investasi', `${s.totalInvestCount} kali`)}
+          ${s.totalLedgerInvest > 0 ? statCard('📘', 'Ledger Invest', `${s.totalLedgerInvestCount}× (${Calculator.display(Math.round(s.totalLedgerInvest), 0)})`, 'highlight') : ''}
           ${statCard('🎁', 'Profit Investasi', `+${Calculator.display(Math.round(s.totalReturnProfit), 0)}`, 'profit')}
           ${statCard('⚡', 'Total Generate', `+${Calculator.display(Math.round(s.totalGenerate), 0)}`)}
           ${statCard('🎯', 'Efisiensi', `${s.efficiency}%`, s.efficiency >= 99 ? 'good' : 'warn')}
@@ -223,7 +224,7 @@ const SummaryUI = (() => {
     // Chart 2: Decision Distribution
     const ctx2 = document.getElementById('chart-decisions');
     if (ctx2) {
-      const investDays = records.filter(r => r.flags.isInvestDay).length;
+      const investDays = records.filter(r => r.flags.isInvestDay || r.flags.hasLedgerInvestment).length;
       const waitDays = records.filter(r => r.flags.isDelayDay).length;
       const skipDays = records.filter(r => r.decision === 'SKIP').length;
 
@@ -345,7 +346,7 @@ const SummaryUI = (() => {
     // Chart 5: Balance Growth (prominent, full-width, with event markers)
     const ctx5 = document.getElementById('chart-saldo');
     if (ctx5) {
-      const investPoints  = records.map(r => r.flags.isInvestDay    ? r.balanceAfter : null);
+      const investPoints = records.map(r => (r.flags.isInvestDay || r.flags.hasLedgerInvestment) ? r.balanceAfter : null);
       const maturityPoints = records.map(r => r.flags.isMaturityDay  ? r.balanceAfter : null);
       const bonusPoints   = records.map(r => r.flags.isWeeklyBonusDay ? r.balanceAfter : null);
 
