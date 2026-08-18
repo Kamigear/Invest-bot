@@ -31,30 +31,92 @@ const Simulator = (() => {
    */
   function getDayConfig(day, config) {
     const p = config.perks || {};
-    const sd = config.perkStartDay || {};
     const cfg = { ...config };
 
     const bankbookRates = [0, 0.005, 0.01, 0.015];
     const hybRates = [0, 0.02, 0.04, 0.06];
 
-    const bankbookActive = (sd.bankbook || 1) <= day && p.bankbook > 0;
-    cfg.generateEnabled = bankbookActive;
-    cfg.generateRate = bankbookActive ? bankbookRates[p.bankbook] : 0;
+    // Helper: evaluates if perk acquisition entry is active on current simulation day
+    // 'after' (Dapat Setelah Login) -> takes effect on day >= fromDay + 1
+    // 'before' (Dapat Sebelum Login) -> takes effect on day >= fromDay
+    const isEntryActive = e => {
+      const fromDay = e.fromDay || 1;
+      const effectiveDay = e.timing === 'after' ? fromDay + 1 : fromDay;
+      return day >= effectiveDay;
+    };
 
-    const vaultActive = (sd.vault || 1) <= day && p.vault > 0;
-    const piggyActive = (sd.piggyBank || 1) <= day && p.piggyBank;
-    if (vaultActive || piggyActive) {
-      cfg.incomeFixedAmount = (vaultActive ? (p.vault === 2 ? 15 : p.vault === 1 ? 10 : 0) : 0)
-        + (piggyActive ? 5 : 0);
+    // Bankbook (Generate): sum of all active bankbook entries on this day
+    const bankbookEntries = Array.isArray(p.bankbook) ? p.bankbook : [];
+    const activeGenRate = bankbookEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + (bankbookRates[e.tier] || 0) * (e.count || 1), 0);
+    cfg.generateEnabled = activeGenRate > 0;
+    cfg.generateRate = activeGenRate;
+
+    // Vault & Piggy Bank (Fixed Income): sum of active entries on this day
+    const vaultEntries = Array.isArray(p.vault) ? p.vault : [];
+    const vaultAmt = vaultEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + (e.tier === 2 ? 15 : e.tier === 1 ? 10 : 0) * (e.count || 1), 0);
+
+    const piggyEntries = Array.isArray(p.piggyBank) ? p.piggyBank : [];
+    const piggyAmt = piggyEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + 5 * (e.count || 1), 0);
+
+    const totalFixedFromPerk = vaultAmt + piggyAmt;
+    if (totalFixedFromPerk > 0) {
+      cfg.incomeFixedEnabled = true;
+      cfg.incomeFixedAmount = totalFixedFromPerk;
+    } else if (config.incomeFixedEnabled !== false) {
+      cfg.incomeFixedEnabled = true;
+      cfg.incomeFixedAmount = config.incomeFixedAmount || 0;
+    } else {
+      cfg.incomeFixedEnabled = false;
+      cfg.incomeFixedAmount = 0;
     }
 
-    const hybActive = (sd.highYieldBond || 1) <= day && p.highYieldBond > 0;
-    cfg.returnRate = hybActive ? 1.18 + hybRates[p.highYieldBond] : 1.18;
+    // High Yield Bond: sum of return rate bonuses on this day
+    const hybEntries = Array.isArray(p.highYieldBond) ? p.highYieldBond : [];
+    const hybBonus = hybEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + (hybRates[e.tier] || 0) * (e.count || 1), 0);
+    cfg.returnRate = 1.18 + hybBonus;
 
-    const twActive = (sd.timeWeaver || 1) <= day && p.timeWeaver > 0;
-    cfg.investDuration = twActive ? Math.max(1, 30 - p.timeWeaver) : 30;
+    // Time Weaver: reduction per stack × count on this day
+    const twEntries = Array.isArray(p.timeWeaver) ? p.timeWeaver : [];
+    const twReduction = twEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + (e.tier === 2 ? 2 : 1) * (e.count || 1), 0);
+    cfg.investDuration = Math.max(1, (config.investDuration || 30) - twReduction);
 
-    const srKey = String(cfg.returnRate);
+    // Daily Login Perks: Early Bird (+2) & Night Owl (+4) on this day
+    const ebEntries = Array.isArray(p.earlyBird) ? p.earlyBird : [];
+    const ebAdd = ebEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + 2 * (e.count || 1), 0);
+
+    const noEntries = Array.isArray(p.nightOwl) ? p.nightOwl : [];
+    const noAdd = noEntries
+      .filter(isEntryActive)
+      .reduce((sum, e) => sum + 4 * (e.count || 1), 0);
+
+    let baseIncome = (config.incomeBase !== undefined ? config.incomeBase : 12) + ebAdd + noAdd;
+
+    // Login Multiplier: compounded per stack on this day
+    const lmEntries = Array.isArray(p.loginMultiplier) ? p.loginMultiplier : [];
+    const activeLm = lmEntries.filter(isEntryActive);
+    if (activeLm.length > 0) {
+      let combinedMult = 1;
+      for (const e of activeLm) {
+        const singleMult = e.tier === 2 ? 1.10 : e.tier === 1 ? 1.05 : 1;
+        combinedMult *= Math.pow(singleMult, e.count || 1);
+      }
+      baseIncome = Math.round(baseIncome * combinedMult);
+    }
+    cfg.incomeBase = baseIncome;
+
+    const srKey = String(cfg.returnRate) + '_' + String(cfg.investDuration);
     if (!_sweetSpotCache[srKey]) {
       _sweetSpotCache[srKey] = Calculator.generateSweetSpots(cfg);
     }
@@ -89,6 +151,37 @@ const Simulator = (() => {
     let totalLedgerInvestCount = 0;
 
     const investmentSchedule = []; // Track all investment decisions
+
+    // ── Seed Active Investments from Firebase (rep panel "Active Investments") ─
+    // These are real investments already running on the web, passed directly
+    // as activeInvestments so the simulator accounts for their maturity correctly.
+    // We do NOT use Ledger maturity entries for this — that was the old approach.
+    if (config.seedInvestments && config.seedInvestments.length > 0) {
+      const startDate = config.startDate || '';
+      config.seedInvestments.forEach((inv, i) => {
+        if (!inv.maturityDate || !inv.returnAmount) return;
+        const matDateStr = inv.maturityDate.toString().split(' ')[0]; // YYYY-MM-DD
+        // Calculate maturityDay relative to startDate (day 1 = startDate)
+        let maturityDay = 1;
+        if (startDate && matDateStr) {
+          const [sy, sm, sd] = startDate.split('-').map(Number);
+          const [my, mm, md] = matDateStr.split('-').map(Number);
+          const start = new Date(sy, sm - 1, sd);
+          const mat = new Date(my, mm - 1, md);
+          const diffMs = mat - start;
+          maturityDay = Math.round(diffMs / 86400000) + 1; // day 1-indexed
+        }
+        if (maturityDay < 1) return; // already matured, skip
+        activeInvestments.push({
+          id: 'F' + (i + 1),
+          startDay: 0,           // started before simulation
+          startSource: 'firebase',
+          amount: inv.amount || 0,
+          maturityDay,
+          expectedReturn: inv.returnAmount,
+        });
+      });
+    }
 
     // Pre-index ledger transactions by ISO date for O(1) lookup per day
     const ledgerByDate = {};
@@ -192,6 +285,8 @@ const Simulator = (() => {
           totalLostDecimal = Calculator.fmt(totalLostDecimal + Calculator.getLostDecimal(amt, dayCfg));
         } else if (tx.type === 'expense') {
           ledgerExpense += amt;
+        } else if (tx.type === 'maturity' && tx.note && tx.note.startsWith('Cair Investasi ')) {
+          // Purely visual/history entry for Ledger display — maturity income is already handled by seedInvestments / activeInvestments
         } else {
           ledgerIncome += amt;
         }
@@ -249,18 +344,48 @@ const Simulator = (() => {
       const totalAssets = Calculator.fmt(balanceAfter + totalActiveExpected);
 
       // ── Step 7: Build Day Record ────────────────────────────────
+       const isEntryActive = e => {
+        const fromDay = e.fromDay || 1;
+        const effectiveDay = e.timing === 'after' ? fromDay + 1 : fromDay;
+        return day >= effectiveDay;
+      };
+      const vaultAmt = (Array.isArray(dayCfg.perks?.vault) ? dayCfg.perks.vault : [])
+        .filter(isEntryActive)
+        .reduce((sum, e) => sum + (e.tier === 2 ? 15 : e.tier === 1 ? 10 : 0) * (e.count || 1), 0);
+      const piggyAmt = (Array.isArray(dayCfg.perks?.piggyBank) ? dayCfg.perks.piggyBank : [])
+        .filter(isEntryActive)
+        .reduce((sum, e) => sum + 5 * (e.count || 1), 0);
+
+      // Decompose dailyIncome into fixed and linear components for reporting
+      const incomeFixed = dayCfg.incomeFixedEnabled === true ? (dayCfg.incomeFixedAmount || 0) : 0;
+      const incomeLinear = dayCfg.incomeLinearEnabled !== false
+        ? (dayCfg.incomeBase || 0) + (day - 1) * (dayCfg.incomeGrowthRate || 0)
+        : 0;
+
+      const ledgerMaturityTotal = todayTxns
+        .filter(tx => tx.type === 'maturity')
+        .reduce((sum, tx) => sum + (parseFloat(tx.amount) || 0), 0);
+
       records.push({
         day,
         date: today,
         balanceBefore,
         balanceAfter,
+        totalDayIncome: Calculator.fmt(dailyIncome + weeklyBonus + generate), // true unified income: login + perk fixed + weekly bonus + bankbook generate
         dailyIncome: Calculator.fmt(dailyIncome),
+        incomeFixed: Calculator.fmt(incomeFixed),
+        vaultIncome: Calculator.fmt(vaultAmt),
+        piggyBankIncome: Calculator.fmt(piggyAmt),
+        otherFixedIncome: Calculator.fmt(Math.max(0, incomeFixed - vaultAmt - piggyAmt)),
+        incomeLinear: Calculator.fmt(incomeLinear),
         manualIncome: Calculator.fmt(dayManualIncome),
         weeklyBonus: Calculator.fmt(weeklyBonus),
         generate: Calculator.fmt(generate),
         investedAmount: Calculator.fmt(investedAmount),
         lostDecimal: Calculator.fmt(lostDecimal),
         maturedTotal: Calculator.fmt(maturedTotal),
+        ledgerMaturityTotal: Calculator.fmt(ledgerMaturityTotal),
+        totalMaturedTotal: Calculator.fmt(maturedTotal + ledgerMaturityTotal),
         maturedInvestments: maturedToday,
         activeInvestments: activeClones,
         activeCount: activeClones.length,
@@ -277,14 +402,15 @@ const Simulator = (() => {
         reason: result.reason || [],
         flags: {
           isInvestDay: result.decision === 'INVEST',
-          isMaturityDay: maturedToday.length > 0,
+          isMaturityDay: maturedToday.length > 0 || ledgerMaturityTotal > 0,
           isWeeklyBonusDay: weeklyBonus > 0,
           isGenerateDay: generate > 0,
           isDelayDay: result.decision === 'WAIT',
           isSweetSpot: result.flags?.isSweetSpot || false,
           isManualIncomeDay: dayManualIncome > 0,
-           hasLedgerEntry: todayTxns.length > 0,
-           hasLedgerInvestment: ledgerInvestmentsToday.length > 0,
+          hasLedgerEntry: todayTxns.length > 0,
+          hasLedgerInvestment: ledgerInvestmentsToday.length > 0,
+          hasLedgerMaturity: ledgerMaturityTotal > 0,
         },
       });
     }

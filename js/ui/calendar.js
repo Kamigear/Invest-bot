@@ -22,8 +22,6 @@ const CalendarUI = (() => {
     { key: 'all', label: 'Semua Hari', icon: '📅' },
     { key: 'invest', label: 'Hari Investasi', icon: '🟢' },
     { key: 'maturity', label: 'Investasi Cair', icon: '🟡' },
-    { key: 'bonus', label: 'Weekly Bonus', icon: '🔵' },
-    { key: 'generate', label: 'Generate', icon: '🟣' },
     { key: 'delay', label: 'Sengaja Menunggu', icon: '🔴' },
   ];
 
@@ -46,16 +44,10 @@ const CalendarUI = (() => {
     _activeFilter = filterKey;
     switch (filterKey) {
       case 'invest':
-        _filteredRecords = _records.filter(r => r.flags.isInvestDay || r.flags.hasLedgerInvestment);
+        _filteredRecords = _records.filter(r => r.flags.isInvestDay || r.flags.hasLedgerInvestment || r.investedAmount > 0 || r.ledgerInvestTotal > 0);
         break;
       case 'maturity':
-        _filteredRecords = _records.filter(r => r.flags.isMaturityDay);
-        break;
-      case 'bonus':
-        _filteredRecords = _records.filter(r => r.flags.isWeeklyBonusDay);
-        break;
-      case 'generate':
-        _filteredRecords = _records.filter(r => r.flags.isGenerateDay);
+        _filteredRecords = _records.filter(r => r.flags.isMaturityDay || r.flags.hasLedgerMaturity || r.maturedTotal > 0 || r.ledgerMaturityTotal > 0);
         break;
       case 'delay':
         _filteredRecords = _records.filter(r => r.flags.isDelayDay);
@@ -91,7 +83,7 @@ const CalendarUI = (() => {
     const classes = ['cal-row'];
     const f = record.flags;
     if (f.isInvestDay || f.hasLedgerInvestment) classes.push('row-invest');
-    if (f.isMaturityDay) classes.push('row-maturity');
+    if (f.isMaturityDay || f.hasLedgerMaturity) classes.push('row-maturity');
     if (f.isWeeklyBonusDay) classes.push('row-bonus');
     if (f.isGenerateDay && !f.isInvestDay && !f.isWeeklyBonusDay) classes.push('row-generate');
     if (f.isDelayDay) classes.push('row-delay');
@@ -107,13 +99,11 @@ const CalendarUI = (() => {
     const badges = [];
     const f = record.flags;
     if (f.isInvestDay) badges.push('<span class="badge badge-invest">🟢 Invest</span>');
-    if (f.hasLedgerInvestment) badges.push('<span class="badge badge-ledger-invest">📘 Ledger</span>');
-    if (f.isMaturityDay) badges.push('<span class="badge badge-maturity">🟡 Cair</span>');
-    if (f.isWeeklyBonusDay) badges.push('<span class="badge badge-bonus">🔵 Bonus</span>');
-    if (f.isGenerateDay) badges.push('<span class="badge badge-generate">🟣 Gen</span>');
-    if (f.isDelayDay) badges.push('<span class="badge badge-delay">🔴 Wait</span>');
+    if (f.hasLedgerInvestment) badges.push('<span class="badge badge-ledger-invest">📘 Ledger Invest</span>');
+    if (f.isMaturityDay || f.hasLedgerMaturity) badges.push('<span class="badge badge-maturity">🟡 Cair</span>');
+     if (f.isDelayDay) badges.push('<span class="badge badge-delay">🔴 Wait</span>');
     if (f.isSweetSpot) badges.push('<span class="badge badge-sweet">🎯</span>');
-    if (f.hasLedgerEntry) {
+    if (f.hasLedgerEntry && !f.hasLedgerInvestment && !f.hasLedgerMaturity) {
       badges.push('<span class="badge" style="background:rgba(16,185,129,0.15); color:var(--accent-green); border:1px solid rgba(16,185,129,0.3); font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-flex; align-items:center; gap:2px;">🔧 Ledger</span>');
     }
     if (badges.length === 0) badges.push('<span class="badge badge-neutral">⏸ Skip</span>');
@@ -188,42 +178,45 @@ const CalendarUI = (() => {
         invest: 'Invest',
         adjustment: 'Adjust'
       }[tx.type] || tx.type;
-      return `<br/><small style="color:${color}; font-size:10px; font-weight:600; display:block; margin-top:2px;">${sign}${Calculator.display(amt)} ${typeLabel}</small>`;
+      return `<div class="ledger-cell-entry" style="font-size:10px; color:${color}; font-family:monospace;" title="${tx.note || tx.type}">
+        ${sign}${Calculator.display(amt)} <span style="opacity:0.7">${typeLabel}</span>
+      </div>`;
     }).join('');
   }
 
   /**
-   * Render a single table row
+   * Render a single row of the calendar
    */
   function renderRow(record) {
     const f = record.flags;
+    const rowClass = getRowClasses(record);
+
     return `
       <tr 
-        class="${getRowClasses(record)}" 
+        class="${rowClass}" 
         data-day="${record.day}"
         tabindex="0"
+        role="button"
+        aria-label="Hari ${record.day}, Status: ${record.decisionLabel}"
         title="Klik untuk detail Hari ${record.day}"
       >
         <td class="col-day">
           <span class="day-num">${record.day}</span>${record.date ? `<span class="day-date">${record.date}</span>` : ''}
         </td>
         <td class="col-num">${Calculator.display(record.balanceBefore)}</td>
-        <td class="col-num income-col">
-          +${Calculator.display(record.dailyIncome)}
+         <td class="col-num income-col">
+          +${Calculator.display(record.totalDayIncome !== undefined ? record.totalDayIncome : (record.dailyIncome + (record.weeklyBonus || 0) + (record.generate || 0)))}
           ${renderLedgerTransactionsInCell(record)}
         </td>
-        <td class="col-num ${f.isWeeklyBonusDay ? 'bonus-highlight' : ''}">
-          ${f.isWeeklyBonusDay ? `<strong>+${Calculator.display(record.weeklyBonus)}</strong>` : '—'}
-        </td>
-        <td class="col-num ${f.isGenerateDay ? 'generate-highlight' : ''}">
-          ${record.generate > 0 ? `+${Calculator.display(record.generate)}` : '—'}
-        </td>
-        <td class="col-num ${f.isInvestDay || f.hasLedgerInvestment ? 'invest-highlight' : ''}">
+          <td class="col-num ${f.isInvestDay || f.hasLedgerInvestment ? 'invest-highlight' : ''}">
           ${record.investedAmount > 0 ? `<strong>${Calculator.display(record.investedAmount)}</strong>` : ''}
           ${record.ledgerInvestTotal > 0 ? `<br/><small style="color:var(--accent-teal)">+${Calculator.display(record.ledgerInvestTotal)}</small>` : ''}
+          ${(!record.investedAmount && !record.ledgerInvestTotal) ? '—' : ''}
         </td>
-        <td class="col-num ${f.isMaturityDay ? 'maturity-highlight' : ''}">
-          ${f.isMaturityDay ? `<strong>+${Calculator.display(record.maturedTotal)}</strong>` : '—'}
+        <td class="col-num ${f.isMaturityDay || f.hasLedgerMaturity ? 'maturity-highlight' : ''}">
+          ${record.maturedTotal > 0 ? `<strong>+${Calculator.display(record.maturedTotal)}</strong>` : ''}
+          ${record.ledgerMaturityTotal > 0 ? `<br/><small style="color:var(--accent-amber)">+${Calculator.display(record.ledgerMaturityTotal)}</small>` : ''}
+          ${(!record.maturedTotal && !record.ledgerMaturityTotal) ? '—' : ''}
         </td>
         <td class="col-center">
           <span class="active-count ${record.activeCount > 0 ? 'has-active' : ''}">${record.activeCount}</span>
@@ -243,8 +236,6 @@ const CalendarUI = (() => {
       { key: 'day', label: 'Hari' },
       { key: 'balanceBefore', label: 'Saldo Sebelum' },
       { key: 'dailyIncome', label: 'Income' },
-      { key: 'weeklyBonus', label: 'Bonus' },
-      { key: 'generate', label: 'Generate' },
       { key: 'investedAmount', label: 'Invest' },
       { key: 'maturedTotal', label: 'Cair' },
       { key: 'activeCount', label: 'Aktif' },
@@ -277,7 +268,7 @@ const CalendarUI = (() => {
             <tr>${headerCells.join('')}</tr>
           </thead>
           <tbody id="cal-tbody">
-            ${rows || '<tr><td colspan="11" class="empty-row">Tidak ada data untuk filter ini</td></tr>'}
+            ${rows || '<tr><td colspan="10" class="empty-row">Tidak ada data untuk filter ini</td></tr>'}
           </tbody>
         </table>
       </div>

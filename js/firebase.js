@@ -104,8 +104,8 @@ const FirebaseDB = (() => {
         getUid,
         isAuthReady,
 
-        // Config & Schedule Sync (using flat paths matching Board backend)
-        syncToFirebase: async (config, schedule) => {
+        // Config Sync (only sync config to botState/config)
+        syncToFirebase: async (config) => {
             try {
                 // Sync config to botState/config
                 await db.collection('botState').doc('config').set({
@@ -113,61 +113,39 @@ const FirebaseDB = (() => {
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                 }, { merge: true });
 
-                const entries = schedule || [];
-                const batches = [];
-                let batch = db.batch();
-                let count = 0;
-
-                for (const entry of entries) {
-                    const rawDate = entry.investDate || entry.date;
-                    const dateObj = new Date(rawDate);
-                    const yyyy = dateObj.getFullYear();
-                    const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
-                    const dd = String(dateObj.getDate()).padStart(2, '0');
-                    const entryId = `inv_${yyyy}-${mm}-${dd}`;
-
-                    // Use flat path matching Board backend: schedules/${entryId}
-                    const docRef = db.collection('schedules').doc(entryId);
-
-                    // Check existing document status - skip if DONE or EXECUTING
-                    const existingDoc = await docRef.get();
-                    if (existingDoc.exists) {
-                        const existingData = existingDoc.data();
-                        const status = existingData.status;
-                        if (status === 'DONE' || status === 'EXECUTING') {
-                            console.log(`Skipping ${entryId}: status is ${status}`);
-                            continue;
-                        }
-                    }
-
-                    batch.set(docRef, {
-                        entryId,
-                        investDate: rawDate,
-                        maturityDate: entry.maturityDate,
-                        amount: entry.amount,
-                        expectedReturn: entry.expectedReturn,
-                        profit: entry.profit,
-                        balanceBefore: entry.balanceBefore,
-                        generatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-
-                    count++;
-                    if (count === 500) {
-                        batches.push(batch);
-                        batch = db.batch();
-                        count = 0;
-                    }
-                }
-
-                if (count > 0) batches.push(batch);
-                await Promise.all(batches.map(b => b.commit()));
-
-                console.log('Successfully synced config and schedule to Firebase');
+                console.log('Successfully synced config to Firebase');
                 return true;
             } catch (error) {
-                console.error('Error syncing to Firebase:', error);
+                console.error('Error syncing config to Firebase:', error);
                 throw error;
             }
+        },
+
+        // Ledger Sync to botState/ledger
+        syncLedgerToFirebase: async (transactions) => {
+            try {
+                await db.collection('botState').doc('ledger').set({
+                    transactions: transactions || [],
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+                console.log('Successfully synced ledger to Firebase');
+                return true;
+            } catch (error) {
+                console.error('Error syncing ledger to Firebase:', error);
+                throw error;
+            }
+        },
+
+        fetchLedgerFromFirebase: async () => {
+            try {
+                const doc = await db.collection('botState').doc('ledger').get({ source: 'server' });
+                if (doc.exists) {
+                    return doc.data();
+                }
+            } catch (error) {
+                console.error('Error fetching ledger from Firebase:', error);
+            }
+            return null;
         },
 
         // One-time fetch from Firebase (for manual sync button) - using flat paths
@@ -314,6 +292,18 @@ const FirebaseDB = (() => {
                 }
             } catch (error) {
                 console.error("Error getting current balance:", error);
+            }
+            return null;
+        },
+
+        fetchDashboardData: async () => {
+            try {
+                const doc = await db.collection('botState').doc('dashboardData').get({ source: 'server' });
+                if (doc.exists) {
+                    return doc.data();
+                }
+            } catch (error) {
+                console.error("Error getting dashboard data:", error);
             }
             return null;
         },

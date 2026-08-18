@@ -1,16 +1,16 @@
-# Graph Report - Investation  (2026-08-15)
+# Graph Report - Investation  (2026-08-18)
 
 ## Corpus Check
-- 119 files · ~98,317 words
+- 119 files · ~108,974 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2107 nodes · 2492 edges · 151 communities (110 shown, 41 thin omitted)
+- 2108 nodes · 2494 edges · 160 communities (119 shown, 41 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 157 edges (avg confidence: 0.72)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7ea70886`
+- Built from commit: `d7bb6dda`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -165,6 +165,15 @@
 - .test_custom_output_path
 - .test_base_config_structure
 - default
+- input
+- radius
+- padding-y
+- default
+- destructive
+- destructive-foreground
+- muted
+- ring
+- search.py
 
 ## God Nodes (most connected - your core abstractions)
 1. `TailwindConfigGenerator` - 57 edges
@@ -197,18 +206,18 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (151 total, 41 thin omitted)
+## Communities (160 total, 41 thin omitted)
 
 ### Community 0 - "logger.js"
-Cohesion: 0.14
-Nodes (20): COLORS, emit(), formatLine(), formatMeta(), fs, getHostname(), getLogStream(), getTimestamp() (+12 more)
+Cohesion: 0.10
+Nodes (25): axios, https, httpsAgent, { Logger }, stripEmoji(), COLORS, emit(), formatLine() (+17 more)
 
 ### Community 1 - "package.json"
 Cohesion: 0.11
 Nodes (17): axios, dependencies, axios, dotenv, firebase-admin, node-cron, puppeteer, description (+9 more)
 
 ### Community 2 - "executor.js"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (19): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, runDailyJob(), { sendAlert }, { withRetry, isTransientError } (+11 more)
 
 ### Community 3 - "app.js"
@@ -217,7 +226,7 @@ Nodes (11): Architecture & Logic, Invest Bot, Setup di OrangePi, App, LiveMode, 
 
 ### Community 4 - "index.js"
 Cohesion: 0.15
-Nodes (22): { claimDailyReward }, cron, { db, serverTimestamp }, getTodayId(), { Logger }, markNetworkSkipped(), openBrowser(), Pending (+14 more)
+Nodes (24): sendAlert(), serverTimestamp(), { claimDailyReward }, cron, { db, serverTimestamp }, getTodayId(), { Logger }, markNetworkSkipped() (+16 more)
 
 ### Community 5 - "graphify Rules"
 Cohesion: 0.18
@@ -264,16 +273,16 @@ Cohesion: 0.06
 Nodes (42): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+34 more)
 
 ### Community 30 - "color"
-Cohesion: 0.04
-Nodes (48): $type, $value, background, destructive, destructive-foreground, foreground, muted, muted-foreground (+40 more)
+Cohesion: 0.11
+Nodes (19): $type, $value, background, destructive-foreground, primary, primary-foreground, secondary, secondary-foreground (+11 more)
 
 ### Community 31 - "search"
 Cohesion: 0.07
 Nodes (28): BM25, detect_domain(), _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), _normalize(), Apply synonym substitution before tokenizing. (+20 more)
 
 ### Community 32 - "button"
-Cohesion: 0.06
-Nodes (45): $type, $value, $type, $value, bg, fg, font-size, hover-bg (+37 more)
+Cohesion: 0.15
+Nodes (17): $type, $value, $type, $value, bg, bg, border, padding (+9 more)
 
 ### Community 33 - "Tailwind CSS Utility Reference"
 Cohesion: 0.05
@@ -569,7 +578,7 @@ Nodes (11): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, get
 
 ### Community 106 - "radius"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, default, full, default
+Nodes (8): xl, $type, $value, radius, full, xl, $type, $value
 
 ### Community 107 - "Slides Reference"
 Cohesion: 0.29
@@ -596,8 +605,8 @@ Cohesion: 0.43
 Nodes (3): Pick the highest-ranked palette matching the resolved mode.      Only the dark c, _select_palette_for_mode(), TestPaletteSelection
 
 ### Community 113 - "alert.js"
-Cohesion: 0.33
-Nodes (6): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji()
+Cohesion: 0.15
+Nodes (12): component, $type, $value, dark, semantic, $schema, $type, $value (+4 more)
 
 ### Community 114 - "shadow"
 Cohesion: 0.47
@@ -617,23 +626,59 @@ Nodes (5): lg, $type, $value, lg, lg
 
 ### Community 118 - "xl"
 Cohesion: 0.67
-Nodes (4): xl, xl, $type, $value
+Nodes (4): $type, $value, none, none
 
 ### Community 119 - "md"
 Cohesion: 0.07
 Nodes (26): CONFIG, executeMockSession(), puppeteer, runMockBot(), author, dependencies, puppeteer, description (+18 more)
 
 ### Community 120 - "none"
-Cohesion: 0.67
-Nodes (4): $type, $value, none, none
+Cohesion: 0.20
+Nodes (10): fg, font-size, hover-bg, button, $type, $value, $type, $value (+2 more)
 
 ### Community 121 - "validate_data.py"
 Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
 
+### Community 126 - "search.py"
+Cohesion: 0.20
+Nodes (12): padding-x, padding-y, input, $type, $value, focus-ring, padding-x, padding-y (+4 more)
+
 ### Community 150 - "default"
 Cohesion: 0.67
+Nodes (3): foreground, $type, $value
+
+### Community 151 - "input"
+Cohesion: 0.67
+Nodes (3): muted-foreground, $type, $value
+
+### Community 152 - "radius"
+Cohesion: 0.60
+Nodes (5): radius, radius, radius, $type, $value
+
+### Community 153 - "padding-y"
+Cohesion: 0.67
+Nodes (4): $type, $value, default, default
+
+### Community 154 - "default"
+Cohesion: 0.67
 Nodes (4): $type, $value, md, md
+
+### Community 155 - "destructive"
+Cohesion: 0.67
+Nodes (3): destructive, $type, $value
+
+### Community 156 - "destructive-foreground"
+Cohesion: 0.67
+Nodes (3): primary-hover, $type, $value
+
+### Community 157 - "muted"
+Cohesion: 0.67
+Nodes (3): muted, $type, $value
+
+### Community 159 - "ring"
+Cohesion: 0.67
+Nodes (3): ring, $type, $value
 
 ## Knowledge Gaps
 - **1017 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1012 more)
@@ -643,9 +688,11 @@ Nodes (4): $type, $value, md, md
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `radius`, `shadow`, `File Changes`, `color`?**
+- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `radius`, `alert.js`, `shadow`, `File Changes`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Why does `BM25` connect `BM25` to `DesignSystemGenerator`, `generate_design_system`, `search`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `semantic` connect `alert.js` to `color`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 36 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `.test_node_check_parses_generated_config()`) actually correct?**
   _`TailwindConfigGenerator` has 36 INFERRED edges - model-reasoned connections that need verification._
@@ -655,5 +702,3 @@ _Questions this graph is uniquely positioned to answer:_
   _`DesignSystemGenerator` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
   _1017 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `logger.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._

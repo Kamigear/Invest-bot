@@ -37,6 +37,9 @@ const DetailUI = (() => {
     _backdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
 
+    const bodyEl = _modal.querySelector('.modal-body');
+    if (bodyEl) bodyEl.scrollTop = 0;
+
     const closeBtn = _modal.querySelector('.modal-close');
     if (closeBtn) closeBtn.addEventListener('click', close);
   }
@@ -74,28 +77,30 @@ const DetailUI = (() => {
       ? `
         <div class="detail-section">
           <div class="detail-section-title">💼 Investasi Aktif (${r.activeInvestments.length})</div>
-          <table class="detail-inv-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Hari Mulai</th>
-                <th>Jumlah</th>
-                <th>Cair Hari</th>
-                <th>Return</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${r.activeInvestments.map(inv => `
+          <div style="overflow-x: auto;">
+            <table class="detail-inv-table">
+              <thead>
                 <tr>
-                  <td>${inv.startSource === 'ledger' ? '📘 ' + inv.id : inv.id}</td>
-                  <td>Hari ${inv.startDay}</td>
-                  <td>${Calculator.display(inv.amount)}</td>
-                  <td>Hari ${inv.maturityDay}</td>
-                  <td class="return-val">+${Calculator.display(inv.expectedReturn)}</td>
+                  <th>#</th>
+                  <th>Hari Mulai</th>
+                  <th>Jumlah</th>
+                  <th>Cair Hari</th>
+                  <th>Return</th>
                 </tr>
-              `).join('')}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                ${r.activeInvestments.map(inv => `
+                  <tr>
+                    <td>${inv.startSource === 'ledger' ? '📘 ' + inv.id : inv.id}</td>
+                    <td>Hari ${inv.startDay}</td>
+                    <td>${Calculator.display(inv.amount)}</td>
+                    <td>Hari ${inv.maturityDay}</td>
+                    <td class="return-val">+${Calculator.display(inv.expectedReturn)}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
         </div>
       ` : '';
 
@@ -155,9 +160,9 @@ const DetailUI = (() => {
             <div class="detail-stat-label">Saldo Sebelum</div>
             <div class="detail-stat-value">${Calculator.display(r.balanceBefore)}</div>
           </div>
-          <div class="detail-stat">
-            <div class="detail-stat-label">Daily Income</div>
-            <div class="detail-stat-value income-color">+${Calculator.display(r.dailyIncome)}</div>
+          <div class="detail-stat ${r.totalDayIncome > 0 ? 'highlight-bonus' : ''}">
+            <div class="detail-stat-label">💵 Daily Income</div>
+            <div class="detail-stat-value income-color">+${Calculator.display(r.totalDayIncome !== undefined ? r.totalDayIncome : (r.dailyIncome + r.weeklyBonus + (r.generate || 0)))}</div>
           </div>
           ${r.ledgerNet && r.ledgerNet !== 0 ? `
             <div class="detail-stat" style="border: 1px dashed rgba(16,185,129,0.3); background: rgba(16,185,129,0.02);">
@@ -166,25 +171,10 @@ const DetailUI = (() => {
                 ${r.ledgerNet >= 0 ? '+' : ''}${Calculator.display(r.ledgerNet)}
               </div>
             </div>
-          ` : ''}
-          ${r.weeklyBonus > 0 ? `
-            <div class="detail-stat highlight-bonus">
-              <div class="detail-stat-label">🔵 Weekly Bonus</div>
-              <div class="detail-stat-value">+${Calculator.display(r.weeklyBonus)}</div>
-            </div>
-          ` : `
-            <div class="detail-stat muted">
-              <div class="detail-stat-label">Weekly Bonus</div>
-              <div class="detail-stat-value">—</div>
-            </div>
-          `}
-          <div class="detail-stat ${r.generate > 0 ? 'highlight-generate' : 'muted'}">
-            <div class="detail-stat-label">🟣 Generate</div>
-            <div class="detail-stat-value">${r.generate > 0 ? `+${Calculator.display(r.generate)}` : '—'}</div>
-          </div>
+           ` : ''}
           <div class="detail-stat">
             <div class="detail-stat-label">Saldo Tersedia</div>
-            <div class="detail-stat-value">${Calculator.display(r.balanceBefore + r.dailyIncome + r.weeklyBonus + r.generate + r.maturedTotal + (r.ledgerNet || 0) - (r.ledgerInvestTotal || 0))}</div>
+            <div class="detail-stat-value">${Calculator.display(r.balanceBefore + (r.totalDayIncome !== undefined ? r.totalDayIncome : (r.dailyIncome + r.weeklyBonus + (r.generate || 0))) + r.maturedTotal + (r.ledgerNet || 0) - (r.ledgerInvestTotal || 0))}</div>
           </div>
           ${r.investedAmount > 0 ? `
             <div class="detail-stat highlight-invest">
@@ -212,6 +202,92 @@ const DetailUI = (() => {
           </div>
         </div>
 
+        <!-- Income Breakdown Section -->
+        ${(() => {
+          const linearVal = r.incomeLinear !== undefined ? r.incomeLinear : 0;
+          const vaultVal = r.vaultIncome !== undefined ? r.vaultIncome : 0;
+          const piggyVal = r.piggyBankIncome !== undefined ? r.piggyBankIncome : 0;
+          const otherFixedVal = r.otherFixedIncome !== undefined ? r.otherFixedIncome : (r.incomeFixed ? Math.max(0, r.incomeFixed - vaultVal - piggyVal) : 0);
+          const generateVal = r.generate || 0;
+          const bonusVal = r.weeklyBonus || 0;
+          const maturedVal = r.maturedTotal || 0;
+          const manualVal = r.manualIncome || 0;
+          const ledgerIncomeVal = (r.ledgerTxns || [])
+            .filter(tx => ['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type))
+            .reduce((s, tx) => s + (parseFloat(tx.amount) || 0), 0);
+
+          // totalIncomeToday includes ALL income (login + vault + piggy + otherFixed + generate + bonus + matured + manual + ledger)
+          const totalIncomeToday = Calculator.fmt(linearVal + vaultVal + piggyVal + otherFixedVal + generateVal + bonusVal + maturedVal + manualVal + ledgerIncomeVal);
+
+          return `
+            <div class="detail-section income-breakdown-card">
+              <div class="detail-section-title">💵 Rincian Pemasukan Hari Ini (+${Calculator.display(totalIncomeToday)})</div>
+              <div class="income-breakdown-list">
+                ${linearVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">🎁 Daily Login Streak (Linear)</span>
+                    <span class="income-item-val">+${Calculator.display(linearVal)} pt</span>
+                  </div>
+                ` : ''}
+                ${vaultVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">🏦 Perk Vault</span>
+                    <span class="income-item-val">+${Calculator.display(vaultVal)} pt</span>
+                  </div>
+                ` : ''}
+                ${piggyVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">🐷 Perk Piggy Bank</span>
+                    <span class="income-item-val">+${Calculator.display(piggyVal)} pt</span>
+                  </div>
+                ` : ''}
+                ${otherFixedVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">💵 Pemasukan Tetap</span>
+                    <span class="income-item-val">+${Calculator.display(otherFixedVal)} pt</span>
+                  </div>
+                ` : ''}
+                ${generateVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">🟣 Bankbook Generate</span>
+                    <span class="income-item-val">+${Calculator.display(generateVal)} pt</span>
+                  </div>
+                ` : ''}
+                 ${bonusVal > 0 ? `
+                   <div class="income-breakdown-item">
+                     <span class="income-item-title">🔵 Weekly Bonus (Hari Senin)</span>
+                     <span class="income-item-val">+${Calculator.display(bonusVal)} pt</span>
+                   </div>
+                 ` : ''}
+                 ${maturedVal > 0 ? `
+                   <div class="income-breakdown-item">
+                     <span class="income-item-title">🟡 Investasi Cair (Maturity)</span>
+                     <span class="income-item-val">+${Calculator.display(maturedVal)} pt</span>
+                   </div>
+                 ` : ''}
+                ${manualVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">💰 Manual Income</span>
+                    <span class="income-item-val">+${Calculator.display(manualVal)} pt</span>
+                  </div>
+                ` : ''}
+                ${ledgerIncomeVal > 0 ? `
+                  <div class="income-breakdown-item">
+                    <span class="income-item-title">🔧 Ledger Income / Adjustment</span>
+                    <span class="income-item-val">+${Calculator.display(ledgerIncomeVal)} pt</span>
+                  </div>
+                ` : ''}
+                ${totalIncomeToday === 0 ? `
+                  <div class="income-breakdown-item muted">
+                    <span class="income-item-title">Tidak ada pemasukan hari ini</span>
+                    <span class="income-item-val">0 pt</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        })()}
+
         <!-- Matured investments today -->
         ${maturedHtml}
 
@@ -219,26 +295,28 @@ const DetailUI = (() => {
         ${r.ledgerTxns && r.ledgerTxns.length > 0 ? `
           <div class="detail-section">
             <div class="detail-section-title">🔧 Transaksi Ledger Hari Ini (${r.ledgerTxns.length})</div>
-            <table class="detail-inv-table">
-              <thead>
-                <tr>
-                  <th>Tipe</th>
-                  <th>Nominal</th>
-                  <th>Catatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${r.ledgerTxns.map(tx => `
+            <div style="overflow-x: auto;">
+              <table class="detail-inv-table">
+                <thead>
                   <tr>
-                    <td><strong>${Ledger.typeLabel(tx.type)}</strong></td>
-                    <td style="color:${['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type) ? 'var(--accent-green)' : 'var(--accent-red)'}">
-                      ${['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type) ? '+' : '-'}${Calculator.display(tx.amount)}
-                    </td>
-                    <td>${tx.note || '—'}</td>
+                    <th>Tipe</th>
+                    <th>Nominal</th>
+                    <th>Catatan</th>
                   </tr>
-                `).join('')}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  ${r.ledgerTxns.map(tx => `
+                    <tr>
+                      <td><strong>${Ledger.typeLabel(tx.type)}</strong></td>
+                      <td style="color:${['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type) ? 'var(--accent-green)' : 'var(--accent-red)'}">
+                        ${['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type) ? '+' : '-'}${Calculator.display(tx.amount)}
+                      </td>
+                      <td>${tx.note || '—'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
           </div>
         ` : ''}
 
@@ -252,8 +330,6 @@ const DetailUI = (() => {
         <div class="detail-flags">
           ${r.flags.isInvestDay ? '<span class="flag-pill flag-invest">🟢 Hari Investasi</span>' : ''}
           ${r.flags.isMaturityDay ? '<span class="flag-pill flag-maturity">🟡 Investasi Cair</span>' : ''}
-          ${r.flags.isWeeklyBonusDay ? '<span class="flag-pill flag-bonus">🔵 Weekly Bonus</span>' : ''}
-          ${r.flags.isGenerateDay ? '<span class="flag-pill flag-generate">🟣 Generate Aktif</span>' : ''}
           ${r.flags.isDelayDay ? '<span class="flag-pill flag-delay">🔴 Sengaja Menunggu</span>' : ''}
           ${r.flags.isSweetSpot ? '<span class="flag-pill flag-sweet">🎯 Sweet Spot</span>' : ''}
           ${r.flags.hasLedgerInvestment ? '<span class="flag-pill flag-invest">📘 Ledger Invest</span>' : ''}

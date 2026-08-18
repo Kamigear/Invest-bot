@@ -1,0 +1,4 @@
+🔵 [2026-08-17 21:34:00] [Windows] Memulai scrape data dari rep_panel.php url=https://boardleaders.rf.gd/rep_panel.php
+⚠️ [2026-08-17 21:34:00] [Windows] Web scrape tidak tersedia/gagal. Menggunakan fallback file lokal Rep Dashboard.html error="Puppeteer is not installed"
+🔵 [2026-08-17 21:34:23] [Windows] Memulai scrape data dari rep_panel.php url=https://boardleaders.rf.gd/rep_panel.php
+⚠️ [2026-08-17 21:34:23] [Windows] Web scrape tidak tersedia/gagal. Menggunakan fallback file lokal Rep Dashboard.html error="Puppeteer is not installed"

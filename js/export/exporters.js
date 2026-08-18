@@ -4,17 +4,13 @@
 const ExportCSV = (() => {
   function export_(records) {
     const headers = [
-      'Hari', 'Saldo Sebelum', 'Daily Income', 'Weekly Bonus', 'Generate',
-      'Investasi', 'Lost Decimal', 'Investasi Cair', 'Aktif', 'Saldo Sesudah',
+      'Hari', 'Saldo Sebelum', 'Income', 'Investasi', 'Lost Decimal', 'Investasi Cair', 'Aktif', 'Saldo Sesudah',
       'Total Aset', 'Keputusan', 'Alasan'
     ];
-
     const rows = records.map(r => [
       r.day,
       r.balanceBefore,
-      r.dailyIncome,
-      r.weeklyBonus,
-      r.generate,
+      r.totalDayIncome !== undefined ? r.totalDayIncome : (r.dailyIncome + (r.weeklyBonus || 0) + (r.generate || 0)),
       r.investedAmount,
       r.lostDecimal,
       r.maturedTotal,
@@ -54,20 +50,19 @@ const ExportExcel = (() => {
 
     // Sheet 1: Calendar
     const calData = [
-      ['Hari', 'Saldo Sebelum', 'Daily Income', 'Weekly Bonus', 'Generate',
-       'Investasi', 'Lost Decimal', 'Investasi Cair', 'Aktif', 'Saldo Sesudah',
+      ['Hari', 'Saldo Sebelum', 'Income', 'Investasi', 'Lost Decimal', 'Investasi Cair', 'Aktif', 'Saldo Sesudah',
        'Total Aset', 'Keputusan', 'Alasan']
     ];
     records.forEach(r => {
       calData.push([
-        r.day, r.balanceBefore, r.dailyIncome, r.weeklyBonus, r.generate,
+        r.day, r.balanceBefore, r.totalDayIncome !== undefined ? r.totalDayIncome : (r.dailyIncome + (r.weeklyBonus || 0) + (r.generate || 0)),
         r.investedAmount, r.lostDecimal, r.maturedTotal, r.activeCount,
         r.balanceAfter, r.totalAssets, r.decision, r.reason.join('; ')
       ]);
     });
     const ws1 = XLSX.utils.aoa_to_sheet(calData);
-    ws1['!cols'] = Array(13).fill({ wch: 15 });
-    ws1['!cols'][12] = { wch: 60 }; // Wide column for reasons
+    ws1['!cols'] = Array(11).fill({ wch: 15 });
+    ws1['!cols'][10] = { wch: 60 }; // Wide column for reasons
     XLSX.utils.book_append_sheet(wb, ws1, 'Kalender Investasi');
 
     // Sheet 2: Invest Days Only
@@ -110,13 +105,11 @@ const ExportPDF = (() => {
     doc.text(`Generated: ${new Date().toLocaleDateString('id-ID')} — ${records.length} hari simulasi`, 14, 28);
 
     // Table
-    const head = [['Hari', 'Saldo Sbl', 'Income', 'Bonus', 'Gen', 'Invest', 'Cair', 'Aktif', 'Saldo Ssd', 'Total Aset', 'Status']];
+    const head = [['Hari', 'Saldo Sbl', 'Income', 'Invest', 'Cair', 'Aktif', 'Saldo Ssd', 'Total Aset', 'Status']];
     const body = records.map(r => [
       r.day,
       r.balanceBefore,
-      r.dailyIncome,
-      r.weeklyBonus || '—',
-      r.generate || '—',
+      r.totalDayIncome !== undefined ? r.totalDayIncome : ((r.dailyIncome || 0) + (r.weeklyBonus || 0) + (r.generate || 0)),
       r.investedAmount || '—',
       r.maturedTotal || '—',
       r.activeCount,

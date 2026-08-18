@@ -55,6 +55,70 @@ async function openBrowser() {
   return { browser, page };
 }
 
+function processRawPerks(rawPerks) {
+  const mappedPerks = {
+    bankbook: 0,
+    vault: 0,
+    piggyBank: false,
+    highYieldBond: 0,
+    timeWeaver: 0,
+    earlyBird: false,
+    nightOwl: false,
+    loginMultiplier: 0,
+    auctionDiscount: 0,
+    haggler: 0,
+    gachaReset: false,
+    tokenOfFortune: false,
+    tokenOfLuck: false,
+    proxyBidder: false,
+    streakSaver: false,
+    refundReceipt: 0
+  };
+
+  (rawPerks || []).forEach(p => {
+    const name = p.trim();
+    if (name.includes('Bronze Bankbook')) mappedPerks.bankbook = 1;
+    else if (name.includes('Silver Bankbook')) mappedPerks.bankbook = 2;
+    else if (name.includes('Gold Bankbook')) mappedPerks.bankbook = 3;
+
+    else if (name.includes('Vault Tier I')) mappedPerks.vault = 1;
+    else if (name.includes('Vault Tier II')) mappedPerks.vault = 2;
+
+    else if (name.includes('Piggy Bank')) mappedPerks.piggyBank = true;
+
+    else if (name.includes('High Yield Bond I')) mappedPerks.highYieldBond = 1;
+    else if (name.includes('High Yield Bond II')) mappedPerks.highYieldBond = 2;
+    else if (name.includes('High Yield Bond III')) mappedPerks.highYieldBond = 3;
+
+    else if (name.includes('Time Weaver I')) mappedPerks.timeWeaver = 1;
+    else if (name.includes('Time Weaver II')) mappedPerks.timeWeaver = 2;
+
+    else if (name.includes('Early Bird')) mappedPerks.earlyBird = true;
+    else if (name.includes('Night Owl')) mappedPerks.nightOwl = true;
+
+    else if (name.includes('Login Multiplier I')) mappedPerks.loginMultiplier = 1;
+    else if (name.includes('Login Multiplier II')) mappedPerks.loginMultiplier = 2;
+
+    else if (name.includes('Auction Discount I')) mappedPerks.auctionDiscount = 1;
+    else if (name.includes('Auction Discount II')) mappedPerks.auctionDiscount = 2;
+
+    else if (name.includes('Hagglers License I')) mappedPerks.haggler = 1;
+    else if (name.includes('Hagglers License II')) mappedPerks.haggler = 2;
+    else if (name.includes('Hagglers License III')) mappedPerks.haggler = 3;
+
+    else if (name.includes('Refund Receipt I')) mappedPerks.refundReceipt = 1;
+    else if (name.includes('Refund Receipt II')) mappedPerks.refundReceipt = 2;
+
+    else if (name.includes('Gacha Reset')) mappedPerks.gachaReset = true;
+    else if (name.includes('Token of Fortune')) mappedPerks.tokenOfFortune = true;
+    else if (name.includes('Token of Luck')) mappedPerks.tokenOfLuck = true;
+    else if (name.includes('Proxy Bidder')) mappedPerks.proxyBidder = true;
+    else if (name.includes('Streak Saver')) mappedPerks.streakSaver = true;
+  });
+
+  return mappedPerks;
+}
+
 // ==========================================
 // TUGAS 1: CEK SALDO & KLAIM EASTER EGG
 // ==========================================
@@ -62,40 +126,152 @@ async function runTask1() {
   await waitForTurn("TUGAS_1");
   isBrowserBusy = true;
 
-  Logger.info("Memulai proses cek saldo & klaim easter egg", { task: "TUGAS_1" });
+  Logger.info("Memulai proses cek saldo, perks & klaim easter egg", { task: "TUGAS_1" });
 
   let browser;
   try {
+    const classId = process.env.REP_CLASS_ID || '4';
+    const password = process.env.REP_PASSWORD || '104anakmrkalebyangkerenbngtwowamazinggantengnice';
+    const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
+
     const setup = await openBrowser();
     browser = setup.browser;
     const page = setup.page;
 
-    Logger.info("Membuka halaman utama", { task: "TUGAS_1", url: "https://boardleaders.rf.gd/" });
+    Logger.info("Membuka halaman login rep_panel.php", { task: "TUGAS_1", url: panelUrl });
+    await page.goto(panelUrl, { waitUntil: 'networkidle2', timeout: 60000 });
 
-    await page.goto('https://boardleaders.rf.gd/', { waitUntil: 'networkidle2', timeout: 60000 });
+    const isLoginForm = await page.evaluate(() => !!document.querySelector('select[name="class_id"]'));
+    if (isLoginForm) {
+      Logger.info("Melakukan login ke rep_panel.php", { task: "TUGAS_1", classId });
+      await page.select('select[name="class_id"]', classId);
+      await page.type('input[name="password"]', password);
 
-    Logger.info("Memindai saldo terkini dari tabel klasemen", { task: "TUGAS_1", prefix: PREFIX_NAME });
+      await Promise.all([
+        page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
+        page.click('button[name="login"]')
+      ]);
+    }
 
-    const balance = await page.evaluate((prefix) => {
-      const rows = Array.from(document.querySelectorAll('tr'));
-      for (const row of rows) {
-        if (row.innerText.includes(prefix)) {
-          const strong = row.querySelector('strong');
-          return strong ? parseInt(strong.innerText.replace(/\./g, '')) : null;
+    Logger.info("Scraping data dari dashboard...", { task: "TUGAS_1" });
+    const scraped = await page.evaluate(() => {
+      const bodyText = document.body.innerText || '';
+
+      const balanceMatch = bodyText.match(/Point Tersedia:\s*(\d+)/i);
+      const balance = balanceMatch ? parseInt(balanceMatch[1], 10) : null;
+
+      const ticketMatch = bodyText.match(/Tiket Blind Box:\s*(\d+)/i);
+      const tickets = ticketMatch ? parseInt(ticketMatch[1], 10) : 0;
+
+      const activePerkEls = document.querySelectorAll('.perk-badge.perk-active');
+      const rawPerks = Array.from(activePerkEls).map(el => {
+        const span = el.querySelector('span:first-child');
+        return span ? span.innerText.trim() : el.innerText.trim();
+      });
+
+      const investments = [];
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const investCard = cards.find(c => {
+        const h3 = c.querySelector('h3');
+        return h3 && h3.innerText.includes('Active Investments');
+      });
+
+      if (investCard) {
+        const items = investCard.querySelectorAll('li');
+        items.forEach(li => {
+          const text = li.innerText || '';
+          const amountMatch = text.match(/Saldo yang dimasukan:\s*(\d+)/i);
+          const returnMatch = text.match(/Hasil:\s*(\d+)/i);
+          const maturityMatch = text.match(/Selesai pada:\s*([^\n]+)/i);
+          if (amountMatch) {
+            investments.push({
+              amount: parseInt(amountMatch[1], 10),
+              returnAmount: returnMatch ? parseInt(returnMatch[1], 10) : 0,
+              maturityDate: maturityMatch ? maturityMatch[1].trim() : ''
+            });
+          }
+        });
+      }
+
+      // ── Scrape Transaction History untuk Daily Income Terakhir ──────────────
+      let latestDailyIncome = 0;
+      let historyStreak = 0;
+      let historyText = '';
+
+      const txItems = Array.from(document.querySelectorAll('.tx-item'));
+      for (const tx of txItems) {
+        const titleEl = tx.querySelector('strong');
+        const amountEl = tx.querySelector('.tx-income');
+        if (titleEl && amountEl) {
+          const title = titleEl.innerText.trim();
+          if (title.includes('Daily Login') || title.includes('Passive Income') || title.includes('Streak')) {
+            const amtMatch = amountEl.innerText.match(/\+(\d+)/);
+            if (amtMatch) {
+              latestDailyIncome = parseInt(amtMatch[1], 10);
+            }
+            const sMatch = title.match(/Streak\s*\((\d+)\)/i);
+            if (sMatch) {
+              historyStreak = parseInt(sMatch[1], 10);
+            }
+            historyText = title;
+            break; // Ambil entry transaksi daily income paling baru
+          }
         }
       }
-      return null;
-    }, PREFIX_NAME);
 
-    if (balance !== null) {
-      Logger.success(`Saldo berhasil ditarik: ${balance}`, { task: "TUGAS_1", balance });
+      // Fallback streak dari bodyText jika history tidak terbaca
+      const streakMatch = bodyText.match(/Daily Login Streak\s*\(?(\d+)\)?/i) || 
+                          bodyText.match(/Login Streak\s*[:\(]\s*(\d+)/i) || 
+                          bodyText.match(/Streak\s*[:\(]\s*(\d+)/i);
+      const fallbackStreak = streakMatch ? parseInt(streakMatch[1], 10) : 0;
+      const finalStreak = historyStreak || fallbackStreak;
+
+      // Base passive income fallback (10 + streak - 1)
+      let calculatedBase = 0;
+      if (finalStreak > 0) {
+        calculatedBase = 10 + (finalStreak - 1);
+      }
+      const finalIncomeBase = latestDailyIncome > 0 ? latestDailyIncome : calculatedBase;
+
+      return {
+        balance,
+        tickets,
+        rawPerks,
+        investments,
+        loginStreak: finalStreak,
+        latestDailyIncome,
+        incomeBase: finalIncomeBase,
+        historyText
+      };
+    });
+
+    if (scraped.balance !== null) {
+      Logger.success(`Saldo berhasil ditarik: ${scraped.balance} (Streak: ${scraped.loginStreak}, Income Terakhir: +${scraped.latestDailyIncome} Pt)`, { task: "TUGAS_1", balance: scraped.balance, streak: scraped.loginStreak, income: scraped.latestDailyIncome });
+
+      const mappedPerks = processRawPerks(scraped.rawPerks);
+
+      // Write full dashboard data to Firestore
+      await db.collection('botState').doc('dashboardData').set({
+        balance: scraped.balance,
+        tickets: scraped.tickets,
+        rawPerks: scraped.rawPerks,
+        perks: mappedPerks,
+        investments: scraped.investments,
+        loginStreak: scraped.loginStreak,
+        latestDailyIncome: scraped.latestDailyIncome,
+        incomeBase: scraped.incomeBase,
+        historyText: scraped.historyText,
+        lastUpdated: serverTimestamp()
+      });
+      Logger.info("Dashboard data berhasil disimpan ke Firebase collection botState/dashboardData", { task: "TUGAS_1" });
+
+      // Keep legacy balance doc updated for compatibility
       await db.collection('botState').doc('balance').set({
-        balance: balance,
+        balance: scraped.balance,
         lastUpdated: serverTimestamp()
       }, { merge: true });
-      Logger.info("Saldo berhasil disimpan ke Firebase", { task: "TUGAS_1", collection: "botState/balance" });
     } else {
-      Logger.warning("Gagal menemukan data saldo untuk prefix yang ditentukan", { task: "TUGAS_1", prefix: PREFIX_NAME });
+      Logger.warning("Gagal menemukan data saldo di panel dashboard", { task: "TUGAS_1" });
     }
 
     Logger.info("Mencari elemen tombol Easter Egg", { task: "TUGAS_1" });

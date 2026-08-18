@@ -149,5 +149,14 @@
   "147": ".test_init_framework",
   "148": ".test_custom_output_path",
   "149": ".test_base_config_structure",
-  "150": "default"
+  "150": "default",
+  "151": "input",
+  "152": "radius",
+  "153": "padding-y",
+  "154": "default",
+  "155": "destructive",
+  "156": "destructive-foreground",
+  "157": "muted",
+  "159": "ring",
+  "161": "search.py"
 }

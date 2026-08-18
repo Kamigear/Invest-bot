@@ -221,7 +221,6 @@ const ComparisonUI = (() => {
       ['Total Aset Akhir', bs.finalTotalAssets, ws.finalTotalAssets],
       ['Total Investasi', bs.totalInvestCount, ws.totalInvestCount, 0],
       ['Profit Investasi', bs.totalReturnProfit, ws.totalReturnProfit],
-      ['Total Generate', bs.totalGenerate, ws.totalGenerate],
       ['Lost Decimal', bs.totalLostDecimal, ws.totalLostDecimal],
       ['Efisiensi (%)', bs.efficiency, ws.efficiency],
       ['Hari Menunggu', bs.totalWaitDays, ws.totalWaitDays, 0],

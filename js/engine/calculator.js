@@ -20,7 +20,8 @@ const Calculator = (() => {
     let total = 0;
 
     // Legacy: incomeType single-select mode
-    if (!config.incomeFixedEnabled && !config.incomeLinearEnabled && config.incomeType) {
+    // Only fall through if BOTH new flags are explicitly undefined (legacy config)
+    if (config.incomeFixedEnabled === undefined && config.incomeLinearEnabled === undefined && config.incomeType) {
       switch (config.incomeType) {
         case 'fixed': return config.incomeBase;
         case 'custom':
@@ -31,8 +32,8 @@ const Calculator = (() => {
       }
     }
 
-    // New mode: both fixed and linear can be enabled simultaneously
-    if (config.incomeFixedEnabled !== false) {
+    // New mode: incomeFixedEnabled=false means perk NOT yet active on this day
+    if (config.incomeFixedEnabled === true) {
       total += (config.incomeFixedAmount || 0);
     }
     if (config.incomeLinearEnabled !== false) {
@@ -63,7 +64,7 @@ const Calculator = (() => {
    * Generate = floor(balance * generateRate)
    */
   function getGenerate(balance, config) {
-    if (!config.generateEnabled || config.generateRate <= 0) return 0;
+    if (!config.generateEnabled || config.generateRate <= 0 || balance <= 0) return 0;
     return Math.floor(balance * config.generateRate);
   }
 

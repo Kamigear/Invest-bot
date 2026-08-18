@@ -26,13 +26,14 @@ const SummaryUI = (() => {
           ${statCard('📈', 'Total Investasi', `${s.totalInvestCount} kali`)}
           ${s.totalLedgerInvest > 0 ? statCard('📘', 'Ledger Invest', `${s.totalLedgerInvestCount}× (${Calculator.display(Math.round(s.totalLedgerInvest), 0)})`, 'highlight') : ''}
           ${statCard('🎁', 'Profit Investasi', `+${Calculator.display(Math.round(s.totalReturnProfit), 0)}`, 'profit')}
-          ${statCard('⚡', 'Total Generate', `+${Calculator.display(Math.round(s.totalGenerate), 0)}`)}
-          ${statCard('🎯', 'Efisiensi', `${s.efficiency}%`, s.efficiency >= 99 ? 'good' : 'warn')}
-          ${statCard('💧', 'Lost Decimal', Calculator.display(s.totalLostDecimal))}
-          ${statCard('🎊', 'Total Weekly Bonus', `+${Calculator.display(Math.round(s.totalWeeklyBonus), 0)}`)}
-          ${statCard('⏳', 'Hari Menunggu', `${s.totalWaitDays} hari`)}
+           ${statCard('🎯', 'Efisiensi', `${s.efficiency}%`, s.efficiency >= 99 ? 'good' : 'warn')}
+           ${statCard('💧', 'Lost Decimal', Calculator.display(s.totalLostDecimal))}
+           ${statCard('⏳', 'Hari Menunggu', `${s.totalWaitDays} hari`)}
           ${statCard('🏆', 'vs Invest Setiap Hari', `${s.outperformancePct >= 0 ? '+' : ''}${s.outperformancePct}%`, s.outperformancePct >= 0 ? 'profit' : 'warn')}
         </div>
+
+        <!-- Investasi Aktif Live (dari Firebase sync) -->
+        ${buildLiveInvestmentsSection(config)}
 
         <!-- Investment Schedule -->
         <div class="schedule-section">
@@ -125,7 +126,6 @@ const SummaryUI = (() => {
             ).join('\n')}
             <br/>
             <div class="summary-line">Total Investasi     : ${s.totalInvestCount} kali</div>
-            <div class="summary-line">Total Generate      : +${Calculator.display(Math.round(s.totalGenerate), 0)}</div>
             <div class="summary-line">Total Lost Decimal  : ${Calculator.display(s.totalLostDecimal)}</div>
             <div class="summary-line">Profit Investasi    : +${Calculator.display(Math.round(s.totalReturnProfit), 0)}</div>
             <div class="summary-line">Total Aset Akhir    : ${Calculator.display(Math.round(s.finalTotalAssets), 0)}</div>
@@ -150,6 +150,71 @@ const SummaryUI = (() => {
         <div class="stat-info">
           <div class="stat-label">${label}</div>
           <div class="stat-value">${value}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Render section investasi aktif saat ini dari Firebase sync.
+   * Ditampilkan hanya jika config.liveInvestments terisi.
+   */
+  function buildLiveInvestmentsSection(config) {
+    const investments = config?.liveInvestments;
+    if (!investments || investments.length === 0) return '';
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const rows = investments.map((inv, i) => {
+      const matDate = inv.maturityDate ? new Date(inv.maturityDate.toString().split(' ')[0]) : null;
+      let countdown = '';
+      let countdownClass = '';
+      if (matDate) {
+        matDate.setHours(0, 0, 0, 0);
+        const diffDays = Math.round((matDate - today) / 86400000);
+        if (diffDays < 0) {
+          countdown = `<span class="inv-overdue">Sudah lewat ${Math.abs(diffDays)}h</span>`;
+          countdownClass = 'overdue';
+        } else if (diffDays === 0) {
+          countdown = `<span class="inv-today">Cair hari ini! 🎉</span>`;
+          countdownClass = 'today';
+        } else {
+          countdown = `<span class="inv-countdown">${diffDays} hari lagi</span>`;
+        }
+      }
+
+      const profitAmt = inv.returnAmount - inv.amount;
+      const matLabel = inv.maturityDate ? inv.maturityDate.toString().split(' ')[0] : '—';
+
+      return `
+        <div class="live-inv-row ${countdownClass}">
+          <span class="live-inv-num">#${i + 1}</span>
+          <div class="live-inv-body">
+            <div class="live-inv-main">
+              <span class="live-inv-amount">${Calculator.display(Math.round(inv.amount), 0)} pt</span>
+              <span class="live-inv-arrow">→</span>
+              <span class="live-inv-return">${Calculator.display(Math.round(inv.returnAmount), 0)} pt</span>
+              <span class="live-inv-profit">(+${Calculator.display(Math.round(profitAmt), 0)})</span>
+            </div>
+            <div class="live-inv-meta">
+              <span class="live-inv-date">📅 Cair: ${matLabel}</span>
+              ${countdown}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="schedule-section live-investments-section">
+        <h3 class="section-title">🔴 Investasi Aktif Sekarang <span class="live-badge">${investments.length} aktif</span></h3>
+        <div class="live-inv-list">
+          ${rows}
+        </div>
+        <div class="live-inv-total">
+          Total terkunci: <strong>${Calculator.display(Math.round(investments.reduce((s, inv) => s + (inv.amount || 0), 0)), 0)} pt</strong>
+          → Akan cair: <strong>${Calculator.display(Math.round(investments.reduce((s, inv) => s + (inv.returnAmount || 0), 0)), 0)} pt</strong>
         </div>
       </div>
     `;
@@ -263,21 +328,17 @@ const SummaryUI = (() => {
       _charts.profit = new Chart(ctx3, {
         type: 'pie',
         data: {
-          labels: ['Profit Investasi', 'Total Generate', 'Total Bonus', 'Saldo Awal'],
+          labels: ['Profit Investasi', 'Saldo Awal'],
           datasets: [{
             data: [
               summary.totalReturnProfit,
-              summary.totalGenerate,
-              summary.totalWeeklyBonus,
               summary.initialBalance,
             ],
             backgroundColor: [
               'rgba(79,172,254,0.8)',
-              'rgba(168,85,247,0.8)',
-              'rgba(245,158,11,0.8)',
               'rgba(16,185,129,0.8)',
             ],
-            borderColor: ['#4facfe', '#a855f7', '#f59e0b', '#10b981'],
+            borderColor: ['#4facfe', '#10b981'],
             borderWidth: 2,
           }]
         },
@@ -348,7 +409,6 @@ const SummaryUI = (() => {
     if (ctx5) {
       const investPoints = records.map(r => (r.flags.isInvestDay || r.flags.hasLedgerInvestment) ? r.balanceAfter : null);
       const maturityPoints = records.map(r => r.flags.isMaturityDay  ? r.balanceAfter : null);
-      const bonusPoints   = records.map(r => r.flags.isWeeklyBonusDay ? r.balanceAfter : null);
 
       _charts.saldo = new Chart(ctx5, {
         type: 'line',
@@ -390,30 +450,19 @@ const SummaryUI = (() => {
               pointStyle: 'triangle',
               showLine: false,
               order: 1,
-            },
-            {
-              label: 'Cair',
-              data: maturityPoints,
-              borderColor: 'transparent',
-              backgroundColor: '#4facfe',
-              pointRadius: records.length <= 90 ? 5 : 3,
-              pointHoverRadius: 7,
-              pointStyle: 'circle',
-              showLine: false,
-              order: 1,
-            },
-            {
-              label: 'Bonus Mingguan',
-              data: bonusPoints,
-              borderColor: 'transparent',
-              backgroundColor: '#a855f7',
-              pointRadius: records.length <= 90 ? 5 : 3,
-              pointHoverRadius: 7,
-              pointStyle: 'star',
-              showLine: false,
-              order: 1,
-            },
-          ]
+             },
+             {
+               label: 'Cair',
+               data: maturityPoints,
+               borderColor: 'transparent',
+               backgroundColor: '#4facfe',
+               pointRadius: records.length <= 90 ? 5 : 3,
+               pointHoverRadius: 7,
+               pointStyle: 'circle',
+               showLine: false,
+               order: 1,
+             },
+           ]
         },
         options: {
           ...chartDefaults,
@@ -441,9 +490,8 @@ const SummaryUI = (() => {
                   const dayIdx = ctx.dataIndex;
                   const rec = records[dayIdx];
                   if (ctx.dataset.label === 'Hari Investasi') return ` Investasi: ${Math.round(rec.investedAmount).toLocaleString('id-ID')}`;
-                  if (ctx.dataset.label === 'Cair') return ` Cair: ${Math.round(rec.maturedTotal).toLocaleString('id-ID')}`;
-                  if (ctx.dataset.label === 'Bonus Mingguan') return ` Bonus: ${Math.round(rec.weeklyBonus).toLocaleString('id-ID')}`;
-                  return ` ${ctx.dataset.label}: ${Math.round(ctx.parsed.y).toLocaleString('id-ID')}`;
+                   if (ctx.dataset.label === 'Cair') return ` Cair: ${Math.round(rec.maturedTotal).toLocaleString('id-ID')}`;
+                   return ` ${ctx.dataset.label}: ${Math.round(ctx.parsed.y).toLocaleString('id-ID')}`;
                 }
               }
             },

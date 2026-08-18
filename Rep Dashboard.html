@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://boardleaders.rf.gd/rep_panel.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rep Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0a12; color: #e2e8f0; margin: 0; padding: 20px; overflow-x: hidden; position: relative; min-height: 100vh; }
+        
+        #dot-field-bg, #text-cursor-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+        #text-cursor-container { z-index: 998; overflow: hidden; }
+        #click-spark-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+        
+        .text-cursor-item {
+            position: absolute; user-select: none; white-space: nowrap; font-size: 1.25rem; font-weight: bold;
+            color: #c084fc; text-shadow: 0 0 8px rgba(192, 132, 252, 0.6); pointer-events: none; will-change: transform, opacity;
+        }
+        @keyframes textCursorFloat {
+            0% { transform: translate(-50%, -50%) rotate(var(--base-angle)) translate(0px, 0px) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(var(--base-angle)) translate(var(--rx), var(--ry)) rotate(var(--rrot)); }
+        }
+
+        .grid-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: auto; position: relative; z-index: 10; }
+        
+        .card { 
+            background: rgba(22, 18, 33, 0.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            padding: 20px; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.25);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.15); 
+            margin-bottom: 20px; color: #e2e8f0; position: relative; z-index: 10;
+        }
+
+        h2, h3, h4 { color: #ffffff; letter-spacing: 0.5px; }
+        a { color: #c084fc; text-decoration: none; }
+        a:hover { color: #a855f7; }
+        
+        .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .shop-item { border: 1px solid rgba(255, 255, 255, 0.15); padding: 10px; border-radius: 6px; text-align: center; background: rgba(255, 255, 255, 0.05); }
+        
+        select, input { padding: 10px; margin: 5px 0; width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; color: #fff; outline: none; }
+        select option { background: #181324; color: #fff; }
+        select:focus, input:focus { border-color: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.4); }
+        
+        button { padding: 10px 15px; background: #a855f7; color: white; border: none; cursor: pointer; border-radius: 6px; font-weight: bold; transition: all 0.2s ease; }
+        button:hover:not(:disabled) { background: #9333ea; box-shadow: 0 0 10px rgba(168, 85, 247, 0.4); }
+        button:disabled { cursor: not-allowed; opacity: 0.7; background: rgba(255, 255, 255, 0.1) !important; color: #888 !important; }
+        
+        .btn-green { background: #10b981; } .btn-green:hover:not(:disabled) { background: #059669; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+        .btn-red { background: #ef4444; } .btn-red:hover:not(:disabled) { background: #dc2626; box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
+        .btn-blue { background: #3b82f6; } .btn-blue:hover:not(:disabled) { background: #2563eb; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+        .btn-yellow { background: #f59e0b; color: #fff; } .btn-yellow:hover:not(:disabled) { background: #d97706; box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
+
+        .perks-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .perk-badge { 
+            position: relative; cursor: help; padding: 8px 15px; border-radius: 20px; 
+            font-size: 14px; border: 1px solid transparent; transition: all 0.3s ease; 
+            display: inline-flex; align-items: center; 
+        }
+        .perk-active { background: rgba(139, 92, 246, 0.2); color: #e2e8f0; border-color: rgba(168, 85, 247, 0.4); font-weight: bold; }
+        .perk-inactive { background: rgba(255, 255, 255, 0.05); color: #64748b; border-color: rgba(255, 255, 255, 0.1); opacity: 0.6; }
+        
+        .perk-qty { background: #a855f7; color: white; font-size: 12px; padding: 2px 6px; border-radius: 10px; margin-left: 8px; }
+        .perk-qty.max-badge { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 0 5px rgba(245, 158, 11, 0.6); }
+        .perk-qty.ex-badge { background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 0 5px rgba(6, 182, 212, 0.6); font-style: italic; letter-spacing: 1px; }
+
+        .perk-badge .tooltiptext {
+            visibility: hidden; width: max-content; max-width: 220px; background-color: #181324;
+            color: #fff; text-align: center; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(168, 85, 247, 0.4);
+            position: absolute; z-index: 10; bottom: 120%; left: 50%;
+            transform: translateX(-50%); opacity: 0; transition: opacity 0.3s, bottom 0.3s;
+            font-size: 12px; font-weight: normal; line-height: 1.4; box-shadow: 0px 4px 6px rgba(0,0,0,0.6); pointer-events: none; 
+        }
+        .perk-badge:hover .tooltiptext { visibility: visible; opacity: 1; bottom: 130%; }
+
+        .tab-header { display: flex; border-bottom: 2px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); border-radius: 10px 10px 0 0; }
+        .tab-btn { flex: 1; padding: 12px 15px; text-align: center; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; }
+        .tab-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .tab-btn.active { color: #fff; border-bottom: 3px solid #a855f7; background: rgba(168,85,247,0.15); }
+        .tab-content { display: none; padding: 20px; }
+        .tab-content.active { display: block; }
+        
+        ul li, .tx-item { border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important; }
+        .transaction-list { max-height: 250px; overflow-y: auto; padding-right: 5px; }
+        .tx-item { display: flex; justify-content: space-between; padding: 10px 0; font-size: 13px; }
+        .tx-income { color: #4ade80; font-weight: bold; }
+        .tx-expense { color: #f87171; font-weight: bold; }
+        
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 13px; }
+        .cal-header { font-weight: bold; background: rgba(255,255,255,0.05); padding: 8px 0; border-radius: 4px; }
+        .cal-day { border: 1px solid rgba(255,255,255,0.08); padding: 10px 2px; min-height: 40px; position: relative; border-radius: 6px; }
+        .cal-today { font-weight: bold; border: 2px solid #a855f7 !important; box-shadow: 0 0 10px rgba(168,85,247,0.3); }
+        .cal-event { font-size: 10px; margin-top: 4px; display: block; line-height: 1.2; }
+        .event-invest { color: #34d399; font-weight: bold; }
+        .event-auction { color: #fb7185; font-weight: bold; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.6); }
+    </style>
+<style>
+        .tm-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 999999; opacity: 0; pointer-events: none; transition: opacity 0.2s ease-in-out;
+        }
+        .tm-overlay.tm-show { opacity: 1; pointer-events: auto; }
+        .tm-modal {
+            background: rgba(22, 18, 33, 0.85); border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 12px; padding: 25px 30px; max-width: 350px; width: 90%;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.2);
+            text-align: center; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transform: translateY(-20px) scale(0.95); transition: transform 0.2s ease-in-out;
+        }
+        .tm-overlay.tm-show .tm-modal { transform: translateY(0) scale(1); }
+        .tm-title { font-size: 1.25rem; margin-bottom: 10px; font-weight: bold; color: #fff; }
+        .tm-desc { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 25px; line-height: 1.5; }
+        .tm-btn-group { display: flex; gap: 15px; justify-content: center; }
+        .tm-btn {
+            padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer;
+            font-weight: bold; transition: 0.2s; flex: 1; font-size: 0.9rem;
+        }
+        .tm-btn-cancel { background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .tm-btn-cancel:hover { background: rgba(255, 255, 255, 0.15); }
+        .tm-btn-confirm { background: #a855f7; color: white; }
+        .tm-btn-confirm:hover { background: #9333ea; box-shadow: 0 0 10px rgba(168, 85, 247, 0.4); }
+    </style></head>
+<body>
+
+    <div id="dot-field-bg"><canvas style="position: absolute; inset: 0px; width: 1280px; height: 585.333px;" width="1727" height="790"></canvas><svg style="position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none;">
+                <defs>
+                    <radialgradient id="dot-glow-hz7341p">
+                        <stop offset="0%" stop-color="#2d124d"></stop>
+                        <stop offset="100%" stop-color="transparent"></stop>
+                    </radialgradient>
+                </defs>
+                <circle id="dot-glow-hz7341p-circle" cx="906" cy="-327.3333740234375" r="160" fill="url(#dot-glow-hz7341p)" style="opacity: 2.02503e-25; will-change: opacity;"></circle>
+            </svg></div>
+    <div id="text-cursor-container"></div>
+    <canvas id="click-spark-canvas" width="1280" height="585"></canvas>
+
+
+    <div style="max-width: 1000px; margin: auto; padding-bottom: 20px; position: relative; z-index: 10;">
+        <h2>Dashboard Account: <span style="color: #c084fc;">Class Mr Kalebbbbb</span></h2>
+        <p style="font-size: 16px;">
+            Point Tersedia: <strong style="color: #4ade80; font-size:20px;">355 Point</strong> | 
+            Tiket Blind Box: <strong style="color: #38bdf8; font-size:20px;"> 0 Tiket</strong>
+        </p>
+        
+                
+        <div style="margin-top: 15px;">
+            <a href="https://boardleaders.rf.gd/index.php" style="padding: 8px 15px; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: bold; margin-right: 10px;">Home</a> 
+            <a href="https://boardleaders.rf.gd/rep_panel.php?logout=true" style="padding: 8px 15px; background: rgba(220, 38, 38, 0.2); color: #f87171; border-radius: 6px; font-weight: bold; border: 1px solid rgba(248, 113, 113, 0.3);">Logout</a>
+        </div>
+    </div>
+
+    <div class="grid-panel">
+        <div>
+            
+            <div class="card">
+                <h3>Kalender Daily Login - August 2026</h3>
+                <div class="calendar-grid">
+                    <div class="cal-header">Minggu</div><div class="cal-header">Senin</div><div class="cal-header">Selasa</div>
+                    <div class="cal-header">Rabu</div><div class="cal-header">Kamis</div><div class="cal-header">Selasa</div>
+                    <div class="cal-header">Sabtu</div>
+                    <div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">1</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">2</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">3</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">4</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">5</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">6</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">7</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">8</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">9</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">10</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">11</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">12</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">13</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">14</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">15</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">16</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">17</div><div class="cal-day cal-today" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">18</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">19</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">20</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">21</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">22</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">23</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">24</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">25</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">26</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">27</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">28</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">29</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">30</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">31</div>                </div>
+            </div>
+
+            <div class="card">
+                <h3>Reward Shop</h3>
+                <div class="shop-grid">
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Deadline Delay</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">Delay Deadline for 3 days</p>
+                            <p style="color: #c084fc;"><strong>5000</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="1">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Boleh pakai Ai untuk tugas</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">Untuk tugas terbaru, maka di ijinkan untuk menggunakan AI</p>
+                            <p style="color: #c084fc;"><strong>2400</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="2">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Plus poin sebanyak 5 untuk semua orang (Eksklusif kelas 11-12)</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">Plus poin tambahan sejumlah 5 poin untuk tiap siswa dikelas yang membeli (Ekslusif kelas 11-12)</p>
+                            <p style="color: #c084fc;"><strong>4000</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="3">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Red Name Tag</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">nama di leaderboard jadi merah</p>
+                            <p style="color: #c084fc;"><strong>500</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="4">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Blue Name Tag</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">nama di leaderboard jadi biru</p>
+                            <p style="color: #c084fc;"><strong>500</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="5">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Green Name Tag</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">nama di leaderboard jadi hijau
+</p>
+                            <p style="color: #c084fc;"><strong>500</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="6">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                            <div class="shop-item">
+                            <h4 style="margin-top: 5px; color: #e2e8f0;">Bold Font Pass</h4>
+                            <p style="font-size: 12px; color: #94a3b8;">nama jadi bold di leaderboard</p>
+                            <p style="color: #c084fc;"><strong>750</strong> points</p>
+                                                            <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="item_id" value="7">
+                                    <button type="submit" name="buy_item" style="width:100%;">Beli</button>
+                                </form>
+                                                    </div>
+                                    </div>
+            </div>
+            
+            <div class="card">
+                <h3>Points Investment</h3>
+                <form method="POST">
+                    <input type="number" name="amount" placeholder="Mau invest berapa" min="1" max="355" required="">
+                    <select name="plan" required="">
+                        <option value="30">30 Days (18% return)</option>
+                        <option value="60">60 Days (25% return)</option>
+                        <option value="90">90 Days (40% return)</option>
+                    </select>
+                    <button type="submit" name="invest" class="btn-green" style="width:100%; margin-top:10px;">Invest Points</button>
+                </form>
+            </div>
+            
+            <div class="card">
+                <h3>Change Class Name</h3>
+                <form method="POST">
+                    <input type="text" name="new_name" value="Class Mr Kalebbbbb" required="">
+                    <button type="submit" name="change_name" class="btn-blue" style="width:100%; margin-top:5px;">Update (GRATISSSSSS SELAMANYA)</button>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            
+            <div class="card" style="padding: 0; overflow: hidden; border: 1px solid #a855f7;">
+                <div class="tab-header">
+                    <div class="tab-btn" id="btn-gacha" onclick="switchTab(&#39;gacha&#39;)">Blind Box</div>
+                    <div class="tab-btn active" id="btn-auction" onclick="switchTab(&#39;auction&#39;)">Auction House</div>
+                </div>
+
+                <div id="content-gacha" class="tab-content" style="background: transparent;">
+                    <h3 style="margin-top:0;">Mystery Blind Box</h3>
+                    <p style="color: #cbd5e1;">Apakah anda merasa beruntung (dont gamble ya kids)</p>
+                    <p style="font-size: 16px;"><strong>Harga saat ini:</strong> <span style="color: #c084fc;">299 Point</span></p>
+                    
+                    
+                    <form method="POST">
+                                                    <button type="submit" name="open_blind_box" class="btn-yellow" style="font-weight:bold; width:100%; font-size:16px;">
+                                Open Mystery Blind Box (299 Points)
+                            </button>
+                                            </form>
+                    <p style="font-size: 12px; color: #94a3b8; margin-top: 10px; text-align: center;">
+                        Chance free ticket: <strong style="color: #e2e8f0;">25%</strong> (Pity: 4/9)
+                    </p>
+                </div>
+
+                <div id="content-auction" class="tab-content active" style="background: transparent;">
+                    <h3 style="margin-top:0;">Live Auction</h3>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">Bid barang yang kelasmu butuh/mau, (bisa unlock EX Rank Perk loh) tiati utang ya</p>
+                    
+                                            <div style="border: 1px dashed rgba(255,255,255,0.2); padding: 25px 15px; border-radius: 6px; background: rgba(255,255,255,0.02); text-align: center; color: #94a3b8;">
+                            <p style="font-size: 14px; margin: 0;">Tidak ada lelang yang aktif saat ini. Silahkan cek lagi nanti!</p>
+                            <p style="font-size: 11px; margin-top: 10px; opacity: 0.7;">(Admin: Tambahkan jadwal di tabel 'auctions' untuk memulai lelang otomatis)</p>
+                        </div>
+                                    </div>
+            </div>
+
+            <div class="card">
+                <h3>Transaction History</h3>
+                <div class="transaction-list">
+                                                                        <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">18 Aug, 04:01</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-50 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (19) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">18 Aug, 00:29</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+52 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">17 Aug, 21:42</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-45 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Admin memberi 1 Ticket</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">17 Aug, 12:30</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+0 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (18) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">17 Aug, 04:01</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+51 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">16 Aug, 04:00</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-45 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (17) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">16 Aug, 04:00</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+49 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">15 Aug, 04:02</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-39 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (16) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">15 Aug, 04:02</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+48 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Admin memberi 1 Ticket</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">14 Aug, 12:27</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+0 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">14 Aug, 04:00</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-45 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Bonus: Won 1 Blind Box Ticket! (Pity Reset)</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">14 Aug, 04:00</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+0 Pt</span>
+                                                                    </div>
+                            </div>
+                                                            </div>
+            </div>
+
+            <div class="card">
+                <h3>Class Inventory</h3>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: -5px; margin-bottom: 10px;">Refund Ratemu sekarang: <strong style="color: #c084fc;">0%</strong> (Max: 90%)</p>
+                                
+                                    <p style="color:#94a3b8; font-size:14px;">Aduh kosong nih bos, nabung yak biar ga kosong.</p>
+                            </div>
+
+            <div class="card">
+                <h3>Active Class Perks</h3>
+                <div class="perks-container">
+                                            <div class="perk-badge perk-inactive">
+                            <span>Auction Discount I</span>
+                                                        <span class="tooltiptext">diskon 5% harga final auction</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Auction Discount II</span>
+                                                        <span class="tooltiptext">diskon 10% harga final auction</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Bronze Bankbook</span>
+                                                        <span class="tooltiptext">generate 0.5% balance tersedia, daily tanpa investasi</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Early Bird</span>
+                                                        <span class="tooltiptext">extra 2 point untuk daily login</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Gacha Reset</span>
+                                                        <span class="tooltiptext">Reset harga Gacha jadi 100 lagi</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Gold Bankbook</span>
+                                                        <span class="tooltiptext">generate 1.5% balance tersedia, daily tanpa investasi</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Hagglers License I</span>
+                                                        <span class="tooltiptext">permanen 2% diskon item shop</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Hagglers License II</span>
+                                                        <span class="tooltiptext">permanen 4% diskon item shop</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Hagglers License III</span>
+                                                        <span class="tooltiptext">permanen 6% diskon item shop</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>High Yield Bond I</span>
+                                                        <span class="tooltiptext">semua investasi permanen naik 2%</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>High Yield Bond II</span>
+                                                        <span class="tooltiptext">semua investasi permanen naik 4%</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>High Yield Bond III</span>
+                                                        <span class="tooltiptext">semua investasi permanen naik 6%</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Login Multiplier I</span>
+                                                        <span class="tooltiptext">5% chance pas login, daily login rewardnya double</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Login Multiplier II</span>
+                                                        <span class="tooltiptext">10% chance pas login, daily login rewardnya double</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Night Owl</span>
+                                                        <span class="tooltiptext">extra 4 point untuk daily login</span>
+                        </div>
+                                            <div class="perk-badge perk-active">
+                            <span>Piggy Bank</span>
+                                                                                                <span class="perk-qty">2</span>
+                                                                                        <span class="tooltiptext">dapat 5 point per hari</span>
+                        </div>
+                                            <div class="perk-badge perk-active">
+                            <span>Proxy Bidder</span>
+                                                                                                <span class="perk-qty max-badge">MAX</span>
+                                                                                        <span class="tooltiptext">bisa ngebid di auction sebesar 1% increment (normalnya 5%) (contoh: kelas yang tidak punya perk ini jika harga bid 100 maka wajib taruh harga minimal 105, tapi jika kelas kalian punya perk ini, maka kalian bisa cuma taruh 101 instead of 105)</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Refund Receipt I</span>
+                                                        <span class="tooltiptext">bisa jual barang yang sudah dibeli dan dapat 10% dari harganya</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Refund Receipt II</span>
+                                                        <span class="tooltiptext">bisa jual barang yang sudah dibeli dan dapat 20% dari harganya</span>
+                        </div>
+                                            <div class="perk-badge perk-active">
+                            <span>Silver Bankbook</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">generate 1% balance tersedia, daily tanpa investasi</span>
+                        </div>
+                                            <div class="perk-badge perk-active">
+                            <span>Streak Saver</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">bisa dipakai untuk save login streak kalau ketinggalan (1 hari) </span>
+                        </div>
+                                            <div class="perk-badge perk-active">
+                            <span>Time Weaver I</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">mengurangi waktu investasi sebanyak 12 jam</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Time Weaver II</span>
+                                                        <span class="tooltiptext">mengurangi waktu investasi sebanyak 24 jam</span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Token of Fortune</span>
+                                                        <span class="tooltiptext">turunin increment harga gacha sebanyak 5% </span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Token of Luck</span>
+                                                        <span class="tooltiptext">turunin increment harga gacha sebanyak 5% </span>
+                        </div>
+                                            <div class="perk-badge perk-inactive">
+                            <span>Vault Tier I</span>
+                                                        <span class="tooltiptext">dapat 10 point per hari</span>
+                        </div>
+                                            <div class="perk-badge perk-active">
+                            <span>Vault Tier II</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">dapat 15 point per hari</span>
+                        </div>
+                                    </div>
+            </div>
+
+            <div class="card">
+                <h3>Class Cosmetics</h3>
+                
+                                    <ul style="list-style-type: none; padding: 0;">
+                                                    <li style="padding: 12px 0; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="color: #e2e8f0;">Silver Crown</strong>
+                                    <span style="font-size: 11px; color: #94a3b8; display: block; margin-top: 3px;">Nama Silver (Gacha)</span>
+                                </div>
+                                <form method="POST" style="margin:0;">
+                                    <input type="hidden" name="cosmetic_name" value="Silver Crown">
+                                                                            <input type="hidden" name="action" value="unequip">
+                                        <button type="submit" name="toggle_cosmetic" class="btn-red" style="padding:6px 12px; font-size:12px;">Unequip</button>
+                                                                    </form>
+                            </li>
+                                            </ul>
+                            </div>
+
+            <div class="card">
+                <h3>Active Investments</h3>
+                                    <ul style="list-style-type: none; padding: 0;">
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>100 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>118 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-10 18:41:32                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>39 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>46 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-11 04:00:46                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>45 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>53 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-13 04:00:51                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>39 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>46 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-13 16:02:29                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>45 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>53 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-14 16:00:54                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>45 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>53 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-16 09:42:03                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang dimasukan: <strong>50 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>59 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-09-16 16:01:17                                 </div>
+                            </li>
+                                            </ul>
+                            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.getElementById('btn-' + tabName).classList.add('active');
+            document.getElementById('content-' + tabName).classList.add('active');
+        }
+    </script>
+
+    <script>
+        function createDotField(containerId, options = {}) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const config = {
+                dotRadius: options.dotRadius || 1.5,
+                dotSpacing: options.dotSpacing || 14,
+                cursorRadius: options.cursorRadius || 500,
+                cursorForce: options.cursorForce || 0.1,
+                bulgeOnly: options.bulgeOnly !== undefined ? options.bulgeOnly : true,
+                bulgeStrength: options.bulgeStrength || 67,
+                glowRadius: options.glowRadius || 160,
+                sparkle: options.sparkle || false,
+                waveAmplitude: options.waveAmplitude || 0,
+                gradientFrom: options.gradientFrom || 'rgba(168, 85, 247, 0.35)',
+                gradientTo: options.gradientTo || 'rgba(180, 151, 207, 0.25)',
+                glowColor: options.glowColor || '#120F17'
+            };
+            const TWO_PI = Math.PI * 2;
+            const glowId = 'dot-glow-' + Math.random().toString(36).substring(2, 9);
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'absolute'; canvas.style.inset = '0'; canvas.style.width = '100%'; canvas.style.height = '100%';
+            container.appendChild(canvas);
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.style.position = 'absolute'; svg.style.inset = '0'; svg.style.width = '100%'; svg.style.height = '100%'; svg.style.pointerEvents = 'none';
+            svg.innerHTML = `
+                <defs>
+                    <radialGradient id="${glowId}">
+                        <stop offset="0%" stop-color="${config.glowColor}" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </radialGradient>
+                </defs>
+                <circle id="${glowId}-circle" cx="-9999" cy="-9999" r="${config.glowRadius}" fill="url(#${glowId})" style="opacity: 0; will-change: opacity;" />
+            `;
+            container.appendChild(svg);
+            const glowEl = svg.querySelector(`#${glowId}-circle`);
+            const ctx = canvas.getContext('2d', { alpha: true });
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            let dots = []; let mouse = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 };
+            let size = { w: 0, h: 0, offsetX: 0, offsetY: 0 }; let glowOpacity = 0; let engagement = 0; let frameCount = 0; let resizeTimer;
+
+            function doResize() {
+                const rect = container.getBoundingClientRect();
+                const w = rect.width; const h = rect.height;
+                canvas.width = w * dpr; canvas.height = h * dpr; canvas.style.width = `${w}px`; canvas.style.height = `${h}px`;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                size = { w, h, offsetX: rect.left + window.scrollX, offsetY: rect.top + window.scrollY };
+                buildDots(w, h);
+            }
+            function buildDots(w, h) {
+                const step = config.dotRadius + config.dotSpacing; const cols = Math.floor(w / step); const rows = Math.floor(h / step);
+                const padX = (w % step) / 2; const padY = (h % step) / 2;
+                dots = new Array(rows * cols); let idx = 0;
+                for (let row = 0; row < rows; row++) {
+                    for (let col = 0; col < cols; col++) {
+                        const ax = padX + col * step + step / 2; const ay = padY + row * step + step / 2;
+                        dots[idx++] = { ax, ay, sx: ax, sy: ay, vx: 0, vy: 0, x: ax, y: ay };
+                    }
+                }
+            }
+            function onMouseMove(e) { mouse.x = e.pageX - size.offsetX; mouse.y = e.pageY - size.offsetY; }
+            function updateMouseSpeed() {
+                const dx = mouse.prevX - mouse.x; const dy = mouse.prevY - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                mouse.speed += (dist - mouse.speed) * 0.5;
+                if (mouse.speed < 0.001) mouse.speed = 0;
+                mouse.prevX = mouse.x; mouse.prevY = mouse.y;
+            }
+            setInterval(updateMouseSpeed, 20);
+            function tick() {
+                frameCount++; const { w, h } = size; const len = dots.length; const t = frameCount * 0.02;
+                const targetEngagement = Math.min(mouse.speed / 5, 1);
+                engagement += (targetEngagement - engagement) * 0.06;
+                if (engagement < 0.001) engagement = 0;
+                glowOpacity += (engagement - glowOpacity) * 0.08;
+                if (glowEl) { glowEl.setAttribute('cx', mouse.x); glowEl.setAttribute('cy', mouse.y); glowEl.style.opacity = glowOpacity; }
+                ctx.clearRect(0, 0, w, h);
+                const grad = ctx.createLinearGradient(0, 0, w, h); grad.addColorStop(0, config.gradientFrom); grad.addColorStop(1, config.gradientTo);
+                ctx.fillStyle = grad;
+                const cr = config.cursorRadius; const crSq = cr * cr; const rad = config.dotRadius / 2;
+                ctx.beginPath();
+                for (let i = 0; i < len; i++) {
+                    const d = dots[i]; const dx = mouse.x - d.ax; const dy = mouse.y - d.ay; const distSq = dx * dx + dy * dy;
+                    if (distSq < crSq && engagement > 0.01) {
+                        const dist = Math.sqrt(distSq);
+                        if (config.bulgeOnly) {
+                            const push = (1 - dist / cr) * (1 - dist / cr) * config.bulgeStrength * engagement;
+                            const angle = Math.atan2(dy, dx);
+                            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15; d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
+                        } else {
+                            const angle = Math.atan2(dy, dx); const move = (500 / dist) * (mouse.speed * config.cursorForce);
+                            d.vx += Math.cos(angle) * -move; d.vy += Math.sin(angle) * -move;
+                        }
+                    } else if (config.bulgeOnly) {
+                        d.sx += (d.ax - d.sx) * 0.1; d.sy += (d.ay - d.sy) * 0.1;
+                    }
+                    if (!config.bulgeOnly) {
+                        d.vx *= 0.9; d.vy *= 0.9; d.x = d.ax + d.vx; d.y = d.ay + d.vy;
+                        d.sx += (d.x - d.sx) * 0.1; d.sy += (d.ay - d.sy) * 0.1;
+                    }
+                    let drawX = d.sx; let drawY = d.sy;
+                    if (config.waveAmplitude > 0) { drawY += Math.sin(d.ax * 0.03 + t) * config.waveAmplitude; drawX += Math.cos(d.ay * 0.03 + t * 0.7) * config.waveAmplitude * 0.5; }
+                    if (config.sparkle) {
+                        const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
+                        if ((hash % 100) < 3) { ctx.moveTo(drawX + rad * 1.8, drawY); ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI); } 
+                        else { ctx.moveTo(drawX + rad, drawY); ctx.arc(drawX, drawY, rad, 0, TWO_PI); }
+                    } else { ctx.moveTo(drawX + rad, drawY); ctx.arc(drawX, drawY, rad, 0, TWO_PI); }
+                }
+                ctx.fill(); requestAnimationFrame(tick);
+            }
+            doResize(); window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(doResize, 100); });
+            window.addEventListener('mousemove', onMouseMove, { passive: true }); requestAnimationFrame(tick);
+        }
+    </script>
+
+    <script>
+        function createTextCursor(containerId, options = {}) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const text = options.text || '';
+            const spacing = options.spacing !== undefined ? options.spacing : 60;
+            const followMouseDirection = options.followMouseDirection !== undefined ? options.followMouseDirection : true;
+            const randomFloat = options.randomFloat !== undefined ? options.randomFloat : true;
+            const exitDuration = options.exitDuration !== undefined ? options.exitDuration : 0.3;
+            const removalInterval = options.removalInterval !== undefined ? options.removalInterval : 20;
+            const maxPoints = options.maxPoints !== undefined ? options.maxPoints : 8;
+            let trail = []; let lastMoveTime = Date.now();
+
+            function addTrailPoint(x, y, angle) {
+                const el = document.createElement('div'); el.className = 'text-cursor-item'; el.innerText = text;
+                const rx = randomFloat ? (Math.random() * 10 - 5) : 0; const ry = randomFloat ? (Math.random() * 10 - 5) : 0; const rRot = randomFloat ? (Math.random() * 10 - 5) : 0;
+                el.style.left = `${x}px`; el.style.top = `${y}px`; el.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+                el.style.transition = `opacity ${exitDuration}s ease-out, transform ${exitDuration}s ease-out`; el.style.opacity = '1';
+                if (randomFloat) {
+                    el.style.animation = `textCursorFloat 2s ease-in-out infinite alternate`;
+                    el.style.setProperty('--rx', `${rx}px`); el.style.setProperty('--ry', `${ry}px`); el.style.setProperty('--rrot', `${rRot}deg`); el.style.setProperty('--base-angle', `${angle}deg`);
+                }
+                container.appendChild(el); trail.push({ el, x, y, angle });
+                while (trail.length > maxPoints) { removeOldestPoint(); }
+            }
+            function removeOldestPoint() {
+                if (trail.length === 0) return;
+                const item = trail.shift(); const el = item.el;
+                el.style.opacity = '0'; el.style.transform = `translate(-50%, -50%) rotate(${item.angle}deg) scale(0)`;
+                setTimeout(() => { if (el.parentNode) { el.parentNode.removeChild(el); } }, exitDuration * 1000);
+            }
+            window.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX; const mouseY = e.clientY;
+                if (trail.length === 0) { addTrailPoint(mouseX, mouseY, 0); } 
+                else {
+                    const last = trail[trail.length - 1]; const dx = mouseX - last.x; const dy = mouseY - last.y; const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance >= spacing) {
+                        let rawAngle = (Math.atan2(dy, dx) * 180) / Math.PI; const computedAngle = followMouseDirection ? rawAngle : 0; const steps = Math.floor(distance / spacing);
+                        for (let i = 1; i <= steps; i++) {
+                            const t = (spacing * i) / distance; const newX = last.x + dx * t; const newY = last.y + dy * t;
+                            addTrailPoint(newX, newY, computedAngle);
+                        }
+                    }
+                }
+                lastMoveTime = Date.now();
+            }, { passive: true });
+            setInterval(() => { if (Date.now() - lastMoveTime > 100) { removeOldestPoint(); } }, removalInterval);
+        }
+    </script>
+
+    <script>
+        function createClickSpark(canvasId, options = {}) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const config = {
+                sparkColor: options.sparkColor || '#c084fc', sparkSize: options.sparkSize !== undefined ? options.sparkSize : 30,
+                sparkRadius: options.sparkRadius !== undefined ? options.sparkRadius : 45, sparkCount: options.sparkCount !== undefined ? options.sparkCount : 8,
+                duration: options.duration !== undefined ? options.duration : 500, easing: options.easing || 'ease-out', extraScale: options.extraScale !== undefined ? options.extraScale : 1.0
+            };
+            const ctx = canvas.getContext('2d'); let sparks = [];
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+            function easeFunc(t) {
+                switch (config.easing) {
+                    case 'linear': return t; case 'ease-in': return t * t; case 'ease-in-out': return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                    default: return t * (2 - t);
+                }
+            }
+            function draw(timestamp) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                sparks = sparks.filter(spark => {
+                    const elapsed = timestamp - spark.startTime;
+                    if (elapsed >= config.duration) { return false; }
+                    const progress = elapsed / config.duration; const eased = easeFunc(progress);
+                    const distance = eased * config.sparkRadius * config.extraScale; const lineLength = config.sparkSize * (1 - eased);
+                    const x1 = spark.x + distance * Math.cos(spark.angle); const y1 = spark.y + distance * Math.sin(spark.angle);
+                    const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle); const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+                    ctx.strokeStyle = config.sparkColor; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+                    return true;
+                });
+                requestAnimationFrame(draw);
+            }
+            requestAnimationFrame(draw);
+            window.addEventListener('click', (e) => {
+                const x = e.clientX; const y = e.clientY; const now = performance.now();
+                for (let i = 0; i < config.sparkCount; i++) { sparks.push({ x, y, angle: (2 * Math.PI * i) / config.sparkCount, startTime: now }); }
+            });
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            createDotField('dot-field-bg', {
+                dotRadius: 1.5, dotSpacing: 16, bulgeStrength: 67, glowRadius: 160, sparkle: false, waveAmplitude: 0,
+                gradientFrom: 'rgba(168, 85, 247, 0.45)', gradientTo: 'rgba(180, 151, 207, 0.25)', glowColor: '#2d124d'
+            });
+            createTextCursor('text-cursor-container', {
+                text: '🐓', spacing: 60, followMouseDirection: true, randomFloat: true, exitDuration: 0.3, removalInterval: 20, maxPoints: 8
+            });
+            createClickSpark('click-spark-canvas', {
+                sparkColor: '#c084fc', sparkSize: 24, sparkRadius: 50, sparkCount: 8, duration: 450, easing: 'ease-out'
+            });
+        });
+    </script>
+
+    
+
+
+<script src="./Rep Dashboard_files/confetti.browser.min.js.download"></script>
+
+
+<audio id="bgmAudio" preload="auto" src="audio/lagu1.mp3"></audio>
+
+
+<style>
+.bgm-control-card {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(20, 20, 20, 0.92);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    z-index: 99999;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-family: Arial, sans-serif;
+    user-select: none;
+    max-width: 380px;
+}
+.bgm-btn {
+    background: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s, opacity 0.2s;
+    flex-shrink: 0;
+}
+.bgm-btn:hover { transform: scale(1.1); }
+.bgm-btn.active {
+    background: #00e676;
+    color: #000;
+    box-shadow: 0 0 8px #00e676;
+}
+.bgm-btn.inactive {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+.bgm-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 85px;
+    margin: 0 4px;
+}
+.bgm-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #ffd700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.bgm-slider {
+    width: 45px;
+    accent-color: #ffd700;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Playlist Popover Menu */
+.playlist-drawer {
+    position: fixed;
+    bottom: 68px;
+    right: 20px;
+    background: rgba(25, 25, 25, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 10px;
+    width: 220px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    z-index: 99998;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+    font-family: Arial, sans-serif;
+}
+.playlist-drawer.open { display: block; }
+.playlist-drawer h5 {
+    margin: 0 0 8px 0;
+    font-size: 11px;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.playlist-item {
+    padding: 6px 8px;
+    font-size: 11px;
+    color: #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.playlist-item:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.playlist-item.active-track {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    font-weight: bold;
+}
+</style>
+
+
+<div class="bgm-control-card">
+    <button id="bgmPlayBtn" class="bgm-btn" onclick="toggleBGM()">▶︎</button>
+    <button id="bgmNextBtn" class="bgm-btn inactive" onclick="nextTrack()" title="Next Song">⏭</button>
+    <button id="bgmShuffleBtn" class="bgm-btn inactive" onclick="toggleShuffle()" title="Toggle Shuffle">⇆</button>
+    <button id="bgmPlaylistBtn" class="bgm-btn inactive" onclick="togglePlaylistDrawer()" title="View Playlist">☰</button>
+    
+    <div class="bgm-info">
+        <span style="font-size: 8px; opacity: 0.7; text-transform: uppercase;">Playing</span>
+        <span id="bgmTitle" class="bgm-title">Track 1 - Never </span>
+    </div>
+    
+    <input type="range" id="bgmVolume" class="bgm-slider" min="0" max="1" step="0.05" value="0.3" oninput="adjustVolume(this.value)">
+</div>
+
+
+<div class="playlist-drawer" id="playlistDrawer">
+    <h5>Playlist</h5>
+    <div id="playlistList"><div class="playlist-item active-track">1. Track 1 - Never </div><div class="playlist-item ">2. Track 2 - Gonna</div><div class="playlist-item ">3. Track 3 - Give</div><div class="playlist-item ">4. Track 4 - you</div><div class="playlist-item ">5. Track 5 - up</div><div class="playlist-item ">6. Track 6 - A Tender Moon Tempo </div><div class="playlist-item ">7. Track 7 - Asat Pramad Boss Theme </div><div class="playlist-item ">8. Track 8 - Fall 'N' Roll</div><div class="playlist-item ">9. Track 9 - Lygus Boss Theme</div><div class="playlist-item ">10. Track 10 - OneRepublic - Sunshine</div><div class="playlist-item ">11. Track 11- Owl City - Fireflies </div><div class="playlist-item ">12. Track 12 - Perfect Idol</div><div class="playlist-item ">13. Track 13 - STRANGER THAN HEAVEN</div><div class="playlist-item ">14. Track 14 - Thundercoil Dragon Theme</div><div class="playlist-item ">15. Track 15 - Vesper Boss Theme</div><div class="playlist-item ">16. Track 16 - vs. DJ Subatomic Supernova (Tokyo Machine Remix) </div><div class="playlist-item ">17. Track 17 - What You Know x Xue Hua Piao Piao</div><div class="playlist-item ">18. Track 18 - Yakuza 0- Karaoke_ 24-hour Cinderella (Majima)</div><div class="playlist-item ">19. Track 19 - _ReDreaming Angel_ - Angels of Delusion EP _ Zenless Zone Zero</div><div class="playlist-item ">20. Track 20 - GOLDEN - HUNTRIX _ K-Pop Demon Hunters _【Toad Cover】</div><div class="playlist-item ">21. Track 21 - ITS RAINING TACOS! </div><div class="playlist-item ">22. Track 22 - vally exe #MultiverseVistas</div><div class="playlist-item ">23. Track 23 - passo bem solto kevikent remix</div><div class="playlist-item ">24. Track 24 - The Coconut Song Da Coconut Nut</div><div class="playlist-item ">25. Track 25 - life could be dream kevikent remix</div></div>
+</div>
+
+
+<script>
+// ==========================================
+// 1. PLAYLIST CONFIGURATION
+// ==========================================
+const playlist = [
+    { title: "Track 1 - Never ", src: "audio/lagu1.mp3" },
+    { title: "Track 2 - Gonna", src: "audio/lagu2.mp3" },
+    { title: "Track 3 - Give", src: "audio/lagu3.mp3" },
+    { title: "Track 4 - you", src: "audio/lagu4.mp3" },
+    { title: "Track 5 - up", src: "audio/lagu5.mp3" },
+    { title: "Track 6 - A Tender Moon Tempo ", src: "audio/A Tender Moon Tempo.mp3" },
+    { title: "Track 7 - Asat Pramad Boss Theme ", src: "audio/Asat Pramad Boss Theme.mp3" },
+    { title: "Track 8 - Fall 'N' Roll", src: "audio/Fall 'N' Roll.mp3" },
+    { title: "Track 9 - Lygus Boss Theme", src: "audio/Lygus Boss Theme.mp3" },
+    { title: "Track 10 - OneRepublic - Sunshine", src: "audio/OneRepublic - Sunshine.mp3" },
+    { title: "Track 11- Owl City - Fireflies ", src: "audio/Owl City - Fireflies.mp3" },
+    { title: "Track 12 - Perfect Idol", src: "audio/Perfect Idol.mp3" },
+    { title: "Track 13 - STRANGER THAN HEAVEN", src: "audio/STRANGER THAN HEAVEN.mp3" },
+    { title: "Track 14 - Thundercoil Dragon Theme", src: "audio/Thundercoil Dragon Theme.mp3" },
+    { title: "Track 15 - Vesper Boss Theme", src: "audio/Vesper Boss Theme.mp3" },
+    { title: "Track 16 - vs. DJ Subatomic Supernova (Tokyo Machine Remix) ", src: "audio/vs. DJ Subatomic Supernova (Tokyo Machine Remix).mp3" },
+    { title: "Track 17 - What You Know x Xue Hua Piao Piao", src: "audio/What You Know x Xue Hua Piao Piao.mp3" },
+    { title: "Track 18 - Yakuza 0- Karaoke_ 24-hour Cinderella (Majima)", src: "audio/Yakuza 0- Karaoke_ 24-hour Cinderella (Majima).mp3" },
+    { title: "Track 19 - _ReDreaming Angel_ - Angels of Delusion EP _ Zenless Zone Zero", src: "audio/_ReDreaming Angel_ - Angels of Delusion EP _ Zenless Zone Zero.mp3" },
+    { title: "Track 20 - GOLDEN - HUNTRIX _ K-Pop Demon Hunters _【Toad Cover】", src: "audio/GOLDEN - HUNTRIX _ K-Pop Demon Hunters _【Toad Cover】.mp3" },
+    { title: "Track 21 - ITS RAINING TACOS! ", src: "audio/ITS RAINING TACOS!.mp3" },
+    { title: "Track 22 - vally exe #MultiverseVistas", src: "audio/herta.mp3" },
+	{ title: "Track 23 - passo bem solto kevikent remix", src: "audio/passo bem solto kevikent remix.mp3" },
+    { title: "Track 24 - The Coconut Song Da Coconut Nut", src: "audio/The Coconut Song Da Coconut Nut.mp3" },
+    { title: "Track 25 - life could be dream kevikent remix", src: "audio/life could be dream kevikent remix.mp3"}
+];
+let currentTrackIndex = 0;
+let isShuffle = false;
+
+// ==========================================
+// 2. Web Audio API Synthesizer (SFX Engine)
+// ==========================================
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playSound(type) {
+    if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+    const now = audioCtx.currentTime;
+
+    if (type === 'click') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.exponentialRampToValueAtTime(200, now + 0.04);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+        osc.start(now); osc.stop(now + 0.04);
+
+    } else if (type === 'flip') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.exponentialRampToValueAtTime(100, now + 0.06);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+        osc.start(now); osc.stop(now + 0.06);
+
+    } else if (type === 'victory') {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, i) => {
+            const noteOsc = audioCtx.createOscillator();
+            const noteGain = audioCtx.createGain();
+            noteOsc.connect(noteGain); noteGain.connect(audioCtx.destination);
+            noteOsc.frequency.setValueAtTime(freq, now + (i * 0.09));
+            noteGain.gain.setValueAtTime(0.2, now + (i * 0.09));
+            noteGain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.09) + 0.35);
+            noteOsc.start(now + (i * 0.09)); noteOsc.stop(now + (i * 0.09) + 0.35);
+        });
+
+    } else if (type === 'admin') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.15);
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+        osc.start(now); osc.stop(now + 0.15);
+    }
+}
+
+function triggerConfetti() {
+    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+}
+
+// ==========================================
+// 3. Multi-Song BGM Engine
+// ==========================================
+const bgm = document.getElementById('bgmAudio');
+const bgmBtn = document.getElementById('bgmPlayBtn');
+const bgmVolume = document.getElementById('bgmVolume');
+const bgmTitle = document.getElementById('bgmTitle');
+const bgmShuffleBtn = document.getElementById('bgmShuffleBtn');
+const playlistList = document.getElementById('playlistList');
+const playlistDrawer = document.getElementById('playlistDrawer');
+
+function loadTrack(index) {
+    if (playlist.length === 0) return;
+    currentTrackIndex = index % playlist.length;
+    bgm.src = playlist[currentTrackIndex].src;
+    bgmTitle.innerText = playlist[currentTrackIndex].title;
+    localStorage.setItem('bgm_track_index', currentTrackIndex);
+    renderPlaylistMenu();
+}
+
+function renderPlaylistMenu() {
+    playlistList.innerHTML = '';
+    playlist.forEach((track, i) => {
+        const item = document.createElement('div');
+        item.className = 'playlist-item ' + (i === currentTrackIndex ? 'active-track' : '');
+        item.innerText = `${i + 1}. ${track.title}`;
+        item.onclick = () => { selectTrackFromPlaylist(i); };
+        playlistList.appendChild(item);
+    });
+}
+
+function selectTrackFromPlaylist(i) {
+    playSound('click');
+    loadTrack(i);
+    localStorage.setItem('bgm_time', 0); // Reset timestamp on manual track change
+    bgm.play().then(() => {
+        bgmBtn.innerText = '❚❚';
+        localStorage.setItem('bgm_playing', 'true');
+    }).catch(e => console.log(e));
+}
+
+function togglePlaylistDrawer() {
+    playSound('click');
+    playlistDrawer.classList.toggle('open');
+}
+
+function toggleShuffle() {
+    playSound('click');
+    isShuffle = !isShuffle;
+    localStorage.setItem('bgm_shuffle', isShuffle);
+    if (isShuffle) {
+        bgmShuffleBtn.classList.remove('inactive');
+        bgmShuffleBtn.classList.add('active');
+    } else {
+        bgmShuffleBtn.classList.remove('active');
+        bgmShuffleBtn.classList.add('inactive');
+    }
+}
+
+function nextTrack() {
+    playSound('click');
+    const wasPlaying = !bgm.paused;
+    
+    if (isShuffle && playlist.length > 1) {
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * playlist.length);
+        } while (randomIndex === currentTrackIndex);
+        currentTrackIndex = randomIndex;
+    } else {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+    }
+    
+    loadTrack(currentTrackIndex);
+    localStorage.setItem('bgm_time', 0); // Reset timestamp on track switch
+    if (wasPlaying) {
+        bgm.play();
+        bgmBtn.innerText = '❚❚';
+    }
+}
+
+// Save exact audio timestamp right before any page redirect/reload
+window.addEventListener('beforeunload', () => {
+    if (bgm && !isNaN(bgm.currentTime)) {
+        localStorage.setItem('bgm_time', bgm.currentTime);
+    }
+});
+
+// Auto-play next track on finish
+bgm.addEventListener('ended', () => {
+    localStorage.setItem('bgm_time', 0);
+    nextTrack();
+    bgm.play();
+});
+
+// Autoplay & Restoration Logic across redirects
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Restore Saved Track Index
+    const savedTrack = localStorage.getItem('bgm_track_index');
+    currentTrackIndex = savedTrack !== null ? parseInt(savedTrack) : 0;
+    loadTrack(currentTrackIndex);
+
+    // 2. Restore Saved Time Position
+    const savedTime = localStorage.getItem('bgm_time');
+    if (savedTime !== null) {
+        bgm.currentTime = parseFloat(savedTime);
+    }
+
+    // 3. Restore Shuffle State
+    isShuffle = localStorage.getItem('bgm_shuffle') === 'true';
+    if (isShuffle) {
+        bgmShuffleBtn.classList.remove('inactive');
+        bgmShuffleBtn.classList.add('active');
+    }
+
+    // 4. Restore Volume
+    const savedVol = localStorage.getItem('bgm_volume');
+    if (savedVol !== null) {
+        bgm.volume = savedVol;
+        bgmVolume.value = savedVol;
+    } else {
+        bgm.volume = 0.3;
+    }
+
+    // 5. Restore Playing State Across Redirects
+    const wasPlaying = localStorage.getItem('bgm_playing');
+
+    if (wasPlaying === 'true' || wasPlaying === null) {
+        localStorage.setItem('bgm_playing', 'true');
+
+        bgm.play().then(() => {
+            bgmBtn.innerText = '❚❚';
+        }).catch(() => {
+            // Autoplay policy fallback: resume playback on first user interaction
+            const startAutoplay = () => {
+                bgm.play().then(() => {
+                    bgmBtn.innerText = '❚❚';
+                    localStorage.setItem('bgm_playing', 'true');
+                }).catch(e => console.log("Autoplay blocked:", e));
+                
+                window.removeEventListener('click', startAutoplay);
+                window.removeEventListener('keydown', startAutoplay);
+                window.removeEventListener('scroll', startAutoplay);
+                window.removeEventListener('touchstart', startAutoplay);
+            };
+
+            window.addEventListener('click', startAutoplay);
+            window.addEventListener('keydown', startAutoplay);
+            window.addEventListener('scroll', startAutoplay);
+            window.addEventListener('touchstart', startAutoplay);
+        });
+    } else {
+        bgmBtn.innerText = '▶︎';
+    }
+});
+
+function toggleBGM() {
+    playSound('click');
+    if (bgm.paused) {
+        bgm.play();
+        bgmBtn.innerText = '❚❚';
+        localStorage.setItem('bgm_playing', 'true');
+    } else {
+        bgm.pause();
+        bgmBtn.innerText = '▶︎';
+        localStorage.setItem('bgm_playing', 'false');
+    }
+}
+
+function adjustVolume(val) {
+    bgm.volume = val;
+    localStorage.setItem('bgm_volume', val);
+}
+</script>
+<div class="tm-overlay">
+        <div class="tm-modal">
+            <div class="tm-title">Konfirmasi Tindakan</div>
+            <div class="tm-desc">Apakah Anda yakin ingin mengeksekusi tombol ini?</div>
+            <div class="tm-btn-group">
+                <button class="tm-btn tm-btn-cancel" id="tm-btn-no">Batal</button>
+                <button class="tm-btn tm-btn-confirm" id="tm-btn-yes">Lanjutkan</button>
+            </div>
+        </div>
+    </div><div style="position: fixed; top: 20px; right: 20px; background-color: rgba(20, 20, 30, 0.9); color: rgb(0, 255, 0); padding: 10px 15px; border-radius: 8px; font-family: monospace; font-size: 18px; z-index: 999999; border: 1px solid rgb(85, 85, 85); pointer-events: none;">11:15:43</div></body></html>

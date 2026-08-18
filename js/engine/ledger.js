@@ -131,12 +131,19 @@ const Ledger = (() => {
       .reduce((s, tx) => s + signedAmount(tx), 0);
   }
 
+  function removeAll() {
+    _transactions = [];
+    save();
+  }
+
   load();
 
   return {
     todayISO,
     add,
     remove,
+    removeAll,
+    clearAll: removeAll,
     getState,
     getStateAsOfDate,
     getAdjustmentForDate,
