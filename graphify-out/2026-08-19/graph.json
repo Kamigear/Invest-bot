@@ -3146,8 +3146,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_foreground",
-      "community": 30,
-      "community_name": "color",
+      "community": 150,
+      "community_name": "default",
       "norm_label": "foreground"
     },
     {
@@ -3157,8 +3157,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_foreground_value",
-      "community": 30,
-      "community_name": "color",
+      "community": 150,
+      "community_name": "default",
       "norm_label": "$value"
     },
     {
@@ -3168,8 +3168,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_foreground_type",
-      "community": 30,
-      "community_name": "color",
+      "community": 150,
+      "community_name": "default",
       "norm_label": "$type"
     },
     {
@@ -3212,8 +3212,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary_hover",
-      "community": 30,
-      "community_name": "color",
+      "community": 156,
+      "community_name": "destructive-foreground",
       "norm_label": "primary-hover"
     },
     {
@@ -3223,8 +3223,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_hover_value",
-      "community": 30,
-      "community_name": "color",
+      "community": 156,
+      "community_name": "destructive-foreground",
       "norm_label": "$value"
     },
     {
@@ -3234,8 +3234,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_hover_type",
-      "community": 30,
-      "community_name": "color",
+      "community": 156,
+      "community_name": "destructive-foreground",
       "norm_label": "$type"
     },
     {
@@ -3245,8 +3245,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary_foreground",
-      "community": 156,
-      "community_name": "destructive-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "primary-foreground"
     },
     {
@@ -3256,8 +3256,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_value",
-      "community": 156,
-      "community_name": "destructive-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3267,8 +3267,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_type",
-      "community": 156,
-      "community_name": "destructive-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3311,8 +3311,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_secondary_foreground",
-      "community": 158,
-      "community_name": "secondary-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "secondary-foreground"
     },
     {
@@ -3322,8 +3322,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_value",
-      "community": 158,
-      "community_name": "secondary-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3333,8 +3333,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_type",
-      "community": 158,
-      "community_name": "secondary-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3377,8 +3377,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_muted_foreground",
-      "community": 30,
-      "community_name": "color",
+      "community": 151,
+      "community_name": "input",
       "norm_label": "muted-foreground"
     },
     {
@@ -3388,8 +3388,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_foreground_value",
-      "community": 30,
-      "community_name": "color",
+      "community": 151,
+      "community_name": "input",
       "norm_label": "$value"
     },
     {
@@ -3399,8 +3399,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_foreground_type",
-      "community": 30,
-      "community_name": "color",
+      "community": 151,
+      "community_name": "input",
       "norm_label": "$type"
     },
     {
@@ -3443,8 +3443,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive_foreground",
-      "community": 151,
-      "community_name": "input",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "destructive-foreground"
     },
     {
@@ -3454,8 +3454,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_value",
-      "community": 151,
-      "community_name": "input",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3465,8 +3465,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_type",
-      "community": 151,
-      "community_name": "input",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3476,8 +3476,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_border",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "border"
     },
     {
@@ -3487,8 +3487,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_value",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3498,8 +3498,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_type",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3773,8 +3773,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_y",
-      "community": 150,
-      "community_name": "default",
+      "community": 126,
+      "community_name": "search.py",
       "norm_label": "padding-y"
     },
     {
@@ -3784,8 +3784,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_value",
-      "community": 150,
-      "community_name": "default",
+      "community": 126,
+      "community_name": "search.py",
       "norm_label": "$value"
     },
     {
@@ -3795,8 +3795,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_type",
-      "community": 150,
-      "community_name": "default",
+      "community": 126,
+      "community_name": "search.py",
       "norm_label": "$type"
     },
     {
@@ -3894,8 +3894,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_border",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "border"
     },
     {
@@ -3949,8 +3949,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_y",
-      "community": 150,
-      "community_name": "default",
+      "community": 126,
+      "community_name": "search.py",
       "norm_label": "padding-y"
     },
     {
@@ -3993,8 +3993,8 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_border",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "border"
     },
     {
@@ -10546,7 +10546,7 @@
       "label": "syncFromFirebase()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L1829",
+      "source_location": "L1821",
       "_origin": "ast",
       "id": "js_app_syncfromfirebase",
       "community": 3,
@@ -10582,8 +10582,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "js_engine_ledger",
-      "community": 3,
-      "community_name": "app.js",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "ledger.js"
     },
     {
@@ -10593,8 +10593,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "js_engine_ledger_ledger",
-      "community": 3,
-      "community_name": "app.js",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "ledger"
     },
     {
@@ -39213,7 +39213,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L1829",
+      "source_location": "L1821",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -39256,7 +39256,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1841",
+      "source_location": "L1833",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_syncfromfirebase",
@@ -39304,18 +39304,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1803",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_app_synctofirebase",
-      "target": "js_engine_ledger_ledger"
-    },
-    {
-      "relation": "references",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "js/app.js",
       "source_location": "L1800",
       "weight": 1.0,
       "_origin": "ast",
@@ -39328,19 +39316,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1854",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_app_syncfromfirebase",
-      "target": "js_engine_ledger_ledger"
-    },
-    {
-      "relation": "references",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "js/app.js",
-      "source_location": "L1837",
+      "source_location": "L1829",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_syncfromfirebase",
@@ -51183,5 +51159,5 @@
       "source_file": "index.html"
     }
   ],
-  "built_at_commit": "e63e2ad24b7aa951002ac8d3fddaa2097cb5c521"
+  "built_at_commit": "d7bb6ddaced607b01103d27253e7433f0ef40d78"
 }

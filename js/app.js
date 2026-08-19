@@ -1794,11 +1794,19 @@ async function syncToFirebase(config) {
   if (!btn) return;
 
   btn.disabled = true;
-  btn.innerHTML = '⏳ Menyinkronkan Config...';
+  btn.innerHTML = '⏳ Sync Config...';
 
   try {
     await FirebaseDB.syncToFirebase(config);
     btn.innerHTML = '✅ Config Tersinkron!';
+
+    const txns = Ledger.getAll();
+    if (txns.length > 0) {
+      btn.innerHTML = '⏳ Sync Ledger...';
+      await FirebaseDB.syncLedgerToFirebase(txns);
+      btn.innerHTML = `✅ Ledger (${txns.length}) Tersinkron!`;
+    }
+
     btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
     setTimeout(() => {
       btn.innerHTML = '☁️ Sync ke Firebase';
@@ -1835,11 +1843,31 @@ async function syncFromFirebase() {
     }
     
     if (result.schedule && result.schedule.length > 0) {
-      // Update schedule
       App.setSchedule(result.schedule);
       console.log('Schedule overridden from Firebase:', result.schedule.length, 'entries');
     }
-    
+
+    // ── Fetch Ledger Transactions ─────────────────────────────────────────
+    btn.innerHTML = '⏳ Ambil Ledger...';
+    const remoteLedger = await FirebaseDB.fetchLedgerFromFirebase();
+    if (remoteLedger && Array.isArray(remoteLedger.transactions)) {
+      const existingIds = new Set(Ledger.getAll().map(tx => tx.id));
+      let imported = 0;
+      remoteLedger.transactions.forEach(tx => {
+        if (!existingIds.has(tx.id)) {
+          const isDuplicate = Ledger.getAll().some(
+            t => t.date === tx.date && t.type === tx.type && t.amount === tx.amount && t.note === tx.note
+          );
+          if (!isDuplicate) {
+            Ledger.add(tx);
+            imported++;
+          }
+        }
+      });
+      if (imported > 0) {
+        console.log('Imported ledger transactions from Firebase:', imported);
+      }
+    }
     // Re-render UI
     if (App.render) {
       App.render();
