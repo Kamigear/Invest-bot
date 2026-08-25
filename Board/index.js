@@ -5,6 +5,7 @@ const { runDailyJob } = require('./executor');
 const { sendAlert } = require('./alert');
 const { db, serverTimestamp } = require('./firebase');
 const { claimDailyReward } = require('./dailyReward');
+const { runLeaderboardAnalytics } = require('./leaderboardAnalytics');
 const { Logger } = require('./logger');
 const Pending = require('./pending');
 const { withRetry, isTransientError } = require('./retry');
@@ -21,6 +22,7 @@ const DAILY_REWARD_KEY = 'DAILY_REWARD';
 // ==========================================
 const PREFIX_NAME = process.env.PREFIX_NAME || "Class Mr Kalebbbbbbb";
 const cronSchedule = process.env.BOT_CRON_SCHEDULE || '0 6 * * *';
+const leaderboardAnalyticsCronSchedule = process.env.LEADERBOARD_ANALYTICS_CRON_SCHEDULE || '0 * * * *';
 
 // ==========================================
 // SISTEM KONTROL & ANTREAN (MUTEX)
@@ -177,18 +179,29 @@ async function runTask1() {
       });
 
       if (investCard) {
-        const items = investCard.querySelectorAll('li');
-        items.forEach(li => {
-          const text = li.innerText || '';
-          const amountMatch = text.match(/Saldo yang dimasukan:\s*(\d+)/i);
+        const items = Array.from(investCard.querySelectorAll('li')).length 
+          ? Array.from(investCard.querySelectorAll('li'))
+          : Array.from(investCard.querySelectorAll('div.investment-item, div.card-body > div, tr, p'));
+
+        const seenKeys = new Set();
+        items.forEach(el => {
+          const text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ');
+          const amountMatch = text.match(/(?:Saldo yang dimasukan|Saldo yang di invest|Saldo yang di-invest|Investasi|Saldo):\s*(\d+)/i);
           const returnMatch = text.match(/Hasil:\s*(\d+)/i);
-          const maturityMatch = text.match(/Selesai pada:\s*([^\n]+)/i);
-          if (amountMatch) {
-            investments.push({
-              amount: parseInt(amountMatch[1], 10),
-              returnAmount: returnMatch ? parseInt(returnMatch[1], 10) : 0,
-              maturityDate: maturityMatch ? maturityMatch[1].trim() : ''
-            });
+          const maturityMatch = text.match(/Selesai pada:\s*([0-9]{4}-[0-9]{2}-[0-9]{2}[^\r\n]*)/i) || text.match(/Selesai pada:\s*([^\n]+)/i);
+          if (amountMatch && maturityMatch) {
+            const amount = parseInt(amountMatch[1], 10);
+            const returnAmount = returnMatch ? parseInt(returnMatch[1], 10) : 0;
+            const maturityDate = maturityMatch[1].trim();
+            const key = `${amount}_${returnAmount}_${maturityDate}`;
+            if (!seenKeys.has(key)) {
+              seenKeys.add(key);
+              investments.push({
+                amount,
+                returnAmount,
+                maturityDate
+              });
+            }
           }
         });
       }
@@ -274,6 +287,9 @@ async function runTask1() {
       Logger.warning("Gagal menemukan data saldo di panel dashboard", { task: "TUGAS_1" });
     }
 
+    Logger.info("Navigasi ke halaman utama untuk easter egg", { task: "TUGAS_1", url: 'https://boardleaders.rf.gd/' });
+    await page.goto('https://boardleaders.rf.gd/', { waitUntil: 'networkidle2', timeout: 60000 });
+
     Logger.info("Mencari elemen tombol Easter Egg", { task: "TUGAS_1" });
     await page.waitForSelector('.easter-egg', { visible: true, timeout: 30000 });
     await page.click('.easter-egg');
@@ -358,6 +374,20 @@ async function runTask2() {
   } finally {
     isBrowserBusy = false;
     Logger.info("Selesai", { task: "TUGAS_2" });
+  }
+}
+
+// ==========================================
+// TUGAS 3: SNAPSHOT LEADERBOARD ANALYTICS
+// ==========================================
+async function runTask3() {
+  await waitForTurn("TUGAS_3");
+  isBrowserBusy = true;
+
+  try {
+    return await runLeaderboardAnalytics(openBrowser);
+  } finally {
+    isBrowserBusy = false;
   }
 }
 
@@ -523,8 +553,8 @@ async function scanMissedDays() {
 // SISTEM PENJADWALAN & START PROGRAM
 // ==========================================
 function start() {
-  Logger.info('Sistem bot otomatisasi aktif', { cronSchedule });
-  sendAlert(`Bot berhasil dinyalakan!\nJadwal eksekusi: ${cronSchedule}\nMengeksekusi run pertama saat boot...`);
+  Logger.info('Sistem bot otomatisasi aktif', { cronSchedule, leaderboardAnalyticsCronSchedule });
+  sendAlert(`Bot berhasil dinyalakan!\nJadwal eksekusi: ${cronSchedule}\nLeaderboard analytics: ${leaderboardAnalyticsCronSchedule}\nMengeksekusi run pertama saat boot...`);
 
   resumePendingRetries();
 
@@ -534,9 +564,10 @@ function start() {
     try {
       await scanMissedDays();
       Logger.banner('BOOT RUN dimulai');
-      await runTask1();
+      const t1 = await runTask1();
       const t2 = await runTask2();
       const result = await runDailyJob();
+      const t3 = await runTask3();
 
       if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
         await scheduleDailyRewardRetry(t2.attempts);
@@ -546,6 +577,14 @@ function start() {
         await scheduleRetry(result.entryId, result.attempts);
       }
 
+      recordLocalTaskRun({
+        phase: 'boot',
+        task1: t1 || 'COMPLETED',
+        task2: t2?.status || 'UNKNOWN',
+        dailyJob: result?.status || 'UNKNOWN',
+        task3: t3?.status || 'UNKNOWN'
+      });
+
       Logger.banner('BOOT RUN selesai');
     } catch (error) {
       Logger.critical('Terjadi kesalahan saat rutinitas awal', { phase: 'boot', error: error.message });
@@ -554,9 +593,10 @@ function start() {
 
   cron.schedule(cronSchedule, async () => {
     Logger.banner('RUTINITAS HARIAN DIMULAI', { triggeredAt: new Date().toISOString() });
-    await runTask1();
+    const t1 = await runTask1();
     const t2 = await runTask2();
     const result = await runDailyJob();
+    const t3 = await runTask3();
 
     if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
       await scheduleDailyRewardRetry(t2.attempts);
@@ -566,8 +606,49 @@ function start() {
       await scheduleRetry(result.entryId, result.attempts);
     }
 
+    recordLocalTaskRun({
+      phase: 'cron',
+      task1: t1 || 'COMPLETED',
+      task2: t2?.status || 'UNKNOWN',
+      dailyJob: result?.status || 'UNKNOWN',
+      task3: t3?.status || 'UNKNOWN'
+    });
+
     Logger.banner('RUTINITAS HARIAN SELESAI');
   });
+
+  cron.schedule(leaderboardAnalyticsCronSchedule, async () => {
+    Logger.banner('LEADERBOARD ANALYTICS DIMULAI', { triggeredAt: new Date().toISOString() });
+    const t3 = await runTask3();
+    recordLocalTaskRun({ phase: 'cron_analytics', task3: t3?.status || 'UNKNOWN' });
+    Logger.banner('LEADERBOARD ANALYTICS SELESAI');
+  });
+}
+
+const fs = require('fs');
+const path = require('path');
+
+function recordLocalTaskRun(summary) {
+  try {
+    const logsDir = path.join(__dirname, 'logs');
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+    }
+    const logFile = path.join(logsDir, 'task_history.json');
+    let history = [];
+    if (fs.existsSync(logFile)) {
+      try { history = JSON.parse(fs.readFileSync(logFile, 'utf8')); } catch (_) {}
+    }
+    history.push({
+      timestamp: new Date().toISOString(),
+      ...summary
+    });
+    if (history.length > 500) history = history.slice(-500);
+    fs.writeFileSync(logFile, JSON.stringify(history, null, 2), 'utf8');
+    Logger.info(`Log rutinitas task dicatat secara lokal di ${logFile}`);
+  } catch (err) {
+    Logger.error(`Gagal mencatat log task lokal: ${err.message}`);
+  }
 }
 
 process.on('uncaughtException', (error) => {
@@ -589,4 +670,4 @@ if (require.main === module) {
   start();
 }
 
-module.exports = { start, runTask1, runTask2 };
+module.exports = { start, runTask1, runTask2, runTask3 };

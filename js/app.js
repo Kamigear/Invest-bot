@@ -149,6 +149,9 @@ const App = (() => {
     waitThresholdPct: 0.05,    // Must be 5% better to justify waiting
     maxWaitDays: 6,            // Max consecutive days to wait
 
+    // Manual Day Overrides { [dayOrDate]: amount }
+    dayOverrides: {},
+
     // Class Perks — acquisition timeline model
     // Each simulation perk is an array of { fromDay, count } or { fromDay, tier, count }
     // This allows getting additional stacks on different days.
@@ -1457,6 +1460,9 @@ const derivedEl = document.getElementById('perks-derived-text');
           <button class="tab-btn ${currentTab === 'botstatus' ? 'active' : ''}" data-tab="botstatus" role="tab" aria-selected="${currentTab === 'botstatus'}" id="tab-btn-botstatus">
             🤖 Status Bot
           </button>
+          <button class="tab-btn ${currentTab === 'leaderboardanalytics' ? 'active' : ''}" data-tab="leaderboardanalytics" role="tab" aria-selected="${currentTab === 'leaderboardanalytics'}" id="tab-btn-leaderboardanalytics">
+            🏆 Leaderboard Analytic
+          </button>
         </div>
 
         <!-- Tab Panels -->
@@ -1474,6 +1480,10 @@ const derivedEl = document.getElementById('perks-derived-text');
 
         <div id="tab-botstatus" class="tab-panel ${currentTab === 'botstatus' ? 'active' : ''}" role="tabpanel" style="${currentTab === 'botstatus' ? '' : 'display:none'}">
           <div id="botstatus-container"></div>
+        </div>
+
+        <div id="tab-leaderboardanalytics" class="tab-panel ${currentTab === 'leaderboardanalytics' ? 'active' : ''}" role="tabpanel" style="${currentTab === 'leaderboardanalytics' ? '' : 'display:none'}">
+          <div id="leaderboard-analytics-container"></div>
         </div>
       </div>
       ${renderTodayTaskPopup(todayRecord)}
@@ -1506,6 +1516,11 @@ const derivedEl = document.getElementById('perks-derived-text');
       const container = document.getElementById('botstatus-container');
       if (container && typeof BotStatusUI !== 'undefined') {
         BotStatusUI.render(container);
+      }
+    } else if (currentTab === 'leaderboardanalytics') {
+      const container = document.getElementById('leaderboard-analytics-container');
+      if (container && typeof LeaderboardAnalyticsUI !== 'undefined') {
+        LeaderboardAnalyticsUI.render(container);
       }
     }
 
@@ -1556,6 +1571,13 @@ const derivedEl = document.getElementById('perks-derived-text');
       const container = document.getElementById('botstatus-container');
       if (container && typeof BotStatusUI !== 'undefined') {
         BotStatusUI.render(container);
+      }
+    }
+
+    if (tabId === 'leaderboardanalytics') {
+      const container = document.getElementById('leaderboard-analytics-container');
+      if (container && typeof LeaderboardAnalyticsUI !== 'undefined') {
+        LeaderboardAnalyticsUI.render(container);
       }
     }
   }
@@ -1704,6 +1726,25 @@ const derivedEl = document.getElementById('perks-derived-text');
       renderConfigPanel();
       if (_baseResult) renderResults();
     },
+    setDayOverride: (dayKey, amount) => {
+      if (!_config.dayOverrides) _config.dayOverrides = {};
+      const num = Math.max(0, parseFloat(amount) || 0);
+      _config.dayOverrides[dayKey] = num;
+      saveConfig();
+      runSimulation();
+    },
+    clearDayOverride: (dayKey) => {
+      if (_config.dayOverrides && _config.dayOverrides[dayKey] !== undefined) {
+        delete _config.dayOverrides[dayKey];
+        saveConfig();
+        runSimulation();
+      }
+    },
+    clearAllDayOverrides: () => {
+      _config.dayOverrides = {};
+      saveConfig();
+      runSimulation();
+    },
     addPerkRow,
     removePerkRow,
     cleanup,
@@ -1797,8 +1838,9 @@ async function syncToFirebase(config) {
   btn.innerHTML = '⏳ Sync Config...';
 
   try {
-    await FirebaseDB.syncToFirebase(config);
-    btn.innerHTML = '✅ Config Tersinkron!';
+    const schedule = (typeof App !== 'undefined' && App.getSchedule) ? App.getSchedule() : [];
+    await FirebaseDB.syncToFirebase(config, schedule);
+    btn.innerHTML = '✅ Config & Schedule Tersinkron!';
 
     const txns = Ledger.getAll();
     if (txns.length > 0) {

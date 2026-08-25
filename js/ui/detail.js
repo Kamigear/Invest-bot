@@ -42,6 +42,28 @@ const DetailUI = (() => {
 
     const closeBtn = _modal.querySelector('.modal-close');
     if (closeBtn) closeBtn.addEventListener('click', close);
+
+    const btnOverride = _modal.querySelector('#btn-modal-override');
+    if (btnOverride) {
+      btnOverride.addEventListener('click', () => {
+        const userInput = prompt(`[Hari ke-${record.day}] Masukkan nominal investasi manual (contoh: 2, atau 0 untuk membatalkan):`, record.investedAmount || 0);
+        if (userInput !== null) {
+          const val = parseFloat(userInput);
+          if (!isNaN(val)) {
+            App.setDayOverride(record.day, val);
+            close();
+          }
+        }
+      });
+    }
+
+    const btnClearOverride = _modal.querySelector('#btn-modal-clear-override');
+    if (btnClearOverride) {
+      btnClearOverride.addEventListener('click', () => {
+        App.clearDayOverride(record.day);
+        close();
+      });
+    }
   }
 
   function close() {
@@ -150,6 +172,24 @@ const DetailUI = (() => {
             ` : ''}
             ${r.decision === 'WAIT' ? `
               <div class="decision-amount">Proyeksi investasi: <strong>${Calculator.display(r.projectedInvest)}</strong> poin dalam ${r.waitDays} hari</div>
+            ` : ''}
+          </div>
+        </div>
+
+        <!-- Manual Override Control Box -->
+        <div style="margin: 12px 0; padding: 10px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+          <div style="font-size: 13px;">
+            ✏️ <strong>Manual Investment Override</strong>
+            ${r.isOverride ? `<span style="color:#f59e0b; display:block; font-size:11px; margin-top:2px;">Status: Custom nominal ${r.investedAmount} pt</span>` : `<span style="color:#94a3b8; display:block; font-size:11px; margin-top:2px;">Status: Mengikuti Rekomendasi Algoritma</span>`}
+          </div>
+          <div style="display:flex; gap:6px; flex-shrink: 0;">
+            <button id="btn-modal-override" type="button" style="padding: 6px 12px; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
+              ${r.isOverride ? '✏️ Ubah Nominal' : '✏️ Override Nominal'}
+            </button>
+            ${r.isOverride ? `
+              <button id="btn-modal-clear-override" type="button" style="padding: 6px 10px; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
+                ❌ Reset
+              </button>
             ` : ''}
           </div>
         </div>

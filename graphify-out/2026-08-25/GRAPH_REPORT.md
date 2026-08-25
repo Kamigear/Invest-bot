@@ -1,11 +1,11 @@
 # Graph Report - Investation  (2026-08-25)
 
 ## Corpus Check
-- 122 files · ~116,317 words
+- 122 files · ~116,235 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2164 nodes · 2621 edges · 153 communities (112 shown, 41 thin omitted)
+- 2164 nodes · 2619 edges · 153 communities (113 shown, 40 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 163 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
@@ -199,7 +199,7 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (153 total, 41 thin omitted)
+## Communities (153 total, 40 thin omitted)
 
 ### Community 0 - "logger.js"
 Cohesion: 0.14
@@ -238,8 +238,8 @@ Cohesion: 0.50
 Nodes (3): ExportCSV, ExportExcel, ExportPDF
 
 ### Community 9 - "ledger.js"
-Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, full, none, none
+Cohesion: 0.15
+Nodes (9): BM25, _normalize(), Apply synonym substitution before tokenizing., BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes. (+1 more)
 
 ### Community 15 - "AGENTS.md"
 Cohesion: 0.07
@@ -262,8 +262,8 @@ Cohesion: 0.22
 Nodes (8): Data Flow, Goal, Key Decisions, Open Questions, Plan: Live "Actual follows Predicted" Balance Mode (Option A), Risks & Edge Cases, Tasks (ordered), Validation
 
 ### Community 25 - "File Changes"
-Cohesion: 0.05
-Nodes (53): $type, $value, $type, $value, $type, $value, $type, $value (+45 more)
+Cohesion: 0.12
+Nodes (16): $type, $value, $type, $value, $type, $value, $type, $value (+8 more)
 
 ### Community 29 - "BM25"
 Cohesion: 0.06
@@ -274,8 +274,8 @@ Cohesion: 0.04
 Nodes (48): $type, $value, background, destructive, destructive-foreground, foreground, muted, muted-foreground (+40 more)
 
 ### Community 31 - "search"
-Cohesion: 0.07
-Nodes (28): BM25, detect_domain(), _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), _normalize(), Apply synonym substitution before tokenizing. (+20 more)
+Cohesion: 0.14
+Nodes (16): _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), Load CSV and return list of dicts, with mtime-based caching., Fitted BM25 index for this file+columns, with mtime-based caching., Core search function using BM25. Returns (results, bm25_or_none)., Nearest known vocabulary terms for a query that returned 0 hits,     so the call (+8 more)
 
 ### Community 32 - "button"
 Cohesion: 0.06
@@ -386,8 +386,8 @@ Cohesion: 0.13
 Nodes (12): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Execute searches across multiple domains., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict. (+4 more)
 
 ### Community 59 - "design_system.py"
-Cohesion: 0.13
-Nodes (20): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi(), persist_design_system() (+12 more)
+Cohesion: 0.09
+Nodes (27): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), generate_design_system(), _generate_intelligent_overrides() (+19 more)
 
 ### Community 60 - "Routing by Task Type"
 Cohesion: 0.10
@@ -442,8 +442,8 @@ Cohesion: 0.20
 Nodes (15): apply_color(), apply_viewbox_size(), extract_svgs(), generate_batch(), generate_icon(), generate_sizes(), load_env(), main() (+7 more)
 
 ### Community 73 - "fontSize"
-Cohesion: 0.12
-Nodes (16): $type, $value, $type, $value, $type, $value, $type, $value (+8 more)
+Cohesion: 0.06
+Nodes (47): $type, $value, $type, $value, $type, $value, $type, $value (+39 more)
 
 ### Community 74 - "TestShadcnInstaller"
 Cohesion: 0.12
@@ -574,8 +574,8 @@ Cohesion: 0.24
 Nodes (12): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, runTask2(), getErrorCode(), isTransientError(), { Logger } (+4 more)
 
 ### Community 106 - "radius"
-Cohesion: 0.29
-Nodes (5): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation.      Args:         query: Search, TestPersistence
+Cohesion: 0.20
+Nodes (15): $type, $value, 500, blue, green, red, white, yellow (+7 more)
 
 ### Community 107 - "Slides Reference"
 Cohesion: 0.29
@@ -594,20 +594,20 @@ Cohesion: 0.43
 Nodes (3): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., TestAntiPatternGating
 
 ### Community 111 - "generate_design_system"
-Cohesion: 0.47
-Nodes (6): sm, shadow, sm, sm, $type, $value
+Cohesion: 0.43
+Nodes (3): detect_domain(), Auto-detect the most relevant domain from query.      Matches are weighted by ke, TestDomainDetection
 
 ### Community 112 - "_select_palette_for_mode"
 Cohesion: 0.43
 Nodes (3): Pick the highest-ranked palette matching the resolved mode.      Only the dark c, _select_palette_for_mode(), TestPaletteSelection
 
 ### Community 113 - "none"
-Cohesion: 0.60
-Nodes (5): lg, $type, $value, lg, lg
+Cohesion: 0.53
+Nodes (6): $type, $value, 600, 600, 600, 600
 
 ### Community 114 - "shadow"
-Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Cohesion: 0.60
+Nodes (5): $type, $value, 700, 700, 700
 
 ### Community 115 - "Slides"
 Cohesion: 0.33
@@ -619,15 +619,19 @@ Nodes (4): Brand Guidelines Template, Document Structure, Extractable Fields, Us
 
 ### Community 117 - "lg"
 Cohesion: 0.67
-Nodes (4): xl, xl, $type, $value
+Nodes (4): $type, $value, 50, 50
 
 ### Community 118 - "800"
 Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+Nodes (4): $type, $value, 800, 800
 
 ### Community 119 - "md"
 Cohesion: 0.07
 Nodes (26): CONFIG, executeMockSession(), puppeteer, runMockBot(), author, dependencies, puppeteer, description (+18 more)
+
+### Community 120 - "950"
+Cohesion: 0.67
+Nodes (3): $type, $value, 950
 
 ### Community 121 - "validate_data.py"
 Cohesion: 0.83
@@ -638,7 +642,7 @@ Cohesion: 0.15
 Nodes (3): generateId(), LeaderboardModule, toDateKey()
 
 ### Community 153 - "padding-y"
-Cohesion: 0.22
+Cohesion: 0.20
 Nodes (17): buildAnalytics(), classKey(), { db, serverTimestamp }, fetchPreviousSnapshots(), findBaseline(), fs, growthAgainst(), { Logger } (+9 more)
 
 ### Community 154 - "default"
@@ -648,14 +652,14 @@ Nodes (6): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji()
 ## Knowledge Gaps
 - **1024 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1019 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `ledger.js`, `generate_design_system`, `File Changes`, `color`?**
+- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `radius`, `color`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `BM25` connect `BM25` to `radius`, `DesignSystemGenerator`, `search`?**
+- **Why does `BM25` connect `BM25` to `ledger.js`, `generate_design_system`, `DesignSystemGenerator`, `design_system.py`, `search`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 36 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `.test_node_check_parses_generated_config()`) actually correct?**
   _`TailwindConfigGenerator` has 36 INFERRED edges - model-reasoned connections that need verification._

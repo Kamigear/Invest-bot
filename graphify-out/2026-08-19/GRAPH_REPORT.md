@@ -1,16 +1,16 @@
-# Graph Report - Investation  (2026-08-18)
+# Graph Report - Investation  (2026-08-19)
 
 ## Corpus Check
-- 119 files · ~108,974 words
+- 120 files · ~115,294 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2108 nodes · 2494 edges · 160 communities (119 shown, 41 thin omitted)
-- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 157 edges (avg confidence: 0.72)
+- 2139 nodes · 2568 edges · 162 communities (122 shown, 40 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 158 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d7bb6dda`
+- Built from commit: `d05fee86`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -172,20 +172,22 @@
 - destructive
 - destructive-foreground
 - muted
+- secondary-foreground
 - ring
+- xl
 - search.py
 
 ## God Nodes (most connected - your core abstractions)
 1. `TailwindConfigGenerator` - 57 edges
 2. `TestTailwindConfigGenerator` - 35 edges
 3. `ShadcnInstaller` - 33 edges
-4. `DesignSystemGenerator` - 27 edges
-5. `TestShadcnInstaller` - 26 edges
-6. `UI Styling Skill` - 17 edges
-7. `color` - 15 edges
-8. `Design` - 15 edges
-9. `runDailyJob()` - 14 edges
-10. `Tailwind CSS Customization` - 14 edges
+4. `LeaderboardModule` - 28 edges
+5. `DesignSystemGenerator` - 27 edges
+6. `TestShadcnInstaller` - 26 edges
+7. `UI Styling Skill` - 17 edges
+8. `color` - 15 edges
+9. `Design` - 15 edges
+10. `runDailyJob()` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `graphify Rules` --references--> `graphify-out/graph.json`  [EXTRACTED]
@@ -206,7 +208,7 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (160 total, 41 thin omitted)
+## Communities (162 total, 40 thin omitted)
 
 ### Community 0 - "logger.js"
 Cohesion: 0.10
@@ -221,8 +223,8 @@ Cohesion: 0.13
 Nodes (19): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, runDailyJob(), { sendAlert }, { withRetry, isTransientError } (+11 more)
 
 ### Community 3 - "app.js"
-Cohesion: 0.17
-Nodes (11): Architecture & Logic, Invest Bot, Setup di OrangePi, App, LiveMode, setupPassword(), syncFromFirebase(), syncToFirebase() (+3 more)
+Cohesion: 0.15
+Nodes (12): Architecture & Logic, Invest Bot, Setup di OrangePi, App, LiveMode, setupPassword(), syncFromFirebase(), syncToFirebase() (+4 more)
 
 ### Community 4 - "index.js"
 Cohesion: 0.15
@@ -243,6 +245,10 @@ Nodes (4): plugin, $schema, snapshot, file:///D:/Investation/.kilo/plugins/graph
 ### Community 8 - "exporters.js"
 Cohesion: 0.50
 Nodes (3): ExportCSV, ExportExcel, ExportPDF
+
+### Community 9 - "ledger.js"
+Cohesion: 0.60
+Nodes (5): $type, $value, border, border, border
 
 ### Community 15 - "AGENTS.md"
 Cohesion: 0.07
@@ -274,15 +280,15 @@ Nodes (42): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and re
 
 ### Community 30 - "color"
 Cohesion: 0.11
-Nodes (19): $type, $value, background, destructive-foreground, primary, primary-foreground, secondary, secondary-foreground (+11 more)
+Nodes (19): $type, $value, background, foreground, muted-foreground, primary, primary-hover, secondary (+11 more)
 
 ### Community 31 - "search"
 Cohesion: 0.07
 Nodes (28): BM25, detect_domain(), _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), _normalize(), Apply synonym substitution before tokenizing. (+20 more)
 
 ### Community 32 - "button"
-Cohesion: 0.15
-Nodes (17): $type, $value, $type, $value, bg, bg, border, padding (+9 more)
+Cohesion: 0.20
+Nodes (12): $type, $value, bg, bg, padding, shadow, card, bg (+4 more)
 
 ### Community 33 - "Tailwind CSS Utility Reference"
 Cohesion: 0.05
@@ -578,7 +584,7 @@ Nodes (11): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, get
 
 ### Community 106 - "radius"
 Cohesion: 0.29
-Nodes (8): xl, $type, $value, radius, full, xl, $type, $value
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 107 - "Slides Reference"
 Cohesion: 0.29
@@ -641,16 +647,16 @@ Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
 
 ### Community 126 - "search.py"
-Cohesion: 0.20
-Nodes (12): padding-x, padding-y, input, $type, $value, focus-ring, padding-x, padding-y (+4 more)
+Cohesion: 0.29
+Nodes (8): padding-y, input, $type, $value, focus-ring, padding-y, $type, $value
 
 ### Community 150 - "default"
-Cohesion: 0.67
-Nodes (3): foreground, $type, $value
+Cohesion: 0.15
+Nodes (3): generateId(), LeaderboardModule, toDateKey()
 
 ### Community 151 - "input"
 Cohesion: 0.67
-Nodes (3): muted-foreground, $type, $value
+Nodes (3): destructive-foreground, $type, $value
 
 ### Community 152 - "radius"
 Cohesion: 0.60
@@ -658,7 +664,7 @@ Nodes (5): radius, radius, radius, $type, $value
 
 ### Community 153 - "padding-y"
 Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Nodes (4): padding-x, padding-x, $type, $value
 
 ### Community 154 - "default"
 Cohesion: 0.67
@@ -670,20 +676,28 @@ Nodes (3): destructive, $type, $value
 
 ### Community 156 - "destructive-foreground"
 Cohesion: 0.67
-Nodes (3): primary-hover, $type, $value
+Nodes (3): primary-foreground, $type, $value
 
 ### Community 157 - "muted"
 Cohesion: 0.67
 Nodes (3): muted, $type, $value
 
+### Community 158 - "secondary-foreground"
+Cohesion: 0.67
+Nodes (3): secondary-foreground, $type, $value
+
 ### Community 159 - "ring"
 Cohesion: 0.67
 Nodes (3): ring, $type, $value
 
+### Community 160 - "xl"
+Cohesion: 0.67
+Nodes (4): xl, xl, $type, $value
+
 ## Knowledge Gaps
-- **1017 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1012 more)
+- **1016 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1011 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -701,4 +715,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 16 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestDomainDetection` and `TestPersistence`) actually correct?**
   _`DesignSystemGenerator` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
-  _1017 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1016 weakly-connected nodes found - possible documentation gaps or missing edges._

@@ -66,7 +66,7 @@ const FirebaseDB = (() => {
     }
 
     async function updateTransaction(uid, id, data) {
-        const ref = getTransactionsRef(uid).doc(id);
+        const ref = getTransactionsRef(uid).doc(String(id));
         await ref.update({
             ...data,
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -75,7 +75,7 @@ const FirebaseDB = (() => {
     }
 
     async function deleteTransaction(uid, id) {
-        const ref = getTransactionsRef(uid).doc(id);
+        const ref = getTransactionsRef(uid).doc(String(id));
         await ref.delete();
         return true;
     }
@@ -104,19 +104,44 @@ const FirebaseDB = (() => {
         getUid,
         isAuthReady,
 
-        // Config Sync (only sync config to botState/config)
-        syncToFirebase: async (config) => {
+        // Config & Schedule Sync
+        syncToFirebase: async (config, schedule = []) => {
             try {
-                // Sync config to botState/config
-                await db.collection('botState').doc('config').set({
-                    ...config,
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                }, { merge: true });
+                // 1. Sync config to botState/config
+                if (config && typeof config === 'object') {
+                    await db.collection('botState').doc('config').set({
+                        ...config,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true });
+                }
 
-                console.log('Successfully synced config to Firebase');
+                // 2. Sync investment schedule items to schedules collection
+                if (Array.isArray(schedule) && schedule.length > 0) {
+                    const batch = db.batch();
+                    schedule.forEach(item => {
+                        const dateStr = item.investDate || item.date;
+                        if (dateStr) {
+                            const entryId = (typeof item.id === 'string' && item.id.startsWith('inv_')) ? item.id : ('inv_' + String(dateStr));
+                            const docRef = db.collection('schedules').doc(String(entryId));
+                            batch.set(docRef, {
+                                entryId,
+                                investDate: dateStr,
+                                amount: item.amount || 0,
+                                expectedReturn: item.expectedReturn || item.returnAmount || item.return || 0,
+                                maturityDate: item.maturityDate || '',
+                                status: item.status || 'PENDING',
+                                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                            }, { merge: true });
+                        }
+                    });
+                    await batch.commit();
+                    console.log(`Successfully synced ${schedule.length} schedule entries to Firebase`);
+                }
+
+                console.log('Successfully synced config & schedule to Firebase');
                 return true;
             } catch (error) {
-                console.error('Error syncing config to Firebase:', error);
+                console.error('Error syncing config/schedule to Firebase:', error);
                 throw error;
             }
         },

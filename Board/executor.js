@@ -24,24 +24,71 @@ async function runDailyJob(targetDate) {
 
     Logger.info('Membaca jadwal investasi hari ini', { entryId, today });
 
+    let scheduleEntry = null;
+
     const scheduleSnap = await withRetry(
       () => getDoc(`schedules/${entryId}`),
       { label: `schedule:${entryId}`, ...DEFAULT_RETRY }
     );
 
-    if (!scheduleSnap.exists) {
+    if (scheduleSnap.exists) {
+      scheduleEntry = scheduleSnap.data();
+      Logger.info('Jadwal investasi ditemukan di Firestore collection schedules', {
+        entryId,
+        amount: scheduleEntry.amount,
+        expectedReturn: scheduleEntry.expectedReturn,
+        maturityDate: scheduleEntry.maturityDate
+      });
+    } else {
+      Logger.info(`Dokumen schedules/${entryId} tidak ditemukan, memeriksa botState/config`, { entryId });
+      const configSnap = await withRetry(
+        () => getDoc('botState/config'),
+        { label: 'config:botState', ...DEFAULT_RETRY }
+      );
+      if (configSnap.exists) {
+        const cfg = configSnap.data();
+        const dashSnap = await withRetry(
+          () => getDoc('botState/dashboardData'),
+          { label: 'dashboardData:botState', ...DEFAULT_RETRY }
+        );
+        const dashData = dashSnap.exists ? dashSnap.data() : {};
+        const currentBalance = dashData.balance || 0;
+        const minInvest = cfg.minInvest || 50;
+        const reserveBalance = cfg.reserveBalance || 0;
+        const returnRate = cfg.returnRate || 1.18;
+        const investDuration = cfg.investDuration || 30;
+
+        const availableToInvest = currentBalance - reserveBalance;
+        if (availableToInvest >= minInvest) {
+          const amount = (cfg.maxInvest && cfg.maxInvest > 0)
+            ? Math.min(availableToInvest, cfg.maxInvest)
+            : availableToInvest;
+
+          const expectedReturn = Math.floor(amount * returnRate);
+          const matDate = new Date(now);
+          matDate.setDate(matDate.getDate() + investDuration);
+          const maturityDate = matDate.getFullYear() + '-' + String(matDate.getMonth() + 1).padStart(2, '0') + '-' + String(matDate.getDate()).padStart(2, '0');
+
+          scheduleEntry = {
+            entryId,
+            investDate: today,
+            amount,
+            expectedReturn,
+            maturityDate,
+            generatedFromConfig: true
+          };
+          Logger.info('Jadwal investasi berhasil dihitung otomatis dari botState/config', scheduleEntry);
+        } else {
+          Logger.info('Saldo tidak mencukupi untuk investasi minimal berdasarkan config', { availableToInvest, minInvest });
+        }
+      }
+    }
+
+    if (!scheduleEntry) {
       Logger.info('Tidak ada jadwal investasi hari ini', { entryId });
       Pending.clearPending(entryId);
       return { status: 'NO_SCHEDULE', entryId };
     }
-
-    const scheduleEntry = scheduleSnap.data();
-    Logger.info('Jadwal investasi ditemukan', {
-      entryId,
-      amount: scheduleEntry.amount,
-      expectedReturn: scheduleEntry.expectedReturn,
-      maturityDate: scheduleEntry.maturityDate
-    });
 
     const execSnap = await withRetry(
       () => getDoc(`executions/${entryId}`),

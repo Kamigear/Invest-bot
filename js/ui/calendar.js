@@ -98,6 +98,7 @@ const CalendarUI = (() => {
   function buildBadges(record) {
     const badges = [];
     const f = record.flags;
+    if (f.isOverride) badges.push(`<span class="badge" style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600;">✏️ Manual (${record.investedAmount})</span>`);
     if (f.isInvestDay) badges.push('<span class="badge badge-invest">🟢 Invest</span>');
     if (f.hasLedgerInvestment) badges.push('<span class="badge badge-ledger-invest">📘 Ledger Invest</span>');
     if (f.isMaturityDay || f.hasLedgerMaturity) badges.push('<span class="badge badge-maturity">🟡 Cair</span>');
@@ -208,10 +209,15 @@ const CalendarUI = (() => {
           +${Calculator.display(record.totalDayIncome !== undefined ? record.totalDayIncome : (record.dailyIncome + (record.weeklyBonus || 0) + (record.generate || 0)))}
           ${renderLedgerTransactionsInCell(record)}
         </td>
-          <td class="col-num ${f.isInvestDay || f.hasLedgerInvestment ? 'invest-highlight' : ''}">
-          ${record.investedAmount > 0 ? `<strong>${Calculator.display(record.investedAmount)}</strong>` : ''}
+        <td class="col-num ${f.isInvestDay || f.hasLedgerInvestment ? 'invest-highlight' : ''}">
+          <div style="display:inline-flex; align-items:center; gap:4px; justify-content:flex-end; width:100%;">
+            ${record.isOverride ? `<span style="color:#f59e0b; font-size:12px;" title="Manual Override: ${record.investedAmount}">✏️ <strong>${Calculator.display(record.investedAmount)}</strong></span>` : (record.investedAmount > 0 ? `<strong>${Calculator.display(record.investedAmount)}</strong>` : '—')}
+            ${record.isOverride 
+              ? `<button type="button" class="btn-clear-override" data-day="${record.day}" title="Reset ke Algoritma Otomatis" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:12px; padding:0 2px;">❌</button>`
+              : `<button type="button" class="btn-edit-override" data-day="${record.day}" data-invest="${record.investedAmount || 0}" title="Edit / Override Invest Hari ke-${record.day}" style="background:none; border:none; cursor:pointer; font-size:12px; opacity:0.6; padding:0 2px; transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">✏️</button>`
+            }
+          </div>
           ${record.ledgerInvestTotal > 0 ? `<br/><small style="color:var(--accent-teal)">+${Calculator.display(record.ledgerInvestTotal)}</small>` : ''}
-          ${(!record.investedAmount && !record.ledgerInvestTotal) ? '—' : ''}
         </td>
         <td class="col-num ${f.isMaturityDay || f.hasLedgerMaturity ? 'maturity-highlight' : ''}">
           ${record.maturedTotal > 0 ? `<strong>+${Calculator.display(record.maturedTotal)}</strong>` : ''}
@@ -319,6 +325,29 @@ const CalendarUI = (() => {
     const tbody = container.querySelector('#cal-tbody');
     if (tbody) {
       tbody.addEventListener('click', e => {
+        const editBtn = e.target.closest('.btn-edit-override');
+        if (editBtn) {
+          e.stopPropagation();
+          const day = parseInt(editBtn.dataset.day, 10);
+          const currentVal = parseFloat(editBtn.dataset.invest) || 0;
+          const userInput = prompt(`[Hari ke-${day}] Masukkan nominal investasi manual (contoh: 2, atau 0 untuk membatalkan invest):`, currentVal);
+          if (userInput !== null) {
+            const val = parseFloat(userInput);
+            if (!isNaN(val)) {
+              App.setDayOverride(day, val);
+            }
+          }
+          return;
+        }
+
+        const clearBtn = e.target.closest('.btn-clear-override');
+        if (clearBtn) {
+          e.stopPropagation();
+          const day = parseInt(clearBtn.dataset.day, 10);
+          App.clearDayOverride(day);
+          return;
+        }
+
         const row = e.target.closest('tr[data-day]');
         if (row && _onRowClick) {
           const day = parseInt(row.dataset.day, 10);

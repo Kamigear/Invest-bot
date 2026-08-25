@@ -1474,8 +1474,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "design-tokens-starter.json"
     },
     {
@@ -1485,8 +1485,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_schema",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$schema"
     },
     {
@@ -1507,8 +1507,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primitive_color",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "color"
     },
     {
@@ -1529,8 +1529,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_gray_50",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 117,
+      "community_name": "lg",
       "norm_label": "50"
     },
     {
@@ -1540,8 +1540,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_50_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 117,
+      "community_name": "lg",
       "norm_label": "$value"
     },
     {
@@ -1551,8 +1551,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_50_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 117,
+      "community_name": "lg",
       "norm_label": "$type"
     },
     {
@@ -1694,8 +1694,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_gray_500",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "500"
     },
     {
@@ -1705,8 +1705,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_500_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "$value"
     },
     {
@@ -1716,8 +1716,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_500_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "$type"
     },
     {
@@ -1727,8 +1727,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_gray_600",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 113,
+      "community_name": "none",
       "norm_label": "600"
     },
     {
@@ -1738,8 +1738,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_600_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 113,
+      "community_name": "none",
       "norm_label": "$value"
     },
     {
@@ -1749,8 +1749,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_600_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 113,
+      "community_name": "none",
       "norm_label": "$type"
     },
     {
@@ -1760,8 +1760,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_gray_700",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 114,
+      "community_name": "shadow",
       "norm_label": "700"
     },
     {
@@ -1771,8 +1771,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_700_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 114,
+      "community_name": "shadow",
       "norm_label": "$value"
     },
     {
@@ -1782,8 +1782,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_700_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 114,
+      "community_name": "shadow",
       "norm_label": "$type"
     },
     {
@@ -1793,8 +1793,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_gray_800",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 118,
+      "community_name": "800",
       "norm_label": "800"
     },
     {
@@ -1804,8 +1804,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_800_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 118,
+      "community_name": "800",
       "norm_label": "$value"
     },
     {
@@ -1815,8 +1815,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_800_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 118,
+      "community_name": "800",
       "norm_label": "$type"
     },
     {
@@ -1859,8 +1859,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_gray_950",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 120,
+      "community_name": "950",
       "norm_label": "950"
     },
     {
@@ -1870,8 +1870,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_950_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 120,
+      "community_name": "950",
       "norm_label": "$value"
     },
     {
@@ -1881,8 +1881,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_950_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 120,
+      "community_name": "950",
       "norm_label": "$type"
     },
     {
@@ -1892,8 +1892,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_blue",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "blue"
     },
     {
@@ -1903,8 +1903,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_blue_50",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 117,
+      "community_name": "lg",
       "norm_label": "50"
     },
     {
@@ -1914,8 +1914,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_blue_500",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "500"
     },
     {
@@ -1925,8 +1925,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_blue_600",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 113,
+      "community_name": "none",
       "norm_label": "600"
     },
     {
@@ -1936,8 +1936,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_blue_700",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 114,
+      "community_name": "shadow",
       "norm_label": "700"
     },
     {
@@ -1947,8 +1947,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_blue_800",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 118,
+      "community_name": "800",
       "norm_label": "800"
     },
     {
@@ -1958,8 +1958,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_red",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "red"
     },
     {
@@ -1969,8 +1969,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_red_500",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "500"
     },
     {
@@ -1980,8 +1980,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_red_600",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 113,
+      "community_name": "none",
       "norm_label": "600"
     },
     {
@@ -1991,8 +1991,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_red_700",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 114,
+      "community_name": "shadow",
       "norm_label": "700"
     },
     {
@@ -2002,8 +2002,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_green",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "green"
     },
     {
@@ -2013,8 +2013,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_green_500",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "500"
     },
     {
@@ -2024,8 +2024,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_green_600",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 113,
+      "community_name": "none",
       "norm_label": "600"
     },
     {
@@ -2035,8 +2035,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_yellow",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "yellow"
     },
     {
@@ -2046,8 +2046,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_yellow_500",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "500"
     },
     {
@@ -2057,8 +2057,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_white",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "white"
     },
     {
@@ -2068,8 +2068,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_white_value",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "$value"
     },
     {
@@ -2079,8 +2079,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_white_type",
-      "community": 25,
-      "community_name": "File Changes",
+      "community": 106,
+      "community_name": "radius",
       "norm_label": "$type"
     },
     {
@@ -2508,8 +2508,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fontsize_sm",
-      "community": 114,
-      "community_name": "shadow",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "sm"
     },
     {
@@ -2519,8 +2519,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_sm_value",
-      "community": 114,
-      "community_name": "shadow",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2530,8 +2530,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_sm_type",
-      "community": 114,
-      "community_name": "shadow",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2574,8 +2574,8 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fontsize_lg",
-      "community": 117,
-      "community_name": "lg",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "lg"
     },
     {
@@ -2585,8 +2585,8 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_lg_value",
-      "community": 117,
-      "community_name": "lg",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2596,8 +2596,8 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_lg_type",
-      "community": 117,
-      "community_name": "lg",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2607,8 +2607,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fontsize_xl",
-      "community": 160,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "xl"
     },
     {
@@ -2618,8 +2618,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_xl_value",
-      "community": 160,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2629,8 +2629,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_xl_type",
-      "community": 160,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2739,8 +2739,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primitive_radius",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "radius"
     },
     {
@@ -2750,8 +2750,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_none",
-      "community": 118,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "none"
     },
     {
@@ -2761,8 +2761,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_none_value",
-      "community": 118,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2772,8 +2772,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_none_type",
-      "community": 118,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2783,8 +2783,8 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_sm",
-      "community": 114,
-      "community_name": "shadow",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "sm"
     },
     {
@@ -2794,8 +2794,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_default",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "default"
     },
     {
@@ -2805,8 +2805,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_value",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2816,8 +2816,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_type",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2827,8 +2827,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_md",
-      "community": 154,
-      "community_name": "default",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "md"
     },
     {
@@ -2838,8 +2838,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_md_value",
-      "community": 154,
-      "community_name": "default",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2849,8 +2849,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_md_type",
-      "community": 154,
-      "community_name": "default",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2860,8 +2860,8 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_lg",
-      "community": 117,
-      "community_name": "lg",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "lg"
     },
     {
@@ -2871,8 +2871,8 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_xl",
-      "community": 160,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "xl"
     },
     {
@@ -2882,8 +2882,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_full",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "full"
     },
     {
@@ -2893,8 +2893,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_full_value",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$value"
     },
     {
@@ -2904,8 +2904,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_full_type",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "$type"
     },
     {
@@ -2915,8 +2915,8 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primitive_shadow",
-      "community": 114,
-      "community_name": "shadow",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "shadow"
     },
     {
@@ -2926,8 +2926,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_none",
-      "community": 118,
-      "community_name": "xl",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "none"
     },
     {
@@ -2937,8 +2937,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_sm",
-      "community": 114,
-      "community_name": "shadow",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "sm"
     },
     {
@@ -2948,8 +2948,8 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_default",
-      "community": 106,
-      "community_name": "radius",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "default"
     },
     {
@@ -2959,8 +2959,8 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_md",
-      "community": 154,
-      "community_name": "default",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "md"
     },
     {
@@ -2970,8 +2970,8 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_lg",
-      "community": 117,
-      "community_name": "lg",
+      "community": 73,
+      "community_name": "fontSize",
       "norm_label": "lg"
     },
     {
@@ -3091,8 +3091,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_semantic",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "semantic"
     },
     {
@@ -3245,8 +3245,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary_foreground",
-      "community": 156,
-      "community_name": "destructive-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "primary-foreground"
     },
     {
@@ -3256,8 +3256,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_value",
-      "community": 156,
-      "community_name": "destructive-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3267,8 +3267,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_type",
-      "community": 156,
-      "community_name": "destructive-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3311,8 +3311,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_secondary_foreground",
-      "community": 158,
-      "community_name": "secondary-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "secondary-foreground"
     },
     {
@@ -3322,8 +3322,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_value",
-      "community": 158,
-      "community_name": "secondary-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3333,8 +3333,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_type",
-      "community": 158,
-      "community_name": "secondary-foreground",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3344,8 +3344,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_muted",
-      "community": 157,
-      "community_name": "muted",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "muted"
     },
     {
@@ -3355,8 +3355,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_value",
-      "community": 157,
-      "community_name": "muted",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3366,8 +3366,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_type",
-      "community": 157,
-      "community_name": "muted",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3410,8 +3410,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive",
-      "community": 155,
-      "community_name": "destructive",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "destructive"
     },
     {
@@ -3421,8 +3421,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_value",
-      "community": 155,
-      "community_name": "destructive",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3432,8 +3432,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_type",
-      "community": 155,
-      "community_name": "destructive",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3443,8 +3443,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive_foreground",
-      "community": 151,
-      "community_name": "input",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "destructive-foreground"
     },
     {
@@ -3454,8 +3454,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_value",
-      "community": 151,
-      "community_name": "input",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3465,8 +3465,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_type",
-      "community": 151,
-      "community_name": "input",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3476,8 +3476,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_border",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "border"
     },
     {
@@ -3487,8 +3487,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_value",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3498,8 +3498,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_type",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3509,8 +3509,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_ring",
-      "community": 159,
-      "community_name": "ring",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "ring"
     },
     {
@@ -3520,8 +3520,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_ring_value",
-      "community": 159,
-      "community_name": "ring",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3531,8 +3531,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_ring_type",
-      "community": 159,
-      "community_name": "ring",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3542,8 +3542,8 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_semantic_spacing",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "spacing"
     },
     {
@@ -3553,8 +3553,8 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_spacing_component",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "component"
     },
     {
@@ -3564,8 +3564,8 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_value",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3575,8 +3575,8 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_type",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3586,8 +3586,8 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_spacing_section",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "section"
     },
     {
@@ -3597,8 +3597,8 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_section_value",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$value"
     },
     {
@@ -3608,8 +3608,8 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_section_type",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "$type"
     },
     {
@@ -3619,8 +3619,8 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "component"
     },
     {
@@ -3630,8 +3630,8 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_button",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "button"
     },
     {
@@ -3674,8 +3674,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_fg",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "fg"
     },
     {
@@ -3685,8 +3685,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fg_value",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3696,8 +3696,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fg_type",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3707,8 +3707,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_hover_bg",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "hover-bg"
     },
     {
@@ -3718,8 +3718,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_hover_bg_value",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3729,8 +3729,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_hover_bg_type",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3740,8 +3740,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_x",
-      "community": 153,
-      "community_name": "padding-y",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "padding-x"
     },
     {
@@ -3751,8 +3751,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_value",
-      "community": 153,
-      "community_name": "padding-y",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3762,8 +3762,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_type",
-      "community": 153,
-      "community_name": "padding-y",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3773,8 +3773,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_y",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "padding-y"
     },
     {
@@ -3784,8 +3784,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_value",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3795,8 +3795,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_type",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3806,8 +3806,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_radius",
-      "community": 152,
-      "community_name": "radius",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "radius"
     },
     {
@@ -3817,8 +3817,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_value",
-      "community": 152,
-      "community_name": "radius",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3828,8 +3828,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_type",
-      "community": 152,
-      "community_name": "radius",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3839,8 +3839,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_font_size",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "font-size"
     },
     {
@@ -3850,8 +3850,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_font_size_value",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3861,8 +3861,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_font_size_type",
-      "community": 120,
-      "community_name": "none",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3872,8 +3872,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_input",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "input"
     },
     {
@@ -3894,8 +3894,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_border",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "border"
     },
     {
@@ -3905,8 +3905,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_focus_ring",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "focus-ring"
     },
     {
@@ -3916,8 +3916,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_focus_ring_value",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$value"
     },
     {
@@ -3927,8 +3927,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_focus_ring_type",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "$type"
     },
     {
@@ -3938,8 +3938,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_x",
-      "community": 153,
-      "community_name": "padding-y",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "padding-x"
     },
     {
@@ -3949,8 +3949,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_y",
-      "community": 126,
-      "community_name": "search.py",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "padding-y"
     },
     {
@@ -3960,8 +3960,8 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_radius",
-      "community": 152,
-      "community_name": "radius",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "radius"
     },
     {
@@ -3993,8 +3993,8 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_border",
-      "community": 9,
-      "community_name": "ledger.js",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "border"
     },
     {
@@ -4070,8 +4070,8 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_radius",
-      "community": 152,
-      "community_name": "radius",
+      "community": 32,
+      "community_name": "button",
       "norm_label": "radius"
     },
     {
@@ -4081,8 +4081,8 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_dark",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "dark"
     },
     {
@@ -4092,8 +4092,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_dark_semantic",
-      "community": 113,
-      "community_name": "alert.js",
+      "community": 30,
+      "community_name": "color",
       "norm_label": "semantic"
     },
     {
@@ -7271,8 +7271,8 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_normalize",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "_normalize()"
     },
     {
@@ -7282,8 +7282,8 @@
       "source_location": "L161",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "bm25"
     },
     {
@@ -7293,8 +7293,8 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_init",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".__init__()"
     },
     {
@@ -7304,8 +7304,8 @@
       "source_location": "L175",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_tokenize",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".tokenize()"
     },
     {
@@ -7315,8 +7315,8 @@
       "source_location": "L181",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_fit",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".fit()"
     },
     {
@@ -7326,8 +7326,8 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_score",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".score()"
     },
     {
@@ -7337,8 +7337,8 @@
       "source_location": "L224",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_vocabulary",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".vocabulary()"
     },
     {
@@ -7414,8 +7414,8 @@
       "source_location": "L377",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_detect_domain",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": "detect_domain()"
     },
     {
@@ -7447,8 +7447,8 @@
       "source_location": "L154",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_154",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "apply synonym substitution before tokenizing."
     },
     {
@@ -7458,8 +7458,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_162",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "bm25 ranking algorithm for text search"
     },
     {
@@ -7469,8 +7469,8 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_176",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "lowercase, normalize synonyms, split, remove punctuation, filter stopwords"
     },
     {
@@ -7480,8 +7480,8 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_182",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "build bm25 index from documents"
     },
     {
@@ -7491,8 +7491,8 @@
       "source_location": "L203",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_203",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "score all documents against query"
     },
     {
@@ -7502,8 +7502,8 @@
       "source_location": "L225",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_225",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "all indexed terms, for suggestion/typo-recovery purposes."
     },
     {
@@ -7557,8 +7557,8 @@
       "source_location": "L378",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_378",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": "auto-detect the most relevant domain from query.      matches are weighted by ke"
     },
     {
@@ -7832,8 +7832,8 @@
       "source_location": "L636",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_format_markdown",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "format_markdown()"
     },
     {
@@ -7843,8 +7843,8 @@
       "source_location": "L776",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_generate_design_system",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "generate_design_system()"
     },
     {
@@ -8140,8 +8140,8 @@
       "source_location": "L637",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_637",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "format design system as markdown."
     },
     {
@@ -8151,8 +8151,8 @@
       "source_location": "L780",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_780",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "main entry point for design system generation.      args:         query: search"
     },
     {
@@ -8228,8 +8228,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_search",
-      "community": 161,
-      "community_name": "search.py",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "search.py"
     },
     {
@@ -8239,8 +8239,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_search_format_output",
-      "community": 161,
-      "community_name": "search.py",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "format_output()"
     },
     {
@@ -8250,8 +8250,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_search_rationale_45",
-      "community": 161,
-      "community_name": "search.py",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "format results for claude consumption (token-optimized)"
     },
     {
@@ -8261,8 +8261,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "test_core.py"
     },
     {
@@ -8272,8 +8272,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": "testtokenizer"
     },
     {
@@ -8283,8 +8283,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_short_domain_terms_are_kept",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".test_short_domain_terms_are_kept()"
     },
     {
@@ -8294,8 +8294,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_stopwords_removed",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".test_stopwords_removed()"
     },
     {
@@ -8305,8 +8305,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_synonym_normalization",
-      "community": 31,
-      "community_name": "search",
+      "community": 9,
+      "community_name": "ledger.js",
       "norm_label": ".test_synonym_normalization()"
     },
     {
@@ -8382,8 +8382,8 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": "testdomaindetection"
     },
     {
@@ -8393,8 +8393,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_style_keywords_route_to_style",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": ".test_style_keywords_route_to_style()"
     },
     {
@@ -8404,8 +8404,8 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_accessibility_keywords_route_to_ux",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": ".test_accessibility_keywords_route_to_ux()"
     },
     {
@@ -8415,8 +8415,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_ambiguous_query_returns_runner_up",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": ".test_ambiguous_query_returns_runner_up()"
     },
     {
@@ -8426,8 +8426,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_empty_query_falls_back_to_style",
-      "community": 31,
-      "community_name": "search",
+      "community": 111,
+      "community_name": "generate_design_system",
       "norm_label": ".test_empty_query_falls_back_to_style()"
     },
     {
@@ -8437,8 +8437,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testpersistence",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": "testpersistence"
     },
     {
@@ -8448,8 +8448,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_then_skip_then_force",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": ".test_persist_then_skip_then_force()"
     },
     {
@@ -8459,8 +8459,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_writes_only_under_output_dir",
-      "community": 111,
-      "community_name": "generate_design_system",
+      "community": 59,
+      "community_name": "design_system.py",
       "norm_label": ".test_persist_writes_only_under_output_dir()"
     },
     {
@@ -9174,8 +9174,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_alert",
-      "community": 0,
-      "community_name": "logger.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "alert.js"
     },
     {
@@ -9185,8 +9185,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_alert_axios",
-      "community": 0,
-      "community_name": "logger.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "axios"
     },
     {
@@ -9196,8 +9196,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_alert_https",
-      "community": 0,
-      "community_name": "logger.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "https"
     },
     {
@@ -9207,8 +9207,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "board_alert_logger",
-      "community": 0,
-      "community_name": "logger.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "{ logger }"
     },
     {
@@ -9218,8 +9218,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "board_alert_httpsagent",
-      "community": 0,
-      "community_name": "logger.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "httpsagent"
     },
     {
@@ -9229,8 +9229,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "board_alert_stripemoji",
-      "community": 0,
-      "community_name": "logger.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "stripemoji()"
     },
     {
@@ -9240,8 +9240,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "board_alert_sendalert",
-      "community": 4,
-      "community_name": "index.js",
+      "community": 154,
+      "community_name": "default",
       "norm_label": "sendalert()"
     },
     {
@@ -9482,8 +9482,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "board_firebase_servertimestamp",
-      "community": 4,
-      "community_name": "index.js",
+      "community": 2,
+      "community_name": "executor.js",
       "norm_label": "servertimestamp()"
     },
     {
@@ -9575,10 +9575,21 @@
       "norm_label": "{ claimdailyreward }"
     },
     {
-      "label": "{ Logger }",
+      "label": "{ runLeaderboardAnalytics }",
       "file_type": "code",
       "source_file": "Board/index.js",
       "source_location": "L8",
+      "_origin": "ast",
+      "id": "board_index_runleaderboardanalytics",
+      "community": 4,
+      "community_name": "index.js",
+      "norm_label": "{ runleaderboardanalytics }"
+    },
+    {
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "board_index_logger",
       "community": 4,
@@ -9589,7 +9600,7 @@
       "label": "Pending",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "board_index_pending",
       "community": 4,
@@ -9600,7 +9611,7 @@
       "label": "{ withRetry, isTransientError }",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "board_index_withretry_istransienterror",
       "community": 4,
@@ -9611,7 +9622,7 @@
       "label": "retryTimers",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "board_index_retrytimers",
       "community": 4,
@@ -9622,7 +9633,7 @@
       "label": "sleep()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L28",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "board_index_sleep",
       "community": 4,
@@ -9633,7 +9644,7 @@
       "label": "waitForTurn()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L32",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "board_index_waitforturn",
       "community": 4,
@@ -9644,7 +9655,7 @@
       "label": "openBrowser()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L41",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "board_index_openbrowser",
       "community": 4,
@@ -9655,7 +9666,7 @@
       "label": "processRawPerks()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L58",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "board_index_processrawperks",
       "community": 4,
@@ -9666,7 +9677,7 @@
       "label": "runTask1()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L125",
+      "source_location": "L127",
       "_origin": "ast",
       "id": "board_index_runtask1",
       "community": 4,
@@ -9677,18 +9688,29 @@
       "label": "runTask2()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L314",
+      "source_location": "L330",
       "_origin": "ast",
       "id": "board_index_runtask2",
+      "community": 105,
+      "community_name": "retry.js",
+      "norm_label": "runtask2()"
+    },
+    {
+      "label": "runTask3()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L383",
+      "_origin": "ast",
+      "id": "board_index_runtask3",
       "community": 4,
       "community_name": "index.js",
-      "norm_label": "runtask2()"
+      "norm_label": "runtask3()"
     },
     {
       "label": "getTodayId()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L368",
+      "source_location": "L398",
       "_origin": "ast",
       "id": "board_index_gettodayid",
       "community": 4,
@@ -9699,7 +9721,7 @@
       "label": "scheduleRetry()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L374",
+      "source_location": "L404",
       "_origin": "ast",
       "id": "board_index_scheduleretry",
       "community": 4,
@@ -9710,7 +9732,7 @@
       "label": "markNetworkSkipped()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L406",
+      "source_location": "L436",
       "_origin": "ast",
       "id": "board_index_marknetworkskipped",
       "community": 4,
@@ -9721,7 +9743,7 @@
       "label": "scheduleDailyRewardRetry()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L422",
+      "source_location": "L452",
       "_origin": "ast",
       "id": "board_index_scheduledailyrewardretry",
       "community": 4,
@@ -9732,7 +9754,7 @@
       "label": "resumePendingRetries()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L449",
+      "source_location": "L479",
       "_origin": "ast",
       "id": "board_index_resumependingretries",
       "community": 4,
@@ -9743,23 +9765,56 @@
       "label": "scanMissedDays()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L498",
+      "source_location": "L528",
       "_origin": "ast",
       "id": "board_index_scanmisseddays",
-      "community": 2,
-      "community_name": "executor.js",
+      "community": 4,
+      "community_name": "index.js",
       "norm_label": "scanmisseddays()"
     },
     {
       "label": "start()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L525",
+      "source_location": "L555",
       "_origin": "ast",
       "id": "board_index_start",
       "community": 4,
       "community_name": "index.js",
       "norm_label": "start()"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L628",
+      "_origin": "ast",
+      "id": "board_index_fs",
+      "community": 4,
+      "community_name": "index.js",
+      "norm_label": "fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L629",
+      "_origin": "ast",
+      "id": "board_index_path",
+      "community": 4,
+      "community_name": "index.js",
+      "norm_label": "path"
+    },
+    {
+      "label": "recordLocalTaskRun()",
+      "file_type": "code",
+      "source_file": "Board/index.js",
+      "source_location": "L631",
+      "_origin": "ast",
+      "id": "board_index_recordlocaltaskrun",
+      "community": 4,
+      "community_name": "index.js",
+      "norm_label": "recordlocaltaskrun()"
     },
     {
       "label": "investor.js",
@@ -10145,6 +10200,204 @@
       "community": 150,
       "community_name": "default",
       "norm_label": "._buildemptydatebuckets()"
+    },
+    {
+      "label": "leaderboardAnalytics.js",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "leaderboardanalytics.js"
+    },
+    {
+      "label": "{ db, serverTimestamp }",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_db_servertimestamp",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "{ db, servertimestamp }"
+    },
+    {
+      "label": "{ Logger }",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_logger",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "{ logger }"
+    },
+    {
+      "label": "normalizeName()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_normalizename",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "normalizename()"
+    },
+    {
+      "label": "classKey()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_classkey",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "classkey()"
+    },
+    {
+      "label": "toDateKey()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_todatekey",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "todatekey()"
+    },
+    {
+      "label": "parsePoints()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_parsepoints",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "parsepoints()"
+    },
+    {
+      "label": "scrapeLeaderboard()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_scrapeleaderboard",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "scrapeleaderboard()"
+    },
+    {
+      "label": "findBaseline()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_findbaseline",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "findbaseline()"
+    },
+    {
+      "label": "mapSnapshot()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_mapsnapshot",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "mapsnapshot()"
+    },
+    {
+      "label": "growthAgainst()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_growthagainst",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "growthagainst()"
+    },
+    {
+      "label": "summarizeGrade()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_summarizegrade",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "summarizegrade()"
+    },
+    {
+      "label": "buildAnalytics()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_buildanalytics",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "buildanalytics()"
+    },
+    {
+      "label": "fetchPreviousSnapshots()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L177",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_fetchprevioussnapshots",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "fetchprevioussnapshots()"
+    },
+    {
+      "label": "runLeaderboardAnalytics()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L186",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_runleaderboardanalytics",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "runleaderboardanalytics()"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L249",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_fs",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L250",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_path",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "path"
+    },
+    {
+      "label": "saveLocalPointHistory()",
+      "file_type": "code",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L252",
+      "_origin": "ast",
+      "id": "board_leaderboardanalytics_savelocalpointhistory",
+      "community": 153,
+      "community_name": "padding-y",
+      "norm_label": "savelocalpointhistory()"
     },
     {
       "label": "logger.js",
@@ -10854,7 +11107,7 @@
       "label": "tryLogin()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L1724",
+      "source_location": "L1765",
       "_origin": "ast",
       "id": "js_app_trylogin",
       "community": 3,
@@ -10865,7 +11118,7 @@
       "label": "setupPassword()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L1753",
+      "source_location": "L1794",
       "_origin": "ast",
       "id": "js_app_setuppassword",
       "community": 3,
@@ -10876,7 +11129,7 @@
       "label": "syncToFirebase()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L1792",
+      "source_location": "L1833",
       "_origin": "ast",
       "id": "js_app_synctofirebase",
       "community": 3,
@@ -10887,7 +11140,7 @@
       "label": "syncFromFirebase()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L1829",
+      "source_location": "L1871",
       "_origin": "ast",
       "id": "js_app_syncfromfirebase",
       "community": 3,
@@ -11135,6 +11388,28 @@
       "community": 13,
       "community_name": "detail.js",
       "norm_label": "detailui"
+    },
+    {
+      "label": "leaderboard_analytics.js",
+      "file_type": "code",
+      "source_file": "js/ui/leaderboard_analytics.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_ui_leaderboard_analytics",
+      "community": 163,
+      "community_name": "leaderboard_analytics.js",
+      "norm_label": "leaderboard_analytics.js"
+    },
+    {
+      "label": "LeaderboardAnalyticsUI",
+      "file_type": "code",
+      "source_file": "js/ui/leaderboard_analytics.js",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "js_ui_leaderboard_analytics_leaderboardanalyticsui",
+      "community": 163,
+      "community_name": "leaderboard_analytics.js",
+      "norm_label": "leaderboardanalyticsui"
     },
     {
       "label": "summary.js",
@@ -37127,7 +37402,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/executor.js",
-      "source_location": "L66",
+      "source_location": "L113",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_executor_rundailyjob",
@@ -37151,7 +37426,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L418",
+      "source_location": "L448",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_marknetworkskipped",
@@ -37163,7 +37438,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L343",
+      "source_location": "L359",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask2",
@@ -37175,7 +37450,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L527",
+      "source_location": "L557",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -37316,7 +37591,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L329",
+      "source_location": "L345",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask2",
@@ -37381,7 +37656,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/executor.js",
-      "source_location": "L201",
+      "source_location": "L248",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -37597,7 +37872,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/executor.js",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_executor_rundailyjob",
@@ -37609,7 +37884,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/executor.js",
-      "source_location": "L82",
+      "source_location": "L129",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_executor_rundailyjob",
@@ -37645,7 +37920,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/executor.js",
-      "source_location": "L141",
+      "source_location": "L188",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_executor_rundailyjob",
@@ -37657,7 +37932,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/executor.js",
-      "source_location": "L185",
+      "source_location": "L232",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_executor_rundailyjob",
@@ -37693,7 +37968,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L483",
+      "source_location": "L513",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_resumependingretries",
@@ -37705,7 +37980,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L515",
+      "source_location": "L545",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_scanmisseddays",
@@ -37717,7 +37992,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L388",
+      "source_location": "L418",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_scheduleretry",
@@ -37729,7 +38004,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L539",
+      "source_location": "L569",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -37865,6 +38140,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_firebase",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -37873,6 +38160,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
+      "target": "board_firebase_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
       "target": "board_firebase_db",
       "confidence_score": 1.0
     },
@@ -37894,7 +38193,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L410",
+      "source_location": "L440",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_marknetworkskipped",
@@ -37906,10 +38205,34 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L264",
+      "source_location": "L277",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask1",
+      "target": "board_firebase_servertimestamp"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_firebase_servertimestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L217",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_runleaderboardanalytics",
       "target": "board_firebase_servertimestamp"
     },
     {
@@ -37949,7 +38272,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L368",
+      "source_location": "L628",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index",
+      "target": "board_index_fs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L398",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -37960,7 +38294,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -37971,7 +38305,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L406",
+      "source_location": "L436",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -37982,7 +38316,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -37993,7 +38327,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L9",
+      "source_location": "L629",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index",
+      "target": "board_index_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38004,7 +38349,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L58",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38026,7 +38371,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L449",
+      "source_location": "L631",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index",
+      "target": "board_index_recordlocaltaskrun",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L479",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38037,7 +38393,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38056,10 +38412,21 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index",
+      "target": "board_index_runleaderboardanalytics",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L592",
+      "source_location": "L673",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -38071,7 +38438,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L592",
+      "source_location": "L673",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -38080,10 +38447,22 @@
       "confidence_score": 0.5
     },
     {
+      "relation": "indirect_call",
+      "confidence": "INFERRED",
+      "source_file": "Board/index.js",
+      "source_location": "L673",
+      "weight": 1.0,
+      "_origin": "ast",
+      "context": "collection",
+      "source": "board_index",
+      "target": "board_index_runtask3",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L498",
+      "source_location": "L528",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38094,7 +38473,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L422",
+      "source_location": "L452",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38105,7 +38484,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L374",
+      "source_location": "L404",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38127,7 +38506,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38138,7 +38517,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L592",
+      "source_location": "L673",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -38150,7 +38529,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38161,7 +38540,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38177,7 +38556,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
-      "target": "board_logger",
+      "target": "board_leaderboardanalytics",
       "confidence_score": 1.0
     },
     {
@@ -38189,7 +38568,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
-      "target": "board_logger_logger",
+      "target": "board_leaderboardanalytics_runleaderboardanalytics",
       "confidence_score": 1.0
     },
     {
@@ -38201,7 +38580,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
-      "target": "board_pending",
+      "target": "board_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index",
+      "target": "board_logger_logger",
       "confidence_score": 1.0
     },
     {
@@ -38213,6 +38604,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
+      "target": "board_pending",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index",
       "target": "board_retry",
       "confidence_score": 1.0
     },
@@ -38221,7 +38624,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38233,7 +38636,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38253,7 +38656,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L288",
+      "source_location": "L304",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask1",
@@ -38265,7 +38668,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_waitforturn",
@@ -38277,7 +38680,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L126",
+      "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask1",
@@ -38289,7 +38692,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L315",
+      "source_location": "L331",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask2",
@@ -38301,11 +38704,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L137",
+      "source_location": "L384",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_index_runtask1",
-      "target": "board_index_openbrowser",
+      "source": "board_index_runtask3",
+      "target": "board_index_waitforturn",
       "confidence_score": 1.0
     },
     {
@@ -38313,7 +38716,31 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L251",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index_runtask1",
+      "target": "board_index_openbrowser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "source_file": "Board/index.js",
+      "source_location": "L388",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index_runtask3",
+      "target": "board_index_openbrowser",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L264",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask1",
@@ -38325,7 +38752,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L537",
+      "source_location": "L567",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -38338,7 +38765,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L347",
+      "source_location": "L363",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask2",
@@ -38350,7 +38777,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L328",
+      "source_location": "L344",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_runtask2",
@@ -38361,7 +38788,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L436",
+      "source_location": "L466",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_scheduledailyrewardretry",
@@ -38373,7 +38800,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L538",
+      "source_location": "L568",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -38384,8 +38811,32 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L450",
+      "source_location": "L388",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index_runtask3",
+      "target": "board_leaderboardanalytics_runleaderboardanalytics"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L570",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index_start",
+      "target": "board_index_runtask3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L480",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_resumependingretries",
@@ -38397,7 +38848,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L486",
+      "source_location": "L516",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_resumependingretries",
@@ -38409,7 +38860,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L379",
+      "source_location": "L409",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_scheduleretry",
@@ -38421,7 +38872,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L546",
+      "source_location": "L577",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -38433,7 +38884,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L471",
+      "source_location": "L501",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_resumependingretries",
@@ -38445,7 +38896,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L458",
+      "source_location": "L488",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_resumependingretries",
@@ -38457,7 +38908,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L542",
+      "source_location": "L573",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -38469,7 +38920,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L529",
+      "source_location": "L559",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -38481,11 +38932,23 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L535",
+      "source_location": "L565",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
       "target": "board_index_scanmisseddays",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/index.js",
+      "source_location": "L580",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_index_start",
+      "target": "board_index_recordlocaltaskrun",
       "confidence_score": 1.0
     },
     {
@@ -39379,6 +39842,388 @@
       "_origin": "ast",
       "source": "board_leaderboard_leaderboardmodule_autosave",
       "target": "board_leaderboard_leaderboardmodule_save",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "confidence": "INFERRED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L295",
+      "weight": 1.0,
+      "_origin": "ast",
+      "context": "collection",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_buildanalytics",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_classkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_db_servertimestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_fetchprevioussnapshots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_findbaseline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L249",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_fs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_growthagainst",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_mapsnapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_normalizename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_parsepoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L250",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "confidence": "INFERRED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L294",
+      "weight": 1.0,
+      "_origin": "ast",
+      "context": "collection",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_runleaderboardanalytics",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "indirect_call",
+      "confidence": "INFERRED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L296",
+      "weight": 1.0,
+      "_origin": "ast",
+      "context": "collection",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_savelocalpointhistory",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_scrapeleaderboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_summarizegrade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_leaderboardanalytics_todatekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics",
+      "target": "board_logger_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_classkey",
+      "target": "board_leaderboardanalytics_normalizename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_buildanalytics",
+      "target": "board_leaderboardanalytics_classkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_growthagainst",
+      "target": "board_leaderboardanalytics_classkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_mapsnapshot",
+      "target": "board_leaderboardanalytics_classkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_buildanalytics",
+      "target": "board_leaderboardanalytics_todatekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_growthagainst",
+      "target": "board_leaderboardanalytics_parsepoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L202",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_runleaderboardanalytics",
+      "target": "board_leaderboardanalytics_scrapeleaderboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_buildanalytics",
+      "target": "board_leaderboardanalytics_findbaseline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_buildanalytics",
+      "target": "board_leaderboardanalytics_mapsnapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_buildanalytics",
+      "target": "board_leaderboardanalytics_growthagainst",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L170",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_buildanalytics",
+      "target": "board_leaderboardanalytics_summarizegrade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_runleaderboardanalytics",
+      "target": "board_leaderboardanalytics_buildanalytics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L207",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_runleaderboardanalytics",
+      "target": "board_leaderboardanalytics_fetchprevioussnapshots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/leaderboardAnalytics.js",
+      "source_location": "L226",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_leaderboardanalytics_runleaderboardanalytics",
+      "target": "board_leaderboardanalytics_savelocalpointhistory",
       "confidence_score": 1.0
     },
     {
@@ -40378,7 +41223,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L1753",
+      "source_location": "L1794",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -40389,7 +41234,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L1829",
+      "source_location": "L1871",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -40400,7 +41245,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L1792",
+      "source_location": "L1833",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -40411,7 +41256,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L1724",
+      "source_location": "L1765",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -40432,7 +41277,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1841",
+      "source_location": "L1883",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_syncfromfirebase",
@@ -40444,7 +41289,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1735",
+      "source_location": "L1841",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_synctofirebase",
+      "target": "js_app_app"
+    },
+    {
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/app.js",
+      "source_location": "L1776",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_trylogin",
@@ -40456,7 +41313,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1731",
+      "source_location": "L1772",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_trylogin",
@@ -40468,7 +41325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1759",
+      "source_location": "L1800",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_setuppassword",
@@ -40480,7 +41337,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1803",
+      "source_location": "L1845",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_synctofirebase",
@@ -40492,7 +41349,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1800",
+      "source_location": "L1842",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_synctofirebase",
@@ -40504,7 +41361,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1854",
+      "source_location": "L1896",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_syncfromfirebase",
@@ -40516,7 +41373,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "js/app.js",
-      "source_location": "L1837",
+      "source_location": "L1879",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app_syncfromfirebase",
@@ -40684,6 +41541,17 @@
       "_origin": "ast",
       "source": "js_ui_detail",
       "target": "js_ui_detail_detailui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/ui/leaderboard_analytics.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_ui_leaderboard_analytics",
+      "target": "js_ui_leaderboard_analytics_leaderboardanalyticsui",
       "confidence_score": 1.0
     },
     {

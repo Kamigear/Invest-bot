@@ -1,12 +1,12 @@
-# Graph Report - Investation  (2026-08-25)
+# Graph Report - Investation  (2026-08-24)
 
 ## Corpus Check
-- 122 files · ~116,317 words
+- 122 files · ~106,115 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2164 nodes · 2621 edges · 153 communities (112 shown, 41 thin omitted)
-- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 163 edges (avg confidence: 0.71)
+- 2157 nodes · 2608 edges · 165 communities (124 shown, 41 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 162 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
@@ -127,19 +127,20 @@
 - _filter_anti_patterns_for_mode
 - generate_design_system
 - _select_palette_for_mode
-- none
+- alert.js
 - shadow
 - Slides
 - Brand Guidelines Template
 - lg
-- 800
+- xl
 - md
-- 950
+- none
 - validate_data.py
 - test_sync_brand_to_tokens.py
 - main
 - shadcn_add.py
 - .__init__
+- search.py
 - slides-create.md
 - create.md
 - .test_add_components_with_overwrite
@@ -164,9 +165,20 @@
 - .test_custom_output_path
 - .test_base_config_structure
 - default
+- input
+- radius
 - padding-y
 - default
+- destructive
+- destructive-foreground
+- muted
+- secondary-foreground
+- ring
+- xl
+- search.py
+- padding-y
 - leaderboard_analytics.js
+- secondary-foreground
 
 ## God Nodes (most connected - your core abstractions)
 1. `TailwindConfigGenerator` - 57 edges
@@ -199,7 +211,7 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (153 total, 41 thin omitted)
+## Communities (165 total, 41 thin omitted)
 
 ### Community 0 - "logger.js"
 Cohesion: 0.14
@@ -210,16 +222,16 @@ Cohesion: 0.11
 Nodes (17): axios, dependencies, axios, dotenv, firebase-admin, node-cron, puppeteer, description (+9 more)
 
 ### Community 2 - "executor.js"
-Cohesion: 0.14
-Nodes (19): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, runDailyJob(), { sendAlert }, { withRetry, isTransientError } (+11 more)
+Cohesion: 0.13
+Nodes (17): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, { sendAlert }, { withRetry, isTransientError }, admin (+9 more)
 
 ### Community 3 - "app.js"
-Cohesion: 0.16
+Cohesion: 0.15
 Nodes (12): Architecture & Logic, Invest Bot, Setup di OrangePi, App, LiveMode, setupPassword(), syncFromFirebase(), syncToFirebase() (+4 more)
 
 ### Community 4 - "index.js"
-Cohesion: 0.12
-Nodes (27): { claimDailyReward }, cron, { db, serverTimestamp }, fs, getTodayId(), { Logger }, markNetworkSkipped(), openBrowser() (+19 more)
+Cohesion: 0.14
+Nodes (28): sendAlert(), claimDailyReward(), runDailyJob(), { claimDailyReward }, cron, { db, serverTimestamp }, getTodayId(), { Logger } (+20 more)
 
 ### Community 5 - "graphify Rules"
 Cohesion: 0.18
@@ -239,7 +251,7 @@ Nodes (3): ExportCSV, ExportExcel, ExportPDF
 
 ### Community 9 - "ledger.js"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, full, none, none
+Nodes (8): $type, $value, $type, $value, radius, full, md, md
 
 ### Community 15 - "AGENTS.md"
 Cohesion: 0.07
@@ -270,16 +282,16 @@ Cohesion: 0.06
 Nodes (42): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+34 more)
 
 ### Community 30 - "color"
-Cohesion: 0.04
-Nodes (48): $type, $value, background, destructive, destructive-foreground, foreground, muted, muted-foreground (+40 more)
+Cohesion: 0.11
+Nodes (19): $type, $value, background, foreground, muted-foreground, primary, primary-hover, secondary (+11 more)
 
 ### Community 31 - "search"
 Cohesion: 0.07
 Nodes (28): BM25, detect_domain(), _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), _normalize(), Apply synonym substitution before tokenizing. (+20 more)
 
 ### Community 32 - "button"
-Cohesion: 0.06
-Nodes (45): $type, $value, $type, $value, bg, fg, font-size, hover-bg (+37 more)
+Cohesion: 0.20
+Nodes (12): $type, $value, bg, bg, padding, shadow, card, bg (+4 more)
 
 ### Community 33 - "Tailwind CSS Utility Reference"
 Cohesion: 0.05
@@ -570,12 +582,12 @@ Cohesion: 0.28
 Nodes (8): CompletedProcess, Path, Regression tests for validate-tokens.cjs.  The validator used to skip any line c, A hardcoded hex on the same line as a var() token is still a violation., A line that references only tokens produces no false positives., _run(), test_flags_hardcoded_hex_sharing_line_with_token(), test_token_only_line_reports_no_violation()
 
 ### Community 105 - "retry.js"
-Cohesion: 0.24
-Nodes (12): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, runTask2(), getErrorCode(), isTransientError(), { Logger } (+4 more)
+Cohesion: 0.26
+Nodes (10): { isTransientError }, { Logger }, puppeteer, getErrorCode(), isTransientError(), { Logger }, sleep(), TRANSIENT_GRPC_CODES (+2 more)
 
 ### Community 106 - "radius"
-Cohesion: 0.29
-Nodes (5): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation.      Args:         query: Search, TestPersistence
+Cohesion: 0.67
+Nodes (4): $type, $value, none, none
 
 ### Community 107 - "Slides Reference"
 Cohesion: 0.29
@@ -594,20 +606,20 @@ Cohesion: 0.43
 Nodes (3): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., TestAntiPatternGating
 
 ### Community 111 - "generate_design_system"
-Cohesion: 0.47
-Nodes (6): sm, shadow, sm, sm, $type, $value
+Cohesion: 0.29
+Nodes (5): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation.      Args:         query: Search, TestPersistence
 
 ### Community 112 - "_select_palette_for_mode"
 Cohesion: 0.43
 Nodes (3): Pick the highest-ranked palette matching the resolved mode.      Only the dark c, _select_palette_for_mode(), TestPaletteSelection
 
-### Community 113 - "none"
-Cohesion: 0.60
-Nodes (5): lg, $type, $value, lg, lg
+### Community 113 - "alert.js"
+Cohesion: 0.15
+Nodes (12): component, $type, $value, dark, semantic, $schema, $type, $value (+4 more)
 
 ### Community 114 - "shadow"
-Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Cohesion: 0.47
+Nodes (6): sm, shadow, sm, sm, $type, $value
 
 ### Community 115 - "Slides"
 Cohesion: 0.33
@@ -618,44 +630,94 @@ Cohesion: 0.40
 Nodes (4): Brand Guidelines Template, Document Structure, Extractable Fields, Usage
 
 ### Community 117 - "lg"
-Cohesion: 0.67
-Nodes (4): xl, xl, $type, $value
+Cohesion: 0.60
+Nodes (5): lg, $type, $value, lg, lg
 
-### Community 118 - "800"
+### Community 118 - "xl"
 Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+Nodes (4): $type, $value, default, default
 
 ### Community 119 - "md"
 Cohesion: 0.07
 Nodes (26): CONFIG, executeMockSession(), puppeteer, runMockBot(), author, dependencies, puppeteer, description (+18 more)
 
+### Community 120 - "none"
+Cohesion: 0.20
+Nodes (10): fg, font-size, hover-bg, button, $type, $value, $type, $value (+2 more)
+
 ### Community 121 - "validate_data.py"
 Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
+
+### Community 126 - "search.py"
+Cohesion: 0.29
+Nodes (8): padding-x, input, $type, $value, focus-ring, padding-x, $type, $value
 
 ### Community 150 - "default"
 Cohesion: 0.15
 Nodes (3): generateId(), LeaderboardModule, toDateKey()
 
+### Community 151 - "input"
+Cohesion: 0.60
+Nodes (5): $type, $value, border, border, border
+
+### Community 152 - "radius"
+Cohesion: 0.60
+Nodes (5): radius, radius, radius, $type, $value
+
 ### Community 153 - "padding-y"
-Cohesion: 0.22
-Nodes (17): buildAnalytics(), classKey(), { db, serverTimestamp }, fetchPreviousSnapshots(), findBaseline(), fs, growthAgainst(), { Logger } (+9 more)
+Cohesion: 0.26
+Nodes (14): serverTimestamp(), buildAnalytics(), classKey(), { db, serverTimestamp }, fetchPreviousSnapshots(), findBaseline(), growthAgainst(), { Logger } (+6 more)
 
 ### Community 154 - "default"
 Cohesion: 0.33
-Nodes (6): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji()
+Nodes (5): axios, https, httpsAgent, { Logger }, stripEmoji()
+
+### Community 155 - "destructive"
+Cohesion: 0.67
+Nodes (3): destructive, $type, $value
+
+### Community 156 - "destructive-foreground"
+Cohesion: 0.67
+Nodes (3): destructive-foreground, $type, $value
+
+### Community 157 - "muted"
+Cohesion: 0.67
+Nodes (3): muted, $type, $value
+
+### Community 158 - "secondary-foreground"
+Cohesion: 0.67
+Nodes (3): primary-foreground, $type, $value
+
+### Community 159 - "ring"
+Cohesion: 0.67
+Nodes (3): ring, $type, $value
+
+### Community 160 - "xl"
+Cohesion: 0.67
+Nodes (4): xl, xl, $type, $value
+
+### Community 162 - "padding-y"
+Cohesion: 0.67
+Nodes (4): padding-y, padding-y, $type, $value
+
+### Community 164 - "secondary-foreground"
+Cohesion: 0.67
+Nodes (3): secondary-foreground, $type, $value
 
 ## Knowledge Gaps
-- **1024 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1019 more)
+- **1020 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1015 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `ledger.js`, `generate_design_system`, `File Changes`, `color`?**
+- **Why does `primitive` connect `primitive` to `spacing`, `fontSize`, `ledger.js`, `alert.js`, `shadow`, `File Changes`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `BM25` connect `BM25` to `radius`, `DesignSystemGenerator`, `search`?**
+- **Why does `BM25` connect `BM25` to `DesignSystemGenerator`, `generate_design_system`, `search`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `semantic` connect `alert.js` to `color`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 36 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `.test_node_check_parses_generated_config()`) actually correct?**
   _`TailwindConfigGenerator` has 36 INFERRED edges - model-reasoned connections that need verification._
@@ -664,6 +726,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 16 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestDomainDetection` and `TestPersistence`) actually correct?**
   _`DesignSystemGenerator` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
-  _1024 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `logger.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+  _1020 weakly-connected nodes found - possible documentation gaps or missing edges._

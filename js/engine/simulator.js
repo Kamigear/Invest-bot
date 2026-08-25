@@ -298,7 +298,33 @@ const Simulator = (() => {
       totalLedgerNet = Calculator.fmt(totalLedgerNet + ledgerNet);
 
       // ── Step 5: Optimizer Decision ──────────────────────────────
-      const result = Optimizer.decide(day, balance, [...activeInvestments], dayCfg, balanceBefore);
+      const overrides = config.dayOverrides || {};
+      const hasDayOverride = overrides[day] !== undefined || overrides[String(day)] !== undefined || (today && overrides[today] !== undefined);
+      const rawOverride = overrides[day] ?? overrides[String(day)] ?? (today ? overrides[today] : undefined);
+      const overrideAmt = hasDayOverride ? Math.max(0, parseFloat(rawOverride) || 0) : undefined;
+
+      let result;
+      if (hasDayOverride) {
+        if (overrideAmt > 0) {
+          result = {
+            decision: 'INVEST',
+            amount: Math.min(balance, overrideAmt),
+            lostDecimal: Calculator.getLostDecimal(overrideAmt, dayCfg),
+            reason: [`Manual override disetel ke ${overrideAmt}`],
+            isOverride: true
+          };
+        } else {
+          result = {
+            decision: 'SKIP',
+            amount: 0,
+            lostDecimal: 0,
+            reason: ['Manual override dibatalkan (0)'],
+            isOverride: true
+          };
+        }
+      } else {
+        result = Optimizer.decide(day, balance, [...activeInvestments], dayCfg, balanceBefore);
+      }
 
       let investedAmount = 0;
       let lostDecimal = 0;
@@ -330,6 +356,7 @@ const Simulator = (() => {
           expectedReturn: inv.expectedReturn,
           profit: Calculator.fmt(inv.expectedReturn - investedAmount),
           balanceBefore,
+          isOverride: hasDayOverride,
         });
       } else if (result.decision === 'WAIT') {
         totalWaitDays++;
@@ -395,11 +422,13 @@ const Simulator = (() => {
         ledgerInvestments: ledgerInvestmentsToday,
         ledgerInvestTotal: Calculator.fmt(ledgerInvestmentsToday.reduce((s, inv) => s + inv.amount, 0)),
         decision: result.decision,
-        decisionLabel: getDecisionLabel(result, dayCfg),
+        decisionLabel: hasDayOverride ? (result.decision === 'INVEST' ? `📈 Invest (Manual: ${investedAmount})` : '⏸ Skip (Manual: 0)') : getDecisionLabel(result, dayCfg),
         waitDays: result.waitDays || 0,
         projectedInvest: result.projectedInvest || 0,
         projectedReturn: result.projectedReturn || 0,
         reason: result.reason || [],
+        isOverride: hasDayOverride,
+        overrideAmount: overrideAmt,
         flags: {
           isInvestDay: result.decision === 'INVEST',
           isMaturityDay: maturedToday.length > 0 || ledgerMaturityTotal > 0,
@@ -408,6 +437,7 @@ const Simulator = (() => {
           isDelayDay: result.decision === 'WAIT',
           isSweetSpot: result.flags?.isSweetSpot || false,
           isManualIncomeDay: dayManualIncome > 0,
+          isOverride: hasDayOverride,
           hasLedgerEntry: todayTxns.length > 0,
           hasLedgerInvestment: ledgerInvestmentsToday.length > 0,
           hasLedgerMaturity: ledgerMaturityTotal > 0,
