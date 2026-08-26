@@ -141,7 +141,7 @@ async function runTask1() {
     const page = setup.page;
 
     Logger.info("Membuka halaman login rep_panel.php", { task: "TUGAS_1", url: panelUrl });
-    await page.goto(panelUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+    await page.goto(panelUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     const isLoginForm = await page.evaluate(() => !!document.querySelector('select[name="class_id"]'));
     if (isLoginForm) {
@@ -150,7 +150,7 @@ async function runTask1() {
       await page.type('input[name="password"]', password);
 
       await Promise.all([
-        page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
+        page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 45000 }),
         page.click('button[name="login"]')
       ]);
     }

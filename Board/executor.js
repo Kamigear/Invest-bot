@@ -185,7 +185,10 @@ async function runDailyJob(targetDate) {
       plan: '30 days'
     });
 
-    const result = await executeInvest(scheduleEntry);
+    const result = await withRetry(
+      () => executeInvest(scheduleEntry),
+      { label: `execute-invest:${entryId}`, retries: 3, baseDelayMs: 5000 }
+    );
 
     if (result.success) {
       Logger.success('Investasi berhasil dieksekusi', {

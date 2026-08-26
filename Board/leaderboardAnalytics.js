@@ -11,7 +11,41 @@ function normalizeName(name) {
     .toLowerCase();
 }
 
+const KNOWN_CLASS_MAP = [
+  { id: '1', grade: 10, namePatterns: ['10_1km', 'maranthon', '10-1'] },
+  { id: '2', grade: 10, namePatterns: ['10-2', 'class 10-2'] },
+  { id: '3', grade: 10, namePatterns: ['993-7', 'kent', 'gunawan'] },
+  { id: '4', grade: 10, namePatterns: ['kaleb', 'mr kaleb', 'class mr kaleb'] },
+  { id: '5', grade: 10, namePatterns: ['10-5', 'class 10-5'] },
+  { id: '6', grade: 10, namePatterns: ['10-6'] },
+  { id: '7', grade: 10, namePatterns: ['10-7'] },
+  { id: '8', grade: 11, namePatterns: ['mie gacoan', 'gacoan'] },
+  { id: '9', grade: 11, namePatterns: ['dubai', 'labubu', '11-b'] },
+  { id: '10', grade: 12, namePatterns: ['nasipadang', 'cabeijo', 'kol'] },
+  { id: '11', grade: 12, namePatterns: ['12-b', 'class 12-b'] },
+  { id: '13', grade: 0,  namePatterns: ['admin'] }
+];
+
+function resolveClassId(row) {
+  if (row.classId != null && String(row.classId).trim() !== '') {
+    return String(row.classId).trim();
+  }
+  const norm = normalizeName(row.name);
+  for (const item of KNOWN_CLASS_MAP) {
+    for (const pat of item.namePatterns) {
+      if (norm.includes(pat)) {
+        return item.id;
+      }
+    }
+  }
+  return null;
+}
+
 function classKey(row) {
+  const cid = resolveClassId(row);
+  if (cid) {
+    return `id::${cid}`;
+  }
   return `${row.grade}::${normalizeName(row.name)}`;
 }
 
@@ -29,13 +63,13 @@ function parsePoints(raw) {
 }
 
 async function scrapeLeaderboard(page, sourceUrl) {
-  await page.goto(sourceUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+  await page.goto(sourceUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
-  return page.evaluate(() => {
+  const rows = await page.evaluate(() => {
     const sections = Array.from(document.querySelectorAll('.board-section'));
     const sourceSections = sections.length ? sections : Array.from(document.querySelectorAll('[id^="grade-"]'));
 
-    const rows = [];
+    const parsedRows = [];
     sourceSections.forEach(section => {
       const idGrade = String(section.id || '').match(/grade-(\d+)/i);
       const headingGrade = (section.querySelector('h2')?.innerText || '').match(/kelas\s*(\d+)/i);
@@ -52,12 +86,39 @@ async function scrapeLeaderboard(page, sourceUrl) {
         const total = parseInt(totalText.replace(/[^\d-]/g, ''), 10) || 0;
 
         if (name) {
-          rows.push({ grade, rank, name, total });
+          parsedRows.push({ grade, rank, name, total });
         }
       });
     });
 
-    return rows;
+    return parsedRows;
+  });
+
+  // Dynamically fetch rep_panel.php options if possible to attach classId (value)
+  let selectOptions = [];
+  try {
+    const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
+    await page.goto(panelUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
+    selectOptions = await page.evaluate(() => {
+      const select = document.querySelector('select[name="class_id"]');
+      if (!select) return [];
+      return Array.from(select.querySelectorAll('option'))
+        .map(opt => ({
+          value: opt.value ? opt.value.trim() : '',
+          text: opt.innerText ? opt.innerText.trim() : ''
+        }))
+        .filter(o => o.value);
+    });
+  } catch (_) { /* continue if rep_panel unreachable */ }
+
+  return rows.map(r => {
+    const norm = normalizeName(r.name);
+    const matchedOpt = selectOptions.find(o => normalizeName(o.text) === norm);
+    const cid = matchedOpt ? matchedOpt.value : resolveClassId(r);
+    return {
+      ...r,
+      classId: cid || null
+    };
   });
 }
 
@@ -278,7 +339,7 @@ function saveLocalPointHistory(analytics) {
       date: todayDateStr,
       scrapedAt: analytics.scrapedAt,
       scrapedAtMs: analytics.scrapedAtMs,
-      classes: (analytics.classes || []).map(c => ({ grade: c.grade, name: c.name, total: c.total }))
+      classes: (analytics.classes || []).map(c => ({ classId: c.classId || resolveClassId(c), grade: c.grade, name: c.name, total: c.total }))
     };
 
     if (!Array.isArray(historyData.snapshots)) historyData.snapshots = [];

@@ -34,7 +34,7 @@ async function claimDailyReward() {
 
     Logger.info("Membuka halaman login", { url: panelUrl });
 
-    await page.goto(panelUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+    await page.goto(panelUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     Logger.info("Mengisi data login", { classId });
 
@@ -43,7 +43,7 @@ async function claimDailyReward() {
     await page.type('input[name="password"]', password);
 
     await Promise.all([
-      page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
+      page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 45000 }),
       page.click('button[name="login"]')
     ]);
 

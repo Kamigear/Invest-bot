@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const { Logger } = require('./logger');
+const { isTransientError } = require('./retry');
 
 /**
  * Automate investment form submission on rep_panel.php using Puppeteer
@@ -32,7 +33,7 @@ async function executeInvest(entry) {
 
     Logger.info("Membuka halaman login rep_panel.php", { url: panelUrl });
 
-    await page.goto(panelUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+    await page.goto(panelUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     Logger.info("Mengisi data login", { classId });
 
@@ -41,7 +42,7 @@ async function executeInvest(entry) {
     await page.type('input[name="password"]', password);
 
     await Promise.all([
-      page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
+      page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 45000 }),
       page.click('button[name="login"]')
     ]);
 
@@ -66,7 +67,7 @@ async function executeInvest(entry) {
     Logger.info("Mengklik tombol Invest", { amount: entry.amount });
 
     await Promise.all([
-      page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 }),
+      page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 45000 }),
       page.click('button.btn-green')
     ]);
 
@@ -94,6 +95,11 @@ async function executeInvest(entry) {
     return { success: true, data: "Investasi berhasil disubmit (tidak ada pesan error dari server)", error: null };
 
   } catch (error) {
+    if (isTransientError(error)) {
+      Logger.warning("Jaringan gagal saat proses investasi (re-throw untuk retry)", { error: error.message });
+      throw error;
+    }
+
     Logger.critical("Critical error dalam proses investasi", { error: error.message, stack: error.stack });
     return { success: false, data: null, error: error.message };
   } finally {
