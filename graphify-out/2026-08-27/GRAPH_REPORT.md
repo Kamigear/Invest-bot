@@ -1,16 +1,16 @@
-# Graph Report - Investation  (2026-08-27)
+# Graph Report - Investation  (2026-08-26)
 
 ## Corpus Check
-- 122 files · ~116,835 words
+- 122 files · ~116,645 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2170 nodes · 2643 edges · 153 communities (112 shown, 41 thin omitted)
+- 2167 nodes · 2632 edges · 152 communities (111 shown, 41 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 163 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `821f9333`
+- Built from commit: `67dc6909`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -140,7 +140,6 @@
 - main
 - shadcn_add.py
 - .__init__
-- default
 - slides-create.md
 - create.md
 - .test_add_components_with_overwrite
@@ -199,7 +198,7 @@
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 - **Simulation Engine Core** — js_engine_calculator, js_engine_optimizer, js_engine_simulator, js_engine_ledger [EXTRACTED 0.95]
 
-## Communities (153 total, 41 thin omitted)
+## Communities (152 total, 41 thin omitted)
 
 ### Community 0 - "logger.js"
 Cohesion: 0.14
@@ -210,16 +209,16 @@ Cohesion: 0.11
 Nodes (17): axios, dependencies, axios, dotenv, firebase-admin, node-cron, puppeteer, description (+9 more)
 
 ### Community 2 - "executor.js"
-Cohesion: 0.16
-Nodes (13): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, { sendAlert }, { withRetry, isTransientError }, admin (+5 more)
+Cohesion: 0.12
+Nodes (21): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji(), { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY (+13 more)
 
 ### Community 3 - "app.js"
 Cohesion: 0.16
 Nodes (12): Architecture & Logic, Invest Bot, Setup di OrangePi, App, LiveMode, setupPassword(), syncFromFirebase(), syncToFirebase() (+4 more)
 
 ### Community 4 - "index.js"
-Cohesion: 0.12
-Nodes (35): sendAlert(), claimDailyReward(), runDailyJob(), serverTimestamp(), acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp } (+27 more)
+Cohesion: 0.10
+Nodes (33): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, serverTimestamp(), { claimDailyReward }, cron, { db, serverTimestamp } (+25 more)
 
 ### Community 5 - "graphify Rules"
 Cohesion: 0.18
@@ -239,7 +238,7 @@ Nodes (3): ExportCSV, ExportExcel, ExportPDF
 
 ### Community 9 - "ledger.js"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, full, md, md
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 15 - "AGENTS.md"
 Cohesion: 0.07
@@ -570,8 +569,8 @@ Cohesion: 0.28
 Nodes (8): CompletedProcess, Path, Regression tests for validate-tokens.cjs.  The validator used to skip any line c, A hardcoded hex on the same line as a var() token is still a violation., A line that references only tokens produces no false positives., _run(), test_flags_hardcoded_hex_sharing_line_with_token(), test_token_only_line_reports_no_violation()
 
 ### Community 105 - "retry.js"
-Cohesion: 0.18
-Nodes (15): { isTransientError }, { Logger }, puppeteer, executeInvest(), { isTransientError }, { Logger }, puppeteer, Logger (+7 more)
+Cohesion: 0.24
+Nodes (11): executeInvest(), { isTransientError }, { Logger }, puppeteer, getErrorCode(), isTransientError(), { Logger }, sleep() (+3 more)
 
 ### Community 106 - "radius"
 Cohesion: 0.29
@@ -606,8 +605,8 @@ Cohesion: 0.60
 Nodes (5): lg, $type, $value, lg, lg
 
 ### Community 114 - "shadow"
-Cohesion: 0.33
-Nodes (5): axios, https, httpsAgent, { Logger }, stripEmoji()
+Cohesion: 0.67
+Nodes (4): $type, $value, md, md
 
 ### Community 115 - "Slides"
 Cohesion: 0.33
@@ -632,10 +631,6 @@ Nodes (4): $type, $value, none, none
 ### Community 121 - "validate_data.py"
 Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
-
-### Community 126 - "default"
-Cohesion: 0.67
-Nodes (4): $type, $value, default, default
 
 ### Community 150 - "default"
 Cohesion: 0.15

@@ -30,14 +30,61 @@ const leaderboardAnalyticsCronSchedule = process.env.LEADERBOARD_ANALYTICS_CRON_
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 let isBrowserBusy = false;
+let browserBusySince = null;
+const MAX_LOCK_DURATION_MS = parseInt(process.env.MAX_LOCK_DURATION_MS, 10) || 180000; // 3 minutes
 
 async function waitForTurn(taskName) {
   if (isBrowserBusy) {
-    Logger.warning(`${taskName} sedang mengantre, menunggu sesi browser lain selesai...`, { taskName });
+    if (browserBusySince && (Date.now() - browserBusySince > MAX_LOCK_DURATION_MS)) {
+      Logger.warning(`Lock browser busy kedaluwarsa (>3 menit) oleh tugas sebelumnya. Mereset paksa kuncian!`, { taskName });
+      isBrowserBusy = false;
+      browserBusySince = null;
+    } else {
+      Logger.warning(`${taskName} sedang mengantre, menunggu sesi browser lain selesai...`, { taskName });
+    }
   }
   while (isBrowserBusy) {
+    if (browserBusySince && (Date.now() - browserBusySince > MAX_LOCK_DURATION_MS)) {
+      Logger.warning(`Lock browser busy kedaluwarsa saat menunggu. Mereset paksa kuncian!`, { taskName });
+      isBrowserBusy = false;
+      browserBusySince = null;
+      break;
+    }
     await sleep(1000);
   }
+}
+
+function acquireBrowserLock() {
+  isBrowserBusy = true;
+  browserBusySince = Date.now();
+}
+
+function releaseBrowserLock() {
+  isBrowserBusy = false;
+  browserBusySince = null;
+}
+
+function withTaskTimeout(promiseFn, timeoutMs = 150000, taskName = 'task') {
+  return new Promise((resolve, reject) => {
+    let timer = setTimeout(() => {
+      timer = null;
+      reject(new Error(`Batas waktu eksekusi (${timeoutMs / 1000}s) terlampaui untuk ${taskName}. Sesi browser membeku.`));
+    }, timeoutMs);
+
+    promiseFn()
+      .then(res => {
+        if (timer) {
+          clearTimeout(timer);
+          resolve(res);
+        }
+      })
+      .catch(err => {
+        if (timer) {
+          clearTimeout(timer);
+          reject(err);
+        }
+      });
+  });
 }
 
 async function openBrowser() {
@@ -126,7 +173,7 @@ function processRawPerks(rawPerks) {
 // ==========================================
 async function runTask1() {
   await waitForTurn("TUGAS_1");
-  isBrowserBusy = true;
+  acquireBrowserLock();
 
   Logger.info("Memulai proses cek saldo, perks & klaim easter egg", { task: "TUGAS_1" });
 
@@ -317,10 +364,10 @@ async function runTask1() {
     Logger.error(`Proses terhenti karena kesalahan: ${error.message}`, { task: "TUGAS_1", error: error.message });
   } finally {
     if (browser) {
-      await browser.close();
+      try { await browser.close(); } catch (_) {}
       Logger.info("Sesi browser ditutup dan memori dibersihkan", { task: "TUGAS_1" });
     }
-    isBrowserBusy = false;
+    releaseBrowserLock();
   }
 }
 
@@ -329,36 +376,38 @@ async function runTask1() {
 // ==========================================
 async function runTask2() {
   await waitForTurn("TUGAS_2");
-  isBrowserBusy = true;
+  acquireBrowserLock();
 
   Logger.info("Memulai proses klaim daily reward", { task: "TUGAS_2" });
 
   const DAILY_REWARD_ENABLED = process.env.DAILY_REWARD_ENABLED !== 'false' && process.env.DAILY_REWARD_ENABLED !== '0';
   if (!DAILY_REWARD_ENABLED) {
     Logger.info("Daily reward dilewati (fitur dinonaktifkan)", { task: "TUGAS_2", enabled: false });
-    isBrowserBusy = false;
+    releaseBrowserLock();
     return { status: 'SKIPPED', task: 'TUGAS_2' };
   }
 
   try {
-    const result = await withRetry(
-      () => claimDailyReward(),
-      { label: 'daily-reward', retries: 3, baseDelayMs: 5000 }
-    );
+    return await withTaskTimeout(async () => {
+      const result = await withRetry(
+        () => claimDailyReward(),
+        { label: 'daily-reward', retries: 3, baseDelayMs: 5000 }
+      );
 
-    if (result.success) {
-      if (result.alreadyClaimed) {
-        Logger.success("Daily reward sudah diklaim hari ini", { task: "TUGAS_2", alreadyClaimed: true });
+      if (result.success) {
+        if (result.alreadyClaimed) {
+          Logger.success("Daily reward sudah diklaim hari ini", { task: "TUGAS_2", alreadyClaimed: true });
+        } else {
+          Logger.success(`Daily reward berhasil diklaim: ${result.data}`, { task: "TUGAS_2", data: result.data });
+        }
+        Pending.clearPending('DAILY_REWARD');
+        return { status: 'COMPLETED', task: 'TUGAS_2' };
       } else {
-        Logger.success(`Daily reward berhasil diklaim: ${result.data}`, { task: "TUGAS_2", data: result.data });
+        Logger.error(`Gagal klaim daily reward: ${result.error}`, { task: "TUGAS_2", error: result.error });
+        await sendAlert(`Daily reward gagal diklaim: ${result.error}`);
+        return { status: 'FAILED', task: 'TUGAS_2' };
       }
-      Pending.clearPending('DAILY_REWARD');
-      return { status: 'COMPLETED', task: 'TUGAS_2' };
-    } else {
-      Logger.error(`Gagal klaim daily reward: ${result.error}`, { task: "TUGAS_2", error: result.error });
-      await sendAlert(`Daily reward gagal diklaim: ${result.error}`);
-      return { status: 'FAILED', task: 'TUGAS_2' };
-    }
+    }, 150000, "TUGAS_2");
   } catch (error) {
     const transient = isTransientError(error);
     Logger.critical(`Proses terhenti karena kesalahan: ${error.message}`, { task: "TUGAS_2", error: error.message, transient });
@@ -372,7 +421,7 @@ async function runTask2() {
     await sendAlert(`TUGAS 2 ERROR: ${error.message}`);
     return { status: 'ERROR', task: 'TUGAS_2', transient: false };
   } finally {
-    isBrowserBusy = false;
+    releaseBrowserLock();
     Logger.info("Selesai", { task: "TUGAS_2" });
   }
 }
@@ -382,12 +431,19 @@ async function runTask2() {
 // ==========================================
 async function runTask3() {
   await waitForTurn("TUGAS_3");
-  isBrowserBusy = true;
+  acquireBrowserLock();
 
   try {
-    return await runLeaderboardAnalytics(openBrowser);
+    return await withTaskTimeout(
+      () => runLeaderboardAnalytics(openBrowser),
+      150000,
+      "TUGAS_3"
+    );
+  } catch (error) {
+    Logger.error(`TUGAS_3 terhenti karena kesalahan/timeout: ${error.message}`, { task: "TUGAS_3", error: error.message });
+    return { status: 'ERROR', task: 'TUGAS_3', error: error.message };
   } finally {
-    isBrowserBusy = false;
+    releaseBrowserLock();
   }
 }
 

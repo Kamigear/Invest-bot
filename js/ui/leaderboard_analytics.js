@@ -78,7 +78,9 @@ const LeaderboardAnalyticsUI = (() => {
   }
 
   function classKey(row) {
-    return `${row.grade}::${String(row.name || '').replace(/\s+/g, ' ').trim().toLowerCase()}`;
+    if (row?.key) return row.key;
+    if (row?.classId) return `id::${row.classId}`;
+    return `${row?.grade}::${String(row?.name || '').replace(/\s+/g, ' ').trim().toLowerCase()}`;
   }
 
   // ─── Data helpers ─────────────────────────────────────────────────────────
@@ -275,7 +277,7 @@ const LeaderboardAnalyticsUI = (() => {
               <thead>
                 <tr>
                   <th>📆 Tanggal</th>
-                  <th>💰 Karma</th>
+                  <th>💰 Total Poin</th>
                   <th>📊 Perubahan</th>
                 </tr>
               </thead>
@@ -366,8 +368,8 @@ const LeaderboardAnalyticsUI = (() => {
         </div>
 
         <div class="la-chart-card">
-          <div class="la-chart-title">📊 Histori Total Karma per Kelas (semua snapshot)</div>
-          <div class="la-chart-note">Tampilkan top 10 kelas berdasarkan karma sekarang. Klik baris tabel untuk detail per kelas.</div>
+          <div class="la-chart-title">📊 Histori Total Poin per Kelas (semua snapshot)</div>
+          <div class="la-chart-note">Tampilkan top 10 kelas berdasarkan poin sekarang. Klik baris tabel untuk detail per kelas.</div>
           <div class="la-chart-box"><canvas id="leaderboard-history-chart"></canvas></div>
         </div>
 
