@@ -102,7 +102,7 @@ const Calculator = (() => {
       const income = getDailyIncome(futureDay, config);
       const bonus = getWeeklyBonus(date || futureDay, config);
       balance += income + bonus;
-      const generate = getGenerate(balance, config);
+      const generate = getGenerate(lastDayBalanceBefore, config);
       balance += generate;
 
       totalIncome += income;

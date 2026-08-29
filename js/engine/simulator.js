@@ -239,8 +239,8 @@ const Simulator = (() => {
       // Transactions only affect THIS day's displayed balance.
       // The algorithm projection for subsequent days is NOT affected —
       // balance continues growing from the algorithm prediction baseline.
-      // ── Step 4: Generate (BEFORE ledger expenses per user request) ─
-      const generate = Calculator.getGenerate(balance, dayCfg);
+      // ── Step 4: Generate (calculated from starting balance BEFORE today's daily income) ─
+      const generate = Calculator.getGenerate(balanceBefore, dayCfg);
       balance += generate;
       totalGenerate = Calculator.fmt(totalGenerate + generate);
 
@@ -509,7 +509,7 @@ const Simulator = (() => {
       const balanceBefore = balance;
       balance += Calculator.getDailyIncome(day, dayCfg);
       balance += Calculator.getWeeklyBonus(date, config);
-      balance += Calculator.getGenerate(balance, dayCfg);
+      balance += Calculator.getGenerate(balanceBefore, dayCfg);
 
       for (let i = activeInv.length - 1; i >= 0; i--) {
         if (activeInv[i].maturityDay <= day) {
