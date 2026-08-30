@@ -199,17 +199,18 @@ const Simulator = (() => {
       const dayCfg = getDayConfig(day, config);
       const balanceBefore = Calculator.fmt(balance);
 
-      // ── Step 1: Weekly Bonus ────────────────────────────────────
-      const weeklyBonus = Calculator.getWeeklyBonus(today, config);
-      balance += weeklyBonus;
-      totalWeeklyBonus = Calculator.fmt(totalWeeklyBonus + weeklyBonus);
-
-      // ── Step 2: Daily Income (Linear Growth / Manual Override) ───
+      // ── Step 0: Check Income Override ───────────────────────────
       const incomeOverrides = config.dayIncomeOverrides || config.incomeOverrides || {};
       const hasIncomeOverride = incomeOverrides[day] !== undefined || incomeOverrides[String(day)] !== undefined || (today && incomeOverrides[today] !== undefined);
       const rawIncomeOverride = incomeOverrides[day] ?? incomeOverrides[String(day)] ?? (today ? incomeOverrides[today] : undefined);
       const overrideIncomeAmt = hasIncomeOverride ? Math.max(0, parseFloat(rawIncomeOverride) || 0) : undefined;
 
+      // ── Step 1: Weekly Bonus ────────────────────────────────────
+      const weeklyBonus = hasIncomeOverride ? 0 : Calculator.getWeeklyBonus(today, config);
+      balance += weeklyBonus;
+      totalWeeklyBonus = Calculator.fmt(totalWeeklyBonus + weeklyBonus);
+
+      // ── Step 2: Daily Income (Linear Growth / Manual Override) ───
       const dailyIncome = hasIncomeOverride
         ? overrideIncomeAmt
         : (dayCfg.incomeDailyEnabled !== false ? Calculator.getDailyIncome(day, dayCfg, today) : 0);
@@ -245,7 +246,7 @@ const Simulator = (() => {
       // The algorithm projection for subsequent days is NOT affected —
       // balance continues growing from the algorithm prediction baseline.
       // ── Step 4: Generate (calculated from starting balance BEFORE today's daily income) ─
-      const generate = Calculator.getGenerate(balanceBefore, dayCfg);
+      const generate = hasIncomeOverride ? 0 : Calculator.getGenerate(balanceBefore, dayCfg);
       balance += generate;
       totalGenerate = Calculator.fmt(totalGenerate + generate);
 

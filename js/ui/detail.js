@@ -369,7 +369,7 @@ const DetailUI = (() => {
                     <span class="income-item-val">+${Calculator.display(ledgerIncomeVal)} pt</span>
                   </div>
                 ` : ''}
-                ${totalIncomeToday === 0 ? `
+                ${(totalIncomeToday === 0 && !isIncomeOverridden) ? `
                   <div class="income-breakdown-item muted">
                     <span class="income-item-title">Tidak ada pemasukan hari ini</span>
                     <span class="income-item-val">0 pt</span>

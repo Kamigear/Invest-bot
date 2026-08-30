@@ -107,10 +107,13 @@ const Calculator = (() => {
       lastDayBalanceBefore = balance;
       const futureDay = startDay + d;
       const date = config.startDate ? addDaysISO(config.startDate, futureDay - 1) : null;
+      const overrides = config.dayIncomeOverrides || config.incomeOverrides || {};
+      const hasOverride = overrides[futureDay] !== undefined || overrides[String(futureDay)] !== undefined || (date && overrides[date] !== undefined);
+
       const income = getDailyIncome(futureDay, config, date);
-      const bonus = getWeeklyBonus(date || futureDay, config);
+      const bonus = hasOverride ? 0 : getWeeklyBonus(date || futureDay, config);
       balance += income + bonus;
-      const generate = getGenerate(lastDayBalanceBefore, config);
+      const generate = hasOverride ? 0 : getGenerate(lastDayBalanceBefore, config);
       balance += generate;
 
       totalIncome += income;
