@@ -98,7 +98,8 @@ const CalendarUI = (() => {
   function buildBadges(record) {
     const badges = [];
     const f = record.flags;
-    if (f.isOverride) badges.push(`<span class="badge" style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600;">✏️ Manual (${record.investedAmount})</span>`);
+    if (f.isOverride) badges.push(`<span class="badge" style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600;">✏️ Invest (${record.investedAmount})</span>`);
+    if (f.isIncomeOverride) badges.push(`<span class="badge" style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600;">✏️ Income (+${record.dailyIncome})</span>`);
     if (f.isInvestDay) badges.push('<span class="badge badge-invest">🟢 Invest</span>');
     if (f.hasLedgerInvestment) badges.push('<span class="badge badge-ledger-invest">📘 Ledger Invest</span>');
     if (f.isMaturityDay || f.hasLedgerMaturity) badges.push('<span class="badge badge-maturity">🟡 Cair</span>');
@@ -206,7 +207,16 @@ const CalendarUI = (() => {
         </td>
         <td class="col-num">${Calculator.display(record.balanceBefore)}</td>
          <td class="col-num income-col">
-          +${Calculator.display(record.totalDayIncome !== undefined ? record.totalDayIncome : (record.dailyIncome + (record.weeklyBonus || 0) + (record.generate || 0)))}
+          <div style="display:inline-flex; align-items:center; gap:4px; justify-content:flex-end; width:100%;">
+            ${record.isIncomeOverride 
+              ? `<span style="color:#f59e0b; font-size:12px;" title="Manual Income Override: +${record.dailyIncome}">✏️ <strong>+${Calculator.display(record.totalDayIncome !== undefined ? record.totalDayIncome : record.dailyIncome)}</strong></span>` 
+              : `+${Calculator.display(record.totalDayIncome !== undefined ? record.totalDayIncome : (record.dailyIncome + (record.weeklyBonus || 0) + (record.generate || 0)))}`
+            }
+            ${record.isIncomeOverride 
+              ? `<button type="button" class="btn-clear-income-override" data-day="${record.day}" title="Reset Income ke Otomatis" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:12px; padding:0 2px;">❌</button>`
+              : `<button type="button" class="btn-edit-income-override" data-day="${record.day}" data-income="${record.dailyIncome || 0}" title="Edit / Override Income Hari ke-${record.day}" style="background:none; border:none; cursor:pointer; font-size:12px; opacity:0.6; padding:0 2px; transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">✏️</button>`
+            }
+          </div>
           ${renderLedgerTransactionsInCell(record)}
         </td>
         <td class="col-num ${f.isInvestDay || f.hasLedgerInvestment ? 'invest-highlight' : ''}">
@@ -325,6 +335,29 @@ const CalendarUI = (() => {
     const tbody = container.querySelector('#cal-tbody');
     if (tbody) {
       tbody.addEventListener('click', e => {
+        const editIncomeBtn = e.target.closest('.btn-edit-income-override');
+        if (editIncomeBtn) {
+          e.stopPropagation();
+          const day = parseInt(editIncomeBtn.dataset.day, 10);
+          const currentVal = parseFloat(editIncomeBtn.dataset.income) || 0;
+          const userInput = prompt(`[Hari ke-${day}] Masukkan nominal income harian manual (contoh: 50, atau 0):`, currentVal);
+          if (userInput !== null) {
+            const val = parseFloat(userInput);
+            if (!isNaN(val)) {
+              App.setDayIncomeOverride(day, val);
+            }
+          }
+          return;
+        }
+
+        const clearIncomeBtn = e.target.closest('.btn-clear-income-override');
+        if (clearIncomeBtn) {
+          e.stopPropagation();
+          const day = parseInt(clearIncomeBtn.dataset.day, 10);
+          App.clearDayIncomeOverride(day);
+          return;
+        }
+
         const editBtn = e.target.closest('.btn-edit-override');
         if (editBtn) {
           e.stopPropagation();

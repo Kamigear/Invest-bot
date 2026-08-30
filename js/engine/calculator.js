@@ -15,8 +15,16 @@ const Calculator = (() => {
    * Get daily income for a given simulation day
    * @param {number} day - Current simulation day (1-indexed)
    * @param {object} config - Simulation configuration
+   * @param {string} [date] - ISO date string (YYYY-MM-DD)
    */
-  function getDailyIncome(day, config) {
+  function getDailyIncome(day, config, date = null) {
+    const overrides = config.dayIncomeOverrides || config.incomeOverrides || {};
+    const hasOverride = overrides[day] !== undefined || overrides[String(day)] !== undefined || (date && overrides[date] !== undefined);
+    if (hasOverride) {
+      const raw = overrides[day] ?? overrides[String(day)] ?? (date ? overrides[date] : undefined);
+      return Math.max(0, parseFloat(raw) || 0);
+    }
+
     let total = 0;
 
     // Legacy: incomeType single-select mode
@@ -99,7 +107,7 @@ const Calculator = (() => {
       lastDayBalanceBefore = balance;
       const futureDay = startDay + d;
       const date = config.startDate ? addDaysISO(config.startDate, futureDay - 1) : null;
-      const income = getDailyIncome(futureDay, config);
+      const income = getDailyIncome(futureDay, config, date);
       const bonus = getWeeklyBonus(date || futureDay, config);
       balance += income + bonus;
       const generate = getGenerate(lastDayBalanceBefore, config);

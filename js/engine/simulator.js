@@ -204,10 +204,15 @@ const Simulator = (() => {
       balance += weeklyBonus;
       totalWeeklyBonus = Calculator.fmt(totalWeeklyBonus + weeklyBonus);
 
-      // ── Step 2: Daily Income (Linear Growth) ────────────────────
-      const dailyIncome = dayCfg.incomeDailyEnabled !== false
-        ? Calculator.getDailyIncome(day, dayCfg)
-        : 0;
+      // ── Step 2: Daily Income (Linear Growth / Manual Override) ───
+      const incomeOverrides = config.dayIncomeOverrides || config.incomeOverrides || {};
+      const hasIncomeOverride = incomeOverrides[day] !== undefined || incomeOverrides[String(day)] !== undefined || (today && incomeOverrides[today] !== undefined);
+      const rawIncomeOverride = incomeOverrides[day] ?? incomeOverrides[String(day)] ?? (today ? incomeOverrides[today] : undefined);
+      const overrideIncomeAmt = hasIncomeOverride ? Math.max(0, parseFloat(rawIncomeOverride) || 0) : undefined;
+
+      const dailyIncome = hasIncomeOverride
+        ? overrideIncomeAmt
+        : (dayCfg.incomeDailyEnabled !== false ? Calculator.getDailyIncome(day, dayCfg, today) : 0);
       balance += dailyIncome;
       totalDailyIncome = Calculator.fmt(totalDailyIncome + dailyIncome);
 
@@ -429,6 +434,8 @@ const Simulator = (() => {
         reason: result.reason || [],
         isOverride: hasDayOverride,
         overrideAmount: overrideAmt,
+        isIncomeOverride: hasIncomeOverride,
+        overrideIncomeAmount: overrideIncomeAmt,
         flags: {
           isInvestDay: result.decision === 'INVEST',
           isMaturityDay: maturedToday.length > 0 || ledgerMaturityTotal > 0,
@@ -438,6 +445,7 @@ const Simulator = (() => {
           isSweetSpot: result.flags?.isSweetSpot || false,
           isManualIncomeDay: dayManualIncome > 0,
           isOverride: hasDayOverride,
+          isIncomeOverride: hasIncomeOverride,
           hasLedgerEntry: todayTxns.length > 0,
           hasLedgerInvestment: ledgerInvestmentsToday.length > 0,
           hasLedgerMaturity: ledgerMaturityTotal > 0,

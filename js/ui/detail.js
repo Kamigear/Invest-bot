@@ -64,6 +64,28 @@ const DetailUI = (() => {
         close();
       });
     }
+
+    const btnIncomeOverride = _modal.querySelector('#btn-modal-income-override');
+    if (btnIncomeOverride) {
+      btnIncomeOverride.addEventListener('click', () => {
+        const userInput = prompt(`[Hari ke-${record.day}] Masukkan nominal income harian manual (contoh: 50, atau 0):`, record.dailyIncome || 0);
+        if (userInput !== null) {
+          const val = parseFloat(userInput);
+          if (!isNaN(val)) {
+            App.setDayIncomeOverride(record.day, val);
+            close();
+          }
+        }
+      });
+    }
+
+    const btnClearIncomeOverride = _modal.querySelector('#btn-modal-clear-income-override');
+    if (btnClearIncomeOverride) {
+      btnClearIncomeOverride.addEventListener('click', () => {
+        App.clearDayIncomeOverride(record.day);
+        close();
+      });
+    }
   }
 
   function close() {
@@ -176,21 +198,42 @@ const DetailUI = (() => {
           </div>
         </div>
 
-        <!-- Manual Override Control Box -->
-        <div style="margin: 12px 0; padding: 10px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-          <div style="font-size: 13px;">
-            ✏️ <strong>Manual Investment Override</strong>
-            ${r.isOverride ? `<span style="color:#f59e0b; display:block; font-size:11px; margin-top:2px;">Status: Custom nominal ${r.investedAmount} pt</span>` : `<span style="color:#94a3b8; display:block; font-size:11px; margin-top:2px;">Status: Mengikuti Rekomendasi Algoritma</span>`}
-          </div>
-          <div style="display:flex; gap:6px; flex-shrink: 0;">
-            <button id="btn-modal-override" type="button" style="padding: 6px 12px; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
-              ${r.isOverride ? '✏️ Ubah Nominal' : '✏️ Override Nominal'}
-            </button>
-            ${r.isOverride ? `
-              <button id="btn-modal-clear-override" type="button" style="padding: 6px 10px; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
-                ❌ Reset
+        <!-- Manual Override Control Boxes -->
+        <div style="display: flex; flex-direction: column; gap: 8px; margin: 12px 0;">
+          <!-- Invest Override Box -->
+          <div style="padding: 10px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+            <div style="font-size: 13px;">
+              ✏️ <strong>Manual Investment Override</strong>
+              ${r.isOverride ? `<span style="color:#f59e0b; display:block; font-size:11px; margin-top:2px;">Status: Custom nominal ${r.investedAmount} pt</span>` : `<span style="color:#94a3b8; display:block; font-size:11px; margin-top:2px;">Status: Mengikuti Rekomendasi Algoritma</span>`}
+            </div>
+            <div style="display:flex; gap:6px; flex-shrink: 0;">
+              <button id="btn-modal-override" type="button" style="padding: 6px 12px; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
+                ${r.isOverride ? '✏️ Ubah Nominal' : '✏️ Override Nominal'}
               </button>
-            ` : ''}
+              ${r.isOverride ? `
+                <button id="btn-modal-clear-override" type="button" style="padding: 6px 10px; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
+                  ❌ Reset
+                </button>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- Income Override Box -->
+          <div style="padding: 10px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+            <div style="font-size: 13px;">
+              💵 <strong>Manual Income Override</strong>
+              ${r.isIncomeOverride ? `<span style="color:#f59e0b; display:block; font-size:11px; margin-top:2px;">Status: Custom income +${r.dailyIncome} pt</span>` : `<span style="color:#94a3b8; display:block; font-size:11px; margin-top:2px;">Status: Mengikuti Perhitungan Otomatis</span>`}
+            </div>
+            <div style="display:flex; gap:6px; flex-shrink: 0;">
+              <button id="btn-modal-income-override" type="button" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
+                ${r.isIncomeOverride ? '✏️ Ubah Income' : '✏️ Override Income'}
+              </button>
+              ${r.isIncomeOverride ? `
+                <button id="btn-modal-clear-income-override" type="button" style="padding: 6px 10px; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
+                  ❌ Reset
+                </button>
+              ` : ''}
+            </div>
           </div>
         </div>
 
@@ -244,6 +287,7 @@ const DetailUI = (() => {
 
         <!-- Income Breakdown Section -->
         ${(() => {
+          const isIncomeOverridden = r.isIncomeOverride;
           const linearVal = r.incomeLinear !== undefined ? r.incomeLinear : 0;
           const vaultVal = r.vaultIncome !== undefined ? r.vaultIncome : 0;
           const piggyVal = r.piggyBankIncome !== undefined ? r.piggyBankIncome : 0;
@@ -256,37 +300,45 @@ const DetailUI = (() => {
             .filter(tx => ['income', 'bonus', 'maturity', 'adjustment'].includes(tx.type))
             .reduce((s, tx) => s + (parseFloat(tx.amount) || 0), 0);
 
-          // totalIncomeToday includes ALL income (login + vault + piggy + otherFixed + generate + bonus + matured + manual + ledger)
-          const totalIncomeToday = Calculator.fmt(linearVal + vaultVal + piggyVal + otherFixedVal + generateVal + bonusVal + maturedVal + manualVal + ledgerIncomeVal);
+          // totalIncomeToday includes ALL income
+          const baseDailyPart = isIncomeOverridden ? (r.dailyIncome || 0) : (linearVal + vaultVal + piggyVal + otherFixedVal);
+          const totalIncomeToday = Calculator.fmt(baseDailyPart + generateVal + bonusVal + maturedVal + manualVal + ledgerIncomeVal);
 
           return `
             <div class="detail-section income-breakdown-card">
               <div class="detail-section-title">💵 Rincian Pemasukan Hari Ini (+${Calculator.display(totalIncomeToday)})</div>
               <div class="income-breakdown-list">
-                ${linearVal > 0 ? `
-                  <div class="income-breakdown-item">
-                    <span class="income-item-title">🎁 Daily Login Streak (Linear)</span>
-                    <span class="income-item-val">+${Calculator.display(linearVal)} pt</span>
+                ${isIncomeOverridden ? `
+                  <div class="income-breakdown-item" style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 6px 10px; border-radius: 4px;">
+                    <span class="income-item-title" style="color: #f59e0b; font-weight: 600;">✏️ Manual Daily Income Override</span>
+                    <span class="income-item-val" style="color: #f59e0b; font-weight: 600;">+${Calculator.display(r.dailyIncome)} pt</span>
                   </div>
-                ` : ''}
-                ${vaultVal > 0 ? `
-                  <div class="income-breakdown-item">
-                    <span class="income-item-title">🏦 Perk Vault</span>
-                    <span class="income-item-val">+${Calculator.display(vaultVal)} pt</span>
-                  </div>
-                ` : ''}
-                ${piggyVal > 0 ? `
-                  <div class="income-breakdown-item">
-                    <span class="income-item-title">🐷 Perk Piggy Bank</span>
-                    <span class="income-item-val">+${Calculator.display(piggyVal)} pt</span>
-                  </div>
-                ` : ''}
-                ${otherFixedVal > 0 ? `
-                  <div class="income-breakdown-item">
-                    <span class="income-item-title">💵 Pemasukan Tetap</span>
-                    <span class="income-item-val">+${Calculator.display(otherFixedVal)} pt</span>
-                  </div>
-                ` : ''}
+                ` : `
+                  ${linearVal > 0 ? `
+                    <div class="income-breakdown-item">
+                      <span class="income-item-title">🎁 Daily Login Streak (Linear)</span>
+                      <span class="income-item-val">+${Calculator.display(linearVal)} pt</span>
+                    </div>
+                  ` : ''}
+                  ${vaultVal > 0 ? `
+                    <div class="income-breakdown-item">
+                      <span class="income-item-title">🏦 Perk Vault</span>
+                      <span class="income-item-val">+${Calculator.display(vaultVal)} pt</span>
+                    </div>
+                  ` : ''}
+                  ${piggyVal > 0 ? `
+                    <div class="income-breakdown-item">
+                      <span class="income-item-title">🐷 Perk Piggy Bank</span>
+                      <span class="income-item-val">+${Calculator.display(piggyVal)} pt</span>
+                    </div>
+                  ` : ''}
+                  ${otherFixedVal > 0 ? `
+                    <div class="income-breakdown-item">
+                      <span class="income-item-title">💵 Pemasukan Tetap</span>
+                      <span class="income-item-val">+${Calculator.display(otherFixedVal)} pt</span>
+                    </div>
+                  ` : ''}
+                `}
                 ${generateVal > 0 ? `
                   <div class="income-breakdown-item">
                     <span class="income-item-title">🟣 Bankbook Generate</span>

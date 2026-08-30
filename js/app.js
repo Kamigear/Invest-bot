@@ -151,6 +151,7 @@ const App = (() => {
 
     // Manual Day Overrides { [dayOrDate]: amount }
     dayOverrides: {},
+    dayIncomeOverrides: {},
 
     // Class Perks — acquisition timeline model
     // Each simulation perk is an array of { fromDay, count } or { fromDay, tier, count }
@@ -1744,6 +1745,34 @@ const derivedEl = document.getElementById('perks-derived-text');
       _config.dayOverrides = {};
       saveConfig();
       runSimulation();
+    },
+    setDayIncomeOverride: (dayKey, amount) => {
+      if (!_config.dayIncomeOverrides) _config.dayIncomeOverrides = {};
+      const num = Math.max(0, parseFloat(amount) || 0);
+      _config.dayIncomeOverrides[dayKey] = num;
+      saveConfig();
+      runSimulation();
+    },
+    setIncomeOverride: (dayKey, amount) => {
+      App.setDayIncomeOverride(dayKey, amount);
+    },
+    clearDayIncomeOverride: (dayKey) => {
+      if (_config.dayIncomeOverrides && _config.dayIncomeOverrides[dayKey] !== undefined) {
+        delete _config.dayIncomeOverrides[dayKey];
+        saveConfig();
+        runSimulation();
+      }
+    },
+    clearIncomeOverride: (dayKey) => {
+      App.clearDayIncomeOverride(dayKey);
+    },
+    clearAllDayIncomeOverrides: () => {
+      _config.dayIncomeOverrides = {};
+      saveConfig();
+      runSimulation();
+    },
+    clearAllIncomeOverrides: () => {
+      App.clearAllDayIncomeOverrides();
     },
     addPerkRow,
     removePerkRow,
