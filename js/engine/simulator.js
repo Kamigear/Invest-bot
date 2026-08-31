@@ -231,7 +231,11 @@ const Simulator = (() => {
       for (let i = activeInvestments.length - 1; i >= 0; i--) {
         const inv = activeInvestments[i];
         if (inv.maturityDay <= day) {
-           const returnAmt = Calculator.getReturnAmount(inv.amount, dayCfg);
+          // Use expectedReturn from Firebase if available (honours real bot payout),
+          // otherwise calculate from current config.returnRate
+          const returnAmt = (inv.expectedReturn !== undefined && inv.startSource === 'firebase')
+            ? inv.expectedReturn
+            : Calculator.getReturnAmount(inv.amount, dayCfg);
           balance += returnAmt;
           maturedTotal = Calculator.fmt(maturedTotal + returnAmt);
           totalReturnReceived = Calculator.fmt(totalReturnReceived + returnAmt);

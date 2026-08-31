@@ -92,16 +92,27 @@ const Calculator = (() => {
   }
 
   /**
-   * Project balance N days into the future (without making investments)
-   * Returns { balance, events[] }
+   * Project balance N days into the future (without making investments).
+   * Optionally accepts activeInvestments[] so that upcoming maturity payouts
+   * are included in the projected balance — making Optimizer lookahead aware
+   * of investment cair events within the window.
+   *
+   * @param {number} startDay - Current simulation day
+   * @param {number} startBalance - Balance at the start of projection
+   * @param {number} days - Number of days to project ahead
+   * @param {object} config - Simulation configuration
+   * @param {Array}  [activeInvestments] - Optional list of active investments
+   *                 Each entry: { maturityDay, amount, expectedReturn }
+   * @returns {{ balance, lastDayBalanceBefore, totalIncome, totalBonus, totalGenerate, totalMaturity, events }}
    */
-  function projectFutureBalance(startDay, startBalance, days, config) {
+  function projectFutureBalance(startDay, startBalance, days, config, activeInvestments) {
     let balance = startBalance;
     let lastDayBalanceBefore = startBalance;
     const events = [];
     let totalBonus = 0;
     let totalIncome = 0;
     let totalGenerate = 0;
+    let totalMaturity = 0;
 
     for (let d = 1; d <= days; d++) {
       lastDayBalanceBefore = balance;
@@ -109,6 +120,25 @@ const Calculator = (() => {
       const date = config.startDate ? addDaysISO(config.startDate, futureDay - 1) : null;
       const overrides = config.dayIncomeOverrides || config.incomeOverrides || {};
       const hasOverride = overrides[futureDay] !== undefined || overrides[String(futureDay)] !== undefined || (date && overrides[date] !== undefined);
+
+      // ── Maturity payouts from active investments cair on this future day ──
+      if (Array.isArray(activeInvestments)) {
+        let maturityToday = 0;
+        activeInvestments.forEach(inv => {
+          if (inv.maturityDay === futureDay) {
+            // Use expectedReturn if available (already computed), else recalculate
+            const returnAmt = inv.expectedReturn !== undefined
+              ? inv.expectedReturn
+              : getReturnAmount(inv.amount || 0, config);
+            maturityToday += returnAmt;
+          }
+        });
+        if (maturityToday > 0) {
+          balance += maturityToday;
+          totalMaturity += maturityToday;
+          events.push({ day: futureDay, daysFromNow: d, type: 'maturity', amount: maturityToday });
+        }
+      }
 
       const income = getDailyIncome(futureDay, config, date);
       const bonus = hasOverride ? 0 : getWeeklyBonus(date || futureDay, config);
@@ -128,7 +158,7 @@ const Calculator = (() => {
       }
     }
 
-    return { balance, lastDayBalanceBefore, totalIncome, totalBonus, totalGenerate, events };
+    return { balance, lastDayBalanceBefore, totalIncome, totalBonus, totalGenerate, totalMaturity, events };
   }
 
   /**

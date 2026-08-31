@@ -83,13 +83,14 @@ const Optimizer = (() => {
 
   /**
    * Perform lookahead to find the best future investment opportunity.
+   * Now aware of active investments that will mature within the lookahead window.
    * Returns the best future opportunity or null.
    */
-  function doLookahead(currentDay, balance, config, balanceBefore) {
+  function doLookahead(currentDay, balance, config, balanceBefore, activeInvestments) {
     let bestFuture = null;
 
     for (let waitDays = 1; waitDays <= config.lookaheadDays; waitDays++) {
-      const proj = Calculator.projectFutureBalance(currentDay, balance, waitDays, config);
+      const proj = Calculator.projectFutureBalance(currentDay, balance, waitDays, config, activeInvestments);
       const futureAmount = findBestAmount(proj.balance, proj.lastDayBalanceBefore, config);
       if (futureAmount === 0) continue;
 
@@ -105,6 +106,7 @@ const Optimizer = (() => {
           projBalance: proj.balance,
           bonusEvents: proj.events.filter(e => e.type === 'bonus'),
           generateEvents: proj.events.filter(e => e.type === 'generate'),
+          maturityEvents: proj.events.filter(e => e.type === 'maturity'),
           lostDecimal: Calculator.getLostDecimal(futureAmount, config),
           lostDecimalPct: futureAmount > 0 ? (Calculator.getLostDecimal(futureAmount, config) / futureAmount) * 100 : 0,
         };
@@ -119,6 +121,14 @@ const Optimizer = (() => {
    */
   function buildWaitReasons(bestFuture, config, noSweetSpotToday) {
     const reasons = [];
+
+    if (bestFuture.maturityEvents && bestFuture.maturityEvents.length > 0) {
+      const totalMat = bestFuture.maturityEvents.reduce((s, e) => s + e.amount, 0);
+      const firstMat = bestFuture.maturityEvents[0];
+      reasons.push(
+        `💰 Investasi cair +${Calculator.display(totalMat)} dalam ${firstMat.daysFromNow} hari (Hari ${firstMat.day})`
+      );
+    }
 
     if (bestFuture.bonusEvents.length > 0) {
       const bonus = bestFuture.bonusEvents[0];
@@ -161,24 +171,24 @@ const Optimizer = (() => {
     const investAmount = findBestAmount(balance, balBefore, config);
 
     if (investAmount === 0) {
-      // If sweetSpotOnly is active, do lookahead to see if waiting enables a sweet spot investment
-      if (config.sweetSpotOnly) {
-        const bestFuture = doLookahead(currentDay, balance, config, balBefore);
-        if (bestFuture && bestFuture.waitDays <= config.maxWaitDays) {
-          return {
-            decision: 'WAIT',
-            amount: 0,
-            lostDecimal: 0,
-            returnAmount: 0,
-            profit: 0,
-            waitDays: bestFuture.waitDays,
-            projectedInvest: bestFuture.amount,
-            projectedReturn: bestFuture.return,
-            projectedBalance: bestFuture.projBalance,
-            reason: buildWaitReasons(bestFuture, config, true),
-            flags: { isSweetSpot: false, isDeliberate: true },
-          };
-        }
+      // Always do lookahead when balance is below minInvest — this catches cases
+      // where active investments will mature soon and unlock a better invest opportunity.
+      // Previously this was only done when sweetSpotOnly was active.
+      const bestFuture = doLookahead(currentDay, balance, config, balBefore, activeInvestments);
+      if (bestFuture && bestFuture.waitDays <= config.maxWaitDays) {
+        return {
+          decision: 'WAIT',
+          amount: 0,
+          lostDecimal: 0,
+          returnAmount: 0,
+          profit: 0,
+          waitDays: bestFuture.waitDays,
+          projectedInvest: bestFuture.amount,
+          projectedReturn: bestFuture.return,
+          projectedBalance: bestFuture.projBalance,
+          reason: buildWaitReasons(bestFuture, config, true),
+          flags: { isSweetSpot: false, isDeliberate: true },
+        };
       }
 
       const reserve = config.reserveBalance || 0;
@@ -211,8 +221,8 @@ const Optimizer = (() => {
     const profitNow = returnNow - investAmount;
     const sweetSpotNow = isSweetSpot(investAmount, balance, config);
 
-    // Step 2: Lookahead — simulate next N days WITHOUT investing
-    const bestFuture = doLookahead(currentDay, balance, config, balBefore);
+    // Step 2: Lookahead — simulate next N days WITHOUT investing, but WITH maturity payouts
+    const bestFuture = doLookahead(currentDay, balance, config, balBefore, activeInvestments);
     if (bestFuture) {
       bestFuture.extraProfit = bestFuture.profit - profitNow;
     }
