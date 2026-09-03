@@ -8,7 +8,10 @@ const LeaderboardAnalyticsUI = (() => {
   let state = {
     grade: 'all',
     metric: 'growth24h',
-    data: null
+    data: null,
+    sortBy: 'growth',   // 'growth' | 'points' | 'rank' | 'trend'
+    sortDir: 'desc',    // 'desc' | 'asc'
+    trendFilter: 'all'  // 'all' | 'up' | 'down' | 'flat'
   };
 
   const metricLabels = {
@@ -160,6 +163,11 @@ const LeaderboardAnalyticsUI = (() => {
         const matchGrade = state.grade === 'all' || String(row.grade) === state.grade;
         if (!matchGrade) return false;
         if (!includeExcluded && isExcluded(row)) return false;
+        if (state.trendFilter !== 'all') {
+          const val = row[state.metric] ?? 0;
+          const trend = val > 0 ? 'up' : val < 0 ? 'down' : 'flat';
+          if (trend !== state.trendFilter) return false;
+        }
         return true;
       });
   }
@@ -318,8 +326,49 @@ const LeaderboardAnalyticsUI = (() => {
     </tr>`;
   }
 
+  function sortRows(rows) {
+    const { sortBy, sortDir, metric } = state;
+    return [...rows].sort((a, b) => {
+      let valA, valB;
+
+      if (sortBy === 'points') {
+        valA = a.total ?? 0;
+        valB = b.total ?? 0;
+      } else if (sortBy === 'growth') {
+        valA = a[metric] ?? -Infinity;
+        valB = b[metric] ?? -Infinity;
+      } else if (sortBy === 'rank') {
+        valA = a.rank ?? 999;
+        valB = b.rank ?? 999;
+      } else if (sortBy === 'trend') {
+        const getScore = (r) => {
+          const v = r[metric] ?? 0;
+          return v > 0 ? 1 : v < 0 ? -1 : 0;
+        };
+        valA = getScore(a);
+        valB = getScore(b);
+      } else {
+        valA = a[metric] ?? -Infinity;
+        valB = b[metric] ?? -Infinity;
+      }
+
+      if (valA < valB) return sortDir === 'asc' ? -1 : 1;
+      if (valA > valB) return sortDir === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }
+
+  function getSortIcon(col) {
+    if (state.sortBy === col) {
+      return state.sortDir === 'asc'
+        ? '<span style="color:#4facfe;font-weight:900;font-size:12px;margin-left:4px;">▲</span>'
+        : '<span style="color:#4facfe;font-weight:900;font-size:12px;margin-left:4px;">▼</span>';
+    }
+    return '<span style="color:#64748b;font-size:11px;opacity:0.5;margin-left:4px;">⇅</span>';
+  }
+
   function renderTable(rows) {
-    const sorted = [...rows].sort((a, b) => (b[state.metric] ?? -Infinity) - (a[state.metric] ?? -Infinity));
+    const sorted = sortRows(rows);
     const body = sorted.map((row, index) => {
       const key = classKey(row);
       const isExpanded = expandedRow === key;
@@ -330,10 +379,10 @@ const LeaderboardAnalyticsUI = (() => {
 
       return `
         <tr class="la-row ${isExpanded ? 'la-row-expanded' : ''}" data-la-expand="${escapeHTML(key)}" style="cursor:pointer;" title="Klik untuk lihat histori harian">
-          <td class="font-mono">#${index + 1}</td>
+          <td class="font-mono">#${row.rank || index + 1}</td>
           <td>
             <strong>${escapeHTML(row.name)}</strong>
-            <span>Kelas ${row.grade} · Rank #${row.rank || '-'} (Total: ${formatTotal(row.total)})</span>
+            <span>Kelas ${row.grade} · Rank #${row.rank || '-'} (Total: <b style="color:#4facfe;">${formatTotal(row.total)} Pt</b>)</span>
           </td>
           <td class="font-mono ${metricValue >= 0 ? 'positive' : 'negative'}">${formatPoints(metricValue)}</td>
           <td><span class="la-trend ${trendClass}">${trendIcon} ${metricValue > 0 ? 'Naik' : metricValue < 0 ? 'Turun' : 'Stagnan'}</span></td>
@@ -349,15 +398,42 @@ const LeaderboardAnalyticsUI = (() => {
     }).join('');
 
     return `
+      <!-- Toolbar Filter & Pengurutan Cepat -->
+      <div class="la-filter-toolbar">
+        <div class="la-filter-group">
+          <span class="la-filter-label">↕️ Urutkan:</span>
+          <button type="button" class="la-pill ${state.sortBy === 'growth' && state.sortDir === 'desc' ? 'active' : ''}" data-la-quick-sort="growth:desc">📈 Growth Tertinggi</button>
+          <button type="button" class="la-pill ${state.sortBy === 'growth' && state.sortDir === 'asc' ? 'active' : ''}" data-la-quick-sort="growth:asc">📉 Growth Terendah</button>
+          <button type="button" class="la-pill ${state.sortBy === 'points' && state.sortDir === 'desc' ? 'active' : ''}" data-la-quick-sort="points:desc">💰 Poin Terbanyak</button>
+          <button type="button" class="la-pill ${state.sortBy === 'points' && state.sortDir === 'asc' ? 'active' : ''}" data-la-quick-sort="points:asc">🪙 Poin Terendah</button>
+          <button type="button" class="la-pill ${state.sortBy === 'rank' && state.sortDir === 'asc' ? 'active' : ''}" data-la-quick-sort="rank:asc">🏆 Ranking #1 - #10</button>
+        </div>
+        <div class="la-filter-group">
+          <span class="la-filter-label">🔍 Filter Trend:</span>
+          <button type="button" class="la-pill ${state.trendFilter === 'all' ? 'active' : ''}" data-la-trend-filter="all">Semua</button>
+          <button type="button" class="la-pill ${state.trendFilter === 'up' ? 'active' : ''}" data-la-trend-filter="up">▲ Naik</button>
+          <button type="button" class="la-pill ${state.trendFilter === 'down' ? 'active' : ''}" data-la-trend-filter="down">▼ Turun</button>
+          <button type="button" class="la-pill ${state.trendFilter === 'flat' ? 'active' : ''}" data-la-trend-filter="flat">— Stagnan</button>
+        </div>
+      </div>
+
       <div class="la-table-wrap">
         <table class="la-table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>🏫 Kelas</th>
-              <th>📈 Growth (${metricLabels[state.metric]})</th>
-              <th>📊 Trend</th>
-              <th>📋 Histori</th>
+              <th class="la-sortable-th" data-la-sort="rank" title="Klik untuk urutkan berdasarkan Peringkat">
+                # ${getSortIcon('rank')}
+              </th>
+              <th class="la-sortable-th" data-la-sort="points" title="Klik untuk urutkan berdasarkan Poin Terbanyak/Terendah">
+                🏫 Kelas & Total Poin ${getSortIcon('points')}
+              </th>
+              <th class="la-sortable-th" data-la-sort="growth" title="Klik untuk urutkan berdasarkan Growth Tertinggi/Terendah">
+                📈 Growth (${metricLabels[state.metric]}) ${getSortIcon('growth')}
+              </th>
+              <th class="la-sortable-th" data-la-sort="trend" title="Klik untuk urutkan berdasarkan Trend">
+                📊 Trend ${getSortIcon('trend')}
+              </th>
+              <th style="text-align:center;">📋 Histori</th>
               <th>⚙️ Aksi</th>
             </tr>
           </thead>
@@ -366,7 +442,7 @@ const LeaderboardAnalyticsUI = (() => {
           </tbody>
         </table>
       </div>
-      <p class="la-hint">💡 Klik baris kelas untuk melihat histori harian. Gunakan "🚫 Exclude" untuk menyembunyikan kelas tertentu.</p>
+      <p class="la-hint">💡 <strong>Klik judul kolom tabel</strong> untuk mengurutkan (misal: klik "🏫 Kelas" untuk melihat poin terbanyak, atau klik "📈 Growth" untuk melihat lonjakan tertinggi). Klik baris untuk membuka histori harian.</p>
     `;
   }
 
@@ -485,6 +561,38 @@ const LeaderboardAnalyticsUI = (() => {
       excluded.clear();
       saveExcluded(excluded);
       renderShell(container);
+    });
+
+    // Column header sorting
+    container.querySelectorAll('.la-sortable-th[data-la-sort]').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.laSort;
+        if (state.sortBy === col) {
+          state.sortDir = state.sortDir === 'desc' ? 'asc' : 'desc';
+        } else {
+          state.sortBy = col;
+          state.sortDir = col === 'rank' ? 'asc' : 'desc';
+        }
+        renderShell(container);
+      });
+    });
+
+    // Quick sort toolbar buttons
+    container.querySelectorAll('[data-la-quick-sort]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const [col, dir] = btn.dataset.laQuickSort.split(':');
+        state.sortBy = col;
+        state.sortDir = dir;
+        renderShell(container);
+      });
+    });
+
+    // Quick trend filter toolbar buttons
+    container.querySelectorAll('[data-la-trend-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.trendFilter = btn.dataset.laTrendFilter;
+        renderShell(container);
+      });
     });
 
     // Row expand/collapse for daily history
@@ -758,6 +866,63 @@ const LeaderboardAnalyticsUI = (() => {
         .la-chart-title { color: var(--text-primary, #eee); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
         .la-chart-note { color: var(--text-secondary, #888); font-size: 11px; margin-bottom: 12px; }
         .la-chart-box { height: 300px; }
+        /* ── Filter Toolbar ── */
+        .la-filter-toolbar {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background: rgba(0,0,0,0.16);
+          border: 1px solid var(--border, #333);
+          border-radius: 8px;
+          padding: 12px 14px;
+          margin-bottom: 12px;
+        }
+        .la-filter-group {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .la-filter-label {
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--text-secondary, #aaa);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          margin-right: 4px;
+          min-width: 90px;
+        }
+        .la-pill {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid var(--border, #333);
+          color: var(--text-secondary, #aaa);
+          border-radius: 20px;
+          padding: 5px 13px;
+          font-size: 11px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.15s ease;
+        }
+        .la-pill:hover {
+          background: rgba(79,172,254,0.08);
+          color: #fff;
+          border-color: rgba(79,172,254,0.4);
+        }
+        .la-pill.active {
+          background: rgba(79,172,254,0.18);
+          color: #4facfe;
+          border-color: #4facfe;
+          font-weight: 700;
+        }
+        .la-sortable-th {
+          cursor: pointer;
+          user-select: none;
+          transition: background 0.15s, color 0.15s;
+        }
+        .la-sortable-th:hover {
+          background: rgba(79,172,254,0.12) !important;
+          color: #4facfe !important;
+        }
         /* ── Table ── */
         .la-table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border, #333); }
         .la-table { width: 100%; border-collapse: collapse; }
