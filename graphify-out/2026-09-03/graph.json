@@ -2607,8 +2607,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fontsize_xl",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 138,
+      "community_name": "default",
       "norm_label": "xl"
     },
     {
@@ -2618,8 +2618,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_xl_value",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 138,
+      "community_name": "default",
       "norm_label": "$value"
     },
     {
@@ -2629,8 +2629,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_xl_type",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 138,
+      "community_name": "default",
       "norm_label": "$type"
     },
     {
@@ -2794,8 +2794,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_default",
-      "community": 138,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "default"
     },
     {
@@ -2805,8 +2805,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_value",
-      "community": 138,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$value"
     },
     {
@@ -2816,8 +2816,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_type",
-      "community": 138,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$type"
     },
     {
@@ -2871,8 +2871,8 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_xl",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 138,
+      "community_name": "default",
       "norm_label": "xl"
     },
     {
@@ -2948,8 +2948,8 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_default",
-      "community": 138,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "default"
     },
     {
@@ -3179,8 +3179,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary",
-      "community": 164,
-      "community_name": "primary",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "primary"
     },
     {
@@ -3190,8 +3190,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_value",
-      "community": 164,
-      "community_name": "primary",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3201,8 +3201,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_type",
-      "community": 164,
-      "community_name": "primary",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3410,8 +3410,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 164,
+      "community_name": "primary",
       "norm_label": "destructive"
     },
     {
@@ -3421,8 +3421,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 164,
+      "community_name": "primary",
       "norm_label": "$value"
     },
     {
@@ -3432,8 +3432,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 164,
+      "community_name": "primary",
       "norm_label": "$type"
     },
     {
@@ -3740,8 +3740,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_x",
-      "community": 137,
-      "community_name": "padding-x",
+      "community": 107,
+      "community_name": "Js Export Exporters",
       "norm_label": "padding-x"
     },
     {
@@ -3751,8 +3751,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_value",
-      "community": 137,
-      "community_name": "padding-x",
+      "community": 107,
+      "community_name": "Js Export Exporters",
       "norm_label": "$value"
     },
     {
@@ -3762,8 +3762,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_type",
-      "community": 137,
-      "community_name": "padding-x",
+      "community": 107,
+      "community_name": "Js Export Exporters",
       "norm_label": "$type"
     },
     {
@@ -3773,8 +3773,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_y",
-      "community": 107,
-      "community_name": "Js Export Exporters",
+      "community": 137,
+      "community_name": "padding-x",
       "norm_label": "padding-y"
     },
     {
@@ -3784,8 +3784,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_value",
-      "community": 107,
-      "community_name": "Js Export Exporters",
+      "community": 137,
+      "community_name": "padding-x",
       "norm_label": "$value"
     },
     {
@@ -3795,8 +3795,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_type",
-      "community": 107,
-      "community_name": "Js Export Exporters",
+      "community": 137,
+      "community_name": "padding-x",
       "norm_label": "$type"
     },
     {
@@ -3938,8 +3938,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_x",
-      "community": 137,
-      "community_name": "padding-x",
+      "community": 107,
+      "community_name": "Js Export Exporters",
       "norm_label": "padding-x"
     },
     {
@@ -3949,8 +3949,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_y",
-      "community": 107,
-      "community_name": "Js Export Exporters",
+      "community": 137,
+      "community_name": "padding-x",
       "norm_label": "padding-y"
     },
     {
@@ -9482,8 +9482,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_firebase",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "firebase.js"
     },
     {
@@ -9493,8 +9493,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_firebase_admin",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "admin"
     },
     {
@@ -9504,8 +9504,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_firebase_logger",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "{ logger }"
     },
     {
@@ -9515,8 +9515,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "board_firebase_db",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "db"
     },
     {
@@ -9526,8 +9526,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "board_firebase_getdoc",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "getdoc()"
     },
     {
@@ -9570,8 +9570,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "board_firebase_onsnapshot",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "onsnapshot()"
     },
     {
@@ -9930,7 +9930,7 @@
       "label": "fs",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L714",
+      "source_location": "L721",
       "_origin": "ast",
       "id": "board_index_fs",
       "community": 10,
@@ -9941,7 +9941,7 @@
       "label": "path",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L715",
+      "source_location": "L722",
       "_origin": "ast",
       "id": "board_index_path",
       "community": 10,
@@ -9952,7 +9952,7 @@
       "label": "recordLocalTaskRun()",
       "file_type": "code",
       "source_file": "Board/index.js",
-      "source_location": "L717",
+      "source_location": "L724",
       "_origin": "ast",
       "id": "board_index_recordlocaltaskrun",
       "community": 10,
@@ -10986,7 +10986,7 @@
       "label": "runAnalytics()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L46",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "board_runner_runanalytics",
       "community": 109,
@@ -10997,7 +10997,7 @@
       "label": "runDecision()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L59",
+      "source_location": "L67",
       "_origin": "ast",
       "id": "board_runner_rundecision",
       "community": 109,
@@ -11008,7 +11008,7 @@
       "label": "runInvest()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L72",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "board_runner_runinvest",
       "community": 109,
@@ -11019,7 +11019,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L85",
+      "source_location": "L93",
       "_origin": "ast",
       "id": "board_runner_main",
       "community": 109,
@@ -36911,7 +36911,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L54",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runanalytics",
@@ -36923,7 +36923,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L41",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runclaimdaily",
@@ -36935,7 +36935,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L67",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_rundecision",
@@ -36947,7 +36947,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L80",
+      "source_location": "L88",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runinvest",
@@ -37592,7 +37592,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/index.js",
-      "source_location": "L704",
+      "source_location": "L711",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index_start",
@@ -37616,7 +37616,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L62",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_rundecision",
@@ -38744,7 +38744,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L714",
+      "source_location": "L721",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38810,7 +38810,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L715",
+      "source_location": "L722",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38854,7 +38854,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/index.js",
-      "source_location": "L717",
+      "source_location": "L724",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_index",
@@ -38909,7 +38909,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L759",
+      "source_location": "L766",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -38932,7 +38932,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L759",
+      "source_location": "L766",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -38944,7 +38944,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L759",
+      "source_location": "L766",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -38956,7 +38956,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L759",
+      "source_location": "L766",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -39023,7 +39023,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/index.js",
-      "source_location": "L759",
+      "source_location": "L766",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -39414,7 +39414,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L75",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runinvest",
@@ -39630,7 +39630,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L49",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runanalytics",
@@ -41386,7 +41386,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L85",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41397,7 +41397,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L46",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41419,7 +41419,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L59",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41430,7 +41430,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L72",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41475,7 +41475,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L95",
+      "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -41487,7 +41487,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L99",
+      "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -41499,7 +41499,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L101",
+      "source_location": "L109",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -41511,7 +41511,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L97",
+      "source_location": "L105",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -53418,5 +53418,5 @@
       "source_file": ".agents/rules/graphify.md"
     }
   ],
-  "built_at_commit": "06adb60905c2d584c9f6821fd93f784d75798ff4"
+  "built_at_commit": "46471b83e0e3edafd7b6368afc5d6d05f594ec70"
 }

@@ -30,6 +30,15 @@ const leaderboardAnalyticsCronSchedule = process.env.LEADERBOARD_ANALYTICS_CRON_
 // ==========================================
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function getWibTimeStr() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const wib = new Date(utc + (7 * 3600000));
+  const hh = String(wib.getHours()).padStart(2, '0');
+  const mm = String(wib.getMinutes()).padStart(2, '0');
+  return `${hh}:${mm} WIB`;
+}
+
 let isBrowserBusy = false;
 let browserBusySince = null;
 const MAX_LOCK_DURATION_MS = parseInt(process.env.MAX_LOCK_DURATION_MS, 10) || 180000; // 3 minutes
@@ -687,10 +696,8 @@ function start() {
     });
 
     await sendAlert(
-      `🌅 Claim Daily Selesai (04:00 WIB)\n` +
-      `✅ Absen harian & streak berhasil diklaim\n` +
-      `✅ Easter egg & perk diproses\n` +
-      `✅ Leaderboard disinkronkan`
+      `🌅 Claim Daily Selesai (${getWibTimeStr()})\n` +
+      `✅ Daily Login & Easter Egg Berhasil Di Claim`
     );
 
     Logger.banner('RUTINITAS CLAIM DAILY SELESAI');

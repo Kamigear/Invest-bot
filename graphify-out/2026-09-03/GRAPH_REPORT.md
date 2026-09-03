@@ -1,7 +1,7 @@
 # Graph Report - Investation  (2026-09-03)
 
 ## Corpus Check
-- 113 files · ~102,662 words
+- 113 files · ~102,726 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `06adb609`
+- Built from commit: `46471b83`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -268,15 +268,15 @@ Nodes (35): fs, getChromiumPath(), acquireBrowserLock(), { claimDailyReward }, c
 
 ### Community 11 - "Board Leaderboard"
 Cohesion: 0.29
-Nodes (8): xl, $type, $value, radius, full, xl, $type, $value
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
 Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common Font Pairings, Contrast Requirements, CSS Implementation, Editorial (+22 more)
 
 ### Community 13 - "Board Dailyreward"
-Cohesion: 0.10
-Nodes (30): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger } (+22 more)
+Cohesion: 0.11
+Nodes (26): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger } (+18 more)
 
 ### Community 14 - "Kiro Steering Brand"
 Cohesion: 0.07
@@ -368,7 +368,7 @@ Nodes (18): 1. Wordmark (Logotype), 2. Lettermark (Monogram), 3. Pictorial Mark 
 
 ### Community 36 - "Kiro Steering Design"
 Cohesion: 0.11
-Nodes (19): $type, $value, background, destructive, foreground, muted-foreground, primary-hover, secondary (+11 more)
+Nodes (19): $type, $value, background, foreground, muted-foreground, primary, primary-hover, secondary (+11 more)
 
 ### Community 37 - "Axios"
 Cohesion: 0.11
@@ -595,8 +595,8 @@ Cohesion: 0.29
 Nodes (5): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation.      Args:         query: Search, TestPersistence
 
 ### Community 93 - "Board Alert"
-Cohesion: 0.24
-Nodes (14): addDays(), DEFAULT_RETRY, evaluateAndDecide(), findOurClass(), { getDoc, setDoc, serverTimestamp }, logDecision(), { Logger }, OUR_CLASS_PATTERNS (+6 more)
+Cohesion: 0.17
+Nodes (18): addDays(), DEFAULT_RETRY, evaluateAndDecide(), findOurClass(), { getDoc, setDoc, serverTimestamp }, logDecision(), { Logger }, OUR_CLASS_PATTERNS (+10 more)
 
 ### Community 94 - "Index Html"
 Cohesion: 0.50
@@ -652,7 +652,7 @@ Nodes (5): lg, $type, $value, lg, lg
 
 ### Community 107 - "Js Export Exporters"
 Cohesion: 0.29
-Nodes (8): padding-y, input, $type, $value, focus-ring, padding-y, $type, $value
+Nodes (8): padding-x, input, $type, $value, focus-ring, padding-x, $type, $value
 
 ### Community 108 - "Kiro Steering Design"
 Cohesion: 0.33
@@ -732,11 +732,11 @@ Nodes (5): Error Handling, Fieldset and Legend, Form Accessibility, Labels and D
 
 ### Community 137 - "padding-x"
 Cohesion: 0.67
-Nodes (4): padding-x, padding-x, $type, $value
+Nodes (4): padding-y, padding-y, $type, $value
 
 ### Community 138 - "default"
 Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Nodes (4): xl, xl, $type, $value
 
 ### Community 159 - "destructive-foreground"
 Cohesion: 0.67
@@ -748,7 +748,7 @@ Nodes (3): muted, $type, $value
 
 ### Community 164 - "primary"
 Cohesion: 0.67
-Nodes (3): primary, $type, $value
+Nodes (3): destructive, $type, $value
 
 ### Community 165 - "primary-foreground"
 Cohesion: 0.67
