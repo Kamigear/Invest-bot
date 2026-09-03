@@ -379,7 +379,7 @@ const LeaderboardAnalyticsUI = (() => {
 
       return `
         <tr class="la-row ${isExpanded ? 'la-row-expanded' : ''}" data-la-expand="${escapeHTML(key)}" style="cursor:pointer;" title="Klik untuk lihat histori harian">
-          <td class="font-mono">#${row.rank || index + 1}</td>
+          <td class="font-mono" style="text-align:center;color:var(--text-secondary,#888);font-size:12px;">#${index + 1}</td>
           <td>
             <strong>${escapeHTML(row.name)}</strong>
             <span>Kelas ${row.grade} · Rank #${row.rank || '-'} (Total: <b style="color:#4facfe;">${formatTotal(row.total)} Pt</b>)</span>
@@ -406,7 +406,6 @@ const LeaderboardAnalyticsUI = (() => {
           <button type="button" class="la-pill ${state.sortBy === 'growth' && state.sortDir === 'asc' ? 'active' : ''}" data-la-quick-sort="growth:asc">📉 Growth Terendah</button>
           <button type="button" class="la-pill ${state.sortBy === 'points' && state.sortDir === 'desc' ? 'active' : ''}" data-la-quick-sort="points:desc">💰 Poin Terbanyak</button>
           <button type="button" class="la-pill ${state.sortBy === 'points' && state.sortDir === 'asc' ? 'active' : ''}" data-la-quick-sort="points:asc">🪙 Poin Terendah</button>
-          <button type="button" class="la-pill ${state.sortBy === 'rank' && state.sortDir === 'asc' ? 'active' : ''}" data-la-quick-sort="rank:asc">🏆 Ranking #1 - #10</button>
         </div>
         <div class="la-filter-group">
           <span class="la-filter-label">🔍 Filter Trend:</span>
@@ -421,9 +420,7 @@ const LeaderboardAnalyticsUI = (() => {
         <table class="la-table">
           <thead>
             <tr>
-              <th class="la-sortable-th" data-la-sort="rank" title="Klik untuk urutkan berdasarkan Peringkat">
-                # ${getSortIcon('rank')}
-              </th>
+              <th style="width: 48px; text-align: center;">#</th>
               <th class="la-sortable-th" data-la-sort="points" title="Klik untuk urutkan berdasarkan Poin Terbanyak/Terendah">
                 🏫 Kelas & Total Poin ${getSortIcon('points')}
               </th>
