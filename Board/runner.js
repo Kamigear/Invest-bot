@@ -31,15 +31,7 @@ async function runClaimDaily() {
     Logger.info('Memulai Task 2 (Daily Login Reward)...');
     await runTask2();
 
-    // Beri jeda 3 detik agar Chromium tertutup sempurna sebelum eksekusi berikutnya
-    await sleep(3000);
-
-    // 3. Daily Job: Eksekusi investasi HANYA jika ada jadwal dari Decision Engine tadi malam
-    Logger.info('Memeriksa jadwal investasi hari ini...');
-    const jobResult = await runDailyJobWithLock();
-    Logger.info('Hasil Daily Job Investasi:', { status: jobResult?.status || 'NONE' });
-
-    // 4. Task 3: Sinkronisasi awal leaderboard analytics
+    // 3. Task 3: Sinkronisasi awal leaderboard analytics
     Logger.info('Menjalankan Task 3 (Leaderboard Analytics)...');
     await runTask3();
 

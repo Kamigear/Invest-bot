@@ -670,32 +670,23 @@ function start() {
   })();
 
   cron.schedule(cronSchedule, async () => {
-    Logger.banner('RUTINITAS HARIAN DIMULAI', { triggeredAt: new Date().toISOString() });
+    Logger.banner('RUTINITAS CLAIM DAILY DIMULAI', { triggeredAt: new Date().toISOString() });
     const t1 = await runTask1();
     const t2 = await runTask2();
-    // Tunggu 3 detik agar browser dari dailyReward benar-benar tertutup
-    // sebelum executeInvest membuka browser baru (cegah race condition)
-    await sleep(3000);
-    const result = await runDailyJobWithLock();
     const t3 = await runTask3();
 
     if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
       await scheduleDailyRewardRetry(t2.attempts);
     }
 
-    if (result && result.status === 'NETWORK_ERROR' && result.attempts) {
-      await scheduleRetry(result.entryId, result.attempts);
-    }
-
     recordLocalTaskRun({
-      phase: 'cron',
+      phase: 'cron_claim_daily',
       task1: t1 || 'COMPLETED',
       task2: t2?.status || 'UNKNOWN',
-      dailyJob: result?.status || 'UNKNOWN',
       task3: t3?.status || 'UNKNOWN'
     });
 
-    Logger.banner('RUTINITAS HARIAN SELESAI');
+    Logger.banner('RUTINITAS CLAIM DAILY SELESAI');
   });
 
   cron.schedule(leaderboardAnalyticsCronSchedule, async () => {

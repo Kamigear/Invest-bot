@@ -1,7 +1,7 @@
 # Graph Report - Investation  (2026-09-03)
 
 ## Corpus Check
-- 113 files · ~102,739 words
+- 113 files · ~102,749 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `899296ad`
+- Built from commit: `607e416b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -256,8 +256,8 @@ Cohesion: 0.10
 Nodes (26): fs, getChromiumPath(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath } (+18 more)
 
 ### Community 11 - "Board Leaderboard"
-Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Cohesion: 0.29
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
@@ -576,8 +576,8 @@ Cohesion: 0.18
 Nodes (11): Chart.js Integration, Command, Contextual Decision Flow, Decision System CSVs, Pattern Breaking (Duarte Sparkline), Reference Implementation, Slide Requirements, Slide Search (BM25) (+3 more)
 
 ### Community 91 - "Kiro Steering Design"
-Cohesion: 0.29
-Nodes (8): xl, $type, $value, radius, full, xl, $type, $value
+Cohesion: 0.67
+Nodes (4): xl, xl, $type, $value
 
 ### Community 92 - "Kiro Steering Ui"
 Cohesion: 0.29
@@ -719,7 +719,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Why does `TailwindConfigGenerator` connect `Kiro Steering Ui` to `Invest Bot Readme`, `Kiro Steering Ui`, `.test_init_framework`, `Kiro Steering Ui`, `.test_base_config_structure`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Any`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `primitive` connect `Kiro Steering Design` to `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`?**
+- **Why does `primitive` connect `Kiro Steering Design` to `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Board Leaderboard`, `Kiro Steering Design`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Are the 36 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `.test_node_check_parses_generated_config()`) actually correct?**
   _`TailwindConfigGenerator` has 36 INFERRED edges - model-reasoned connections that need verification._

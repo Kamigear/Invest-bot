@@ -2739,8 +2739,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primitive_radius",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "radius"
     },
     {
@@ -2882,8 +2882,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_full",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "full"
     },
     {
@@ -2893,8 +2893,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_full_value",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$value"
     },
     {
@@ -2904,8 +2904,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_full_type",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$type"
     },
     {
@@ -10972,15 +10972,15 @@
       "norm_label": "sleep()"
     },
     {
-      "label": "runHarvest()",
+      "label": "runClaimDaily()",
       "file_type": "code",
       "source_file": "Board/runner.js",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "board_runner_runharvest",
+      "id": "board_runner_runclaimdaily",
       "community": 109,
       "community_name": "Kiro Steering Design",
-      "norm_label": "runharvest()"
+      "norm_label": "runclaimdaily()"
     },
     {
       "label": "runAnalytics()",
@@ -36923,10 +36923,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L75",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_rundecision",
+      "source": "board_runner_runclaimdaily",
       "target": "board_alert_sendalert"
     },
     {
@@ -36935,10 +36935,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L49",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_runharvest",
+      "source": "board_runner_rundecision",
       "target": "board_alert_sendalert"
     },
     {
@@ -39417,7 +39417,7 @@
       "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_runharvest",
+      "source": "board_runner_runclaimdaily",
       "target": "board_index_rundailyjobwithlock"
     },
     {
@@ -39525,7 +39525,7 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_runharvest",
+      "source": "board_runner_runclaimdaily",
       "target": "board_index_runtask1"
     },
     {
@@ -39597,7 +39597,7 @@
       "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_runharvest",
+      "source": "board_runner_runclaimdaily",
       "target": "board_index_runtask2"
     },
     {
@@ -39657,7 +39657,7 @@
       "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_runharvest",
+      "source": "board_runner_runclaimdaily",
       "target": "board_index_runtask3"
     },
     {
@@ -41420,22 +41420,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L67",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
-      "target": "board_runner_rundecision",
+      "target": "board_runner_runclaimdaily",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L23",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
-      "target": "board_runner_runharvest",
+      "target": "board_runner_rundecision",
       "confidence_score": 1.0
     },
     {
@@ -41490,7 +41490,7 @@
       "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "board_runner_runharvest",
+      "source": "board_runner_runclaimdaily",
       "target": "board_runner_sleep",
       "confidence_score": 1.0
     },
@@ -41503,7 +41503,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
-      "target": "board_runner_runharvest",
+      "target": "board_runner_runclaimdaily",
       "confidence_score": 1.0
     },
     {
@@ -53442,5 +53442,5 @@
       "source_file": ".agents/rules/graphify.md"
     }
   ],
-  "built_at_commit": "899296adebd504fdd49a2e10b9dc49ee30c29c9c"
+  "built_at_commit": "607e416bc694f4f866d85197b9291217f39aca64"
 }
