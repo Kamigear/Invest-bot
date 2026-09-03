@@ -45,6 +45,8 @@ jobs:
           cache-dependency-path: Board/package.json
 
       - name: Install Dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
         run: |
           cd Board
           npm install
