@@ -47,17 +47,17 @@ jobs:
         uses: actions/cache@v4
         with:
           path: Board/node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('Board/package.json') }}
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('Board/package-lock.json', 'Board/package.json') }}
 
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
+        working-directory: Board
         env:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
-        run: |
-          cd Board
-          npm install
+        run: npm install
 
       - name: Execute Runner
+        working-directory: Board
         env:
           FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID || 'invest-bot-3e7a9' }}
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
@@ -74,4 +74,4 @@ jobs:
         run: |
           TASK="${{ inputs.task || 'auto' }}"
           echo "Menjalankan task: $TASK"
-          node Board/runner.js "$TASK"
+          node runner.js "$TASK"
