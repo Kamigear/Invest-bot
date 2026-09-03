@@ -123,11 +123,24 @@ async function scrapeLeaderboard(page, sourceUrl) {
 }
 
 function findBaseline(snapshots, targetMs) {
+  if (!snapshots || snapshots.length === 0) return null;
   const sorted = snapshots
     .filter(s => Number.isFinite(s.scrapedAtMs))
     .sort((a, b) => b.scrapedAtMs - a.scrapedAtMs);
 
-  return sorted.find(s => s.scrapedAtMs <= targetMs) || sorted[sorted.length - 1] || null;
+  if (sorted.length === 0) return null;
+
+  // 1. Try exact date match (e.g. 7 days ago date string)
+  const targetDateStr = toDateKey(targetMs);
+  const sameDateSnap = sorted.find(s => toDateKey(s.scrapedAtMs) === targetDateStr);
+  if (sameDateSnap) return sameDateSnap;
+
+  // 2. Try latest snapshot <= targetMs
+  const olderSnap = sorted.find(s => s.scrapedAtMs <= targetMs);
+  if (olderSnap) return olderSnap;
+
+  // 3. Fallback: if targetMs is older than all recorded snapshots (e.g. 7d requested but only 4d exist), return oldest snapshot
+  return sorted[sorted.length - 1];
 }
 
 function mapSnapshot(snapshot) {

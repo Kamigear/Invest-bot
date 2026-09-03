@@ -90,27 +90,56 @@ const LeaderboardAnalyticsUI = (() => {
     const history = (state.data?.pointHistory?.[key] || []).slice().sort((a, b) => a.scrapedAt - b.scrapedAt);
     const currentTotal = row.total || 0;
 
+    // Helper: find history entry for exact date offset (e.g. 1 day ago = yesterday, 7 days ago)
+    const findByDateOffset = (offsetDays) => {
+      if (!history.length) return null;
+      const latestEntry = history[history.length - 1];
+      const baseDate = latestEntry?.date ? new Date(latestEntry.date + 'T00:00:00') : new Date();
+      baseDate.setDate(baseDate.getDate() - offsetDays);
+      const y = baseDate.getFullYear();
+      const m = String(baseDate.getMonth() + 1).padStart(2, '0');
+      const d = String(baseDate.getDate()).padStart(2, '0');
+      const targetDateStr = `${y}-${m}-${d}`;
+
+      // 1. Try exact date match (e.g. 7 days ago)
+      const exact = history.find(e => e.date === targetDateStr);
+      if (exact) return exact;
+
+      // 2. Try latest date <= targetDateStr
+      const prev = history.filter(e => e.date <= targetDateStr);
+      if (prev.length > 0) return prev[prev.length - 1];
+
+      // 3. Fallback: if target date is older than recorded history, return earliest recorded entry (history[0])
+      return history[0];
+    };
+
+    // Calculate metrics directly from history if available so it always matches daily history table
     let growth24h = row.growth24h;
-    if (growth24h == null && history.length >= 2) {
-      growth24h = currentTotal - history[history.length - 2].total;
+    if (history.length >= 2) {
+      const yesterdayEntry = findByDateOffset(1);
+      if (yesterdayEntry) {
+        growth24h = currentTotal - yesterdayEntry.total;
+      }
     }
 
     let growth7d = row.growth7d;
-    if (growth7d == null && history.length > 0) {
-      const targetTime = (row.scrapedAtMs || Date.now()) - 7 * 24 * 60 * 60 * 1000;
-      const base = history.find(e => e.scrapedAt <= targetTime) || history[0];
-      growth7d = currentTotal - base.total;
+    if (history.length > 0) {
+      const weekAgoEntry = findByDateOffset(7);
+      if (weekAgoEntry) {
+        growth7d = currentTotal - weekAgoEntry.total;
+      }
     }
 
     let growth30d = row.growth30d;
-    if (growth30d == null && history.length > 0) {
-      const targetTime = (row.scrapedAtMs || Date.now()) - 30 * 24 * 60 * 60 * 1000;
-      const base = history.find(e => e.scrapedAt <= targetTime) || history[0];
-      growth30d = currentTotal - base.total;
+    if (history.length > 0) {
+      const monthAgoEntry = findByDateOffset(30);
+      if (monthAgoEntry) {
+        growth30d = currentTotal - monthAgoEntry.total;
+      }
     }
 
     let growthAll = row.growthAll;
-    if (growthAll == null && history.length > 0) {
+    if (history.length > 0) {
       growthAll = currentTotal - history[0].total;
     }
 

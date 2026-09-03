@@ -9,6 +9,7 @@ const { runLeaderboardAnalytics } = require('./leaderboardAnalytics');
 const { Logger } = require('./logger');
 const Pending = require('./pending');
 const { withRetry, isTransientError } = require('./retry');
+const { evaluateAndDecide } = require('./decisionEngine');
 
 const RETRY_INTERVAL_MS = (parseInt(process.env.RETRY_INTERVAL_MINUTES) || 15) * 60 * 1000;
 const RETRY_MAX_ATTEMPTS = parseInt(process.env.RETRY_MAX_ATTEMPTS) || 8;
@@ -64,6 +65,21 @@ function releaseBrowserLock() {
   browserBusySince = null;
 }
 
+/**
+ * Wrapper untuk runDailyJob() yang mengantre browser lock terlebih dahulu.
+ * Mencegah race condition antara executeInvest() dan dailyReward/TUGAS lain
+ * yang juga membuka browser Puppeteer.
+ */
+async function runDailyJobWithLock(targetDate) {
+  await waitForTurn('DAILY_JOB');
+  acquireBrowserLock();
+  try {
+    return await runDailyJob(targetDate);
+  } finally {
+    releaseBrowserLock();
+  }
+}
+
 function withTaskTimeout(promiseFn, timeoutMs = 150000, taskName = 'task') {
   return new Promise((resolve, reject) => {
     let timer = setTimeout(() => {
@@ -87,10 +103,13 @@ function withTaskTimeout(promiseFn, timeoutMs = 150000, taskName = 'task') {
   });
 }
 
+const { getChromiumPath } = require('./browserHelper');
+
 async function openBrowser() {
+  const chromPath = getChromiumPath();
   const browser = await puppeteer.launch({
     headless: "new",
-    executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
+    executablePath: chromPath,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -471,7 +490,7 @@ async function scheduleRetry(entryId, attempts) {
   const timer = setTimeout(async () => {
     retryTimers.delete(entryId);
     try {
-      const result = await runDailyJob();
+      const result = await runDailyJobWithLock();
       if (result && result.status === 'NETWORK_ERROR') {
         const cur = Pending.getPending(entryId);
         const newAttempts = (cur && cur.attempts) ? cur.attempts : attempts + 1;
@@ -566,7 +585,7 @@ function resumePendingRetries() {
     if (due) {
       (async () => {
         try {
-          const result = await runDailyJob();
+          const result = await runDailyJobWithLock();
           if (result && result.status === 'NETWORK_ERROR') {
             const cur = Pending.getPending(entryId);
             await scheduleRetry(entryId, (cur && cur.attempts) || attempts + 1);
@@ -622,7 +641,10 @@ function start() {
       Logger.banner('BOOT RUN dimulai');
       const t1 = await runTask1();
       const t2 = await runTask2();
-      const result = await runDailyJob();
+      // Tunggu 3 detik agar browser dari dailyReward benar-benar tertutup
+      // sebelum executeInvest membuka browser baru (cegah race condition)
+      await sleep(3000);
+      const result = await runDailyJobWithLock();
       const t3 = await runTask3();
 
       if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
@@ -651,7 +673,10 @@ function start() {
     Logger.banner('RUTINITAS HARIAN DIMULAI', { triggeredAt: new Date().toISOString() });
     const t1 = await runTask1();
     const t2 = await runTask2();
-    const result = await runDailyJob();
+    // Tunggu 3 detik agar browser dari dailyReward benar-benar tertutup
+    // sebelum executeInvest membuka browser baru (cegah race condition)
+    await sleep(3000);
+    const result = await runDailyJobWithLock();
     const t3 = await runTask3();
 
     if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
@@ -678,6 +703,20 @@ function start() {
     const t3 = await runTask3();
     recordLocalTaskRun({ phase: 'cron_analytics', task3: t3?.status || 'UNKNOWN' });
     Logger.banner('LEADERBOARD ANALYTICS SELESAI');
+  });
+
+  // ── Decision Engine: Evaluasi otomatis jam 23:00 WIB setiap hari ─────────
+  const decisionEngineCronSchedule = process.env.DECISION_ENGINE_CRON || '0 23 * * *';
+  cron.schedule(decisionEngineCronSchedule, async () => {
+    Logger.banner('DECISION ENGINE (23:00) DIMULAI', { triggeredAt: new Date().toISOString() });
+    try {
+      const result = await evaluateAndDecide();
+      recordLocalTaskRun({ phase: 'cron_decision', decision: result.decision, reason: result.reason, amount: result.amount });
+    } catch (err) {
+      Logger.critical('Decision Engine gagal dengan error tidak terduga', { error: err.message });
+      await sendAlert(`❌ Decision Engine (23:00) ERROR\n${err.message}\nBot tidak invest hari ini. Saldo aman.`);
+    }
+    Logger.banner('DECISION ENGINE (23:00) SELESAI');
   });
 }
 
@@ -726,4 +765,4 @@ if (require.main === module) {
   start();
 }
 
-module.exports = { start, runTask1, runTask2, runTask3 };
+module.exports = { start, runTask1, runTask2, runTask3, runDailyJobWithLock };

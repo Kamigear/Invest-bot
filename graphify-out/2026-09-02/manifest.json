@@ -17,47 +17,92 @@
   "Board/alert.js": {
     "mtime": 1785820306.5282393,
     "ast_hash": "49886587d1bb25c2cef897e888e1f5de",
-    "semantic_hash": "49886587d1bb25c2cef897e888e1f5de"
+    "semantic_hash": ""
   },
   "Board/executor.js": {
-    "mtime": 1788421476.153022,
-    "ast_hash": "2d9b6c34fcb7c6b5410d9a0da798f82e",
+    "mtime": 1787701611.7692194,
+    "ast_hash": "ee92a9e8e34030f04585710355759d8d",
     "semantic_hash": ""
   },
   "Board/firebase.js": {
-    "mtime": 1788434948.7838554,
-    "ast_hash": "2ade5c10fa2076ba8c8ac324edede901",
-    "semantic_hash": ""
+    "mtime": 1785813915.039372,
+    "ast_hash": "ac90f694743acf2284ab7bfb61940088",
+    "semantic_hash": "ac90f694743acf2284ab7bfb61940088"
   },
   "Board/index.js": {
-    "mtime": 1788434940.2308638,
-    "ast_hash": "1b3e30f446d46c4925f1f97a1a733d32",
+    "mtime": 1787802416.5402296,
+    "ast_hash": "a0ff057cf6c0bba6845ecd22ed2bf7f1",
     "semantic_hash": ""
   },
   "Board/investor.js": {
-    "mtime": 1788434922.526918,
-    "ast_hash": "ad04260cacccedb76d0fd78e7c5a5c2c",
+    "mtime": 1787701599.227366,
+    "ast_hash": "a642599d910e90cae1c0d107bd0ef9d4",
     "semantic_hash": ""
   },
   "Board/package.json": {
     "mtime": 1786979049.7030659,
     "ast_hash": "d54b6e2630a2b95563d63123e5414823",
-    "semantic_hash": "d54b6e2630a2b95563d63123e5414823"
+    "semantic_hash": ""
   },
   "js/app.js": {
-    "mtime": 1788429788.0559711,
-    "ast_hash": "be4d422ea4495d8c4a68a85c9627c73d",
+    "mtime": 1787634840.7529202,
+    "ast_hash": "97e41975bec434eb2234f8413ae974a3",
+    "semantic_hash": ""
+  },
+  "js/engine/calculator.js": {
+    "mtime": 1786988232.2637134,
+    "ast_hash": "b7487c74fffc8a9e7a0e00e6461be15b",
+    "semantic_hash": ""
+  },
+  "js/engine/ledger.js": {
+    "mtime": 1786986370.6220376,
+    "ast_hash": "58b652e48e1b15b43aff99731559c255",
+    "semantic_hash": ""
+  },
+  "js/engine/optimizer.js": {
+    "mtime": 1785663963.2058377,
+    "ast_hash": "56c899fc276a7d76026b00c34bbf23e9",
+    "semantic_hash": "56c899fc276a7d76026b00c34bbf23e9"
+  },
+  "js/engine/simulator.js": {
+    "mtime": 1787634825.8498425,
+    "ast_hash": "9569064c361411cd9f4eddebc33ea8a6",
+    "semantic_hash": ""
+  },
+  "js/export/exporters.js": {
+    "mtime": 1787035437.245822,
+    "ast_hash": "839038dfcba1c1ae33fd0abfceeba6e2",
     "semantic_hash": ""
   },
   "js/firebase.js": {
-    "mtime": 1788424498.5668051,
-    "ast_hash": "39b8e211eb9deb7f3e6a27d27a4ebd75",
+    "mtime": 1787638624.2353082,
+    "ast_hash": "e33579a1356747c5b571490b0545ed4f",
     "semantic_hash": ""
   },
   "js/ui/bot_status.js": {
     "mtime": 1786065057.0549738,
     "ast_hash": "0d10b3eecaff74646dd0f6f091e3058d",
-    "semantic_hash": "0d10b3eecaff74646dd0f6f091e3058d"
+    "semantic_hash": ""
+  },
+  "js/ui/calendar.js": {
+    "mtime": 1787634875.960942,
+    "ast_hash": "ddecffdc18017cdfabe7bb969039e847",
+    "semantic_hash": ""
+  },
+  "js/ui/comparison.js": {
+    "mtime": 1787032349.693279,
+    "ast_hash": "fafedf47ed965dc2686d5a1b13a6462d",
+    "semantic_hash": ""
+  },
+  "js/ui/detail.js": {
+    "mtime": 1787634890.359172,
+    "ast_hash": "663c3ad2251799a7129aeae23f9966ce",
+    "semantic_hash": ""
+  },
+  "js/ui/summary.js": {
+    "mtime": 1787032828.4524484,
+    "ast_hash": "81f7347cb6c5f9b29811e287d871e095",
+    "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
     "mtime": 1785661642.884102,
@@ -102,496 +147,491 @@
   "Board/README.md": {
     "mtime": 1785817024.5479963,
     "ast_hash": "6e94821de00346876722c356f62c8942",
-    "semantic_hash": "6e94821de00346876722c356f62c8942"
+    "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1788429810.2401009,
-    "ast_hash": "283de0f8b908c67fcf060f2c03ee7422",
+    "mtime": 1787121753.5420213,
+    "ast_hash": "bf13e4f2f4a7dfd2f90367d531a698a2",
     "semantic_hash": ""
   },
   "Board/dailyReward.js": {
-    "mtime": 1788434912.6112666,
-    "ast_hash": "3d437f8b776db1ea36cb01c55bb67355",
+    "mtime": 1787701602.871532,
+    "ast_hash": "9c766d557f4c58c7be57fc828089136a",
     "semantic_hash": ""
   },
   "Board/logger.js": {
     "mtime": 1785985873.2633727,
     "ast_hash": "faf2c13002351b504454ba25104872f9",
-    "semantic_hash": "faf2c13002351b504454ba25104872f9"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/scripts/tests/test_sync_brand_to_tokens.py": {
     "mtime": 1785924198.7638764,
     "ast_hash": "1cc075890cd68fa5c5f7463b9e1a4618",
-    "semantic_hash": "1cc075890cd68fa5c5f7463b9e1a4618"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/fetch-background.py": {
     "mtime": 1785924198.7097175,
     "ast_hash": "3269f2ebc8024e55b65008108910f3d4",
-    "semantic_hash": "3269f2ebc8024e55b65008108910f3d4"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/generate-slide.py": {
     "mtime": 1785924198.7132654,
     "ast_hash": "622d80cd7d9696f269e2da6b063754f7",
-    "semantic_hash": "622d80cd7d9696f269e2da6b063754f7"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/html-token-validator.py": {
     "mtime": 1785924198.7270248,
     "ast_hash": "1d18dae9d3d916137c50df5ec7e65039",
-    "semantic_hash": "1d18dae9d3d916137c50df5ec7e65039"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/search-slides.py": {
     "mtime": 1785924198.7339616,
     "ast_hash": "bc70c45549014b579fb2a27f3acf3d2e",
-    "semantic_hash": "bc70c45549014b579fb2a27f3acf3d2e"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/slide-token-validator.py": {
     "mtime": 1785924198.7486434,
     "ast_hash": "ee5d76c06903f98a460a8661e150c5d3",
-    "semantic_hash": "ee5d76c06903f98a460a8661e150c5d3"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/slide_search_core.py": {
     "mtime": 1785924198.7463124,
     "ast_hash": "994ab50455710fce437399e86df23286",
-    "semantic_hash": "994ab50455710fce437399e86df23286"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/scripts/tests/test_validate_tokens.py": {
     "mtime": 1785924198.7697392,
     "ast_hash": "32a9d34bbfa0041852963c189ea0ee5c",
-    "semantic_hash": "32a9d34bbfa0041852963c189ea0ee5c"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/templates/design-tokens-starter.json": {
     "mtime": 1785924198.4648612,
     "ast_hash": "a5771c378d6fea057242eeebe83a7747",
-    "semantic_hash": "a5771c378d6fea057242eeebe83a7747"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/cip/core.py": {
     "mtime": 1785924198.6982515,
     "ast_hash": "9fcf192c150e285ab6176a9bbacd475b",
-    "semantic_hash": "9fcf192c150e285ab6176a9bbacd475b"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/cip/generate.py": {
     "mtime": 1785924198.715476,
     "ast_hash": "5662ddd34b366544e6541686ec9c8d22",
-    "semantic_hash": "5662ddd34b366544e6541686ec9c8d22"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/cip/render-html.py": {
     "mtime": 1785924198.7307355,
     "ast_hash": "6fe3ce567110811670f05f40d386b48f",
-    "semantic_hash": "6fe3ce567110811670f05f40d386b48f"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/cip/search.py": {
     "mtime": 1785924198.737679,
     "ast_hash": "21a63380316bd899c49302e1b9a59191",
-    "semantic_hash": "21a63380316bd899c49302e1b9a59191"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/icon/generate.py": {
     "mtime": 1785924198.7215066,
     "ast_hash": "b142cc490fdf8a45bcf95bfe972284df",
-    "semantic_hash": "b142cc490fdf8a45bcf95bfe972284df"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/logo/core.py": {
     "mtime": 1785924198.70194,
     "ast_hash": "b8ea226dde31603e5a5e790641334055",
-    "semantic_hash": "b8ea226dde31603e5a5e790641334055"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/logo/generate.py": {
     "mtime": 1785924198.7249997,
     "ast_hash": "6f973ff8ea948cb774340703c8b51b54",
-    "semantic_hash": "6f973ff8ea948cb774340703c8b51b54"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/scripts/logo/search.py": {
     "mtime": 1785924198.741423,
     "ast_hash": "56aa8e1e15479f304a7e4709a767c98b",
-    "semantic_hash": "56aa8e1e15479f304a7e4709a767c98b"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/shadcn_add.py": {
     "mtime": 1785924198.744069,
     "ast_hash": "4eb5eb020e3b45a8f73f4a371abbdbe1",
-    "semantic_hash": "4eb5eb020e3b45a8f73f4a371abbdbe1"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/tailwind_config_gen.py": {
     "mtime": 1785924198.752141,
     "ast_hash": "cafc602e66323d217188d319c9a0412e",
-    "semantic_hash": "cafc602e66323d217188d319c9a0412e"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/tests/coverage-ui.json": {
     "mtime": 1785924198.4569683,
     "ast_hash": "42c486def8b180c1e72b1e7b865b9607",
-    "semantic_hash": "42c486def8b180c1e72b1e7b865b9607"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/tests/test_shadcn_add.py": {
     "mtime": 1785924198.7602916,
     "ast_hash": "51024123de02865d0c6dee29df6a887a",
-    "semantic_hash": "51024123de02865d0c6dee29df6a887a"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/tests/test_tailwind_config_gen.py": {
     "mtime": 1785924198.7667205,
     "ast_hash": "f5d99288827b293f4b6fdb86b8b56229",
-    "semantic_hash": "f5d99288827b293f4b6fdb86b8b56229"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/scripts/core.py": {
     "mtime": 1785924198.693856,
     "ast_hash": "41d488b60b5bfb818c4b17413f7477c3",
-    "semantic_hash": "41d488b60b5bfb818c4b17413f7477c3"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/scripts/design_system.py": {
     "mtime": 1785924198.7073042,
     "ast_hash": "f261c292ddae64226b2c8b264f797898",
-    "semantic_hash": "f261c292ddae64226b2c8b264f797898"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/scripts/search.py": {
     "mtime": 1785924198.7364275,
     "ast_hash": "10012353bb7d92c645ea7ab245e461e6",
-    "semantic_hash": "10012353bb7d92c645ea7ab245e461e6"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/scripts/tests/test_core.py": {
     "mtime": 1785924198.7555532,
     "ast_hash": "136d8ec87735cf5b77d70ad0adea59c0",
-    "semantic_hash": "136d8ec87735cf5b77d70ad0adea59c0"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/scripts/tests/test_design_system_mode.py": {
     "mtime": 1785924198.7576284,
     "ast_hash": "267b7b2d413c3822139be0f684a5db18",
-    "semantic_hash": "267b7b2d413c3822139be0f684a5db18"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/scripts/validate_data.py": {
     "mtime": 1785924198.7717464,
     "ast_hash": "9ea4300a8385a7377457dd6d1ee99224",
-    "semantic_hash": "9ea4300a8385a7377457dd6d1ee99224"
+    "semantic_hash": ""
   },
   "Board/pending.js": {
     "mtime": 1785985774.52724,
     "ast_hash": "768a6340b78cd686a190b745ccbb0232",
-    "semantic_hash": "768a6340b78cd686a190b745ccbb0232"
+    "semantic_hash": ""
   },
   "Board/retry.js": {
     "mtime": 1786011226.62178,
     "ast_hash": "cecf3a5082278f007ab74d3fd65efdc2",
-    "semantic_hash": "cecf3a5082278f007ab74d3fd65efdc2"
+    "semantic_hash": ""
   },
   ".kiro/steering/banner-design/SKILL.md": {
     "mtime": 1785924198.630856,
     "ast_hash": "aaf11854e0f8233bb53282699334164e",
-    "semantic_hash": "aaf11854e0f8233bb53282699334164e"
+    "semantic_hash": ""
   },
   ".kiro/steering/banner-design/references/banner-sizes-and-styles.md": {
     "mtime": 1785924198.5027382,
     "ast_hash": "2581cbdf098909b898471bea6adabff6",
-    "semantic_hash": "2581cbdf098909b898471bea6adabff6"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/SKILL.md": {
     "mtime": 1785924198.6338568,
     "ast_hash": "7d771c480a628d8abdd2749d1893c7ab",
-    "semantic_hash": "7d771c480a628d8abdd2749d1893c7ab"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/approval-checklist.md": {
     "mtime": 1785924198.4968238,
     "ast_hash": "8cedb5a9d3ddff0d5f7d98affd1fadfc",
-    "semantic_hash": "8cedb5a9d3ddff0d5f7d98affd1fadfc"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/asset-organization.md": {
     "mtime": 1785924198.498221,
     "ast_hash": "8c359aaccb0d5f5a9c0daed9128fd9e9",
-    "semantic_hash": "8c359aaccb0d5f5a9c0daed9128fd9e9"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/brand-guideline-template.md": {
     "mtime": 1785924198.508407,
     "ast_hash": "40aadbb3eb6b82efb9c933951cdfe632",
-    "semantic_hash": "40aadbb3eb6b82efb9c933951cdfe632"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/color-palette-management.md": {
     "mtime": 1785924198.5259862,
     "ast_hash": "b7e3dc308cfc2e65bd94ecf85fb580e7",
-    "semantic_hash": "b7e3dc308cfc2e65bd94ecf85fb580e7"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/consistency-checklist.md": {
     "mtime": 1785924198.5402665,
     "ast_hash": "e0be65fe750959b397a96d72ee939ebc",
-    "semantic_hash": "e0be65fe750959b397a96d72ee939ebc"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/logo-usage-rules.md": {
     "mtime": 1785924198.592676,
     "ast_hash": "03cb4cb2d302a9e827fceeff93b4186a",
-    "semantic_hash": "03cb4cb2d302a9e827fceeff93b4186a"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/messaging-framework.md": {
     "mtime": 1785924198.5962198,
     "ast_hash": "9390c33e1c7ddb04a39528aa5872f85f",
-    "semantic_hash": "9390c33e1c7ddb04a39528aa5872f85f"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/typography-specifications.md": {
     "mtime": 1785924198.6831782,
     "ast_hash": "bc5d6e2d497b8aa2d3110de1d8463276",
-    "semantic_hash": "bc5d6e2d497b8aa2d3110de1d8463276"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/update.md": {
     "mtime": 1785924198.685414,
     "ast_hash": "14b943f767980c2675e19008209d9eac",
-    "semantic_hash": "14b943f767980c2675e19008209d9eac"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/visual-identity.md": {
     "mtime": 1785924198.6876822,
     "ast_hash": "0ada28b9a2e03da7fe50b95f3318f4de",
-    "semantic_hash": "0ada28b9a2e03da7fe50b95f3318f4de"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/references/voice-framework.md": {
     "mtime": 1785924198.6890059,
     "ast_hash": "05b79e16c373850ea5e94e0977856dbc",
-    "semantic_hash": "05b79e16c373850ea5e94e0977856dbc"
+    "semantic_hash": ""
   },
   ".kiro/steering/brand/templates/brand-guidelines-starter.md": {
     "mtime": 1785924198.5117328,
     "ast_hash": "f7a5da16b17f9792a93270626d97a978",
-    "semantic_hash": "f7a5da16b17f9792a93270626d97a978"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/SKILL.md": {
     "mtime": 1785924198.637349,
     "ast_hash": "399b2e5ffbeac0bc777882e340245be9",
-    "semantic_hash": "399b2e5ffbeac0bc777882e340245be9"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/references/component-specs.md": {
     "mtime": 1785924198.532014,
     "ast_hash": "4b96207671408be2dac5b13c9e31f5bd",
-    "semantic_hash": "4b96207671408be2dac5b13c9e31f5bd"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/references/states-and-variants.md": {
     "mtime": 1785924198.6702766,
     "ast_hash": "ff0c751bff96625c6780ae076ed4558d",
-    "semantic_hash": "ff0c751bff96625c6780ae076ed4558d"
+    "semantic_hash": ""
   },
   ".kiro/steering/design-system/references/tailwind-integration.md": {
     "mtime": 1785924198.6752985,
     "ast_hash": "d111e6c9b42fc6c83e353be65f1e7380",
-    "semantic_hash": "d111e6c9b42fc6c83e353be65f1e7380"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/SKILL.md": {
     "mtime": 1785924198.6453195,
     "ast_hash": "d61b2326528cef1f0a8802c473840aa7",
-    "semantic_hash": "d61b2326528cef1f0a8802c473840aa7"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/banner-sizes-and-styles.md": {
     "mtime": 1785924198.5073986,
     "ast_hash": "2581cbdf098909b898471bea6adabff6",
-    "semantic_hash": "2581cbdf098909b898471bea6adabff6"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/cip-deliverable-guide.md": {
     "mtime": 1785924198.518628,
     "ast_hash": "529d95a6ced350448cff5c2c994adaf6",
-    "semantic_hash": "529d95a6ced350448cff5c2c994adaf6"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/cip-design.md": {
     "mtime": 1785924198.5196276,
     "ast_hash": "0c7a987fa779a7058a26b92aba5c1e8c",
-    "semantic_hash": "0c7a987fa779a7058a26b92aba5c1e8c"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/cip-prompt-engineering.md": {
     "mtime": 1785924198.5223794,
     "ast_hash": "71a93064bf55486c3d3bbbfa512db516",
-    "semantic_hash": "71a93064bf55486c3d3bbbfa512db516"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/cip-style-guide.md": {
     "mtime": 1785924198.5238967,
     "ast_hash": "45ddddcc2633526b10d3936407a37fdb",
-    "semantic_hash": "45ddddcc2633526b10d3936407a37fdb"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/design-routing.md": {
     "mtime": 1785924198.5528138,
     "ast_hash": "fb2836b233f4a1a538fcf515d7746d6d",
-    "semantic_hash": "fb2836b233f4a1a538fcf515d7746d6d"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/icon-design.md": {
     "mtime": 1785924198.5632777,
     "ast_hash": "629ff5002717b909f53363f5cb1cfd28",
-    "semantic_hash": "629ff5002717b909f53363f5cb1cfd28"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/logo-color-psychology.md": {
     "mtime": 1785924198.5714834,
     "ast_hash": "c16a5c2f71bca6dffe5be145fb8e1cb4",
-    "semantic_hash": "c16a5c2f71bca6dffe5be145fb8e1cb4"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/logo-design.md": {
     "mtime": 1785924198.5761926,
     "ast_hash": "ddf37c8f5fb996f86e11052bbe55e2c5",
-    "semantic_hash": "ddf37c8f5fb996f86e11052bbe55e2c5"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/logo-prompt-engineering.md": {
     "mtime": 1785924198.5802004,
     "ast_hash": "f2efe3315b1b88e32e3a46f76f00e975",
-    "semantic_hash": "f2efe3315b1b88e32e3a46f76f00e975"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/logo-style-guide.md": {
     "mtime": 1785924198.5865445,
     "ast_hash": "87c13758b7b6ee686d46dd1ad444a3d0",
-    "semantic_hash": "87c13758b7b6ee686d46dd1ad444a3d0"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/slides-copywriting-formulas.md": {
     "mtime": 1785924198.6560285,
     "ast_hash": "cc6e52e1363e4df1bb56365444dc0f64",
-    "semantic_hash": "cc6e52e1363e4df1bb56365444dc0f64"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/slides-create.md": {
     "mtime": 1785924198.6580288,
     "ast_hash": "0c134b4ddc19a2be22f8e378e954cf29",
-    "semantic_hash": "0c134b4ddc19a2be22f8e378e954cf29"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/slides-html-template.md": {
     "mtime": 1785924198.6617439,
     "ast_hash": "8240be541e1fa33ed5a1e6f3a6f56525",
-    "semantic_hash": "8240be541e1fa33ed5a1e6f3a6f56525"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/slides-layout-patterns.md": {
     "mtime": 1785924198.662752,
     "ast_hash": "1fc25584d384bb44ca077016a7481109",
-    "semantic_hash": "1fc25584d384bb44ca077016a7481109"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/slides-strategies.md": {
     "mtime": 1785924198.663771,
     "ast_hash": "1fb116496c22dc3e9ca8a44f86b219bb",
-    "semantic_hash": "1fb116496c22dc3e9ca8a44f86b219bb"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/slides.md": {
     "mtime": 1785924198.6659117,
     "ast_hash": "6c72659c3af2cdb7df76827cdfff8c2c",
-    "semantic_hash": "6c72659c3af2cdb7df76827cdfff8c2c"
+    "semantic_hash": ""
   },
   ".kiro/steering/design/references/social-photos-design.md": {
     "mtime": 1785924198.66826,
     "ast_hash": "e4df69abcf5c9d57a219b0e264b699be",
-    "semantic_hash": "e4df69abcf5c9d57a219b0e264b699be"
+    "semantic_hash": ""
   },
   ".kiro/steering/slides/SKILL.md": {
     "mtime": 1785924198.6473825,
     "ast_hash": "1d017fa64446b147cb7c84f05562520f",
-    "semantic_hash": "1d017fa64446b147cb7c84f05562520f"
+    "semantic_hash": ""
   },
   ".kiro/steering/slides/references/copywriting-formulas.md": {
     "mtime": 1785924198.5469718,
     "ast_hash": "cc6e52e1363e4df1bb56365444dc0f64",
-    "semantic_hash": "cc6e52e1363e4df1bb56365444dc0f64"
+    "semantic_hash": ""
   },
   ".kiro/steering/slides/references/create.md": {
     "mtime": 1785924198.5499768,
     "ast_hash": "0c134b4ddc19a2be22f8e378e954cf29",
-    "semantic_hash": "0c134b4ddc19a2be22f8e378e954cf29"
+    "semantic_hash": ""
   },
   ".kiro/steering/slides/references/html-template.md": {
     "mtime": 1785924198.5592704,
     "ast_hash": "8240be541e1fa33ed5a1e6f3a6f56525",
-    "semantic_hash": "8240be541e1fa33ed5a1e6f3a6f56525"
+    "semantic_hash": ""
   },
   ".kiro/steering/slides/references/layout-patterns.md": {
     "mtime": 1785924198.565915,
     "ast_hash": "1fc25584d384bb44ca077016a7481109",
-    "semantic_hash": "1fc25584d384bb44ca077016a7481109"
+    "semantic_hash": ""
   },
   ".kiro/steering/slides/references/slide-strategies.md": {
     "mtime": 1785924198.6525447,
     "ast_hash": "1fb116496c22dc3e9ca8a44f86b219bb",
-    "semantic_hash": "1fb116496c22dc3e9ca8a44f86b219bb"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/LICENSE.txt": {
     "mtime": 1785924198.7741551,
     "ast_hash": "175792518e4ac015ab6696d16c4f607e",
-    "semantic_hash": "175792518e4ac015ab6696d16c4f607e"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/SKILL.md": {
     "mtime": 1785924198.650538,
     "ast_hash": "28a3c5ed8e63a04595cc398a355a3b63",
-    "semantic_hash": "28a3c5ed8e63a04595cc398a355a3b63"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/canvas-design-system.md": {
     "mtime": 1785924198.5150363,
     "ast_hash": "af9125f586c5909737dab10874f0c1e2",
-    "semantic_hash": "af9125f586c5909737dab10874f0c1e2"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/shadcn-accessibility.md": {
     "mtime": 1785924198.6111944,
     "ast_hash": "942f36327bb6ada5ce9a7f3d0e1877ce",
-    "semantic_hash": "942f36327bb6ada5ce9a7f3d0e1877ce"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/shadcn-components.md": {
     "mtime": 1785924198.6138504,
     "ast_hash": "e6c281ca23ac2a97aefae71f6190f915",
-    "semantic_hash": "e6c281ca23ac2a97aefae71f6190f915"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/shadcn-theming.md": {
     "mtime": 1785924198.6182206,
     "ast_hash": "1c3f2a49a346f7e22e364f94c3b1d99c",
-    "semantic_hash": "1c3f2a49a346f7e22e364f94c3b1d99c"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/tailwind-customization.md": {
     "mtime": 1785924198.6723008,
     "ast_hash": "214b07281279c73713262edc92cba5c4",
-    "semantic_hash": "214b07281279c73713262edc92cba5c4"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/tailwind-responsive.md": {
     "mtime": 1785924198.677322,
     "ast_hash": "0404b2ca094826682d24226231ff2fef",
-    "semantic_hash": "0404b2ca094826682d24226231ff2fef"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/references/tailwind-utilities.md": {
     "mtime": 1785924198.680616,
     "ast_hash": "cc42c158e59165c86fc826c83862c97e",
-    "semantic_hash": "cc42c158e59165c86fc826c83862c97e"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/requirements.txt": {
     "mtime": 1785924198.7761567,
     "ast_hash": "56d0657c2d53f4edf30689d0c217efbb",
-    "semantic_hash": "56d0657c2d53f4edf30689d0c217efbb"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-styling/scripts/tests/requirements.txt": {
     "mtime": 1785924198.7775347,
     "ast_hash": "d7fb3d2ea85706944ec8609949c3a851",
-    "semantic_hash": "d7fb3d2ea85706944ec8609949c3a851"
+    "semantic_hash": ""
   },
   ".kiro/steering/ui-ux-pro-max/SKILL.md": {
     "mtime": 1785924488.0440502,
     "ast_hash": "bdee7e3ecdd3b7f23b6934562b50a67f",
-    "semantic_hash": "bdee7e3ecdd3b7f23b6934562b50a67f"
+    "semantic_hash": ""
   },
   ".kilo/plans/1785750000000-class-perks-support.md": {
     "mtime": 1786067085.1351924,
     "ast_hash": "34ea8b47afe455d942fee1dac07c04b9",
-    "semantic_hash": "34ea8b47afe455d942fee1dac07c04b9"
+    "semantic_hash": ""
+  },
+  "Bit script/mock_sniper.js": {
+    "mtime": 1786682730.3748658,
+    "ast_hash": "7d35ca1c5ff1c3f22eec26ff88f4b990",
+    "semantic_hash": ""
+  },
+  "Bit script/package.json": {
+    "mtime": 1786674802.5567842,
+    "ast_hash": "04eea3bb3d7849fefc9384f854e173de",
+    "semantic_hash": ""
+  },
+  "Bit script/sniper.js": {
+    "mtime": 1786682771.0918612,
+    "ast_hash": "63b726bfaa2f9398096886a460c278d7",
+    "semantic_hash": ""
+  },
+  "Board/leaderboard.js": {
+    "mtime": 1787121572.8239775,
+    "ast_hash": "160ac9928a3478f0ee75182b7a10eea4",
+    "semantic_hash": ""
   },
   "Board/leaderboardAnalytics.js": {
-    "mtime": 1788139573.5904317,
-    "ast_hash": "9c2ac1b866c6a6939d50902e04e6ff51",
-    "semantic_hash": "9c2ac1b866c6a6939d50902e04e6ff51"
+    "mtime": 1787704202.1310573,
+    "ast_hash": "2368cc432a284a2078c2703c2fd465bc",
+    "semantic_hash": ""
   },
   "js/ui/leaderboard_analytics.js": {
-    "mtime": 1788139571.1340697,
-    "ast_hash": "6cb2ef7a1721fc7bbbb318ea9d7da627",
-    "semantic_hash": "6cb2ef7a1721fc7bbbb318ea9d7da627"
+    "mtime": 1787804316.8009634,
+    "ast_hash": "9ac542508ce9714ba4462bd8331fc845",
+    "semantic_hash": ""
   },
   "Rep Dashboard.html": {
-    "mtime": 1788005331.2548752,
-    "ast_hash": "78185e4646e4e2d4f9a83ab166508abe",
-    "semantic_hash": "78185e4646e4e2d4f9a83ab166508abe"
-  },
-  "Board/extract_competitors.js": {
-    "mtime": 1788419338.8956428,
-    "ast_hash": "7ec3e0148d9a6a879964522c280dc8d7",
-    "semantic_hash": ""
-  },
-  "Board/decisionEngine.js": {
-    "mtime": 1788429580.6840768,
-    "ast_hash": "da2f3c838c4231fdaf718d7da94e6a53",
-    "semantic_hash": ""
-  },
-  "Board/browserHelper.js": {
-    "mtime": 1788434902.226481,
-    "ast_hash": "9199de31a2353b19334452f7bcbe0281",
-    "semantic_hash": ""
-  },
-  "Board/runner.js": {
-    "mtime": 1788436006.9849317,
-    "ast_hash": "60f92ec2a47734fe6c88f6a31fd30971",
-    "semantic_hash": ""
-  },
-  ".github/workflows/bot.yml": {
-    "mtime": 1788436032.8026736,
-    "ast_hash": "4e639dbc33ab2a82103dd1e0a2e425c3",
+    "mtime": 1787633942.1883576,
+    "ast_hash": "d77475a448f284894852791216b38dec",
     "semantic_hash": ""
   }
 }

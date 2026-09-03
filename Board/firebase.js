@@ -1,13 +1,30 @@
 const admin = require('firebase-admin');
 const { Logger } = require('./logger');
 
-if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-  Logger.warning('GOOGLE_APPLICATION_CREDENTIALS not set', { env: process.env.NODE_ENV || 'unset' });
+let credential;
+let projectId = process.env.FIREBASE_PROJECT_ID;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+  try {
+    const parsed = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    credential = admin.credential.cert(parsed);
+    if (!projectId) projectId = parsed.project_id;
+    Logger.info('Firebase initialized using FIREBASE_SERVICE_ACCOUNT env JSON');
+  } catch (err) {
+    Logger.error('Failed to parse FIREBASE_SERVICE_ACCOUNT JSON:', err.message);
+  }
+}
+
+if (!credential) {
+  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+    Logger.warning('GOOGLE_APPLICATION_CREDENTIALS not set', { env: process.env.NODE_ENV || 'unset' });
+  }
+  credential = admin.credential.applicationDefault();
 }
 
 admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  projectId: process.env.FIREBASE_PROJECT_ID
+  credential,
+  projectId
 });
 
 const db = admin.firestore();

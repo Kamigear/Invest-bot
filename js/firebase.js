@@ -115,10 +115,80 @@ const FirebaseDB = (() => {
                     }, { merge: true });
                 }
 
+        // ── Ranking-Aware Strategy Guard ──────────────────────────────────
+        // Sebelum schedule dikirim ke bot, cek kondisi ranking kelas kita.
+        // Bot Orange Pi TIDAK akan tahu soal ini — bot hanya baca & eksekusi.
+        // Semua keputusan ada di sini (browser).
+        //
+        // Fase yang berlaku:
+        //   FREEZE       → saldo < 600 atau growth7d < 50  → hapus semua schedule
+        //   CONSERVATIVE → saldo ≥ 600 dan growth7d ≥ 50   → cap amount ke 80 Pt
+        //   SPRINT       → saldo ≥ 800 dan rank ≤ 2        → cap amount ke 120 Pt
+        let filteredSchedule = schedule;
+        let guardPhase = null;
+        let guardMaxInvest = null;
+        try {
+            const lbDoc = await db.collection('botState').doc('leaderboardAnalytics').get();
+            const dashDoc = await db.collection('botState').doc('dashboardData').get();
+
+            if (lbDoc.exists && dashDoc.exists) {
+                const lbData   = lbDoc.data();
+                const dashData = dashDoc.data();
+                const balance  = dashData.balance || 0;
+
+                // Cari data kelas kita
+                const OUR_PATTERNS = ['kaleb', 'mr kaleb', 'class mr kaleb'];
+                const ourClass = (lbData.classes || []).find(c =>
+                    String(c.classId) === '4' ||
+                    OUR_PATTERNS.some(p => String(c.name || '').toLowerCase().includes(p))
+                );
+
+                const growth7d = ourClass?.growth7d ?? 0;
+                const rank     = ourClass?.rank ?? 99;
+
+                let phase, maxInvest;
+                if (balance < 600 || growth7d < 50) {
+                    phase = 'FREEZE'; maxInvest = 0;
+                } else if (balance >= 800 && rank <= 2 && growth7d >= 150) {
+                    phase = 'SPRINT'; maxInvest = 120;
+                } else {
+                    phase = 'CONSERVATIVE'; maxInvest = 80;
+                }
+                guardPhase = phase;
+                guardMaxInvest = maxInvest;
+
+                console.log(`[RankingGuard] Phase: ${phase} | Saldo: ${balance} Pt | Growth7d: ${growth7d} Pt | Rank: #${rank} | MaxInvest: ${maxInvest}`);
+
+                if (phase === 'FREEZE') {
+                    // Jangan kirim schedule apapun — bot hanya akan panen daily income
+                    filteredSchedule = [];
+                    console.warn('[RankingGuard] FREEZE aktif — semua schedule investasi DIHAPUS sebelum dikirim ke bot.');
+                } else {
+                    // Cap amount sesuai fase
+                    filteredSchedule = schedule.map(item => ({
+                        ...item,
+                        amount: Math.min(item.amount || 0, maxInvest)
+                    })).filter(item => item.amount > 0);
+                    console.log(`[RankingGuard] ${phase} — ${filteredSchedule.length} schedule dikirim, amount di-cap ke max ${maxInvest} Pt.`);
+                }
+
+                // Simpan juga fase saat ini ke botState/config agar bisa dibaca UI
+                await db.collection('botState').doc('config').set({
+                    strategyPhase: phase,
+                    strategyMaxInvest: maxInvest,
+                    strategyUpdatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    strategyContext: { balance, growth7d, rank }
+                }, { merge: true });
+            }
+        } catch (guardErr) {
+            console.warn('[RankingGuard] Gagal membaca data ranking, lanjut sync tanpa filter:', guardErr.message);
+        }
+        // ── End Ranking Guard ──────────────────────────────────────────────
+
                 // 2. Sync investment schedule items to schedules collection
-                if (Array.isArray(schedule) && schedule.length > 0) {
+                if (Array.isArray(filteredSchedule) && filteredSchedule.length > 0) {
                     const batch = db.batch();
-                    schedule.forEach(item => {
+                    filteredSchedule.forEach(item => {
                         const dateStr = item.investDate || item.date;
                         if (dateStr) {
                             const entryId = (typeof item.id === 'string' && item.id.startsWith('inv_')) ? item.id : ('inv_' + String(dateStr));
@@ -135,11 +205,17 @@ const FirebaseDB = (() => {
                         }
                     });
                     await batch.commit();
-                    console.log(`Successfully synced ${schedule.length} schedule entries to Firebase`);
+                    console.log(`Successfully synced ${filteredSchedule.length} schedule entries to Firebase`);
                 }
 
                 console.log('Successfully synced config & schedule to Firebase');
-                return true;
+                return {
+                    success: true,
+                    filteredSchedule,
+                    phase: guardPhase,
+                    maxInvest: guardMaxInvest,
+                    itemsRemoved: schedule.length - filteredSchedule.length
+                };
             } catch (error) {
                 console.error('Error syncing config/schedule to Firebase:', error);
                 throw error;

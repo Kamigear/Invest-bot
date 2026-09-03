@@ -13,9 +13,10 @@ async function claimDailyReward() {
     const classId = process.env.REP_CLASS_ID || '4';
     const password = process.env.REP_PASSWORD || '104anakmrkalebyangkerenbngtwowamazinggantengnice';
     const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
-    const chromPath = process.env.CHROMIUM_PATH || '/usr/bin/chromium';
+    const { getChromiumPath } = require('./browserHelper');
+    const chromPath = getChromiumPath();
 
-    Logger.info("Memulai proses klaim daily reward", { panelUrl });
+    Logger.info("Memulai proses klaim daily reward", { panelUrl, chromPath: chromPath || 'bundled' });
 
     browser = await puppeteer.launch({
       headless: "new",

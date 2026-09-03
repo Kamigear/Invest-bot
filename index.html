@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Investment Calendar Simulator – Algoritma cerdas untuk mengoptimalkan strategi investasi harian dengan kalender interaktif, analisis mendalam, dan ekspor lengkap." />
-  <meta name="keywords" content="investment calendar, simulasi investasi, kalender investasi, strategi investasi" />
+  <meta name="description" content="Investment Monitoring Dashboard — Real-time leaderboard analytics, competitor tracking, dan bot decision log." />
+  <meta name="keywords" content="investment monitoring, leaderboard analytics, bot status, class competition" />
   <meta name="author" content="InvestCalc" />
-  <meta property="og:title" content="Investment Calendar Simulator" />
-  <meta property="og:description" content="Simulasi strategi investasi optimal dengan algoritma lookahead cerdas." />
-  <title>Investment Calendar Simulator</title>
+  <meta property="og:title" content="Investment Monitoring Dashboard" />
+  <meta property="og:description" content="Real-time monitoring dashboard untuk kompetisi investasi antar kelas." />
+  <title>Investment Monitoring Dashboard</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,12 +20,6 @@
   <!-- External CDN Libraries -->
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
-  <!-- SheetJS (Excel export) -->
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js" defer></script>
-  <!-- jsPDF (PDF export) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
-  <!-- jsPDF AutoTable -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
 
   <!-- Firebase CDN (compat - no bundler needed) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -37,8 +31,8 @@
 
   <!-- Auth Overlay (password gate) -->
   <div id="auth-overlay" style="display:none; position:fixed; inset:0; background:rgba(9,9,18,0.97); z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
-    <div style="font-size:48px;">🔐</div>
-    <div style="font-size:22px; font-weight:700; color:#e2e8f0;">InvestCalc</div>
+    <div style="font-size:48px;">📊</div>
+    <div style="font-size:22px; font-weight:700; color:#e2e8f0;">Investment Monitor</div>
     <div style="font-size:14px; color:#94a3b8;">Masukkan password untuk melanjutkan</div>
     <input id="auth-input" type="password" placeholder="Password..."
       style="padding:12px 18px; border-radius:10px; border:1px solid rgba(255,255,255,0.12); background:#1a1a2e; color:#e2e8f0; font-size:15px; width:260px; outline:none;" />
@@ -52,40 +46,25 @@
 
   <div class="app-shell" role="main">
 
-    <!-- Sidebar: Configuration Panel -->
-    <aside id="config-panel" aria-label="Configuration Panel">
-      <!-- Filled by app.js -->
-    </aside>
+    <!-- Sidebar tersembunyi (tidak dipakai di monitoring mode) -->
+    <aside id="config-panel" aria-label="Configuration Panel" style="display:none;"></aside>
 
     <!-- Main Content Area -->
-    <section id="main-content" aria-label="Simulation Results">
+    <section id="main-content" aria-label="Monitoring Dashboard">
       <!-- Filled by app.js -->
     </section>
 
   </div><!-- /.app-shell -->
 
-  <!-- Engine Scripts -->
-  <script src="js/engine/calculator.js"></script>
-  <script src="js/engine/ledger.js"></script>
-  <script src="js/engine/optimizer.js"></script>
-  <script src="js/engine/simulator.js"></script>
-
-  <!-- UI Scripts -->
-  <script src="Board/leaderboard.js"></script>
-  <script src="js/ui/calendar.js"></script>
-  <script src="js/ui/detail.js"></script>
-  <script src="js/ui/summary.js"></script>
-  <script src="js/ui/comparison.js"></script>
+  <!-- UI Scripts (Monitoring) -->
   <script src="js/ui/bot_status.js"></script>
   <script src="js/ui/leaderboard_analytics.js"></script>
-
-  <!-- Export Scripts -->
-  <script src="js/export/exporters.js"></script>
 
   <!-- Firebase Integration -->
   <script src="js/firebase.js"></script>
 
-  <!-- App Orchestrator -->
+  <!-- App Orchestrator (Monitoring) -->
   <script src="js/app.js"></script>
+
 </body>
 </html>

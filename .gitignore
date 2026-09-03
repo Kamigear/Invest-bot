@@ -1,0 +1,31 @@
+# Environment variables & secrets
+.env
+.env.*
+.env.example
+Board/.env.example
+*.env
+Board/.env
+service-account.json
+Board/service-account.json
+*.pem
+*.key
+
+# Node dependencies
+node_modules/
+Board/node_modules/
+package-lock.json
+Board/package-lock.json
+
+# Logs & task history
+logs/
+Board/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
