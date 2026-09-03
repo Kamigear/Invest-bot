@@ -35,6 +35,14 @@ async function runClaimDaily() {
     Logger.info('Menjalankan Task 3 (Leaderboard Analytics)...');
     await runTask3();
 
+    // Kirim notifikasi ntfy bahwa claim daily berhasil
+    await sendAlert(
+      `🌅 Claim Daily Selesai (04:00 WIB)\n` +
+      `✅ Absen harian & streak berhasil diklaim\n` +
+      `✅ Easter egg & perk diproses\n` +
+      `✅ Leaderboard disinkronkan`
+    );
+
     Logger.banner('RUNNER: CLAIM DAILY SELESAI DENGAN SUKSES');
   } catch (err) {
     Logger.critical('RUNNER: Terjadi kesalahan pada Claim Daily', { error: err.message });

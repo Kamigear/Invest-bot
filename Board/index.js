@@ -686,6 +686,13 @@ function start() {
       task3: t3?.status || 'UNKNOWN'
     });
 
+    await sendAlert(
+      `🌅 Claim Daily Selesai (04:00 WIB)\n` +
+      `✅ Absen harian & streak berhasil diklaim\n` +
+      `✅ Easter egg & perk diproses\n` +
+      `✅ Leaderboard disinkronkan`
+    );
+
     Logger.banner('RUTINITAS CLAIM DAILY SELESAI');
   });
 
