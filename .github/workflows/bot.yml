@@ -2,8 +2,8 @@ name: Invest Bot Automation
 
 on:
   schedule:
-    # 23:00 UTC = 06:00 WIB (Daily Harvest: Klaim Streak 30+, Perk, Easter Egg, Invest jika ada jadwal)
-    - cron: '0 23 * * *'
+    # 21:00 UTC = 04:00 WIB (Claim Daily: Klaim Streak 30+, Perk, Easter Egg, Invest jika ada jadwal)
+    - cron: '0 21 * * *'
     # 16:00 UTC = 23:00 WIB (Decision Engine: Evaluasi Otomatis Rule 1-4)
     - cron: '0 16 * * *'
     # Setiap 1 jam (Leaderboard Analytics: Scrape & Pantau Kompetitor)
@@ -17,7 +17,7 @@ on:
         type: choice
         options:
           - auto
-          - harvest
+          - claim_daily
           - invest
           - decision
           - analytics

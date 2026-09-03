@@ -20,8 +20,8 @@ const { sendAlert } = require('./alert');
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function runHarvest() {
-  Logger.banner('RUNNER: DAILY HARVEST DIMULAI (06:00 WIB Routine)');
+async function runClaimDaily() {
+  Logger.banner('RUNNER: CLAIM DAILY DIMULAI (04:00 WIB Routine)');
   try {
     // 1. Task 1: Scrape dashboard & claim Easter Egg jika hari Minggu/jadwalnya
     Logger.info('Memulai Task 1 (Easter Egg & Dashboard Scrape)...');
@@ -43,10 +43,10 @@ async function runHarvest() {
     Logger.info('Menjalankan Task 3 (Leaderboard Analytics)...');
     await runTask3();
 
-    Logger.banner('RUNNER: DAILY HARVEST SELESAI DENGAN SUKSES');
+    Logger.banner('RUNNER: CLAIM DAILY SELESAI DENGAN SUKSES');
   } catch (err) {
-    Logger.critical('RUNNER: Terjadi kesalahan pada Daily Harvest', { error: err.message });
-    await sendAlert(`❌ RUNNER HARVEST ERROR: ${err.message}`);
+    Logger.critical('RUNNER: Terjadi kesalahan pada Claim Daily', { error: err.message });
+    await sendAlert(`❌ RUNNER CLAIM DAILY ERROR: ${err.message}`);
     process.exit(1);
   }
 }
@@ -99,8 +99,8 @@ async function main() {
 
   Logger.info(`Runner dijalankan dengan arg: "${arg}" | Jam WIB saat ini: ${wibHour}:00 WIB`);
 
-  if (arg === 'harvest') {
-    await runHarvest();
+  if (arg === 'claim_daily' || arg === 'claim-daily' || arg === 'harvest') {
+    await runClaimDaily();
   } else if (arg === 'invest') {
     await runInvest();
   } else if (arg === 'analytics') {
@@ -109,9 +109,9 @@ async function main() {
     await runDecision();
   } else if (arg === 'auto') {
     // Mode Auto: Deteksi berdasarkan jam WIB saat ini
-    if (wibHour === 6) {
-      Logger.info('Jam 06:00 WIB terdeteksi -> Menjalankan Daily Harvest');
-      await runHarvest();
+    if (wibHour === 4) {
+      Logger.info('Jam 04:00 WIB terdeteksi -> Menjalankan Claim Daily');
+      await runClaimDaily();
     } else if (wibHour === 23) {
       Logger.info('Jam 23:00 WIB terdeteksi -> Menjalankan Decision Engine');
       await runDecision();
@@ -120,7 +120,7 @@ async function main() {
       await runAnalytics();
     }
   } else {
-    Logger.error(`Argumen tidak dikenali: "${arg}". Pilihan yang valid: harvest, analytics, decision, auto`);
+    Logger.error(`Argumen tidak dikenali: "${arg}". Pilihan yang valid: claim_daily, invest, decision, analytics, auto`);
     process.exit(1);
   }
 

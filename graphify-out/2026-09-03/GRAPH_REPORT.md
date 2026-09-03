@@ -1,11 +1,11 @@
 # Graph Report - Investation  (2026-09-03)
 
 ## Corpus Check
-- 113 files · ~102,677 words
+- 113 files · ~102,739 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2141 nodes · 2657 edges · 163 communities (125 shown, 38 thin omitted)
+- 2142 nodes · 2661 edges · 163 communities (125 shown, 38 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 166 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
@@ -125,7 +125,9 @@
 - Js Export Exporters
 - Kiro Steering Design
 - Kiro Steering Design
+- md
 - Kiro Steering Design
+- Typography Customization
 - Kiro Steering Ui
 - Kiro Steering Ui
 - Kiro Steering Brand
@@ -143,12 +145,10 @@
 - Kiro Steering Ui
 - Kiro Steering Ui
 - Kiro Steering Ui
-- Kiro Steering Ui
 - Agents
 - Agents Rules Graphify
 - Agents Workflows Graphify
 - Js Ui Bot
-- Js Ui Comparison
 - Js Ui Leaderboard
 - Kiro Steering Design
 - Kiro Steering Slides
@@ -188,7 +188,7 @@
 7. `Design` - 18 edges
 8. `evaluateAndDecide()` - 16 edges
 9. `color` - 15 edges
-10. `Tailwind CSS Customization` - 15 edges
+10. `sendAlert()` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `graphify Rules` --references--> `graphify-out/graph.json`  [EXTRACTED]
@@ -253,7 +253,7 @@ Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at B
 
 ### Community 10 - "Board Index"
 Cohesion: 0.10
-Nodes (20): fs, getChromiumPath(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath } (+12 more)
+Nodes (26): fs, getChromiumPath(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath } (+18 more)
 
 ### Community 11 - "Board Leaderboard"
 Cohesion: 0.67
@@ -264,8 +264,8 @@ Cohesion: 0.06
 Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common Font Pairings, Contrast Requirements, CSS Implementation, Editorial (+22 more)
 
 ### Community 13 - "Board Dailyreward"
-Cohesion: 0.17
-Nodes (16): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, executeInvest(), { isTransientError }, { Logger }, puppeteer (+8 more)
+Cohesion: 0.10
+Nodes (29): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger } (+21 more)
 
 ### Community 14 - "Kiro Steering Brand"
 Cohesion: 0.07
@@ -388,8 +388,8 @@ Cohesion: 0.06
 Nodes (45): $type, $value, $type, $value, bg, fg, font-size, hover-bg (+37 more)
 
 ### Community 44 - "Kiro Steering Ui"
-Cohesion: 0.12
-Nodes (16): @apply Directive, Best Practices, Complete Tailwind Config, Configuration Examples, Content Configuration, Custom Font Sizes, Custom Fonts, Custom Utilities (+8 more)
+Cohesion: 0.14
+Nodes (13): @apply Directive, Best Practices, Complete Tailwind Config, Configuration Examples, Content Configuration, Custom Utilities, Custom Variants, Dark Mode Configuration (+5 more)
 
 ### Community 45 - "Kiro Steering Ui"
 Cohesion: 0.13
@@ -577,7 +577,7 @@ Nodes (11): Chart.js Integration, Command, Contextual Decision Flow, Decision Sy
 
 ### Community 91 - "Kiro Steering Design"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, full, md, md
+Nodes (8): xl, $type, $value, radius, full, xl, $type, $value
 
 ### Community 92 - "Kiro Steering Ui"
 Cohesion: 0.29
@@ -648,12 +648,20 @@ Cohesion: 0.33
 Nodes (5): axios, https, httpsAgent, { Logger }, stripEmoji()
 
 ### Community 109 - "Kiro Steering Design"
-Cohesion: 0.19
-Nodes (25): sendAlert(), acquireBrowserLock(), markNetworkSkipped(), openBrowser(), releaseBrowserLock(), resumePendingRetries(), runDailyJobWithLock(), runTask1() (+17 more)
+Cohesion: 0.21
+Nodes (21): sendAlert(), acquireBrowserLock(), openBrowser(), releaseBrowserLock(), runDailyJobWithLock(), runTask1(), runTask2(), runTask3() (+13 more)
+
+### Community 110 - "md"
+Cohesion: 0.67
+Nodes (4): $type, $value, md, md
 
 ### Community 111 - "Kiro Steering Design"
 Cohesion: 0.67
 Nodes (4): $type, $value, none, none
+
+### Community 112 - "Typography Customization"
+Cohesion: 0.67
+Nodes (3): Custom Font Sizes, Custom Fonts, Typography Customization
 
 ### Community 113 - "Kiro Steering Ui"
 Cohesion: 0.50
@@ -683,10 +691,6 @@ Nodes (5): Icon Design (Built-in), Icon: Generate Batch Variations, Icon: Genera
 Cohesion: 0.50
 Nodes (4): Logo Design (Built-in), Logo: Generate Design Brief, Logo: Generate with AI, Logo: Search Styles/Colors/Industries
 
-### Community 123 - "Kiro Steering Ui"
-Cohesion: 0.67
-Nodes (4): xl, xl, $type, $value
-
 ### Community 124 - "Kiro Steering Ui"
 Cohesion: 0.67
 Nodes (3): Complete Brand Package, New Design System, Workflows
@@ -702,10 +706,6 @@ Nodes (3): shadcn_add.py, tailwind_config_gen.py, Utility Scripts
 ### Community 131 - "Kiro Steering Ui"
 Cohesion: 0.50
 Nodes (4): Component Customization, Customize Styles, Customize Variants, Override with className
-
-### Community 137 - "Js Ui Comparison"
-Cohesion: 0.15
-Nodes (14): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, { Logger }, Pending, runDailyJob(), { sendAlert }, { withRetry, isTransientError } (+6 more)
 
 ## Knowledge Gaps
 - **1016 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1011 more)

@@ -22,7 +22,7 @@ const DAILY_REWARD_KEY = 'DAILY_REWARD';
 // PENGATURAN & ENVS
 // ==========================================
 const PREFIX_NAME = process.env.PREFIX_NAME || "Class Mr Kalebbbbbbb";
-const cronSchedule = process.env.BOT_CRON_SCHEDULE || '0 6 * * *';
+const cronSchedule = process.env.BOT_CRON_SCHEDULE || '0 4 * * *';
 const leaderboardAnalyticsCronSchedule = process.env.LEADERBOARD_ANALYTICS_CRON_SCHEDULE || '0 * * * *';
 
 // ==========================================
