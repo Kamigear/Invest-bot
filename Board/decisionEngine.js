@@ -16,13 +16,13 @@
  *   Jika Gap_Behind < Rencana_Invest + 30 Pt → TIDAK
  *
  * Rule 4 — Adaptive Overflow Execution:
- *   Invest = min(Saldo - Target_Reserve, HARD_MAX_INVEST)
+ *   Invest = Saldo - Target_Reserve
  *   Jika Invest < 50 Pt (min invest) → TIDAK
  *
  * Safety System (Fail-Closed):
  *   Layer 1 — Fail-Closed Network: Jika offline/scrape gagal → otomatis TIDAK
  *   Layer 2 — Scrape Anomaly Filter: 3x konsistensi sebelum data dianggap valid
- *   Layer 3 — Hard Circuit Breaker: HARD_MAX_INVEST & HARD_MIN_RESERVE terkunci hardcoded
+ *   Layer 3 — Hard Circuit Breaker: HARD_MIN_RESERVE terkunci hardcoded
  *   Layer 4 — Idempotency Lock: Cek Firestore sebelum buat jadwal duplikat
  *   Layer 5 — Remote Emergency Freeze: Cek EMERGENCY_FREEZE di Firestore
  * =============================================================================
@@ -36,7 +36,6 @@ const { withRetry } = require('./retry');
 const { sendAlert } = require('./alert');
 
 // ── Konstanta Safety System ───────────────────────────────────────────────────
-const HARD_MAX_INVEST   = parseInt(process.env.HARD_MAX_INVEST,   10) || 100; // Batas invest per hari (hardcoded)
 const HARD_MIN_RESERVE  = parseInt(process.env.HARD_MIN_RESERVE,  10) || 300; // Batas bawah saldo absolut (hardcoded)
 const MIN_INVEST_AMOUNT = 50;  // Minimum nominal investasi di server
 const INVEST_RETURN_RATE = 1.18;
@@ -263,7 +262,7 @@ async function evaluateAndDecide() {
 
   // ── Rule 3: Rank Vulnerability Check ─────────────────────────────────────
   const gapBehind     = classBelow ? currentBalance - classBelow.total : 99999;
-  const plannedInvest = Math.min(overflowAmount, HARD_MAX_INVEST);
+  const plannedInvest = overflowAmount;
 
   if (gapBehind < plannedInvest + 30) {
     const reason = `Rule 3 (Vulnerability): Gap ke ${classBelow?.name || 'kelas bawah'} hanya ${gapBehind} Pt. Invest ${plannedInvest} Pt akan membuat kita disalip besok.`;
@@ -274,8 +273,8 @@ async function evaluateAndDecide() {
   }
 
   // ── Rule 4: Adaptive Overflow Execution ──────────────────────────────────
-  // Safety Layer 3: Hard Circuit Breaker
-  const finalAmount = Math.min(plannedInvest, HARD_MAX_INVEST);
+  // Safety Layer 3: Hard Circuit Breaker (Hard Min Reserve)
+  const finalAmount = plannedInvest;
 
   if (currentBalance - finalAmount < HARD_MIN_RESERVE) {
     const reason = `Hard Circuit Breaker: Saldo setelah invest ${currentBalance - finalAmount} Pt < batas keras ${HARD_MIN_RESERVE} Pt.`;

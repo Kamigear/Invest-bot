@@ -1474,7 +1474,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "design-tokens-starter.json"
     },
@@ -1485,7 +1485,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_schema",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "$schema"
     },
@@ -3091,7 +3091,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_semantic",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "semantic"
     },
@@ -3245,8 +3245,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary_foreground",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 165,
+      "community_name": "primary-foreground",
       "norm_label": "primary-foreground"
     },
     {
@@ -3256,8 +3256,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 165,
+      "community_name": "primary-foreground",
       "norm_label": "$value"
     },
     {
@@ -3267,8 +3267,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 165,
+      "community_name": "primary-foreground",
       "norm_label": "$type"
     },
     {
@@ -3311,8 +3311,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_secondary_foreground",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 172,
+      "community_name": "secondary-foreground",
       "norm_label": "secondary-foreground"
     },
     {
@@ -3322,8 +3322,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 172,
+      "community_name": "secondary-foreground",
       "norm_label": "$value"
     },
     {
@@ -3333,8 +3333,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 172,
+      "community_name": "secondary-foreground",
       "norm_label": "$type"
     },
     {
@@ -3344,8 +3344,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_muted",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 164,
+      "community_name": "muted",
       "norm_label": "muted"
     },
     {
@@ -3355,8 +3355,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 164,
+      "community_name": "muted",
       "norm_label": "$value"
     },
     {
@@ -3366,8 +3366,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 164,
+      "community_name": "muted",
       "norm_label": "$type"
     },
     {
@@ -3410,8 +3410,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 159,
+      "community_name": "destructive",
       "norm_label": "destructive"
     },
     {
@@ -3421,8 +3421,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 159,
+      "community_name": "destructive",
       "norm_label": "$value"
     },
     {
@@ -3432,8 +3432,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 159,
+      "community_name": "destructive",
       "norm_label": "$type"
     },
     {
@@ -3443,8 +3443,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive_foreground",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 163,
+      "community_name": "destructive-foreground",
       "norm_label": "destructive-foreground"
     },
     {
@@ -3454,8 +3454,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 163,
+      "community_name": "destructive-foreground",
       "norm_label": "$value"
     },
     {
@@ -3465,8 +3465,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 163,
+      "community_name": "destructive-foreground",
       "norm_label": "$type"
     },
     {
@@ -3476,8 +3476,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_border",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 123,
+      "community_name": "$type",
       "norm_label": "border"
     },
     {
@@ -3487,8 +3487,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 123,
+      "community_name": "$type",
       "norm_label": "$value"
     },
     {
@@ -3498,8 +3498,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 123,
+      "community_name": "$type",
       "norm_label": "$type"
     },
     {
@@ -3509,8 +3509,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_ring",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 171,
+      "community_name": "ring",
       "norm_label": "ring"
     },
     {
@@ -3520,8 +3520,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_ring_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 171,
+      "community_name": "ring",
       "norm_label": "$value"
     },
     {
@@ -3531,8 +3531,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_ring_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 171,
+      "community_name": "ring",
       "norm_label": "$type"
     },
     {
@@ -3542,7 +3542,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_semantic_spacing",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "spacing"
     },
@@ -3553,7 +3553,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_spacing_component",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "component"
     },
@@ -3564,7 +3564,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_value",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
@@ -3575,7 +3575,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_type",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
@@ -3586,7 +3586,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_spacing_section",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "section"
     },
@@ -3597,7 +3597,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_section_value",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
@@ -3608,7 +3608,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_section_type",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
@@ -3619,7 +3619,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component",
-      "community": 43,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "component"
     },
@@ -3630,8 +3630,8 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_button",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "button"
     },
     {
@@ -3674,8 +3674,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_fg",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "fg"
     },
     {
@@ -3685,8 +3685,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fg_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$value"
     },
     {
@@ -3696,8 +3696,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fg_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$type"
     },
     {
@@ -3707,8 +3707,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_hover_bg",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "hover-bg"
     },
     {
@@ -3718,8 +3718,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_hover_bg_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$value"
     },
     {
@@ -3729,8 +3729,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_hover_bg_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$type"
     },
     {
@@ -3740,8 +3740,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_x",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 136,
+      "community_name": "padding-x",
       "norm_label": "padding-x"
     },
     {
@@ -3751,8 +3751,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 136,
+      "community_name": "padding-x",
       "norm_label": "$value"
     },
     {
@@ -3762,8 +3762,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 136,
+      "community_name": "padding-x",
       "norm_label": "$type"
     },
     {
@@ -3773,8 +3773,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_y",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "padding-y"
     },
     {
@@ -3784,8 +3784,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "$value"
     },
     {
@@ -3795,8 +3795,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "$type"
     },
     {
@@ -3806,8 +3806,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_radius",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 131,
+      "community_name": "radius",
       "norm_label": "radius"
     },
     {
@@ -3817,8 +3817,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 131,
+      "community_name": "radius",
       "norm_label": "$value"
     },
     {
@@ -3828,8 +3828,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 131,
+      "community_name": "radius",
       "norm_label": "$type"
     },
     {
@@ -3839,8 +3839,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_font_size",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "font-size"
     },
     {
@@ -3850,8 +3850,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_font_size_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$value"
     },
     {
@@ -3861,8 +3861,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_font_size_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 92,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$type"
     },
     {
@@ -3872,8 +3872,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_input",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "input"
     },
     {
@@ -3894,8 +3894,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_border",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 123,
+      "community_name": "$type",
       "norm_label": "border"
     },
     {
@@ -3905,8 +3905,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_focus_ring",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "focus-ring"
     },
     {
@@ -3916,8 +3916,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_focus_ring_value",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "$value"
     },
     {
@@ -3927,8 +3927,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_focus_ring_type",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "$type"
     },
     {
@@ -3938,8 +3938,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_x",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 136,
+      "community_name": "padding-x",
       "norm_label": "padding-x"
     },
     {
@@ -3949,8 +3949,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_y",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 107,
+      "community_name": "input",
       "norm_label": "padding-y"
     },
     {
@@ -3960,8 +3960,8 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_radius",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 131,
+      "community_name": "radius",
       "norm_label": "radius"
     },
     {
@@ -3993,8 +3993,8 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_border",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 123,
+      "community_name": "$type",
       "norm_label": "border"
     },
     {
@@ -4070,8 +4070,8 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_radius",
-      "community": 43,
-      "community_name": "Kiro Steering Design",
+      "community": 131,
+      "community_name": "radius",
       "norm_label": "radius"
     },
     {
@@ -4081,7 +4081,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_dark",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "dark"
     },
@@ -4092,7 +4092,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_dark_semantic",
-      "community": 36,
+      "community": 91,
       "community_name": "Kiro Steering Design",
       "norm_label": "semantic"
     },
@@ -7271,8 +7271,8 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_normalize",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "_normalize()"
     },
     {
@@ -7282,8 +7282,8 @@
       "source_location": "L161",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "bm25"
     },
     {
@@ -7293,8 +7293,8 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_init",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".__init__()"
     },
     {
@@ -7304,8 +7304,8 @@
       "source_location": "L175",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_tokenize",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".tokenize()"
     },
     {
@@ -7315,8 +7315,8 @@
       "source_location": "L181",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_fit",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".fit()"
     },
     {
@@ -7326,8 +7326,8 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_score",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".score()"
     },
     {
@@ -7337,8 +7337,8 @@
       "source_location": "L224",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_bm25_vocabulary",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".vocabulary()"
     },
     {
@@ -7414,7 +7414,7 @@
       "source_location": "L377",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_detect_domain",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": "detect_domain()"
     },
@@ -7447,8 +7447,8 @@
       "source_location": "L154",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_154",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "apply synonym substitution before tokenizing."
     },
     {
@@ -7458,8 +7458,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_162",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "bm25 ranking algorithm for text search"
     },
     {
@@ -7469,8 +7469,8 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_176",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "lowercase, normalize synonyms, split, remove punctuation, filter stopwords"
     },
     {
@@ -7480,8 +7480,8 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_182",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "build bm25 index from documents"
     },
     {
@@ -7491,8 +7491,8 @@
       "source_location": "L203",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_203",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "score all documents against query"
     },
     {
@@ -7502,8 +7502,8 @@
       "source_location": "L225",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_225",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "all indexed terms, for suggestion/typo-recovery purposes."
     },
     {
@@ -7557,7 +7557,7 @@
       "source_location": "L378",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_core_rationale_378",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": "auto-detect the most relevant domain from query.      matches are weighted by ke"
     },
@@ -7678,8 +7678,8 @@
       "source_location": "L171",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_filter_anti_patterns_for_mode",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": "_filter_anti_patterns_for_mode()"
     },
     {
@@ -7689,7 +7689,7 @@
       "source_location": "L183",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_designsystemgenerator",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "designsystemgenerator"
     },
@@ -7700,7 +7700,7 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_designsystemgenerator_init",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".__init__()"
     },
@@ -7711,7 +7711,7 @@
       "source_location": "L189",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_designsystemgenerator_load_reasoning",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "._load_reasoning()"
     },
@@ -7733,7 +7733,7 @@
       "source_location": "L210",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_designsystemgenerator_find_reasoning_rule",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "._find_reasoning_rule()"
     },
@@ -7744,7 +7744,7 @@
       "source_location": "L234",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_designsystemgenerator_apply_reasoning",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "._apply_reasoning()"
     },
@@ -7832,8 +7832,8 @@
       "source_location": "L636",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_format_markdown",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": "format_markdown()"
     },
     {
@@ -7843,8 +7843,8 @@
       "source_location": "L776",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_generate_design_system",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": "generate_design_system()"
     },
     {
@@ -7997,8 +7997,8 @@
       "source_location": "L172",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_172",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": "drop \"avoid dark mode\" advice once dark mode is the resolved answer."
     },
     {
@@ -8008,7 +8008,7 @@
       "source_location": "L184",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_184",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "generates design system recommendations from aggregated searches."
     },
@@ -8019,7 +8019,7 @@
       "source_location": "L190",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_190",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "load reasoning rules from csv."
     },
@@ -8041,7 +8041,7 @@
       "source_location": "L211",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_211",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "find matching reasoning rule for a category."
     },
@@ -8052,7 +8052,7 @@
       "source_location": "L235",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_235",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "apply reasoning rules to search results."
     },
@@ -8140,8 +8140,8 @@
       "source_location": "L637",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_637",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": "format design system as markdown."
     },
     {
@@ -8151,8 +8151,8 @@
       "source_location": "L780",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_design_system_rationale_780",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": "main entry point for design system generation.      args:         query: search"
     },
     {
@@ -8228,8 +8228,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_search",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 174,
+      "community_name": "search.py",
       "norm_label": "search.py"
     },
     {
@@ -8239,8 +8239,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_search_format_output",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 174,
+      "community_name": "search.py",
       "norm_label": "format_output()"
     },
     {
@@ -8250,8 +8250,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_search_rationale_45",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 174,
+      "community_name": "search.py",
       "norm_label": "format results for claude consumption (token-optimized)"
     },
     {
@@ -8261,8 +8261,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": "test_core.py"
     },
     {
@@ -8272,8 +8272,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "testtokenizer"
     },
     {
@@ -8283,8 +8283,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_short_domain_terms_are_kept",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".test_short_domain_terms_are_kept()"
     },
     {
@@ -8294,8 +8294,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_stopwords_removed",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".test_stopwords_removed()"
     },
     {
@@ -8305,8 +8305,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_synonym_normalization",
-      "community": 91,
-      "community_name": "Kiro Steering Design",
+      "community": 2,
+      "community_name": "Kiro Steering Ui",
       "norm_label": ".test_synonym_normalization()"
     },
     {
@@ -8382,7 +8382,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": "testdomaindetection"
     },
@@ -8393,7 +8393,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_style_keywords_route_to_style",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".test_style_keywords_route_to_style()"
     },
@@ -8404,7 +8404,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_accessibility_keywords_route_to_ux",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".test_accessibility_keywords_route_to_ux()"
     },
@@ -8415,7 +8415,7 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_ambiguous_query_returns_runner_up",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".test_ambiguous_query_returns_runner_up()"
     },
@@ -8426,7 +8426,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testdomaindetection_test_empty_query_falls_back_to_style",
-      "community": 92,
+      "community": 2,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".test_empty_query_falls_back_to_style()"
     },
@@ -8437,8 +8437,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testpersistence",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": "testpersistence"
     },
     {
@@ -8448,8 +8448,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_then_skip_then_force",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": ".test_persist_then_skip_then_force()"
     },
     {
@@ -8459,8 +8459,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_writes_only_under_output_dir",
-      "community": 29,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "generate_design_system",
       "norm_label": ".test_persist_writes_only_under_output_dir()"
     },
     {
@@ -8470,7 +8470,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testreasoningmatch",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": "testreasoningmatch"
     },
@@ -8481,7 +8481,7 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testreasoningmatch_test_known_category_matches_exactly",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".test_known_category_matches_exactly()"
     },
@@ -8492,7 +8492,7 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_core_testreasoningmatch_test_unknown_category_falls_back_gracefully",
-      "community": 53,
+      "community": 27,
       "community_name": "Kiro Steering Ui",
       "norm_label": ".test_unknown_category_falls_back_gracefully()"
     },
@@ -8690,8 +8690,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_design_system_mode_testantipatterngating",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": "testantipatterngating"
     },
     {
@@ -8701,8 +8701,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_design_system_mode_testantipatterngating_test_dark_clause_dropped_others_kept",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": ".test_dark_clause_dropped_others_kept()"
     },
     {
@@ -8712,8 +8712,8 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_design_system_mode_testantipatterngating_test_light_mode_is_a_no_op",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": ".test_light_mode_is_a_no_op()"
     },
     {
@@ -8723,8 +8723,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_design_system_mode_testantipatterngating_test_unrelated_anti_patterns_survive_dark_mode",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": ".test_unrelated_anti_patterns_survive_dark_mode()"
     },
     {
@@ -8734,8 +8734,8 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "kiro_steering_ui_ux_pro_max_scripts_tests_test_design_system_mode_testantipatterngating_test_empty_input",
-      "community": 27,
-      "community_name": "Kiro Steering Ui",
+      "community": 111,
+      "community_name": "_filter_anti_patterns_for_mode",
       "norm_label": ".test_empty_input()"
     },
     {
@@ -8855,8 +8855,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_alert",
-      "community": 109,
-      "community_name": "Kiro Steering Design",
+      "community": 121,
+      "community_name": "alert.js",
       "norm_label": "alert.js"
     },
     {
@@ -8866,8 +8866,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_alert_axios",
-      "community": 109,
-      "community_name": "Kiro Steering Design",
+      "community": 121,
+      "community_name": "alert.js",
       "norm_label": "axios"
     },
     {
@@ -8877,8 +8877,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_alert_https",
-      "community": 109,
-      "community_name": "Kiro Steering Design",
+      "community": 121,
+      "community_name": "alert.js",
       "norm_label": "https"
     },
     {
@@ -8888,8 +8888,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "board_alert_logger",
-      "community": 109,
-      "community_name": "Kiro Steering Design",
+      "community": 121,
+      "community_name": "alert.js",
       "norm_label": "{ logger }"
     },
     {
@@ -8899,8 +8899,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "board_alert_httpsagent",
-      "community": 109,
-      "community_name": "Kiro Steering Design",
+      "community": 121,
+      "community_name": "alert.js",
       "norm_label": "httpsagent"
     },
     {
@@ -8910,8 +8910,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "board_alert_stripemoji",
-      "community": 109,
-      "community_name": "Kiro Steering Design",
+      "community": 121,
+      "community_name": "alert.js",
       "norm_label": "stripemoji()"
     },
     {
@@ -9072,7 +9072,7 @@
       "label": "OUR_CLASS_PATTERNS",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L46",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "board_decisionengine_our_class_patterns",
       "community": 93,
@@ -9083,7 +9083,7 @@
       "label": "DEFAULT_RETRY",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L49",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "board_decisionengine_default_retry",
       "community": 93,
@@ -9094,7 +9094,7 @@
       "label": "findOurClass()",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L54",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "board_decisionengine_findourclass",
       "community": 93,
@@ -9105,7 +9105,7 @@
       "label": "todayInvId()",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L61",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "board_decisionengine_todayinvid",
       "community": 93,
@@ -9116,7 +9116,7 @@
       "label": "tomorrowDateStr()",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L69",
+      "source_location": "L70",
       "_origin": "ast",
       "id": "board_decisionengine_tomorrowdatestr",
       "community": 93,
@@ -9127,7 +9127,7 @@
       "label": "addDays()",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L78",
+      "source_location": "L79",
       "_origin": "ast",
       "id": "board_decisionengine_adddays",
       "community": 93,
@@ -9138,7 +9138,7 @@
       "label": "logDecision()",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L85",
+      "source_location": "L86",
       "_origin": "ast",
       "id": "board_decisionengine_logdecision",
       "community": 93,
@@ -9149,7 +9149,7 @@
       "label": "evaluateAndDecide()",
       "file_type": "code",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L111",
+      "source_location": "L112",
       "_origin": "ast",
       "id": "board_decisionengine_evaluateanddecide",
       "community": 93,
@@ -9163,8 +9163,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_executor",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "executor.js"
     },
     {
@@ -9174,8 +9174,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "{ db, runtransaction, servertimestamp, getdoc, setdoc }"
     },
     {
@@ -9185,8 +9185,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_executor_sendalert",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "{ sendalert }"
     },
     {
@@ -9196,8 +9196,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "board_executor_executeinvest",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "{ executeinvest }"
     },
     {
@@ -9207,8 +9207,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "board_executor_logger",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "{ logger }"
     },
     {
@@ -9218,8 +9218,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "board_executor_withretry_istransienterror",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "{ withretry, istransienterror }"
     },
     {
@@ -9229,8 +9229,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "board_executor_pending",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "pending"
     },
     {
@@ -9240,8 +9240,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "board_executor_default_retry",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "default_retry"
     },
     {
@@ -9251,8 +9251,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "board_executor_rundailyjob",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "rundailyjob()"
     },
     {
@@ -9724,8 +9724,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "board_index_sleep",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "sleep()"
     },
     {
@@ -9746,8 +9746,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "board_index_waitforturn",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "waitforturn()"
     },
     {
@@ -9757,8 +9757,8 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "board_index_acquirebrowserlock",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "acquirebrowserlock()"
     },
     {
@@ -9768,8 +9768,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "board_index_releasebrowserlock",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "releasebrowserlock()"
     },
     {
@@ -9779,8 +9779,8 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "board_index_rundailyjobwithlock",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "rundailyjobwithlock()"
     },
     {
@@ -9790,8 +9790,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "board_index_withtasktimeout",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "withtasktimeout()"
     },
     {
@@ -9812,8 +9812,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "board_index_openbrowser",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "openbrowser()"
     },
     {
@@ -9834,8 +9834,8 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "board_index_runtask1",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "runtask1()"
     },
     {
@@ -9856,8 +9856,8 @@
       "source_location": "L460",
       "_origin": "ast",
       "id": "board_index_runtask3",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "runtask3()"
     },
     {
@@ -9900,8 +9900,8 @@
       "source_location": "L536",
       "_origin": "ast",
       "id": "board_index_scheduledailyrewardretry",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "scheduledailyrewardretry()"
     },
     {
@@ -9922,8 +9922,8 @@
       "source_location": "L612",
       "_origin": "ast",
       "id": "board_index_scanmisseddays",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "scanmisseddays()"
     },
     {
@@ -9933,8 +9933,8 @@
       "source_location": "L639",
       "_origin": "ast",
       "id": "board_index_start",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
       "norm_label": "start()"
     },
     {
@@ -10912,8 +10912,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "board_retry_withretry",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 93,
+      "community_name": "Board Alert",
       "norm_label": "withretry()"
     },
     {
@@ -10972,10 +10972,21 @@
       "norm_label": "{ sendalert }"
     },
     {
+      "label": "{ getDoc }",
+      "file_type": "code",
+      "source_file": "Board/runner.js",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "board_runner_getdoc",
+      "community": 109,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "{ getdoc }"
+    },
+    {
       "label": "sleep()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L21",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "board_runner_sleep",
       "community": 109,
@@ -10986,7 +10997,7 @@
       "label": "getWibTimeStr()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "board_runner_getwibtimestr",
       "community": 109,
@@ -10997,7 +11008,7 @@
       "label": "runClaimDaily()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "board_runner_runclaimdaily",
       "community": 109,
@@ -11008,7 +11019,7 @@
       "label": "runAnalytics()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L61",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "board_runner_runanalytics",
       "community": 109,
@@ -11019,7 +11030,7 @@
       "label": "runDecision()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L74",
+      "source_location": "L96",
       "_origin": "ast",
       "id": "board_runner_rundecision",
       "community": 109,
@@ -11030,7 +11041,7 @@
       "label": "runInvest()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L87",
+      "source_location": "L109",
       "_origin": "ast",
       "id": "board_runner_runinvest",
       "community": 109,
@@ -11041,7 +11052,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "Board/runner.js",
-      "source_location": "L100",
+      "source_location": "L122",
       "_origin": "ast",
       "id": "board_runner_main",
       "community": 109,
@@ -21912,8 +21923,8 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_typography_customization",
-      "community": 44,
-      "community_name": "Kiro Steering Ui",
+      "community": 173,
+      "community_name": "Typography Customization",
       "norm_label": "typography customization"
     },
     {
@@ -21923,8 +21934,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_custom_fonts",
-      "community": 44,
-      "community_name": "Kiro Steering Ui",
+      "community": 173,
+      "community_name": "Typography Customization",
       "norm_label": "custom fonts"
     },
     {
@@ -21934,8 +21945,8 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_custom_font_sizes",
-      "community": 44,
-      "community_name": "Kiro Steering Ui",
+      "community": 173,
+      "community_name": "Typography Customization",
       "norm_label": "custom font sizes"
     },
     {
@@ -36837,7 +36848,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L122",
+      "source_location": "L123",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -36933,7 +36944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L69",
+      "source_location": "L91",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runanalytics",
@@ -36945,7 +36956,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runclaimdaily",
@@ -36957,7 +36968,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L82",
+      "source_location": "L104",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_rundecision",
@@ -36969,7 +36980,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L95",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runinvest",
@@ -37179,7 +37190,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L78",
+      "source_location": "L79",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37190,7 +37201,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37201,7 +37212,7 @@
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L335",
+      "source_location": "L336",
       "weight": 1.0,
       "_origin": "ast",
       "context": "collection",
@@ -37213,7 +37224,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37235,7 +37246,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L85",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37257,7 +37268,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37279,7 +37290,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37290,7 +37301,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine",
@@ -37434,7 +37445,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L210",
+      "source_location": "L211",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37446,7 +37457,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_findourclass",
@@ -37457,7 +37468,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L165",
+      "source_location": "L166",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37469,7 +37480,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L130",
+      "source_location": "L131",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37481,7 +37492,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L296",
+      "source_location": "L297",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37493,7 +37504,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L298",
+      "source_location": "L299",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37505,7 +37516,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L197",
+      "source_location": "L198",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37518,11 +37529,23 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_logdecision",
       "target": "board_firebase_servertimestamp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/decisionEngine.js",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_decisionengine_logdecision",
+      "target": "board_firebase_setdoc"
     },
     {
       "relation": "calls",
@@ -37534,18 +37557,6 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_logdecision",
-      "target": "board_firebase_setdoc"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "Board/decisionEngine.js",
-      "source_location": "L88",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "board_decisionengine_logdecision",
       "target": "board_retry_withretry"
     },
     {
@@ -37554,7 +37565,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L117",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37566,7 +37577,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L310",
+      "source_location": "L311",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37578,7 +37589,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L302",
+      "source_location": "L303",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37590,7 +37601,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/decisionEngine.js",
-      "source_location": "L116",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_decisionengine_evaluateanddecide",
@@ -37638,7 +37649,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L77",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_rundecision",
@@ -38624,6 +38635,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/runner.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_runner",
+      "target": "board_firebase",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -38646,6 +38669,30 @@
       "source": "board_leaderboardanalytics",
       "target": "board_firebase_db",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/runner.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_runner",
+      "target": "board_firebase_getdoc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Board/runner.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_runner_runanalytics",
+      "target": "board_firebase_getdoc"
     },
     {
       "relation": "imports",
@@ -39459,7 +39506,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L90",
+      "source_location": "L112",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runinvest",
@@ -39555,7 +39602,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runclaimdaily",
@@ -39627,7 +39674,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runclaimdaily",
@@ -39675,7 +39722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L64",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runanalytics",
@@ -39687,7 +39734,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/runner.js",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runclaimdaily",
@@ -41420,7 +41467,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L23",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "board_runner",
+      "target": "board_runner_getdoc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Board/runner.js",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41442,7 +41500,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L100",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41453,7 +41511,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41464,7 +41522,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41475,7 +41533,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L74",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41486,7 +41544,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L87",
+      "source_location": "L109",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41519,7 +41577,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner",
@@ -41531,7 +41589,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_runclaimdaily",
@@ -41543,7 +41601,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L110",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -41555,7 +41613,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L114",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -41567,7 +41625,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L116",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -41579,7 +41637,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L112",
+      "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
