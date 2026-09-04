@@ -10,7 +10,10 @@ async function executeInvest(entry) {
   let browser;
   try {
     const classId = process.env.REP_CLASS_ID || '4';
-    const password = process.env.REP_PASSWORD || '104anakmrkalebyangkerenbngtwowamazinggantengnice';
+    const password = process.env.REP_PASSWORD;
+    if (!password) {
+      throw new Error('REP_PASSWORD environment variable is required but not set.');
+    }
     const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
     const { getChromiumPath } = require('./browserHelper');
     const chromPath = getChromiumPath();

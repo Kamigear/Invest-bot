@@ -63,7 +63,7 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           REP_PANEL_URL: ${{ secrets.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php' }}
           REP_CLASS_ID: ${{ secrets.REP_CLASS_ID || '4' }}
-          REP_PASSWORD: ${{ secrets.REP_PASSWORD || '104anakmrkalebyangkerenbngtwowamazinggantengnice' }}
+          REP_PASSWORD: ${{ secrets.REP_PASSWORD }}
           ALERT_ENABLED: ${{ secrets.ALERT_ENABLED || 'true' }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'Invest-bot' }}
           NTFY_SERVER: ${{ secrets.NTFY_SERVER || 'https://ntfy.sh' }}

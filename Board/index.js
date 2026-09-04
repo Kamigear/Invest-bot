@@ -208,7 +208,10 @@ async function runTask1() {
   let browser;
   try {
     const classId = process.env.REP_CLASS_ID || '4';
-    const password = process.env.REP_PASSWORD || '104anakmrkalebyangkerenbngtwowamazinggantengnice';
+    const password = process.env.REP_PASSWORD;
+    if (!password) {
+      throw new Error('REP_PASSWORD environment variable is required but not set.');
+    }
     const panelUrl = process.env.REP_PANEL_URL || 'https://boardleaders.rf.gd/rep_panel.php';
 
     const setup = await openBrowser();
@@ -371,8 +374,8 @@ async function runTask1() {
 
     Logger.info("Mengisi formulir klaim", { task: "TUGAS_1" });
     await page.waitForSelector('#eggModal', { visible: true, timeout: 10000 });
-    await page.select('select[name="class_id"]', '4');
-    await page.type('input[name="rep_password"]', '104anakmrkalebyangkerenbngtwowamazinggantengnice');
+    await page.select('select[name="class_id"]', classId);
+    await page.type('input[name="rep_password"]', password);
     await page.click('button[name="claim_egg"]');
 
     Logger.info("Formulir klaim terkirim, menunggu respons server", { task: "TUGAS_1" });
