@@ -80,6 +80,41 @@ const LeaderboardAnalyticsUI = (() => {
     return date.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
   }
 
+  function formatHistoryDate(dateStr) {
+    if (!dateStr) return 'Belum tersedia';
+    try {
+      const parts = String(dateStr).split('-');
+      if (parts.length === 3) {
+        const d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        if (!isNaN(d.getTime())) {
+          const dayName = new Intl.DateTimeFormat('id-ID', { weekday: 'long' }).format(d);
+          return `${dayName}, ${dateStr}`;
+        }
+      }
+      const d = new Date(dateStr);
+      if (!isNaN(d.getTime())) {
+        const dayName = new Intl.DateTimeFormat('id-ID', { weekday: 'long' }).format(d);
+        return `${dayName}, ${dateStr}`;
+      }
+    } catch (_) {}
+    return dateStr;
+  }
+
+  function formatChartDate(dateStr) {
+    if (!dateStr) return '-';
+    try {
+      const parts = String(dateStr).split('-');
+      if (parts.length === 3) {
+        const d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        if (!isNaN(d.getTime())) {
+          const dayShort = new Intl.DateTimeFormat('id-ID', { weekday: 'short' }).format(d);
+          return `${dayShort}, ${dateStr}`;
+        }
+      }
+    } catch (_) {}
+    return dateStr;
+  }
+
   function classKey(row) {
     if (row?.key) return row.key;
     if (row?.classId) return `id::${row.classId}`;
@@ -295,7 +330,7 @@ const LeaderboardAnalyticsUI = (() => {
 
       return `
         <tr class="${i % 2 === 0 ? 'even' : ''}">
-          <td class="font-mono la-hist-date">${escapeHTML(entry.date)}</td>
+          <td class="font-mono la-hist-date">${escapeHTML(formatHistoryDate(entry.date))}</td>
           <td class="font-mono">${formatTotal(entry.total)}</td>
           <td class="font-mono ${deltaClass}">${trendIcon} ${deltaText}</td>
         </tr>
@@ -701,7 +736,7 @@ const LeaderboardAnalyticsUI = (() => {
 
     historyChart = new Chart(canvas, {
       type: 'line',
-      data: { labels: sortedDates, datasets },
+      data: { labels: sortedDates.map(formatChartDate), datasets },
       options: {
         responsive: true,
         maintainAspectRatio: false,

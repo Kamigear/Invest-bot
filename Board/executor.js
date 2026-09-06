@@ -7,12 +7,21 @@ const Pending = require('./pending');
 
 const DEFAULT_RETRY = { retries: 5, baseDelayMs: 2000 };
 
+function getWibDate(d = new Date()) {
+  const dateObj = typeof d === 'string' || typeof d === 'number' ? new Date(d) : d;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Jakarta',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(dateObj);
+}
+
 async function runDailyJob(targetDate) {
   const version = process.env.BOT_VERSION || '1.0.0';
   const staleTimeout = parseInt(process.env.STALE_EXECUTING_TIMEOUT_MS) || 300000;
 
-  const now = targetDate ? new Date(targetDate + 'T12:00:00') : new Date();
-  const today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const today = targetDate || getWibDate();
   const entryId = 'inv_' + today;
 
   try {
@@ -65,9 +74,9 @@ async function runDailyJob(targetDate) {
             : availableToInvest;
 
           const expectedReturn = Math.floor(amount * returnRate);
-          const matDate = new Date(now);
+          const matDate = new Date(today + 'T12:00:00+07:00');
           matDate.setDate(matDate.getDate() + investDuration);
-          const maturityDate = matDate.getFullYear() + '-' + String(matDate.getMonth() + 1).padStart(2, '0') + '-' + String(matDate.getDate()).padStart(2, '0');
+          const maturityDate = getWibDate(matDate);
 
           scheduleEntry = {
             entryId,

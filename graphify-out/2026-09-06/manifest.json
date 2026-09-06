@@ -20,8 +20,8 @@
     "semantic_hash": "49886587d1bb25c2cef897e888e1f5de"
   },
   "Board/executor.js": {
-    "mtime": 1788701601.3383462,
-    "ast_hash": "bd311386374681ad8e5311414892eb46",
+    "mtime": 1788421476.153022,
+    "ast_hash": "2d9b6c34fcb7c6b5410d9a0da798f82e",
     "semantic_hash": ""
   },
   "Board/firebase.js": {
@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "Board/index.js": {
-    "mtime": 1788701633.0031223,
-    "ast_hash": "87ed47369044657cda2e50850b598c31",
+    "mtime": 1788489524.8559387,
+    "ast_hash": "a83b68beabdb77ad0a4594390a8785b0",
     "semantic_hash": ""
   },
   "Board/investor.js": {
@@ -115,9 +115,9 @@
     "semantic_hash": ""
   },
   "Board/logger.js": {
-    "mtime": 1788701645.2800834,
-    "ast_hash": "30a06814f9694ad97b21fb6f1ceec46c",
-    "semantic_hash": ""
+    "mtime": 1785985873.2633727,
+    "ast_hash": "faf2c13002351b504454ba25104872f9",
+    "semantic_hash": "faf2c13002351b504454ba25104872f9"
   },
   ".kiro/steering/brand/scripts/tests/test_sync_brand_to_tokens.py": {
     "mtime": 1785924198.7638764,
@@ -555,13 +555,13 @@
     "semantic_hash": "34ea8b47afe455d942fee1dac07c04b9"
   },
   "Board/leaderboardAnalytics.js": {
-    "mtime": 1788701564.7295954,
-    "ast_hash": "2de10371081d9a665af87498f2bd33d7",
-    "semantic_hash": ""
+    "mtime": 1788139573.5904317,
+    "ast_hash": "9c2ac1b866c6a6939d50902e04e6ff51",
+    "semantic_hash": "9c2ac1b866c6a6939d50902e04e6ff51"
   },
   "js/ui/leaderboard_analytics.js": {
-    "mtime": 1788701893.3490806,
-    "ast_hash": "f71692e5a154adb661dfecfd975f14b1",
+    "mtime": 1788445692.9120476,
+    "ast_hash": "0e3a6f0f0acaed65624282f364130d80",
     "semantic_hash": ""
   },
   "Rep Dashboard.html": {
@@ -570,13 +570,13 @@
     "semantic_hash": "78185e4646e4e2d4f9a83ab166508abe"
   },
   "Board/extract_competitors.js": {
-    "mtime": 1788701571.5953226,
-    "ast_hash": "8ff04c995ee68ab6b4aff5de5838ec35",
+    "mtime": 1788419338.8956428,
+    "ast_hash": "7ec3e0148d9a6a879964522c280dc8d7",
     "semantic_hash": ""
   },
   "Board/decisionEngine.js": {
-    "mtime": 1788701580.746835,
-    "ast_hash": "3a52d1ee27798f405d023386bc4941f3",
+    "mtime": 1788488721.8602915,
+    "ast_hash": "309f9225cb8124e9763459bcef7a5f74",
     "semantic_hash": ""
   },
   "Board/browserHelper.js": {

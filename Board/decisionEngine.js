@@ -58,33 +58,36 @@ function findOurClass(classes = []) {
   ) || null;
 }
 
+function getWibDate(d = new Date()) {
+  const dateObj = typeof d === 'string' || typeof d === 'number' ? new Date(d) : d;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Jakarta',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(dateObj);
+}
+
 function todayInvId() {
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `inv_${y}-${m}-${dd}`;
+  return `inv_${getWibDate()}`;
 }
 
 function tomorrowDateStr() {
   const d = new Date();
-  d.setDate(d.getDate() + 1);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${dd}`;
+  d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
+  return getWibDate(d);
 }
 
 function addDays(dateStr, days) {
-  const d = new Date(dateStr);
+  const d = new Date(dateStr + 'T12:00:00+07:00');
   d.setDate(d.getDate() + days);
-  return d.toISOString().slice(0, 10);
+  return getWibDate(d);
 }
 
 // ── Log Keputusan ke Firestore ────────────────────────────────────────────────
 async function logDecision({ decision, reason, amount, details, metrics }) {
   try {
-    const dateKey = new Date().toISOString().slice(0, 10);
+    const dateKey = getWibDate();
     await withRetry(
       () => setDoc('botState/decisionLog', {
         [dateKey]: {

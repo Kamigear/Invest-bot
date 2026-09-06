@@ -30,6 +30,16 @@ const leaderboardAnalyticsCronSchedule = process.env.LEADERBOARD_ANALYTICS_CRON_
 // ==========================================
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function getWibDate(d = new Date()) {
+  const dateObj = typeof d === 'string' || typeof d === 'number' ? new Date(d) : d;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Jakarta',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(dateObj);
+}
+
 function getWibTimeStr() {
   const now = new Date();
   const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -483,9 +493,7 @@ async function runTask3() {
 // ==========================================
 
 function getTodayId() {
-  const d = new Date();
-  const p = n => String(n).padStart(2, '0');
-  return 'inv_' + d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  return 'inv_' + getWibDate();
 }
 
 async function scheduleRetry(entryId, attempts) {
@@ -617,9 +625,8 @@ async function scanMissedDays() {
 
   for (let i = 1; i <= CATCHUP_MISSED_DAYS; i++) {
     const d = new Date();
-    d.setDate(d.getDate() - i);
-    const p = n => String(n).padStart(2, '0');
-    const day = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    d.setTime(d.getTime() - i * 24 * 60 * 60 * 1000);
+    const day = getWibDate(d);
     const entryId = 'inv_' + day;
 
     try {

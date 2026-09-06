@@ -52,15 +52,25 @@ function getLogStream() {
 }
 
 function todayStr() {
-  const now = new Date();
-  const p = n => String(n).padStart(2, '0');
-  return `${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}`;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Jakarta',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(new Date());
 }
 
 function getTimestamp() {
   const now = new Date();
-  const p = n => String(n).padStart(2, '0');
-  return `${todayStr()} ${p(now.getHours())}:${p(now.getMinutes())}:${p(now.getSeconds())}`;
+  const dateStr = todayStr();
+  const timeFormatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Jakarta',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+  return `${dateStr} ${timeFormatter.format(now)}`;
 }
 
 function getHostname() {
