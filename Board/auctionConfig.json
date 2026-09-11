@@ -1,0 +1,17 @@
+{
+  "repPanelUrl": "https://boardleaders.rf.gd/rep_panel.php",
+  "classId": "4",
+  "password": "104anakmrkalebyangkerenbngtwowamazinggantengnice",
+  "myClassName": "Class Mr Kalebbbbb",
+  "workerCount": 20,
+  "startBiddingCountdownSeconds": 99999999999,
+  "targetEndTime": "19:00:00",
+  "timezone": "Asia/Jakarta",
+  "maxBidLimit": 1500,
+  "bidStrategy": "AUTO",
+  "addPoints": 10,
+  "percentIncrement": 1.01,
+  "pollIntervalMs": 30,
+  "headless": true,
+  "dryRun": false
+}

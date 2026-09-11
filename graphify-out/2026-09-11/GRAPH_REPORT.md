@@ -1,7 +1,7 @@
 # Graph Report - Investation  (2026-09-11)
 
 ## Corpus Check
-- 115 files · ~106,588 words
+- 115 files · ~106,576 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -255,8 +255,8 @@ Cohesion: 0.11
 Nodes (36): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+28 more)
 
 ### Community 11 - "Board Leaderboard"
-Cohesion: 0.24
-Nodes (10): $type, $value, $type, $value, primitive, radius, shadow, full (+2 more)
+Cohesion: 0.29
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
@@ -523,8 +523,8 @@ Cohesion: 0.18
 Nodes (10): Bold Dynamic, CIP Design Style Guide, Classic Traditional, Color Psychology, Corporate Minimal, Fresh Modern, Luxury Premium, Modern Tech (+2 more)
 
 ### Community 78 - "Kiro Steering Design"
-Cohesion: 0.20
-Nodes (10): fast, normal, slow, $type, $value, $type, $value, duration (+2 more)
+Cohesion: 0.18
+Nodes (11): fast, normal, slow, $type, $value, $type, $value, primitive (+3 more)
 
 ### Community 79 - "Kiro Steering Ui"
 Cohesion: 0.20
@@ -608,15 +608,15 @@ Nodes (3): Color Customization, Custom Color Palette, Semantic Colors
 
 ### Community 99 - "Kiro Steering Ui"
 Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Nodes (4): $type, $value, none, none
 
 ### Community 100 - "Js Engine Calculator"
 Cohesion: 0.67
 Nodes (3): Custom Plugin, Official Plugins, Plugins
 
 ### Community 101 - "Kiro Steering Design"
-Cohesion: 0.60
-Nodes (5): sm, sm, sm, $type, $value
+Cohesion: 0.47
+Nodes (6): sm, shadow, sm, sm, $type, $value
 
 ### Community 102 - "Kilo Kilo"
 Cohesion: 0.40
@@ -714,7 +714,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `TailwindConfigGenerator` connect `Kiro Steering Ui` to `Invest Bot Readme`, `Kiro Steering Ui`, `.test_init_framework`, `Kiro Steering Ui`, `.test_base_config_structure`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Any`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **Why does `primitive` connect `Board Leaderboard` to `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`?**
+- **Why does `primitive` connect `Kiro Steering Design` to `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Board Leaderboard`, `Kiro Steering Design`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Are the 36 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `.test_node_check_parses_generated_config()`) actually correct?**
   _`TailwindConfigGenerator` has 36 INFERRED edges - model-reasoned connections that need verification._

@@ -1496,8 +1496,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primitive",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 78,
+      "community_name": "Kiro Steering Design",
       "norm_label": "primitive"
     },
     {
@@ -2750,8 +2750,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_none",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 99,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "none"
     },
     {
@@ -2761,8 +2761,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_none_value",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 99,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$value"
     },
     {
@@ -2772,8 +2772,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_none_type",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 99,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "$type"
     },
     {
@@ -2794,8 +2794,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_default",
-      "community": 99,
-      "community_name": "Kiro Steering Ui",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "default"
     },
     {
@@ -2805,8 +2805,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_value",
-      "community": 99,
-      "community_name": "Kiro Steering Ui",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$value"
     },
     {
@@ -2816,8 +2816,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_type",
-      "community": 99,
-      "community_name": "Kiro Steering Ui",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$type"
     },
     {
@@ -2915,8 +2915,8 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primitive_shadow",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 101,
+      "community_name": "Kiro Steering Design",
       "norm_label": "shadow"
     },
     {
@@ -2926,8 +2926,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_none",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 99,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "none"
     },
     {
@@ -2948,8 +2948,8 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_default",
-      "community": 99,
-      "community_name": "Kiro Steering Ui",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "default"
     },
     {
@@ -37689,7 +37689,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L566",
+      "source_location": "L565",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
