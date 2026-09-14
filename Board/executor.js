@@ -62,9 +62,9 @@ async function runDailyJob(targetDate) {
         );
         const dashData = dashSnap.exists ? dashSnap.data() : {};
         const currentBalance = dashData.balance || 0;
-        const minInvest = cfg.minInvest || 50;
+        const minInvest = cfg.minInvest || 1;
         const reserveBalance = cfg.reserveBalance || 0;
-        const returnRate = cfg.returnRate || 1.18;
+        const returnRate = cfg.returnRate || 1.26;
         const investDuration = cfg.investDuration || 30;
 
         const availableToInvest = currentBalance - reserveBalance;

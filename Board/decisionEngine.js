@@ -17,7 +17,7 @@
  *
  * Rule 4 — Adaptive Overflow Execution:
  *   Invest = Saldo - Target_Reserve
- *   Jika Invest < 50 Pt (min invest) → TIDAK
+ *   Jika Invest < MIN_INVEST_AMOUNT → TIDAK
  *
  * Safety System (Fail-Closed):
  *   Layer 1 — Fail-Closed Network: Jika offline/scrape gagal → otomatis TIDAK
@@ -37,8 +37,8 @@ const { sendAlert } = require('./alert');
 
 // ── Konstanta Safety System ───────────────────────────────────────────────────
 const HARD_MIN_RESERVE  = parseInt(process.env.HARD_MIN_RESERVE,  10) || 300; // Batas bawah saldo absolut (hardcoded)
-const MIN_INVEST_AMOUNT = 50;  // Minimum nominal investasi di server
-const INVEST_RETURN_RATE = 1.18;
+const MIN_INVEST_AMOUNT = parseInt(process.env.MIN_INVEST_AMOUNT, 10) || 1;   // Minimum nominal investasi (tanpa batasan minimal, default: 1 Pt)
+const INVEST_RETURN_RATE = parseFloat(process.env.INVEST_RETURN_RATE) || 1.26; // Return 26% profit (1.26x total) dengan pembulatan Math.floor
 const INVEST_DURATION_DAYS = 30;
 
 // ── Identitas Kelas Kita ──────────────────────────────────────────────────────
