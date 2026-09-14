@@ -74,6 +74,11 @@ function isOurClass(row) {
   return OUR_CLASS_NAME_PATTERNS.some(p => norm.includes(p));
 }
 
+function isDummyClass(row) {
+  const norm = normalizeName(row.name);
+  return norm.includes('admin') || row.grade === 0 || String(row.classId) === '13';
+}
+
 function parsePoints(raw) {
   const cleaned = String(raw || '').replace(/[^\d-]/g, '');
   return cleaned ? Number(cleaned) : 0;
@@ -253,16 +258,21 @@ function calculateAnalytics(currentRows, snapshots, nowMs) {
 
     // Hitung kecepatan kejar-mengejar
     let overtakeEstimate = 'N/A';
+    const isDummy = isDummyClass(row);
     if (!isOurClass(row) && ourClass.total > 0) {
-      const ourPace = (ourClass.growth7d !== undefined && ourClass.growth7d !== null)
-        ? (ourClass.growth7d / 7)
-        : (ourClass.growth24h || 0);
-      const paceDiff = dailyPace - ourPace;
-      
-      if (gapToUs > 0) {
-        overtakeEstimate = paceDiff > 0 ? `Tertinggal +${Math.round(paceDiff)} Pt/hari` : `Mendekat (-${Math.round(Math.abs(paceDiff))} Pt/hari)`;
+      if (isDummy) {
+        overtakeEstimate = 'Dummy / Dev Account (Diabaikan)';
       } else {
-        overtakeEstimate = paceDiff > 0 ? `Akan tersalip dlm ~${Math.round(Math.abs(gapToUs) / paceDiff)} hr` : 'Aman (Pace Lebih Rendah)';
+        const ourPace = (ourClass.growth7d !== undefined && ourClass.growth7d !== null)
+          ? (ourClass.growth7d / 7)
+          : (ourClass.growth24h || 0);
+        const paceDiff = dailyPace - ourPace;
+        
+        if (gapToUs > 0) {
+          overtakeEstimate = paceDiff > 0 ? `Tertinggal +${Math.round(paceDiff)} Pt/hari` : `Mendekat (-${Math.round(Math.abs(paceDiff))} Pt/hari)`;
+        } else {
+          overtakeEstimate = paceDiff > 0 ? `Akan tersalip dlm ~${Math.round(Math.abs(gapToUs) / paceDiff)} hr` : 'Aman (Pace Lebih Rendah)';
+        }
       }
     }
 
@@ -270,6 +280,7 @@ function calculateAnalytics(currentRows, snapshots, nowMs) {
       ...row,
       key,
       isSelf: isOurClass(row),
+      isDummy,
       growth24h,
       growth3d,
       growth7d,
@@ -304,12 +315,12 @@ function formatConsoleTable(analyzedRows, gradeFilter) {
 
   filtered.forEach(r => {
     const isUs = r.isSelf;
-    const highlight = isUs ? '\x1b[1m\x1b[33m' : (r.rank <= 3 ? '\x1b[32m' : '\x1b[0m');
+    const highlight = isUs ? '\x1b[1m\x1b[33m' : (r.isDummy ? '\x1b[90m' : (r.rank <= 3 ? '\x1b[32m' : '\x1b[0m'));
     const reset = '\x1b[0m';
 
     const rankStr = `#${r.rank || '?'}`.padEnd(4);
     const gradeStr = `K${r.grade}`.padEnd(4);
-    const nameStr = (isUs ? `★ ${r.name}` : r.name).slice(0, 22).padEnd(24);
+    const nameStr = (isUs ? `★ ${r.name}` : (r.isDummy ? `⚠ ${r.name} [Dummy]` : r.name)).slice(0, 22).padEnd(24);
     const totalStr = `${r.total.toLocaleString('id-ID')} Pt`.padStart(11);
     
     const g24Sign = (r.growth24h > 0 ? '+' : '');
@@ -321,7 +332,7 @@ function formatConsoleTable(analyzedRows, gradeFilter) {
     const paceStr = (r.dailyPace ? `+${r.dailyPace} Pt` : '0 Pt').padStart(11);
     
     const gapSign = (r.gapToUs > 0 ? '+' : '');
-    const gapStr = (isUs ? '0 (KITA)' : `${gapSign}${r.gapToUs} Pt`).padStart(14);
+    const gapStr = (isUs ? '0 (KITA)' : (r.isDummy ? 'N/A (Dummy)' : `${gapSign}${r.gapToUs} Pt`)).padStart(14);
 
     console.log(`${highlight}${rankStr} | ${gradeStr} | ${nameStr} | ${totalStr} | ${g24Str} | ${g7Str} | ${paceStr} | ${gapStr}${reset}`);
   });
@@ -338,11 +349,11 @@ function generateMarkdownSnippet(analyzedRows, gradeFilter) {
 
   filtered.forEach(r => {
     const isUs = r.isSelf;
-    const nameFormatted = isUs ? `**${r.name} (KELAS KAMI)**` : r.name;
+    const nameFormatted = isUs ? `**${r.name} (KELAS KAMI)**` : (r.isDummy ? `~~${r.name} (Dummy/Dev)~~` : r.name);
     const g24 = r.growth24h != null ? `${r.growth24h > 0 ? '+' : ''}${r.growth24h} Pt` : 'N/A';
     const g7 = r.growth7d != null ? `${r.growth7d > 0 ? '+' : ''}${r.growth7d} Pt` : 'N/A';
-    const pace = `+${r.dailyPace} Pt/hari`;
-    const gap = isUs ? '0 (Baseline)' : `${r.gapToUs > 0 ? '+' : ''}${r.gapToUs} Pt`;
+    const pace = r.isDummy ? 'N/A' : `+${r.dailyPace} Pt/hari`;
+    const gap = isUs ? '0 (Baseline)' : (r.isDummy ? 'N/A (Dummy)' : `${r.gapToUs > 0 ? '+' : ''}${r.gapToUs} Pt`);
 
     md += `| #${r.rank} | ${nameFormatted} | Kelas ${r.grade} | **${r.total.toLocaleString('id-ID')} Pt** | ${g24} | ${g7} | ${pace} | ${gap} |\n`;
   });

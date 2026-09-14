@@ -205,24 +205,35 @@ async function evaluateAndDecide() {
   // ── Olah Data Leaderboard ─────────────────────────────────────────────────
   const { classes, ourClass } = validData;
 
-  // Sort berdasarkan saldo descending (= ranking leaderboard)
-  const sorted = [...classes].sort((a, b) => (b.total || 0) - (a.total || 0));
+  // Filter kelas: Hanya bandingkan dengan kelas nyata dalam 1 grade yang sama (exclude admin/dummy)
+  const targetGrade = ourClass.grade || 10;
+  const filteredClasses = classes.filter(c => {
+    const isSelf = String(c.classId) === String(OUR_CLASS_ID) ||
+      OUR_CLASS_PATTERNS.some(p => String(c.name || '').toLowerCase().includes(p));
+    if (isSelf) return true;
+    const nameNorm = String(c.name || '').toLowerCase();
+    const isDummy = nameNorm.includes('admin') || c.grade === 0 || String(c.classId) === '13';
+    return !isDummy && (c.grade === targetGrade);
+  });
+
+  // Sort berdasarkan saldo descending (= ranking leaderboard di grade kita)
+  const sorted = [...filteredClasses].sort((a, b) => (b.total || 0) - (a.total || 0));
 
   const ourIdx     = sorted.findIndex(c =>
     String(c.classId) === String(OUR_CLASS_ID) ||
     OUR_CLASS_PATTERNS.some(p => String(c.name || '').toLowerCase().includes(p))
   );
-  const ourRank    = ourIdx + 1;
-  const classAbove = ourIdx > 0 ? sorted[ourIdx - 1] : null; // Kelas tepat di atas kita
-  const classBelow = ourIdx < sorted.length - 1 ? sorted[ourIdx + 1] : null; // Kelas tepat di bawah
-  const classRank1 = sorted[0]; // Kelas #1
+  const ourRank    = ourIdx !== -1 ? ourIdx + 1 : 1;
+  const classAbove = ourIdx > 0 ? sorted[ourIdx - 1] : null; // Kelas tepat di atas kita di grade kita
+  const classBelow = (ourIdx !== -1 && ourIdx < sorted.length - 1) ? sorted[ourIdx + 1] : null; // Kelas tepat di bawah
+  const classRank1 = sorted[0] || ourClass; // Kelas #1 di grade kita
 
   const currentBalance = ourClass.total  || 0;
   const growth7d       = ourClass.growth7d || 0;
   const paceOur        = growth7d / 7;
   const paceRank1      = (classRank1?.growth7d || 0) / 7;
 
-  Logger.info('Decision Engine — Snapshot Leaderboard', {
+  Logger.info('Decision Engine — Snapshot Leaderboard (Grade ' + targetGrade + ')', {
     ourRank,
     ourBalance: currentBalance,
     growth7d,
