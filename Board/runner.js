@@ -177,6 +177,21 @@ async function main() {
 
   if (arg === 'claim_daily' || arg === 'claim-daily' || arg === 'harvest') {
     await runClaimDaily();
+  } else if (arg === 'full_run' || arg === 'all' || arg === 'routine' || arg === 'simulate') {
+    Logger.banner('RUNNER: FULL RUN / SIMULASI RUTINITAS LENGKAP DIMULAI');
+    Logger.info('Menjalankan seluruh alur tanpa batasan jam/status (Claim -> Analytics -> Decision -> Invest)');
+    
+    // 1. Jalankan Claim Daily (Task 1 Easter Egg + Task 2 Streak Login + Task 3 Analytics)
+    await runClaimDaily();
+
+    // 2. Tunggu 3 detik agar browser tertutup sempurna
+    await sleep(3000);
+
+    // 3. Langsung evaluasi Decision Engine & eksekusi invest jika YA
+    Logger.info('Melanjutkan ke Decision Engine & Eksekusi Investasi...');
+    await runDecision();
+
+    Logger.banner('RUNNER: FULL RUN / SIMULASI SELESAI DENGAN SUKSES');
   } else if (arg === 'invest') {
     await runInvest();
   } else if (arg === 'analytics') {

@@ -17,9 +17,10 @@ on:
         type: choice
         options:
           - auto
+          - full_run
           - claim_daily
-          - invest
           - decision
+          - invest
           - analytics
 
 # Batasi hanya 1 run yang berjalan di waktu bersamaan (mencegah bentrok)

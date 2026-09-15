@@ -1,11 +1,11 @@
 # Graph Report - Investation  (2026-09-15)
 
 ## Corpus Check
-- 116 files · ~106,967 words
+- 116 files · ~107,029 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2177 nodes · 2740 edges · 164 communities (127 shown, 37 thin omitted)
+- 2177 nodes · 2740 edges · 165 communities (128 shown, 37 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 166 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
@@ -151,6 +151,7 @@
 - Agents Rules Graphify
 - Agents Workflows Graphify
 - Js Ui Bot
+- _select_palette_for_mode
 - Js Ui Leaderboard
 - Kiro Steering Design
 - Kiro Steering Slides
@@ -210,7 +211,7 @@
 - **Brand & Design Steering System** — kiro_steering_brand_skill_brand, kiro_steering_design_skill_design, kiro_steering_design_system_skill_design_system, kiro_steering_banner_design_skill_banner_design, kiro_steering_slides_skill_slides [EXTRACTED 1.00]
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 
-## Communities (164 total, 37 thin omitted)
+## Communities (165 total, 37 thin omitted)
 
 ### Community 0 - "Kiro Steering Design"
 Cohesion: 0.05
@@ -321,8 +322,8 @@ Cohesion: 0.08
 Nodes (23): Art Direction Styles (Reuse from Banner), Color & Contrast, Design Best Practices, HTML Design Rules, HTML Template Structure, Option A: Chrome Headless CLI (Recommended — zero dependencies), Option B: chrome-devtools skill, Option C: Playwright script (+15 more)
 
 ### Community 27 - "Kiro Steering Ui"
-Cohesion: 0.10
-Nodes (15): DesignSystemGenerator, Pick the highest-ranked palette matching the resolved mode.      Only the dark c, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Execute searches across multiple domains., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords. (+7 more)
+Cohesion: 0.13
+Nodes (12): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Execute searches across multiple domains., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict. (+4 more)
 
 ### Community 28 - "Board Logger"
 Cohesion: 0.14
@@ -715,6 +716,10 @@ Nodes (3): shadcn_add.py, tailwind_config_gen.py, Utility Scripts
 ### Community 131 - "Refinement Process"
 Cohesion: 0.50
 Nodes (4): Final Verification, Initial Pass, Refinement Process, Second Pass (Critical)
+
+### Community 136 - "_select_palette_for_mode"
+Cohesion: 0.43
+Nodes (3): Pick the highest-ranked palette matching the resolved mode.      Only the dark c, _select_palette_for_mode(), TestPaletteSelection
 
 ## Knowledge Gaps
 - **1028 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1023 more)

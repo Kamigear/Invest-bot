@@ -9394,8 +9394,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_executor",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "executor.js"
     },
     {
@@ -9405,8 +9405,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_executor_db_runtransaction_servertimestamp_getdoc_setdoc",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "{ db, runtransaction, servertimestamp, getdoc, setdoc }"
     },
     {
@@ -9416,8 +9416,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_executor_sendalert",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "{ sendalert }"
     },
     {
@@ -9427,8 +9427,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "board_executor_executeinvest",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "{ executeinvest }"
     },
     {
@@ -9438,8 +9438,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "board_executor_logger",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "{ logger }"
     },
     {
@@ -9449,8 +9449,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "board_executor_withretry_istransienterror",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "{ withretry, istransienterror }"
     },
     {
@@ -9460,8 +9460,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "board_executor_pending",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "pending"
     },
     {
@@ -9471,8 +9471,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "board_executor_default_retry",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "default_retry"
     },
     {
@@ -9482,8 +9482,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "board_executor_getwibdate",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "getwibdate()"
     },
     {
@@ -9493,8 +9493,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "board_executor_rundailyjob",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "rundailyjob()"
     },
     {
@@ -9735,8 +9735,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_firebase",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "firebase.js"
     },
     {
@@ -9746,8 +9746,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "board_firebase_admin",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "admin"
     },
     {
@@ -9757,8 +9757,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "board_firebase_logger",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "{ logger }"
     },
     {
@@ -9768,8 +9768,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "board_firebase_db",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "db"
     },
     {
@@ -9801,8 +9801,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "board_firebase_runtransaction",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "runtransaction()"
     },
     {
@@ -9823,8 +9823,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "board_firebase_onsnapshot",
-      "community": 13,
-      "community_name": "Board Dailyreward",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "onsnapshot()"
     },
     {
@@ -10109,8 +10109,8 @@
       "source_location": "L418",
       "_origin": "ast",
       "id": "board_index_runtask2",
-      "community": 10,
-      "community_name": "Board Index",
+      "community": 13,
+      "community_name": "Board Dailyreward",
       "norm_label": "runtask2()"
     },
     {
@@ -42622,7 +42622,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L199",
+      "source_location": "L188",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -42718,7 +42718,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L192",
+      "source_location": "L207",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -42742,7 +42742,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L208",
+      "source_location": "L223",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -42766,7 +42766,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L183",
+      "source_location": "L198",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -42778,7 +42778,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L185",
+      "source_location": "L192",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -42802,7 +42802,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/runner.js",
-      "source_location": "L181",
+      "source_location": "L196",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_runner_main",
@@ -54742,5 +54742,5 @@
       "source_file": ".agents/rules/graphify.md"
     }
   ],
-  "built_at_commit": "c006ace88ce665bd864c903107b1ceb4ae4b1f22"
+  "built_at_commit": "6f2d5e1e957d18d9cb700d4519a2bb77d55cf787"
 }

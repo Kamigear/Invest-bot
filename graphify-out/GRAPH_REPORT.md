@@ -1,16 +1,16 @@
 # Graph Report - Investation  (2026-09-15)
 
 ## Corpus Check
-- 116 files · ~107,029 words
+- 116 files · ~107,130 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2177 nodes · 2740 edges · 165 communities (128 shown, 37 thin omitted)
+- 2177 nodes · 2740 edges · 166 communities (129 shown, 37 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 166 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c006ace8`
+- Built from commit: `6f2d5e1e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -152,6 +152,7 @@
 - Agents Workflows Graphify
 - Js Ui Bot
 - _select_palette_for_mode
+- executor.js
 - Js Ui Leaderboard
 - Kiro Steering Design
 - Kiro Steering Slides
@@ -211,7 +212,7 @@
 - **Brand & Design Steering System** — kiro_steering_brand_skill_brand, kiro_steering_design_skill_design, kiro_steering_design_system_skill_design_system, kiro_steering_banner_design_skill_banner_design, kiro_steering_slides_skill_slides [EXTRACTED 1.00]
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 
-## Communities (165 total, 37 thin omitted)
+## Communities (166 total, 37 thin omitted)
 
 ### Community 0 - "Kiro Steering Design"
 Cohesion: 0.05
@@ -255,7 +256,7 @@ Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at B
 
 ### Community 10 - "Board Index"
 Cohesion: 0.11
-Nodes (36): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+28 more)
+Nodes (35): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+27 more)
 
 ### Community 11 - "Board Leaderboard"
 Cohesion: 0.29
@@ -266,8 +267,8 @@ Cohesion: 0.06
 Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common Font Pairings, Contrast Requirements, CSS Implementation, Editorial (+22 more)
 
 ### Community 13 - "Board Dailyreward"
-Cohesion: 0.10
-Nodes (29): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, getWibDate() (+21 more)
+Cohesion: 0.17
+Nodes (17): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, runTask2(), executeInvest(), { isTransientError }, { Logger } (+9 more)
 
 ### Community 14 - "Kiro Steering Brand"
 Cohesion: 0.07
@@ -720,6 +721,10 @@ Nodes (4): Final Verification, Initial Pass, Refinement Process, Second Pass (Cr
 ### Community 136 - "_select_palette_for_mode"
 Cohesion: 0.43
 Nodes (3): Pick the highest-ranked palette matching the resolved mode.      Only the dark c, _select_palette_for_mode(), TestPaletteSelection
+
+### Community 137 - "executor.js"
+Cohesion: 0.16
+Nodes (13): { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, getWibDate(), { Logger }, Pending, runDailyJob(), { sendAlert } (+5 more)
 
 ## Knowledge Gaps
 - **1028 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1023 more)
