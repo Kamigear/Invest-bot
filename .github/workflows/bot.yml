@@ -2,8 +2,11 @@ name: Invest Bot Automation
 
 on:
   schedule:
-    # Berjalan setiap 1 jam pada menit ke-17 (Off-Peak Cron untuk menghindari antrean/delay menit :00 di GitHub Actions)
-    # Mode 'auto' di runner.js otomatis mengeksekusi Claim Daily (04:17 WIB), Decision Engine (23:17 WIB), dan Hourly Analytics
+    # 01:00 WIB = 18:00 UTC (Rutinitas Utama: Claim Weekly/Easter Egg + Decision + Invest)
+    - cron: '0 18 * * *'
+    # 01:30 WIB = 18:30 UTC (Backup jika antrean GitHub Actions jam 01:00 tertunda)
+    - cron: '30 18 * * *'
+    # Berjalan setiap 1 jam pada menit ke-17 (Hourly Analytics & Auto Catch-up)
     - cron: '17 * * * *'
   workflow_dispatch:
     inputs:

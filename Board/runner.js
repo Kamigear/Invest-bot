@@ -131,11 +131,20 @@ async function runAnalytics() {
 }
 
 async function runDecision() {
-  Logger.banner('RUNNER: DECISION ENGINE DIMULAI (23:00 WIB Routine)');
+  Logger.banner('RUNNER: DECISION ENGINE DIMULAI (01:00 WIB Routine)');
   try {
     const result = await evaluateAndDecide();
     Logger.info('Hasil Decision Engine:', { decision: result.decision, reason: result.reason, amount: result.amount });
+    
+    // Jika keputusan YA, langsung eksekusi investasi di hari yang sama
+    if (result && result.decision === 'YES') {
+      Logger.info('Keputusan YA terkonfirmasi -> Menjalankan eksekusi investasi langsung...');
+      await sleep(2000);
+      await runInvest();
+    }
+
     Logger.banner('RUNNER: DECISION ENGINE SELESAI DENGAN SUKSES');
+    return result;
   } catch (err) {
     Logger.critical('RUNNER: Terjadi kesalahan pada Decision Engine', { error: err.message });
     await sendAlert(`❌ RUNNER DECISION ERROR: ${err.message}`);
@@ -149,6 +158,7 @@ async function runInvest() {
     const jobResult = await runDailyJobWithLock();
     Logger.info('Hasil Eksekusi Investasi:', { status: jobResult?.status || 'NONE' });
     Logger.banner('RUNNER: EKSEKUSI INVESTASI SELESAI');
+    return jobResult;
   } catch (err) {
     Logger.critical('RUNNER: Terjadi kesalahan pada eksekusi investasi', { error: err.message });
     await sendAlert(`❌ RUNNER INVEST ERROR: ${err.message}`);
@@ -174,37 +184,42 @@ async function main() {
   } else if (arg === 'decision') {
     await runDecision();
   } else if (arg === 'auto') {
-    // Mode Auto: Smart Self-Healing & Catch-Up Logic
-    let dailyClaimExecuted = false;
+    // Mode Auto: Smart Unified Daily Routine (01:00 WIB) & Catch-Up Logic
+    let dailyRoutineExecuted = false;
 
-    // 1. Cek & Jalankan Claim Daily jika jam >= 04:00 WIB dan belum diklaim hari ini
-    if (wibHour >= 4) {
+    // 1. Cek & Jalankan Rutinitas Harian jika jam >= 01:00 WIB dan belum diklaim hari ini
+    if (wibHour >= 1) {
       const alreadyClaimed = await isDailyClaimDoneToday();
       if (!alreadyClaimed) {
-        Logger.info(`Claim Daily belum sukses hari ini (${getWibDate()}) -> Menjalankan Claim Daily (Scheduled / Catch-up)`);
+        Logger.info(`Rutinitas Harian belum dijalankan hari ini (${getWibDate()}) -> Menjalankan Claim Daily & Easter Egg`);
         await runClaimDaily();
-        dailyClaimExecuted = true;
-      } else {
-        Logger.info(`Claim Daily sudah sukses dicatat untuk hari ini (${getWibDate()}).`);
-      }
-    } else {
-      Logger.info(`Belum memasuki jadwal Claim Daily (jam saat ini: ${wibHour}:00 WIB, jadwal: >= 04:00 WIB)`);
-    }
+        dailyRoutineExecuted = true;
 
-    // 2. Cek & Jalankan Decision Engine jika jam >= 23:00 WIB dan belum dievaluasi hari ini
-    if (wibHour >= 23) {
-      const decisionDone = await isDecisionDoneToday();
-      if (!decisionDone) {
-        Logger.info(`Decision Engine belum dievaluasi untuk hari ini (${getWibDate()}) -> Menjalankan Decision Engine`);
+        // Tunggu 3 detik agar sesi browser daily reward tertutup sempurna
+        await sleep(3000);
+
+        // Langsung lanjutkan dengan Decision Engine & Eksekusi Investasi
+        Logger.info('Melanjutkan langsung ke Decision Engine setelah Claim Daily...');
         await runDecision();
       } else {
-        Logger.info(`Decision Engine sudah dievaluasi untuk hari ini (${getWibDate()}).`);
+        Logger.info(`Claim Daily sudah sukses dicatat untuk hari ini (${getWibDate()}).`);
+
+        // Jika Claim Daily sudah selesai tapi Decision Engine belum sempat dievaluasi
+        const decisionDone = await isDecisionDoneToday();
+        if (!decisionDone) {
+          Logger.info(`Decision Engine belum dievaluasi untuk hari ini (${getWibDate()}) -> Menjalankan Decision Engine (Catch-up)`);
+          await runDecision();
+        } else {
+          Logger.info(`Decision Engine sudah dievaluasi untuk hari ini (${getWibDate()}).`);
+        }
       }
+    } else {
+      Logger.info(`Belum memasuki jadwal Rutinitas Harian (jam saat ini: ${wibHour}:00 WIB, jadwal: >= 01:00 WIB)`);
     }
 
-    // 3. Jalankan Hourly Analytics jika belum dieksekusi di runClaimDaily
+    // 2. Jalankan Hourly Analytics jika belum dieksekusi di runClaimDaily
     // (runClaimDaily sudah menjalankan runTask3 di dalamnya)
-    if (!dailyClaimExecuted) {
+    if (!dailyRoutineExecuted) {
       Logger.info('Menjalankan Hourly Leaderboard Analytics...');
       await runAnalytics();
     }

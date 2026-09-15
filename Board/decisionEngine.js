@@ -1,8 +1,8 @@
 /**
  * =============================================================================
- * decisionEngine.js — 100% Automated Investment Decision Engine (23:00 WIB)
+ * decisionEngine.js — 100% Automated Investment Decision Engine (01:00 WIB)
  * =============================================================================
- * Dipanggil setiap pukul 23:00 WIB oleh cron di index.js.
+ * Dipanggil setiap pukul 01:00 WIB (setelah Claim Daily & Weekly Streak).
  * Mengimplementasikan Dynamic Chasing & Compound Snowball Strategy:
  *
  * Rule 1 — Dynamic Target Reserve (The Chaser Rule):
@@ -112,7 +112,7 @@ async function logDecision({ decision, reason, amount, details, metrics }) {
 
 // ── Main Function: Evaluasi & Putuskan ───────────────────────────────────────
 async function evaluateAndDecide() {
-  Logger.banner('DECISION ENGINE (23:00) — Evaluasi Keputusan Investasi Dimulai');
+  Logger.banner('DECISION ENGINE (01:00 WIB) — Evaluasi Keputusan Investasi Dimulai');
 
   // ── Safety Layer 5: Remote Emergency Freeze ──────────────────────────────
   try {
@@ -198,7 +198,7 @@ async function evaluateAndDecide() {
     const reason = `Scrape gagal ${SCRAPE_MAX_ATTEMPTS}x. Error: ${lastError?.message || 'Unknown'}`;
     Logger.error('KEPUTUSAN: TIDAK (Fail-Safe) —', reason);
     await logDecision({ decision: 'NO', reason: 'SCRAPE_FAILED', amount: 0, details: reason });
-    await sendAlert(`⛔ Decision Engine (23:00)\nGagal baca data ${SCRAPE_MAX_ATTEMPTS}x berturut-turut.\nOtomatis TIDAK invest. Saldo kas aman.\nError: ${lastError?.message}`);
+    await sendAlert(`⛔ Decision Engine (01:00 WIB)\nGagal baca data ${SCRAPE_MAX_ATTEMPTS}x berturut-turut.\nOtomatis TIDAK invest. Saldo kas aman.\nError: ${lastError?.message}`);
     return { decision: 'NO', reason: 'SCRAPE_FAILED', amount: 0 };
   }
 
@@ -218,6 +218,15 @@ async function evaluateAndDecide() {
 
   // Sort berdasarkan saldo descending (= ranking leaderboard di grade kita)
   const sorted = [...filteredClasses].sort((a, b) => (b.total || 0) - (a.total || 0));
+
+  // Fail-Closed: Jika kompetitor dalam grade tidak terdeteksi (kurang dari 2 kelas), tolak investasi demi keamanan
+  if (sorted.length < 2) {
+    const reason = `Data kompetitor tidak lengkap di Grade ${targetGrade} (hanya terdeteksi ${sorted.length} kelas). Fail-Closed: TIDAK invest demi melindungi saldo kas.`;
+    Logger.error('KEPUTUSAN: TIDAK (Fail-Closed) —', reason);
+    await logDecision({ decision: 'NO', reason: 'INSUFFICIENT_COMPETITOR_DATA', amount: 0, details: reason });
+    await sendAlert(`⛔ Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
+    return { decision: 'NO', reason: 'INSUFFICIENT_COMPETITOR_DATA', amount: 0 };
+  }
 
   const ourIdx     = sorted.findIndex(c =>
     String(c.classId) === String(OUR_CLASS_ID) ||
@@ -244,24 +253,27 @@ async function evaluateAndDecide() {
     classRank1: `${classRank1?.name} (${classRank1?.total} Pt)`,
   });
 
-  // ── Rule 1: Dynamic Target Reserve (The Chaser Rule) ─────────────────────
+  // ── Rule 1: Dynamic Target Reserve (The Chaser & Leader Rule) ────────────
   let targetReserve;
   if (ourRank === 1 || !classAbove) {
-    // Sudah #1 — pertahankan gap 100 Pt dari #2
-    targetReserve = (sorted[1]?.total || 0) + 100;
+    // Posisi Rank 1: Wajib amankan keunggulan kas!
+    // Cadangan kas = Saldo Rank 2 + 100 Pt, DAN minimal 85% total saldo kas saat ini, DAN minimal HARD_MIN_RESERVE
+    const rank2Total = sorted[1]?.total || 0;
+    targetReserve = Math.max(rank2Total + 100, Math.floor(currentBalance * 0.85), HARD_MIN_RESERVE);
   } else {
     // Targetkan menyalip kelas di atas kita (+50 Pt buffer)
-    targetReserve = classAbove.total + 50;
+    targetReserve = Math.max(classAbove.total + 50, HARD_MIN_RESERVE);
   }
 
   const overflowAmount = currentBalance - targetReserve;
 
   if (overflowAmount < MIN_INVEST_AMOUNT) {
     const needed = targetReserve - currentBalance;
-    const reason = `Rule 1 (Chaser): Saldo ${currentBalance} Pt, Target Salip ${classAbove?.name || '#2'} = ${targetReserve} Pt. Kurang ${Math.abs(needed)} Pt. Tabung dulu.`;
+    const targetName = (ourRank === 1 || !classAbove) ? (sorted[1]?.name || 'Rank #2') : (classAbove?.name || '#1');
+    const reason = `Rule 1 (Chaser/Leader): Saldo ${currentBalance} Pt, Target Cadangan Aman (${targetName}) = ${targetReserve} Pt. Kurang ${Math.abs(needed)} Pt. Kas ditahan di tabungan.`;
     Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
     await logDecision({ decision: 'NO', reason: 'RULE1_CHASER', amount: 0, details: reason, metrics: { currentBalance, targetReserve, ourRank, paceOur: +paceOur.toFixed(2), paceRank1: +paceRank1.toFixed(2) } });
-    await sendAlert(`📊 Decision Engine (23:00)\n❌ KEPUTUSAN: TIDAK\n${reason}\nEstimasi salip: ~${Math.ceil(Math.abs(needed) / Math.max(paceOur, 0.1))} hari`);
+    await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}\nEstimasi salip/capai target: ~${Math.ceil(Math.abs(needed) / Math.max(paceOur, 0.1))} hari`);
     return { decision: 'NO', reason: 'RULE1_CHASER', amount: 0 };
   }
 
@@ -270,28 +282,29 @@ async function evaluateAndDecide() {
     const reason = `Rule 2 (Pace): Kita ${paceOur.toFixed(1)} Pt/hari < Rank #1 (${classRank1?.name}) ${paceRank1.toFixed(1)} Pt/hari. Tahan kas — biarkan Bankbook 1% mendongkrak pace.`;
     Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
     await logDecision({ decision: 'NO', reason: 'RULE2_PACE', amount: 0, details: reason, metrics: { currentBalance, targetReserve, ourRank, paceOur: +paceOur.toFixed(2), paceRank1: +paceRank1.toFixed(2) } });
-    await sendAlert(`📊 Decision Engine (23:00)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
+    await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
     return { decision: 'NO', reason: 'RULE2_PACE', amount: 0 };
   }
 
-  // ── Rule 3: Rank Vulnerability Check ─────────────────────────────────────
-  const gapBehind     = classBelow ? currentBalance - classBelow.total : 99999;
+  // ── Rule 3: Rank Vulnerability Check (Pertahanan Posisi) ─────────────────
+  const gapBehind     = classBelow ? currentBalance - classBelow.total : (currentBalance - (sorted[1]?.total || 0));
   const plannedInvest = overflowAmount;
 
-  if (gapBehind < plannedInvest + 30) {
-    const reason = `Rule 3 (Vulnerability): Gap ke ${classBelow?.name || 'kelas bawah'} hanya ${gapBehind} Pt. Invest ${plannedInvest} Pt akan membuat kita disalip besok.`;
+  if (gapBehind < plannedInvest + 50) {
+    const reason = `Rule 3 (Vulnerability): Gap ke ${classBelow?.name || 'kelas bawah'} hanya ${gapBehind} Pt. Rencana invest ${plannedInvest} Pt terlalu berisiko membuat kita disalip.`;
     Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
     await logDecision({ decision: 'NO', reason: 'RULE3_VULNERABILITY', amount: 0, details: reason, metrics: { currentBalance, gapBehind, plannedInvest, ourRank } });
-    await sendAlert(`📊 Decision Engine (23:00)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
+    await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
     return { decision: 'NO', reason: 'RULE3_VULNERABILITY', amount: 0 };
   }
 
-  // ── Rule 4: Adaptive Overflow Execution ──────────────────────────────────
-  // Safety Layer 3: Hard Circuit Breaker (Hard Min Reserve)
+  // ── Rule 4: Adaptive Overflow Execution & Hard Floor Safeguard ───────────
   const finalAmount = plannedInvest;
+  const remainingCash = currentBalance - finalAmount;
 
-  if (currentBalance - finalAmount < HARD_MIN_RESERVE) {
-    const reason = `Hard Circuit Breaker: Saldo setelah invest ${currentBalance - finalAmount} Pt < batas keras ${HARD_MIN_RESERVE} Pt.`;
+  // Sisa saldo kas setelah invest MUTLAK tidak boleh di bawah targetReserve atau HARD_MIN_RESERVE
+  if (remainingCash < targetReserve || remainingCash < HARD_MIN_RESERVE) {
+    const reason = `Hard Floor Safeguard: Saldo kas setelah invest tersisa ${remainingCash} Pt < batas aman ${Math.max(targetReserve, HARD_MIN_RESERVE)} Pt.`;
     Logger.warning(`KEPUTUSAN: TIDAK — ${reason}`);
     await logDecision({ decision: 'NO', reason: 'HARD_CIRCUIT_BREAKER', amount: 0, details: reason });
     await sendAlert(`⚠️ Decision Engine: CIRCUIT BREAKER Aktif\n${reason}`);
@@ -302,12 +315,12 @@ async function evaluateAndDecide() {
     const reason = `Rule 4: Dana luberan ${finalAmount} Pt < minimum invest ${MIN_INVEST_AMOUNT} Pt.`;
     Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
     await logDecision({ decision: 'NO', reason: 'RULE4_INSUFFICIENT', amount: 0, details: reason });
-    await sendAlert(`📊 Decision Engine (23:00)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
+    await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
     return { decision: 'NO', reason: 'RULE4_INSUFFICIENT', amount: 0 };
   }
 
   // ── ✅ SEMUA RULES LOLOS — Buat Jadwal Investasi ────────────────────────
-  const investDate    = tomorrowDateStr();
+  const investDate    = getWibDate();
   const expectedReturn = Math.floor(finalAmount * INVEST_RETURN_RATE);
   const maturityDate  = addDays(investDate, INVEST_DURATION_DAYS);
   const metrics       = { ourRank, currentBalance, targetReserve, gapBehind, paceOur: +paceOur.toFixed(2), paceRank1: +paceRank1.toFixed(2), classAboveName: classAbove?.name || '(Kita #1)', classBelowName: classBelow?.name || '(Tidak ada)' };
@@ -329,8 +342,8 @@ async function evaluateAndDecide() {
   );
 
   const successMsg = [
-    `📊 Decision Engine (23:00)`,
-    `✅ KEPUTUSAN: YA — Invest ${finalAmount} Pt besok (${investDate})`,
+    `📊 Decision Engine (01:00 WIB)`,
+    `✅ KEPUTUSAN: YA — Invest ${finalAmount} Pt hari ini (${investDate})`,
     `Return Diharapkan: +${expectedReturn} Pt (Cair: ${maturityDate})`,
     `Rank Kita: #${ourRank} | Saldo: ${currentBalance} Pt`,
     `Target Salip: ${classAbove?.name || 'Pertahankan #1'} (${classAbove?.total || 'N/A'} Pt)`,

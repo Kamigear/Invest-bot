@@ -22,7 +22,7 @@ const DAILY_REWARD_KEY = 'DAILY_REWARD';
 // PENGATURAN & ENVS
 // ==========================================
 const PREFIX_NAME = process.env.PREFIX_NAME || "Class Mr Kalebbbbbbb";
-const cronSchedule = process.env.BOT_CRON_SCHEDULE || '0 4 * * *';
+const cronSchedule = process.env.BOT_CRON_SCHEDULE || '0 1 * * *';
 const leaderboardAnalyticsCronSchedule = process.env.LEADERBOARD_ANALYTICS_CRON_SCHEDULE || '0 * * * *';
 
 // ==========================================
@@ -660,11 +660,24 @@ function start() {
       Logger.banner('BOOT RUN dimulai');
       const t1 = await runTask1();
       const t2 = await runTask2();
-      // Tunggu 3 detik agar browser dari dailyReward benar-benar tertutup
-      // sebelum executeInvest membuka browser baru (cegah race condition)
       await sleep(3000);
-      const result = await runDailyJobWithLock();
       const t3 = await runTask3();
+
+      // Jalankan Decision Engine di boot run dengan data leaderboard analytics yang baru ditarik
+      let decisionResult = null;
+      let result = null;
+      try {
+        decisionResult = await evaluateAndDecide();
+        if (decisionResult && decisionResult.decision === 'YES') {
+          Logger.info('Boot run: Keputusan YA terkonfirmasi -> Menjalankan eksekusi investasi...');
+          await sleep(2000);
+          result = await runDailyJobWithLock();
+        } else {
+          Logger.info('Boot run: Decision Engine tidak menjadwalkan invest (Saldo kas aman)');
+        }
+      } catch (dErr) {
+        Logger.critical('Boot run: Decision Engine error', { error: dErr.message });
+      }
 
       if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
         await scheduleDailyRewardRetry(t2.attempts);
@@ -678,8 +691,9 @@ function start() {
         phase: 'boot',
         task1: t1 || 'COMPLETED',
         task2: t2?.status || 'UNKNOWN',
-        dailyJob: result?.status || 'UNKNOWN',
-        task3: t3?.status || 'UNKNOWN'
+        task3: t3?.status || 'UNKNOWN',
+        decision: decisionResult?.decision || 'NONE',
+        dailyJob: result?.status || 'SKIPPED'
       });
 
       Logger.banner('BOOT RUN selesai');
@@ -689,28 +703,49 @@ function start() {
   })();
 
   cron.schedule(cronSchedule, async () => {
-    Logger.banner('RUTINITAS CLAIM DAILY DIMULAI', { triggeredAt: new Date().toISOString() });
+    Logger.banner('RUTINITAS HARIAN 01:00 WIB (CLAIM + DECISION + INVEST) DIMULAI', { triggeredAt: new Date().toISOString() });
     const t1 = await runTask1();
     const t2 = await runTask2();
+    await sleep(3000);
     const t3 = await runTask3();
 
     if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
       await scheduleDailyRewardRetry(t2.attempts);
     }
 
-    recordLocalTaskRun({
-      phase: 'cron_claim_daily',
-      task1: t1 || 'COMPLETED',
-      task2: t2?.status || 'UNKNOWN',
-      task3: t3?.status || 'UNKNOWN'
-    });
-
     await sendAlert(
-      `🌅 Claim Daily Selesai (${getWibTimeStr()})\n` +
+      `🌅 Rutinitas Harian Selesai (${getWibTimeStr()})\n` +
       `✅ Daily Login & Easter Egg Berhasil Di Claim`
     );
 
-    Logger.banner('RUTINITAS CLAIM DAILY SELESAI');
+    // Langsung jalankan Decision Engine setelah data saldo terbaru masuk
+    let decisionResult = null;
+    let investResult = null;
+    try {
+      Logger.banner('DECISION ENGINE (01:00 WIB) DIMULAI', { triggeredAt: new Date().toISOString() });
+      decisionResult = await evaluateAndDecide();
+      
+      // Jika keputusan YA, langsung eksekusi transaksi investasi
+      if (decisionResult && decisionResult.decision === 'YES') {
+        Logger.info('Keputusan YA terkonfirmasi -> Menjalankan eksekusi investasi...');
+        await sleep(2000);
+        investResult = await runDailyJobWithLock();
+      }
+    } catch (err) {
+      Logger.critical('Decision Engine gagal dengan error tidak terduga', { error: err.message });
+      await sendAlert(`❌ Decision Engine (01:00 WIB) ERROR\n${err.message}\nBot tidak invest hari ini. Saldo aman.`);
+    }
+
+    recordLocalTaskRun({
+      phase: 'cron_daily_unified',
+      task1: t1 || 'COMPLETED',
+      task2: t2?.status || 'UNKNOWN',
+      task3: t3?.status || 'UNKNOWN',
+      decision: decisionResult?.decision || 'NONE',
+      invest: investResult?.status || 'NONE'
+    });
+
+    Logger.banner('RUTINITAS HARIAN 01:00 WIB SELESAI');
   });
 
   cron.schedule(leaderboardAnalyticsCronSchedule, async () => {
@@ -718,20 +753,6 @@ function start() {
     const t3 = await runTask3();
     recordLocalTaskRun({ phase: 'cron_analytics', task3: t3?.status || 'UNKNOWN' });
     Logger.banner('LEADERBOARD ANALYTICS SELESAI');
-  });
-
-  // ── Decision Engine: Evaluasi otomatis jam 23:00 WIB setiap hari ─────────
-  const decisionEngineCronSchedule = process.env.DECISION_ENGINE_CRON || '0 23 * * *';
-  cron.schedule(decisionEngineCronSchedule, async () => {
-    Logger.banner('DECISION ENGINE (23:00) DIMULAI', { triggeredAt: new Date().toISOString() });
-    try {
-      const result = await evaluateAndDecide();
-      recordLocalTaskRun({ phase: 'cron_decision', decision: result.decision, reason: result.reason, amount: result.amount });
-    } catch (err) {
-      Logger.critical('Decision Engine gagal dengan error tidak terduga', { error: err.message });
-      await sendAlert(`❌ Decision Engine (23:00) ERROR\n${err.message}\nBot tidak invest hari ini. Saldo aman.`);
-    }
-    Logger.banner('DECISION ENGINE (23:00) SELESAI');
   });
 }
 

@@ -8,8 +8,8 @@
  *   1. 🏆 Leaderboard & Competitor Analytics (Real-time)
  *   2. 🤖 Bot Status & Automated Decision Log
  *
- * Semua keputusan investasi sepenuhnya dikelola oleh Bot di Orange Pi
- * melalui Decision Engine yang berjalan otomatis jam 23:00 WIB.
+ * Semua keputusan investasi sepenuhnya dikelola oleh Bot di Orange Pi / GitHub Actions
+ * melalui Decision Engine yang berjalan otomatis jam 01:00 WIB.
  * =============================================================================
  */
 

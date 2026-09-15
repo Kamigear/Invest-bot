@@ -49,48 +49,7 @@ async function runDailyJob(targetDate) {
         maturityDate: scheduleEntry.maturityDate
       });
     } else {
-      Logger.info(`Dokumen schedules/${entryId} tidak ditemukan, memeriksa botState/config`, { entryId });
-      const configSnap = await withRetry(
-        () => getDoc('botState/config'),
-        { label: 'config:botState', ...DEFAULT_RETRY }
-      );
-      if (configSnap.exists) {
-        const cfg = configSnap.data();
-        const dashSnap = await withRetry(
-          () => getDoc('botState/dashboardData'),
-          { label: 'dashboardData:botState', ...DEFAULT_RETRY }
-        );
-        const dashData = dashSnap.exists ? dashSnap.data() : {};
-        const currentBalance = dashData.balance || 0;
-        const minInvest = cfg.minInvest || 1;
-        const reserveBalance = cfg.reserveBalance || 0;
-        const returnRate = cfg.returnRate || 1.26;
-        const investDuration = cfg.investDuration || 30;
-
-        const availableToInvest = currentBalance - reserveBalance;
-        if (availableToInvest >= minInvest) {
-          const amount = (cfg.maxInvest && cfg.maxInvest > 0)
-            ? Math.min(availableToInvest, cfg.maxInvest)
-            : availableToInvest;
-
-          const expectedReturn = Math.floor(amount * returnRate);
-          const matDate = new Date(today + 'T12:00:00+07:00');
-          matDate.setDate(matDate.getDate() + investDuration);
-          const maturityDate = getWibDate(matDate);
-
-          scheduleEntry = {
-            entryId,
-            investDate: today,
-            amount,
-            expectedReturn,
-            maturityDate,
-            generatedFromConfig: true
-          };
-          Logger.info('Jadwal investasi berhasil dihitung otomatis dari botState/config', scheduleEntry);
-        } else {
-          Logger.info('Saldo tidak mencukupi untuk investasi minimal berdasarkan config', { availableToInvest, minInvest });
-        }
-      }
+      Logger.warning(`Dokumen schedules/${entryId} tidak ditemukan di Firestore. Eksekusi investasi dibatalkan demi keamanan (wajib melalui Decision Engine).`, { entryId });
     }
 
     if (!scheduleEntry) {
