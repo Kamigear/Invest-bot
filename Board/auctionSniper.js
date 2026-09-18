@@ -116,7 +116,7 @@ function getRemainingSeconds() {
 // ==========================================
 // 4. CALCULATE SMART BID AMOUNT
 // ==========================================
-function calculateNextBid(currentHighest, minAllowed) {
+function calculateNextBid(currentHighest, minAllowed, currentScore) {
   // Batas minimal mutlak yang sah (1% Proxy perk, min input dari server, atau minimal +1)
   const minRequired1Pct = Math.ceil(currentHighest * (config.percentIncrement || 1.01));
   const absoluteMinLegal = Math.max(minAllowed || 0, minRequired1Pct, currentHighest + 1);
@@ -142,6 +142,35 @@ function calculateNextBid(currentHighest, minAllowed) {
   } else {
     // Default fallback: AUTO
     bid = Math.max(absoluteMinLegal, currentHighest + (parseInt(config.addPoints, 10) || 10));
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // GUARD 1: BATASI BID KE maxBidLimit JIKA MELEBIHI — TAPI MASIH LEGAL
+  // Contoh: addPoints=20, maxBidLimit=150, harga=140 → target=160,
+  //         tapi 150 >= min legal, jadi bid dikap ke 150, bukan ditolak.
+  // Hanya tolak total jika maxBidLimit sendiri di bawah absoluteMinLegal.
+  // ═══════════════════════════════════════════════════════════════
+  if (config.maxBidLimit && bid > config.maxBidLimit) {
+    if (config.maxBidLimit >= absoluteMinLegal) {
+      // Masih bisa bid sampai batas maksimal config — cap di sini
+      bid = config.maxBidLimit;
+    }
+    // Jika maxBidLimit < absoluteMinLegal, biarkan bid > maxBidLimit
+    // agar guard di runWorkerLoop memblokir dan mencatat log penolakan.
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // GUARD 2: BATASI BID AGAR TIDAK MELEBIHI POIN/SALDO SAAT ITU JUGA
+  // ═══════════════════════════════════════════════════════════════
+  if (currentScore && currentScore > 0) {
+    if (bid > currentScore) {
+      if (currentScore >= absoluteMinLegal) {
+        // Jika saldo masih cukup untuk minimal legal bid, sesuaikan bid pas sebesar saldo
+        bid = currentScore;
+      }
+      // Jika currentScore < absoluteMinLegal, biarkan bid > currentScore
+      // agar guard di runWorkerLoop memblokir sepenuhnya dan mencatat penolakan bid.
+    }
   }
 
   return bid;
@@ -189,6 +218,12 @@ async function scrapeAuction(page) {
       if (scoreMatch) currentScore = parseInt(scoreMatch[1], 10);
     }
 
+    if (!currentScore) {
+      const bodyText = document.body ? document.body.innerText : '';
+      const ptMatch = bodyText.match(/Point\s*Tersedia\s*:\s*(\d+)/i);
+      if (ptMatch) currentScore = parseInt(ptMatch[1], 10);
+    }
+
     const cleanMy = myClassName.toLowerCase().replace(/[^a-z0-9]/g, '');
     const cleanHolder = holderClass.toLowerCase().replace(/[^a-z0-9]/g, '');
     const isMyClassHolding = cleanHolder.includes(cleanMy) || cleanMy.includes(cleanHolder)
@@ -229,7 +264,12 @@ async function fastFetchScrape(page) {
       const minBid = minBidMatch ? parseInt(minBidMatch[1], 10) : highestBid + 1;
 
       const scoreMatch = html.match(/confirmBid\s*\(\s*this\s*,\s*(\d+)\s*\)/);
-      const currentScore = scoreMatch ? parseInt(scoreMatch[1], 10) : 0;
+      let currentScore = scoreMatch ? parseInt(scoreMatch[1], 10) : 0;
+      if (!currentScore) {
+        const ptMatch = html.match(/Point\s*Tersedia:\s*<[^>]*>\s*(\d+)\s*Point/i)
+          || html.match(/Point\s*Tersedia:[^0-9]*(\d+)\s*Point/i);
+        if (ptMatch) currentScore = parseInt(ptMatch[1], 10);
+      }
 
       const cleanMy = myClassName.toLowerCase().replace(/[^a-z0-9]/g, '');
       const cleanHolder = holderClass.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -259,6 +299,31 @@ async function placeBid(page, workerId, bidAmount, auctionId) {
 
   try {
     const result = await page.evaluate(async (amount, aId, panelUrl) => {
+      // ═══════════════════════════════════════════════════════
+      // LIVE GUARD DOM: PERIKSA POIN AKTUAL SAAT INI SEBELUM KIRIM
+      // ═══════════════════════════════════════════════════════
+      let liveScore = 0;
+      const form = document.querySelector('#bidForm') || document.querySelector('form');
+      if (form) {
+        const onsubmitAttr = form.getAttribute('onsubmit') || '';
+        const scoreMatch = onsubmitAttr.match(/confirmBid\s*\(\s*this\s*,\s*(\d+)\s*\)/);
+        if (scoreMatch) liveScore = parseInt(scoreMatch[1], 10);
+      }
+      if (!liveScore) {
+        const bodyText = document.body ? document.body.innerText : '';
+        const ptMatch = bodyText.match(/Point\s*Tersedia\s*:\s*(\d+)/i);
+        if (ptMatch) liveScore = parseInt(ptMatch[1], 10);
+      }
+
+      if (liveScore > 0 && amount > liveScore) {
+        return {
+          success: false,
+          blockedByGuard: true,
+          liveScore: liveScore,
+          reason: `Bid ${amount} Pt melebihi saldo saat ini (${liveScore} Pt)!`
+        };
+      }
+
       // Try fetch POST first (fastest, no page reload)
       try {
         const formData = new FormData();
@@ -273,7 +338,6 @@ async function placeBid(page, workerId, bidAmount, auctionId) {
         return { success: resp.ok, status: resp.status };
       } catch (fetchErr) {
         // Fallback: inject into DOM form and submit
-        const form = document.querySelector('#bidForm') || document.querySelector('form');
         if (!form) return { success: false, reason: 'Form tidak ditemukan' };
 
         const amountInput = form.querySelector('input[name="bid_amount"]');
@@ -294,6 +358,12 @@ async function placeBid(page, workerId, bidAmount, auctionId) {
         return { success: true, fallback: true };
       }
     }, bidAmount, auctionId, config.repPanelUrl);
+
+    if (result && result.blockedByGuard) {
+      if (result.liveScore > 0) sharedState.currentScore = result.liveScore;
+      log(`WORKER-${workerId}`, `🛑 ${C.bgRed}[GUARD SALDO TERPICU]${C.reset} ${result.reason}. Pengiriman bid DIBATALKAN.`, C.red);
+      return false;
+    }
 
     sharedState.lastBidPlaced = bidAmount;
     sharedState.lastBidTime = Date.now();
@@ -340,6 +410,13 @@ async function initWorker(browser, workerId) {
       if (btn) btn.click();
     }
   });
+
+  // Baca state awal lelang & saldo poin
+  const initialData = await scrapeAuction(page).catch(() => null);
+  if (initialData && initialData.currentScore > 0 && (!sharedState.currentScore || sharedState.currentScore === 0)) {
+    sharedState.currentScore = initialData.currentScore;
+    log(`WORKER-${workerId}`, `Saldo Poin terdeteksi: ${C.bold}${sharedState.currentScore} Pt${C.reset}`, C.green);
+  }
 
   log(`WORKER-${workerId}`, `Siap memantau lelang!`, C.green);
   return { context, page };
@@ -391,7 +468,9 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
         sharedState.highestBid       = scraped.highestBid;
         sharedState.holderClass      = scraped.holderClass;
         sharedState.minBid           = scraped.minBid;
-        sharedState.currentScore     = scraped.currentScore;
+        if (scraped.currentScore !== undefined && scraped.currentScore !== null && scraped.currentScore > 0) {
+          sharedState.currentScore   = scraped.currentScore;
+        }
         sharedState.isMyClassHolding = scraped.isMyClassHolding;
         sharedState.lastUpdatedBy    = workerId;
         sharedState.lastUpdateTime   = Date.now();
@@ -408,9 +487,13 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
       const statusTag = inCountdownWindow ? `${C.bgRed}[CRITICAL WINDOW]${C.reset}` : `[STANDBY]`;
 
       if (inCountdownWindow || Math.floor(nowRemaining) % 5 === 0) {
+        const saldoDisplay = sharedState.currentScore > 0
+          ? `${C.green}${sharedState.currentScore} Pt${C.reset}`
+          : `${C.yellow}Memuat...${C.reset}`;
         log(`WORKER-${workerId}`,
           `${statusTag} Item: ${C.bold}${sharedState.itemName || 'Auction'}${C.reset} | ` +
           `Top Bid: ${C.bold}${sharedState.highestBid} Pt${C.reset} | ` +
+          `Saldo: ${saldoDisplay} | ` +
           `Holder: ${holderDisplay} | Sisa: ${C.yellow}${secDisplay}${C.reset}`
         );
       }
@@ -420,38 +503,62 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
         if (sharedState.isMyClassHolding) {
           // Kelas kita memegang penawaran tertinggi — tidak perlu bid
         } else {
-          const targetBid = calculateNextBid(sharedState.highestBid, sharedState.minBid);
+          const minRequired1Pct = Math.ceil(sharedState.highestBid * (config.percentIncrement || 1.01));
+          const absoluteMinLegal = Math.max(sharedState.minBid || 0, minRequired1Pct, sharedState.highestBid + 1);
 
-          if (targetBid > config.maxBidLimit) {
+          // ═══════════════════════════════════════════════════════
+          // GUARD 1: CEK APAKAH SALDO MENCUKUPI UNTUK MINIMUM BID
+          // ═══════════════════════════════════════════════════════
+          if (sharedState.currentScore > 0 && absoluteMinLegal > sharedState.currentScore) {
             log(`WORKER-${workerId}`,
-              `🛑 ${C.bgRed}MAX BID LIMIT TERLEWATI!${C.reset} ` +
-              `Butuh ${targetBid} Pt, batas Anda ${config.maxBidLimit} Pt. Bot berhenti bid!`,
+              `🛑 ${C.bgRed}[GUARD SALDO: POIN TIDAK CUKUP]${C.reset} ` +
+              `Min legal bid (${absoluteMinLegal} Pt) melebihi saldo saat ini (${sharedState.currentScore} Pt). Bot berhenti bid agar tidak berutang!`,
               C.red
             );
           } else {
-            // ═══════════════════════════════════════════════════════
-            // FIRST RESPONDER ATOMIC TRIGGER:
-            // Hanya worker PERTAMA yang mendeteksi perubahan harga ini
-            // yang akan menembak bid. Worker lain yang mengecek setelahnya
-            // melihat bid sudah di-dispatch dan tetap standby memantau
-            // jika ada lawan yang menimpa lagi.
-            // ═══════════════════════════════════════════════════════
-            const isNewHigherBidNeeded = targetBid > sharedState.lastDispatchedBid || (Date.now() - sharedState.lastBidTime > 2500);
+            const targetBid = calculateNextBid(sharedState.highestBid, sharedState.minBid, sharedState.currentScore);
 
-            if (isNewHigherBidNeeded) {
-              // Klaim eksekusi secara instan
-              sharedState.lastDispatchedBid = targetBid;
-              sharedState.lastBidPlaced = targetBid;
-              sharedState.lastBidTime = Date.now();
-              sharedState.isMyClassHolding = true; // Kunci optimistik
-              sharedState.lastBidTriggeredBy = workerId;
-
+            // ═══════════════════════════════════════════════════════
+            // GUARD 2: CEK APAKAH TARGET BID MELEBIHI SALDO SAAT ITU JUGA
+            // ═══════════════════════════════════════════════════════
+            if (sharedState.currentScore > 0 && targetBid > sharedState.currentScore) {
               log(`WORKER-${workerId}`,
-                `⚡ ${C.bgYellow}${C.bold}[FIRST RESPONDER]${C.reset} Terdeteksi lawan (${sharedState.holderClass}: ${sharedState.highestBid} Pt)! Mengambil giliran menimpa ke ${targetBid} Pt...`,
-                C.yellow
+                `🛑 ${C.bgRed}[GUARD SALDO: TARGET BID MELEBIHI SALDO]${C.reset} ` +
+                `Target bid (${targetBid} Pt) melebihi saldo saat ini (${sharedState.currentScore} Pt). Bot berhenti bid!`,
+                C.red
               );
+            } else if (targetBid > config.maxBidLimit) {
+              // Ini hanya terpicu jika maxBidLimit < absoluteMinLegal (tidak bisa dikap, harus ditolak)
+              log(`WORKER-${workerId}`,
+                `🛑 ${C.bgRed}MAX BID LIMIT DI BAWAH MINIMUM LEGAL!${C.reset} ` +
+                `Harga minimal sah (${targetBid} Pt) sudah melebihi batas konfigurasi (${config.maxBidLimit} Pt). Bot berhenti bid!`,
+                C.red
+              );
+            } else {
+              // ═══════════════════════════════════════════════════════
+              // FIRST RESPONDER ATOMIC TRIGGER:
+              // Hanya worker PERTAMA yang mendeteksi perubahan harga ini
+              // yang akan menembak bid. Worker lain yang mengecek setelahnya
+              // melihat bid sudah di-dispatch dan tetap standby memantau
+              // jika ada lawan yang menimpa lagi.
+              // ═══════════════════════════════════════════════════════
+              const isNewHigherBidNeeded = targetBid > sharedState.lastDispatchedBid || (Date.now() - sharedState.lastBidTime > 2500);
 
-              await placeBid(page, workerId, targetBid, sharedState.auctionId);
+              if (isNewHigherBidNeeded) {
+                // Klaim eksekusi secara instan
+                sharedState.lastDispatchedBid = targetBid;
+                sharedState.lastBidPlaced = targetBid;
+                sharedState.lastBidTime = Date.now();
+                sharedState.isMyClassHolding = true; // Kunci optimistik
+                sharedState.lastBidTriggeredBy = workerId;
+
+                log(`WORKER-${workerId}`,
+                  `⚡ ${C.bgYellow}${C.bold}[FIRST RESPONDER]${C.reset} Terdeteksi lawan (${sharedState.holderClass}: ${sharedState.highestBid} Pt)! Mengambil giliran menimpa ke ${targetBid} Pt (Saldo: ${sharedState.currentScore} Pt)...`,
+                  C.yellow
+                );
+
+                await placeBid(page, workerId, targetBid, sharedState.auctionId);
+              }
             }
           }
         }
@@ -529,7 +636,8 @@ async function main() {
     console.log('Apakah Kelas Kita:', data.isMyClassHolding ? 'YA (👑 Memegang Bid Tertinggi)' : 'BUKAN (⚔ Dipegang Lawan)');
     console.log('Auction ID       :', data.auctionId);
     console.log('Min Bid Diizinkan:', data.minBid, 'Pt');
-    console.log('Kalkulasi Bid +1%:', calculateNextBid(data.highestBid, data.minBid), 'Pt');
+    console.log('Saldo Poin Saat Ini:', data.currentScore, 'Pt');
+    console.log('Kalkulasi Bid    :', calculateNextBid(data.highestBid, data.minBid, data.currentScore), 'Pt');
     console.log('Sisa Waktu WIB   :', getRemainingSeconds().toFixed(1), 'detik');
     console.log('--------------------------------\n');
     await browser.close();
