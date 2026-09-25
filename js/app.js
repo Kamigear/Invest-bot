@@ -28,22 +28,25 @@ const MonitoringApp = (() => {
       <div class="results-wrapper">
 
         <!-- Header Info Bar -->
-        <div class="result-summary-bar" style="justify-content:center;gap:20px;flex-wrap:wrap;">
+        <div class="result-summary-bar">
           <div class="rsb-item">
-            <span class="rsb-label">Mode</span>
-            <span class="rsb-value" style="color:#4facfe;">📊 Monitoring Real-Time</span>
+            <span class="rsb-label">FEED</span>
+            <span class="rsb-value" style="color:var(--accent); font-size:13px;">LIVE_STREAM</span>
           </div>
           <div class="rsb-item">
-            <span class="rsb-label">Bot Engine</span>
-            <span id="bot-engine-status" class="rsb-value">⏳ Memeriksa...</span>
+            <span class="rsb-label">ENGINE_STATE</span>
+            <span id="bot-engine-status" class="rsb-value" style="font-size:13px;">MEMERIKSA...</span>
           </div>
           <div class="rsb-item">
-            <span class="rsb-label">Keputusan Terakhir</span>
-            <span id="last-decision-badge" class="rsb-value">—</span>
+            <span class="rsb-label">LAST_DECISION</span>
+            <span id="last-decision-badge" class="rsb-value" style="font-size:13px;">—</span>
           </div>
-          <div class="rsb-item" style="display:flex;align-items:center;gap:8px;">
-            <span id="user-display" class="rsb-value" style="font-size:12px;color:#94a3b8;">—</span>
-            <button id="logout-btn" type="button" title="Keluar dari sesi" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;font-size:11px;padding:3px 10px;border-radius:6px;cursor:pointer;">Keluar</button>
+          <div class="rsb-item" style="margin-left:auto;">
+            <span class="rsb-label">OPERATOR</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span id="user-display" class="rsb-value" style="font-size:12px; color:var(--text-secondary);">—</span>
+              <button id="logout-btn" type="button" title="Keluar dari sesi" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); color:#fca5a5; font-family:'IBM Plex Mono',monospace; font-size:10px; padding:2px 8px; border-radius:2px; cursor:pointer; text-transform:uppercase;">[KELUAR]</button>
+            </div>
           </div>
         </div>
 
@@ -52,12 +55,12 @@ const MonitoringApp = (() => {
           <button class="tab-btn ${_activeTab === 'leaderboardanalytics' ? 'active' : ''}"
             data-tab="leaderboardanalytics" role="tab"
             aria-selected="${_activeTab === 'leaderboardanalytics'}">
-            🏆 Leaderboard Analytics
+            LEADERBOARD // ANALYTICS
           </button>
           <button class="tab-btn ${_activeTab === 'botstatus' ? 'active' : ''}"
             data-tab="botstatus" role="tab"
             aria-selected="${_activeTab === 'botstatus'}">
-            🤖 Status Bot & Decision Log
+            BOT ENGINE // EXECUTION LOG
           </button>
         </div>
 

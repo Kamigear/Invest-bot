@@ -3,36 +3,36 @@ const BotStatusUI = (() => {
     
     function getStatusBadge(status) {
         let badgeClass = '';
-        let icon = '';
+        let dotColor = '#666';
         
         switch (status) {
             case 'PENDING':
                 badgeClass = 'badge-warning';
-                icon = '⏳';
+                dotColor = '#f59e0b';
                 break;
             case 'EXECUTING':
                 badgeClass = 'badge-info pulse-animation';
-                icon = '🔄';
+                dotColor = '#38bdf8';
                 break;
             case 'DONE':
                 badgeClass = 'badge-success';
-                icon = '✅';
+                dotColor = '#22c55e';
                 break;
             case 'FAILED':
                 badgeClass = 'badge-danger';
-                icon = '❌';
+                dotColor = '#ef4444';
                 break;
             case 'RECOVERY_NEEDED':
                 badgeClass = 'badge-warning flash-animation';
-                icon = '⚠️';
+                dotColor = '#fb923c';
                 break;
             default:
                 badgeClass = 'badge-secondary';
-                icon = '❓';
+                dotColor = '#666';
                 status = 'UNKNOWN';
         }
         
-        return `<span class="status-badge ${badgeClass}">${icon} ${status}</span>`;
+        return `<span class="status-badge ${badgeClass}"><span class="badge-dot" style="background:${dotColor};"></span>${status}</span>`;
     }
 
     return {
@@ -40,113 +40,153 @@ const BotStatusUI = (() => {
             if (!container) return;
             
             container.innerHTML = `
-                <div class="bot-status-panel premium-card">
+                <div class="bot-status-panel">
                     <div class="panel-header">
-                        <h2>🤖 Bot Execution Status</h2>
+                        <div>
+                            <span class="terminal-kicker">SUBSYSTEM // AUTOMATION</span>
+                            <h2>BOT_EXECUTION_QUEUE</h2>
+                        </div>
                         <div class="header-actions">
-                            <span id="bot-heartbeat" class="heartbeat-text">Last Heartbeat: <span>Checking...</span></span>
-                            <button id="btn-refresh-status" class="btn btn-secondary">🔄 Refresh</button>
+                            <span id="bot-heartbeat" class="heartbeat-text">HEARTBEAT: <span>CHECKING...</span></span>
+                            <button id="btn-refresh-status" class="btn-terminal">[SYNC DATA]</button>
                         </div>
                     </div>
                     <div class="table-container">
-                        <table class="premium-table">
+                        <table class="terminal-table">
                             <thead>
                                 <tr>
-                                    <th>Entry ID</th>
-                                    <th>Invest Date</th>
-                                    <th>Amount</th>
-                                    <th>Expected Return</th>
-                                    <th>Status</th>
+                                    <th>ENTRY_ID</th>
+                                    <th>INVEST_DATE</th>
+                                    <th>AMOUNT_PTS</th>
+                                    <th>EXPECTED_RETURN</th>
+                                    <th>STATUS</th>
                                 </tr>
                             </thead>
                             <tbody id="bot-status-tbody">
-                                <tr><td colspan="5" class="text-center">Loading status...</td></tr>
+                                <tr><td colspan="5" class="text-center" style="padding:24px; color:var(--text-muted);">MENUNGGU DATA EKSEKUSI...</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <style>
                     .bot-status-panel {
-                        background: var(--bg-card, #1e1e24);
-                        border: 1px solid var(--border, #333);
-                        border-radius: 12px;
-                        padding: 24px;
-                        color: #eee;
-                        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+                        background: var(--bg-card, #141417);
+                        border: 1px solid var(--border, rgba(255,255,255,0.06));
+                        border-top: 2px solid var(--accent, #f59e0b);
+                        border-radius: var(--radius-sm, 3px);
+                        padding: 20px 22px;
+                        color: var(--text-primary, #f0f0f0);
                         margin-bottom: 24px;
+                    }
+                    .terminal-kicker {
+                        display: block;
+                        font-family: 'IBM Plex Mono', monospace;
+                        font-size: 10px;
+                        color: var(--accent, #f59e0b);
+                        letter-spacing: 0.12em;
+                        margin-bottom: 2px;
                     }
                     .panel-header {
                         display: flex;
                         justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 20px;
-                        border-bottom: 1px solid var(--border, #333);
-                        padding-bottom: 15px;
+                        align-items: flex-end;
+                        margin-bottom: 18px;
+                        border-bottom: 1px solid var(--border, rgba(255,255,255,0.06));
+                        padding-bottom: 14px;
                     }
                     .panel-header h2 {
                         margin: 0;
-                        font-size: 1.5rem;
-                        color: var(--text-primary, #fff);
+                        font-size: 16px;
+                        font-family: 'IBM Plex Mono', monospace;
+                        font-weight: 700;
+                        letter-spacing: -0.01em;
+                        color: var(--text-primary, #f0f0f0);
                     }
                     .header-actions {
                         display: flex;
                         align-items: center;
-                        gap: 15px;
+                        gap: 14px;
                     }
                     .heartbeat-text {
-                        font-size: 0.9rem;
-                        color: var(--text-secondary, #aaa);
+                        font-size: 11px;
+                        font-family: 'IBM Plex Mono', monospace;
+                        color: var(--text-muted, #555);
                     }
                     .heartbeat-text span {
-                        color: var(--accent-green, #4ade80);
-                        font-family: monospace;
+                        color: var(--sig-green, #22c55e);
                     }
-                    .premium-table {
+                    .btn-terminal {
+                        background: var(--bg-input, #1a1a1d);
+                        border: 1px solid var(--border-strong, rgba(255,255,255,0.15));
+                        color: var(--text-primary, #f0f0f0);
+                        font-family: 'IBM Plex Mono', monospace;
+                        font-size: 11px;
+                        font-weight: 600;
+                        padding: 5px 12px;
+                        border-radius: 2px;
+                        cursor: pointer;
+                        transition: all var(--transition, 0.15s ease);
+                    }
+                    .btn-terminal:hover {
+                        border-color: var(--accent, #f59e0b);
+                        color: var(--accent, #f59e0b);
+                    }
+                    .terminal-table {
                         width: 100%;
                         border-collapse: collapse;
+                        font-family: 'IBM Plex Mono', monospace;
+                        font-size: 12px;
                     }
-                    .premium-table th, .premium-table td {
-                        padding: 12px 15px;
+                    .terminal-table th, .terminal-table td {
+                        padding: 10px 14px;
                         text-align: left;
-                        border-bottom: 1px solid var(--border, #333);
+                        border-bottom: 1px solid var(--border, rgba(255,255,255,0.06));
                     }
-                    .premium-table th {
-                        background: rgba(0,0,0,0.2);
-                        color: var(--text-secondary, #aaa);
+                    .terminal-table th {
+                        background: rgba(0,0,0,0.3);
+                        color: var(--text-muted, #777);
                         font-weight: 600;
                         text-transform: uppercase;
-                        font-size: 0.85rem;
+                        font-size: 10px;
+                        letter-spacing: 0.08em;
                     }
-                    .premium-table tr:hover {
-                        background: rgba(255,255,255,0.03);
+                    .terminal-table tr:hover {
+                        background: rgba(255,255,255,0.02);
                     }
                     .status-badge {
-                        padding: 5px 10px;
-                        border-radius: 20px;
-                        font-size: 0.8rem;
+                        padding: 2px 8px;
+                        border-radius: 2px;
+                        font-size: 10px;
+                        font-family: 'IBM Plex Mono', monospace;
                         font-weight: 600;
                         display: inline-flex;
                         align-items: center;
-                        gap: 5px;
+                        gap: 6px;
+                        letter-spacing: 0.04em;
                     }
-                    .badge-warning { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
-                    .badge-info { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-                    .badge-success { background: rgba(74, 222, 128, 0.2); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
-                    .badge-danger { background: rgba(248, 113, 113, 0.2); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.3); }
-                    .badge-secondary { background: rgba(156, 163, 175, 0.2); color: #9ca3af; border: 1px solid rgba(156, 163, 175, 0.3); }
+                    .badge-dot {
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        flex-shrink: 0;
+                    }
+                    .badge-warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+                    .badge-info { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+                    .badge-success { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+                    .badge-danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+                    .badge-secondary { background: rgba(156, 163, 175, 0.1); color: #9ca3af; border: 1px solid rgba(156, 163, 175, 0.3); }
                     
                     @keyframes pulse {
-                        0% { opacity: 1; transform: scale(1); }
-                        50% { opacity: 0.7; transform: scale(1.05); }
-                        100% { opacity: 1; transform: scale(1); }
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0.5; }
                     }
                     .pulse-animation { animation: pulse 1.5s infinite; }
                     
                     @keyframes flash {
-                        0%, 100% { background: rgba(234, 179, 8, 0.2); }
-                        50% { background: rgba(234, 179, 8, 0.6); }
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0.3; }
                     }
-                    .flash-animation { animation: flash 1s infinite; color: #fff; }
+                    .flash-animation { animation: flash 1s infinite; }
                 </style>
             `;
             

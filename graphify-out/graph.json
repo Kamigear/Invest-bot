@@ -1474,7 +1474,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "design-tokens-starter.json"
     },
@@ -1485,7 +1485,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_schema",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "$schema"
     },
@@ -2750,8 +2750,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_none",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 136,
+      "community_name": "$type",
       "norm_label": "none"
     },
     {
@@ -2761,8 +2761,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_none_value",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 136,
+      "community_name": "$type",
       "norm_label": "$value"
     },
     {
@@ -2772,8 +2772,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_none_type",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 136,
+      "community_name": "$type",
       "norm_label": "$type"
     },
     {
@@ -2794,8 +2794,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_default",
-      "community": 165,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "default"
     },
     {
@@ -2805,8 +2805,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_value",
-      "community": 165,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$value"
     },
     {
@@ -2816,8 +2816,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_type",
-      "community": 165,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$type"
     },
     {
@@ -2926,8 +2926,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_none",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 136,
+      "community_name": "$type",
       "norm_label": "none"
     },
     {
@@ -2948,8 +2948,8 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_default",
-      "community": 165,
-      "community_name": "default",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "default"
     },
     {
@@ -3091,7 +3091,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_semantic",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "semantic"
     },
@@ -3179,8 +3179,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary",
-      "community": 173,
-      "community_name": "primary",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "primary"
     },
     {
@@ -3190,8 +3190,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_value",
-      "community": 173,
-      "community_name": "primary",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3201,8 +3201,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_type",
-      "community": 173,
-      "community_name": "primary",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3245,8 +3245,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary_foreground",
-      "community": 174,
-      "community_name": "primary-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "primary-foreground"
     },
     {
@@ -3256,8 +3256,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_value",
-      "community": 174,
-      "community_name": "primary-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3267,8 +3267,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_foreground_type",
-      "community": 174,
-      "community_name": "primary-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3311,8 +3311,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_secondary_foreground",
-      "community": 176,
-      "community_name": "secondary-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "secondary-foreground"
     },
     {
@@ -3322,8 +3322,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_value",
-      "community": 176,
-      "community_name": "secondary-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3333,8 +3333,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_secondary_foreground_type",
-      "community": 176,
-      "community_name": "secondary-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3344,8 +3344,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_muted",
-      "community": 172,
-      "community_name": "muted",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "muted"
     },
     {
@@ -3355,8 +3355,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_value",
-      "community": 172,
-      "community_name": "muted",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3366,8 +3366,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_muted_type",
-      "community": 172,
-      "community_name": "muted",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3443,8 +3443,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive_foreground",
-      "community": 171,
-      "community_name": "destructive-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "destructive-foreground"
     },
     {
@@ -3454,8 +3454,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_value",
-      "community": 171,
-      "community_name": "destructive-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3465,8 +3465,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_foreground_type",
-      "community": 171,
-      "community_name": "destructive-foreground",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3476,8 +3476,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_border",
-      "community": 136,
-      "community_name": "$type",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "border"
     },
     {
@@ -3487,8 +3487,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_value",
-      "community": 136,
-      "community_name": "$type",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3498,8 +3498,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_border_type",
-      "community": 136,
-      "community_name": "$type",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3509,8 +3509,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_ring",
-      "community": 175,
-      "community_name": "ring",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "ring"
     },
     {
@@ -3520,8 +3520,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_ring_value",
-      "community": 175,
-      "community_name": "ring",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3531,8 +3531,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_ring_type",
-      "community": 175,
-      "community_name": "ring",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3542,7 +3542,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_semantic_spacing",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "spacing"
     },
@@ -3553,7 +3553,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_spacing_component",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "component"
     },
@@ -3564,7 +3564,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_value",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
@@ -3575,7 +3575,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_type",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
@@ -3586,7 +3586,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_spacing_section",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "section"
     },
@@ -3597,7 +3597,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_section_value",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
@@ -3608,7 +3608,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_section_type",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
@@ -3619,7 +3619,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component",
-      "community": 91,
+      "community": 43,
       "community_name": "Kiro Steering Design",
       "norm_label": "component"
     },
@@ -3630,8 +3630,8 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_button",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "button"
     },
     {
@@ -3674,8 +3674,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_fg",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "fg"
     },
     {
@@ -3685,8 +3685,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fg_value",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3696,8 +3696,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_fg_type",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3707,8 +3707,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_hover_bg",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "hover-bg"
     },
     {
@@ -3718,8 +3718,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_hover_bg_value",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3729,8 +3729,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_hover_bg_type",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3740,8 +3740,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_x",
-      "community": 164,
-      "community_name": "padding-x",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "padding-x"
     },
     {
@@ -3751,8 +3751,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_value",
-      "community": 164,
-      "community_name": "padding-x",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3762,8 +3762,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_type",
-      "community": 164,
-      "community_name": "padding-x",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3773,8 +3773,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_y",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "padding-y"
     },
     {
@@ -3784,8 +3784,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_value",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3795,8 +3795,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_type",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3806,8 +3806,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_radius",
-      "community": 137,
-      "community_name": "executor.js",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "radius"
     },
     {
@@ -3817,8 +3817,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_value",
-      "community": 137,
-      "community_name": "executor.js",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3828,8 +3828,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_type",
-      "community": 137,
-      "community_name": "executor.js",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3839,8 +3839,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_font_size",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "font-size"
     },
     {
@@ -3850,8 +3850,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_font_size_value",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3861,8 +3861,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_font_size_type",
-      "community": 92,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3872,8 +3872,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_component_input",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "input"
     },
     {
@@ -3894,8 +3894,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_border",
-      "community": 136,
-      "community_name": "$type",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "border"
     },
     {
@@ -3905,8 +3905,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_focus_ring",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "focus-ring"
     },
     {
@@ -3916,8 +3916,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_focus_ring_value",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3927,8 +3927,8 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_focus_ring_type",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3938,8 +3938,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_x",
-      "community": 164,
-      "community_name": "padding-x",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "padding-x"
     },
     {
@@ -3949,8 +3949,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_y",
-      "community": 98,
-      "community_name": "Kiro Steering Ui",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "padding-y"
     },
     {
@@ -3960,8 +3960,8 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_radius",
-      "community": 137,
-      "community_name": "executor.js",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "radius"
     },
     {
@@ -3993,8 +3993,8 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_border",
-      "community": 136,
-      "community_name": "$type",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "border"
     },
     {
@@ -4070,8 +4070,8 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_card_radius",
-      "community": 137,
-      "community_name": "executor.js",
+      "community": 43,
+      "community_name": "Kiro Steering Design",
       "norm_label": "radius"
     },
     {
@@ -4081,7 +4081,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_dark",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "dark"
     },
@@ -4092,7 +4092,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_dark_semantic",
-      "community": 91,
+      "community": 36,
       "community_name": "Kiro Steering Design",
       "norm_label": "semantic"
     },
@@ -11393,7 +11393,7 @@
       "label": "showError()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L222",
+      "source_location": "L225",
       "_origin": "ast",
       "id": "js_app_showerror",
       "community": 123,
@@ -11404,7 +11404,7 @@
       "label": "showStatus()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L230",
+      "source_location": "L233",
       "_origin": "ast",
       "id": "js_app_showstatus",
       "community": 123,
@@ -11415,7 +11415,7 @@
       "label": "clearAlerts()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L238",
+      "source_location": "L241",
       "_origin": "ast",
       "id": "js_app_clearalerts",
       "community": 123,
@@ -11426,7 +11426,7 @@
       "label": "getErrorMessage()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L243",
+      "source_location": "L246",
       "_origin": "ast",
       "id": "js_app_geterrormessage",
       "community": 123,
@@ -11520,6 +11520,369 @@
       "community": 133,
       "community_name": "Agents Rules Graphify",
       "norm_label": "graphify"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Frontend Design",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_frontend_design",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "frontend design"
+    },
+    {
+      "label": "1. Core Design Mandate",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_1_core_design_mandate",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "1. core design mandate"
+    },
+    {
+      "label": "2. Design Feasibility & Impact Index (DFII)",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_2_design_feasibility_impact_index_dfii",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "2. design feasibility & impact index (dfii)"
+    },
+    {
+      "label": "DFII Dimensions (1\u20135)",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_dfii_dimensions_1_5",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "dfii dimensions (1\u20135)"
+    },
+    {
+      "label": "Scoring Formula",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_scoring_formula",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "scoring formula"
+    },
+    {
+      "label": "Interpretation",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_interpretation",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "interpretation"
+    },
+    {
+      "label": "3. Mandatory Design Thinking Phase",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_3_mandatory_design_thinking_phase",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "3. mandatory design thinking phase"
+    },
+    {
+      "label": "1. Purpose",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_1_purpose",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "1. purpose"
+    },
+    {
+      "label": "2. Tone (Choose One Dominant Direction)",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_2_tone_choose_one_dominant_direction",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "2. tone (choose one dominant direction)"
+    },
+    {
+      "label": "3. Differentiation Anchor",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L104",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_3_differentiation_anchor",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "3. differentiation anchor"
+    },
+    {
+      "label": "4. Aesthetic Execution Choices",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "4. aesthetic execution choices"
+    },
+    {
+      "label": "Typography",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_typography",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "typography"
+    },
+    {
+      "label": "Color & Theme",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_color_theme",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "color & theme"
+    },
+    {
+      "label": "Spatial Composition",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L136",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_spatial_composition",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "spatial composition"
+    },
+    {
+      "label": "Motion",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L146",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_motion",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "motion"
+    },
+    {
+      "label": "Texture & Depth",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L159",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_texture_depth",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "texture & depth"
+    },
+    {
+      "label": "5. Implementation Standards",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L171",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_5_implementation_standards",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "5. implementation standards"
+    },
+    {
+      "label": "Code Requirements",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_code_requirements",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "code requirements"
+    },
+    {
+      "label": "Framework Guidance",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L181",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_framework_guidance",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "framework guidance"
+    },
+    {
+      "label": "Complexity Matching",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_complexity_matching",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "complexity matching"
+    },
+    {
+      "label": "6. Required Output Structure",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L199",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_6_required_output_structure",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "6. required output structure"
+    },
+    {
+      "label": "1. Design Direction Summary",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L203",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_1_design_direction_summary",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "1. design direction summary"
+    },
+    {
+      "label": "2. Design System Snapshot",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L209",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_2_design_system_snapshot",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "2. design system snapshot"
+    },
+    {
+      "label": "3. Implementation",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L216",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_3_implementation",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "3. implementation"
+    },
+    {
+      "label": "4. Verification",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L221",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_4_verification",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "4. verification"
+    },
+    {
+      "label": "7. Avoid",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L227",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_7_avoid",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "7. avoid"
+    },
+    {
+      "label": "8. Integration With Other Skills",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L236",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_8_integration_with_other_skills",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "8. integration with other skills"
+    },
+    {
+      "label": "9. Operator Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L246",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_9_operator_checklist",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "9. operator checklist"
+    },
+    {
+      "label": "10. Questions to Ask (If Needed)",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L259",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_10_questions_to_ask_if_needed",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "10. questions to ask (if needed)"
+    },
+    {
+      "label": "When to Use",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L269",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_when_to_use",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "when to use"
+    },
+    {
+      "label": "Inputs and worked example",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L273",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_inputs_and_worked_example",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "inputs and worked example"
+    },
+    {
+      "label": "Limitations",
+      "file_type": "document",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L277",
+      "_origin": "ast",
+      "id": "agents_skills_frontend_design_skill_limitations",
+      "community": 91,
+      "community_name": "Kiro Steering Design",
+      "norm_label": "limitations"
     },
     {
       "label": "graphify.md",
@@ -21318,8 +21681,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_keyboard_navigation",
-      "community": 159,
-      "community_name": "Keyboard Navigation",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "keyboard navigation"
     },
     {
@@ -21329,8 +21692,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_focus_management",
-      "community": 159,
-      "community_name": "Keyboard Navigation",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "focus management"
     },
     {
@@ -21340,8 +21703,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_dialog_modal_navigation",
-      "community": 159,
-      "community_name": "Keyboard Navigation",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "dialog/modal navigation"
     },
     {
@@ -21351,8 +21714,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_dropdown_menu_navigation",
-      "community": 159,
-      "community_name": "Keyboard Navigation",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "dropdown/menu navigation"
     },
     {
@@ -21362,8 +21725,8 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_command_palette_navigation",
-      "community": 159,
-      "community_name": "Keyboard Navigation",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "command palette navigation"
     },
     {
@@ -21373,8 +21736,8 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_screen_reader_support",
-      "community": 138,
-      "community_name": "Screen Reader Support",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "screen reader support"
     },
     {
@@ -21384,8 +21747,8 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_semantic_html",
-      "community": 138,
-      "community_name": "Screen Reader Support",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "semantic html"
     },
     {
@@ -21395,8 +21758,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_aria_labels",
-      "community": 138,
-      "community_name": "Screen Reader Support",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "aria labels"
     },
     {
@@ -21406,8 +21769,8 @@
       "source_location": "L141",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_screen_reader_only_text",
-      "community": 138,
-      "community_name": "Screen Reader Support",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "screen reader only text"
     },
     {
@@ -21417,8 +21780,8 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_live_regions",
-      "community": 138,
-      "community_name": "Screen Reader Support",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "live regions"
     },
     {
@@ -21428,8 +21791,8 @@
       "source_location": "L191",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_form_accessibility",
-      "community": 163,
-      "community_name": "Form Accessibility",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "form accessibility"
     },
     {
@@ -21439,8 +21802,8 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_labels_and_descriptions",
-      "community": 163,
-      "community_name": "Form Accessibility",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "labels and descriptions"
     },
     {
@@ -21450,8 +21813,8 @@
       "source_location": "L222",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_error_handling",
-      "community": 163,
-      "community_name": "Form Accessibility",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "error handling"
     },
     {
@@ -21461,8 +21824,8 @@
       "source_location": "L246",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_required_fields",
-      "community": 163,
-      "community_name": "Form Accessibility",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "required fields"
     },
     {
@@ -21472,8 +21835,8 @@
       "source_location": "L258",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_fieldset_and_legend",
-      "community": 163,
-      "community_name": "Form Accessibility",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "fieldset and legend"
     },
     {
@@ -21483,8 +21846,8 @@
       "source_location": "L274",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_component_specific_patterns",
-      "community": 131,
-      "community_name": "Component-Specific Patterns",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "component-specific patterns"
     },
     {
@@ -21494,8 +21857,8 @@
       "source_location": "L276",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_accordion",
-      "community": 131,
-      "community_name": "Component-Specific Patterns",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "accordion"
     },
     {
@@ -21505,8 +21868,8 @@
       "source_location": "L295",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_tabs",
-      "community": 131,
-      "community_name": "Component-Specific Patterns",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "tabs"
     },
     {
@@ -21516,8 +21879,8 @@
       "source_location": "L313",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_select",
-      "community": 131,
-      "community_name": "Component-Specific Patterns",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "select"
     },
     {
@@ -21527,8 +21890,8 @@
       "source_location": "L330",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_checkbox_and_radio",
-      "community": 131,
-      "community_name": "Component-Specific Patterns",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "checkbox and radio"
     },
     {
@@ -21538,8 +21901,8 @@
       "source_location": "L345",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_shadcn_accessibility_alert",
-      "community": 131,
-      "community_name": "Component-Specific Patterns",
+      "community": 15,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "alert"
     },
     {
@@ -22220,8 +22583,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_color_customization",
-      "community": 108,
-      "community_name": "input",
+      "community": 44,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "color customization"
     },
     {
@@ -22231,8 +22594,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_custom_color_palette",
-      "community": 108,
-      "community_name": "input",
+      "community": 44,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "custom color palette"
     },
     {
@@ -22242,8 +22605,8 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_semantic_colors",
-      "community": 108,
-      "community_name": "input",
+      "community": 44,
+      "community_name": "Kiro Steering Ui",
       "norm_label": "semantic colors"
     },
     {
@@ -22253,8 +22616,8 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_typography_customization",
-      "community": 44,
-      "community_name": "Kiro Steering Ui",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "typography customization"
     },
     {
@@ -22264,8 +22627,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_custom_fonts",
-      "community": 44,
-      "community_name": "Kiro Steering Ui",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "custom fonts"
     },
     {
@@ -22275,8 +22638,8 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_customization_custom_font_sizes",
-      "community": 44,
-      "community_name": "Kiro Steering Ui",
+      "community": 137,
+      "community_name": "executor.js",
       "norm_label": "custom font sizes"
     },
     {
@@ -22484,7 +22847,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_responsive_patterns",
-      "community": 9,
+      "community": 98,
       "community_name": "Kiro Steering Ui",
       "norm_label": "responsive patterns"
     },
@@ -22495,7 +22858,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_layout_changes",
-      "community": 9,
+      "community": 98,
       "community_name": "Kiro Steering Ui",
       "norm_label": "layout changes"
     },
@@ -22506,7 +22869,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_visibility",
-      "community": 9,
+      "community": 98,
       "community_name": "Kiro Steering Ui",
       "norm_label": "visibility"
     },
@@ -22517,7 +22880,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_typography",
-      "community": 9,
+      "community": 98,
       "community_name": "Kiro Steering Ui",
       "norm_label": "typography"
     },
@@ -22528,7 +22891,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_spacing",
-      "community": 9,
+      "community": 98,
       "community_name": "Kiro Steering Ui",
       "norm_label": "spacing"
     },
@@ -22539,7 +22902,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_width",
-      "community": 9,
+      "community": 98,
       "community_name": "Kiro Steering Ui",
       "norm_label": "width"
     },
@@ -22550,8 +22913,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_common_responsive_layouts",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "input",
       "norm_label": "common responsive layouts"
     },
     {
@@ -22561,8 +22924,8 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_sidebar_layout",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "input",
       "norm_label": "sidebar layout"
     },
     {
@@ -22572,8 +22935,8 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_card_grid",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "input",
       "norm_label": "card grid"
     },
     {
@@ -22583,8 +22946,8 @@
       "source_location": "L141",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_hero_section",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "input",
       "norm_label": "hero section"
     },
     {
@@ -22594,8 +22957,8 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_navigation",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 108,
+      "community_name": "input",
       "norm_label": "navigation"
     },
     {
@@ -22660,7 +23023,7 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_best_practices",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "best practices"
     },
@@ -22671,7 +23034,7 @@
       "source_location": "L274",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_1_mobile_first_design",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "1. mobile-first design"
     },
@@ -22682,7 +23045,7 @@
       "source_location": "L286",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_2_consistent_breakpoint_usage",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "2. consistent breakpoint usage"
     },
@@ -22693,7 +23056,7 @@
       "source_location": "L296",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_3_test_at_breakpoint_boundaries",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "3. test at breakpoint boundaries"
     },
@@ -22704,7 +23067,7 @@
       "source_location": "L300",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_4_use_container_for_content_width",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "4. use container for content width"
     },
@@ -22715,7 +23078,7 @@
       "source_location": "L310",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_5_progressive_enhancement",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "5. progressive enhancement"
     },
@@ -22726,7 +23089,7 @@
       "source_location": "L324",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_6_avoid_too_many_breakpoints",
-      "community": 9,
+      "community": 92,
       "community_name": "Kiro Steering Ui",
       "norm_label": "6. avoid too many breakpoints"
     },
@@ -22737,8 +23100,8 @@
       "source_location": "L336",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_common_responsive_utilities",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 131,
+      "community_name": "Component-Specific Patterns",
       "norm_label": "common responsive utilities"
     },
     {
@@ -22748,8 +23111,8 @@
       "source_location": "L338",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_responsive_display",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 131,
+      "community_name": "Component-Specific Patterns",
       "norm_label": "responsive display"
     },
     {
@@ -22759,8 +23122,8 @@
       "source_location": "L346",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_responsive_position",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 131,
+      "community_name": "Component-Specific Patterns",
       "norm_label": "responsive position"
     },
     {
@@ -22770,8 +23133,8 @@
       "source_location": "L354",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_responsive_order",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 131,
+      "community_name": "Component-Specific Patterns",
       "norm_label": "responsive order"
     },
     {
@@ -22781,8 +23144,8 @@
       "source_location": "L363",
       "_origin": "ast",
       "id": "kiro_steering_ui_styling_references_tailwind_responsive_responsive_overflow",
-      "community": 9,
-      "community_name": "Kiro Steering Ui",
+      "community": 131,
+      "community_name": "Component-Specific Patterns",
       "norm_label": "responsive overflow"
     },
     {
@@ -42847,7 +43210,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L238",
+      "source_location": "L241",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -42858,7 +43221,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L243",
+      "source_location": "L246",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -42880,7 +43243,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L222",
+      "source_location": "L225",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -42891,7 +43254,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/app.js",
-      "source_location": "L230",
+      "source_location": "L233",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_app",
@@ -42948,6 +43311,358 @@
       "_origin": "ast",
       "source": "agents_rules_graphify",
       "target": "agents_rules_graphify_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill",
+      "target": "agents_skills_frontend_design_skill_frontend_design",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L259",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_10_questions_to_ask_if_needed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_1_core_design_mandate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_2_design_feasibility_impact_index_dfii",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_3_mandatory_design_thinking_phase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L171",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_5_implementation_standards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L199",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_6_required_output_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L227",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_7_avoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L236",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_8_integration_with_other_skills",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L246",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_9_operator_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L273",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_inputs_and_worked_example",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L277",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_limitations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L269",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_frontend_design",
+      "target": "agents_skills_frontend_design_skill_when_to_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_2_design_feasibility_impact_index_dfii",
+      "target": "agents_skills_frontend_design_skill_dfii_dimensions_1_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_2_design_feasibility_impact_index_dfii",
+      "target": "agents_skills_frontend_design_skill_interpretation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_2_design_feasibility_impact_index_dfii",
+      "target": "agents_skills_frontend_design_skill_scoring_formula",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_3_mandatory_design_thinking_phase",
+      "target": "agents_skills_frontend_design_skill_1_purpose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_3_mandatory_design_thinking_phase",
+      "target": "agents_skills_frontend_design_skill_2_tone_choose_one_dominant_direction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_3_mandatory_design_thinking_phase",
+      "target": "agents_skills_frontend_design_skill_3_differentiation_anchor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "target": "agents_skills_frontend_design_skill_color_theme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "target": "agents_skills_frontend_design_skill_motion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L136",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "target": "agents_skills_frontend_design_skill_spatial_composition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "target": "agents_skills_frontend_design_skill_texture_depth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_4_aesthetic_execution_choices",
+      "target": "agents_skills_frontend_design_skill_typography",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_5_implementation_standards",
+      "target": "agents_skills_frontend_design_skill_code_requirements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_5_implementation_standards",
+      "target": "agents_skills_frontend_design_skill_complexity_matching",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L181",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_5_implementation_standards",
+      "target": "agents_skills_frontend_design_skill_framework_guidance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L203",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_6_required_output_structure",
+      "target": "agents_skills_frontend_design_skill_1_design_direction_summary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L209",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_6_required_output_structure",
+      "target": "agents_skills_frontend_design_skill_2_design_system_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L216",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_6_required_output_structure",
+      "target": "agents_skills_frontend_design_skill_3_implementation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/frontend-design/SKILL.md",
+      "source_location": "L221",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_skills_frontend_design_skill_6_required_output_structure",
+      "target": "agents_skills_frontend_design_skill_4_verification",
       "confidence_score": 1.0
     },
     {
@@ -54762,5 +55477,5 @@
       "source_file": ".agents/rules/graphify.md"
     }
   ],
-  "built_at_commit": "ab0d04cd802546448e25a5be0137d698ba306434"
+  "built_at_commit": "4a40e2a943b5904e87fd9dcc0545a126c0576aff"
 }
