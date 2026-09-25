@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // Investment Monitoring Dashboard — Firestore Security Rules
+    // =========================================================================
+    // Salin dan terapkan aturan ini di Firebase Console -> Firestore Database -> Rules
+    // 
+    // CATATAN: Bot yang berjalan di GitHub Actions / server menggunakan 
+    // Firebase Admin SDK (Service Account), yang secara otomatis membypass 
+    // Security Rules ini. Jadi bot Anda akan tetap berjalan 100% normal tanpa kendala.
+    // =========================================================================
+
+    // Fungsi validasi user yang diizinkan (ganti dengan email Anda):
+    function isOwner() {
+      return request.auth != null && (
+        // Ganti dengan email Google / Firebase Anda:
+        request.auth.token.email in [
+          // 'emailanda@gmail.com'
+        ] ||
+        // Jika whitelist belum diisi, izinkan semua non-anonymous authenticated user sementara:
+        (request.auth.token.email != null && request.auth.token.firebase.sign_in_provider != 'anonymous')
+      );
+    }
+
+    // Blokir akses anonymous sepenuhnya untuk koleksi sensitif:
+    match /botState/{document=**} {
+      allow read, write: if isOwner();
+    }
+
+    match /users/{userId}/{document=**} {
+      allow read, write: if isOwner() || (request.auth != null && request.auth.uid == userId);
+    }
+
+    match /schedules/{document=**} {
+      allow read, write: if isOwner();
+    }
+
+    match /executions/{document=**} {
+      allow read, write: if isOwner();
+    }
+
+    match /competitors/{document=**} {
+      allow read, write: if isOwner();
+    }
+
+    match /decision_logs/{document=**} {
+      allow read, write: if isOwner();
+    }
+
+    // Default deny untuk dokumen lainnya jika ada
+    match /{document=**} {
+      allow read, write: if isOwner();
+    }
+  }
+}

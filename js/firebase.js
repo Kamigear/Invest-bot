@@ -18,7 +18,66 @@ const FirebaseDB = (() => {
     let _uid = null;
     let _authReady = false;
 
-    // Initialize anonymous auth
+    // =========================================================================
+    // WHITELIST EMAIL PEMILIK DASHBOARD
+    // Tambahkan alamat email Anda di bawah ini untuk membatasi akses:
+    // Contoh: const ALLOWED_EMAILS = ['kamigear@gmail.com'];
+    // =========================================================================
+    const ALLOWED_EMAILS = [
+        // 'email.anda@gmail.com'
+    ];
+
+    function isEmailAllowed(email) {
+        if (!email) return false;
+        // Jika belum ada email di-whitelist, izinkan sementara untuk kemudahan setup pertama kali
+        if (ALLOWED_EMAILS.length === 0) return true;
+        return ALLOWED_EMAILS.map(e => e.toLowerCase().trim()).includes(email.toLowerCase().trim());
+    }
+
+    // Login dengan Google Popup
+    async function loginWithGoogle() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+        const result = await auth.signInWithPopup(provider);
+        _uid = result.user.uid;
+        _authReady = true;
+        return result.user;
+    }
+
+    // Login dengan Email & Password
+    async function loginWithEmail(email, password) {
+        const result = await auth.signInWithEmailAndPassword(email, password);
+        _uid = result.user.uid;
+        _authReady = true;
+        return result.user;
+    }
+
+    // Logout
+    async function logout() {
+        await auth.signOut();
+        _uid = null;
+        _authReady = false;
+    }
+
+    // Auth State Observer
+    function onAuthStateChanged(callback) {
+        return auth.onAuthStateChanged((user) => {
+            if (user) {
+                _uid = user.uid;
+                _authReady = true;
+            } else {
+                _uid = null;
+                _authReady = false;
+            }
+            callback(user);
+        });
+    }
+
+    function getCurrentUser() {
+        return auth.currentUser;
+    }
+
+    // Legacy anonymous auth (fallback)
     async function initAnonymousAuth() {
         try {
             const result = await auth.signInAnonymously();
@@ -341,35 +400,17 @@ const FirebaseDB = (() => {
             }
         },
 
-        // Password (legacy, kept for compatibility)
-        checkPassword: async (inputPassword) => {
-            try {
-                const hashedInput = await hashPassword(inputPassword);
-                const doc = await db.collection('auth').doc('password').get();
-                
-                if (doc.exists) {
-                    return doc.data().hash === hashedInput;
-                }
-                return false; 
-            } catch (error) {
-                console.error('Error checking password:', error);
-                return false;
-            }
-        },
-
-        setPassword: async (newPassword) => {
-            try {
-                const hashed = await hashPassword(newPassword);
-                await db.collection('auth').doc('password').set({
-                    hash: hashed,
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                return true;
-            } catch (error) {
-                console.error('Error setting password:', error);
-                throw error;
-            }
-        },
+        // Authentication API
+        loginWithGoogle,
+        loginWithEmail,
+        logout,
+        onAuthStateChanged,
+        getCurrentUser,
+        isEmailAllowed,
+        getAllowedEmails: () => ALLOWED_EMAILS,
+        initAnonymousAuth,
+        getUid,
+        isAuthReady,
 
         // Bot Balance
         onBalanceUpdate: (callback) => {
