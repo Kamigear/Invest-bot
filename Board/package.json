@@ -4,7 +4,9 @@
   "description": "Investment automation bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "bid": "node auctionSniper.js",
+    "sniper": "node auctionSniper.js"
   },
   "dependencies": {
     "axios": "^1.6.0",

@@ -1,16 +1,16 @@
 # Graph Report - Investation  (2026-09-25)
 
 ## Corpus Check
-- 118 files · ~111,137 words
+- 118 files · ~111,185 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2212 nodes · 2772 edges · 167 communities (128 shown, 39 thin omitted)
+- 2214 nodes · 2773 edges · 167 communities (128 shown, 39 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 166 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4a40e2a9`
+- Built from commit: `b73c31ff`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -256,12 +256,12 @@ Cohesion: 0.20
 Nodes (9): Breakpoint System, Container Queries, Custom Breakpoints, Max-Width Queries, Mobile-First Approach, Range Queries, Responsive State Variants, Tailwind CSS Responsive Design (+1 more)
 
 ### Community 10 - "Board Index"
-Cohesion: 0.10
-Nodes (38): fs, getChromiumPath(), acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs (+30 more)
+Cohesion: 0.11
+Nodes (36): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+28 more)
 
 ### Community 11 - "Board Leaderboard"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, default, full, default
+Nodes (8): $type, $value, $type, $value, radius, full, md, md
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
@@ -364,8 +364,8 @@ Cohesion: 0.04
 Nodes (48): $type, $value, background, destructive, destructive-foreground, foreground, muted, muted-foreground (+40 more)
 
 ### Community 37 - "Axios"
-Cohesion: 0.11
-Nodes (17): axios, dependencies, axios, dotenv, firebase-admin, node-cron, puppeteer, description (+9 more)
+Cohesion: 0.10
+Nodes (19): axios, dependencies, axios, dotenv, firebase-admin, node-cron, puppeteer, description (+11 more)
 
 ### Community 38 - "Kiro Steering Brand"
 Cohesion: 0.11
@@ -560,8 +560,8 @@ Cohesion: 0.20
 Nodes (9): Common Structures, Duarte Sparkline Pattern, Matching Strategy to Context, Product Demo (6 slides), Sales Pitch (9 slides), Search Commands, Slide Strategies, Strategy Selection (+1 more)
 
 ### Community 86 - "Board Firebase"
-Cohesion: 0.18
-Nodes (19): args, C, calculateNextBid(), config, CONFIG_FILE, fastFetchScrape(), fs, { getChromiumPath } (+11 more)
+Cohesion: 0.15
+Nodes (21): args, C, calculateNextBid(), config, CONFIG_FILE, fastFetchScrape(), fs, { getChromiumPath } (+13 more)
 
 ### Community 87 - "Completedprocess"
 Cohesion: 0.28
@@ -661,7 +661,7 @@ Nodes (3): Answer, Q: apakah kemungkinan investasi bisa terskip?, Source Nodes
 
 ### Community 111 - "$type"
 Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+Nodes (4): $type, $value, default, default
 
 ### Community 112 - "_select_palette_for_mode"
 Cohesion: 0.67
@@ -724,7 +724,7 @@ Cohesion: 0.67
 Nodes (3): Custom Font Sizes, Custom Fonts, Typography Customization
 
 ## Knowledge Gaps
-- **1056 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1051 more)
+- **1058 isolated node(s):** `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot`, `$schema`, `$value` (+1053 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -744,4 +744,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 16 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestDomainDetection` and `TestPersistence`) actually correct?**
   _`DesignSystemGenerator` has 16 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js`, `snapshot` to the rest of the system?**
-  _1056 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1058 weakly-connected nodes found - possible documentation gaps or missing edges._

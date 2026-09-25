@@ -83,7 +83,9 @@ const sharedState = {
   lastBidTriggeredBy: null,
   lastBidTime: 0,
   auctionFinished: false,
-  totalBidsSent: 0
+  totalBidsSent: 0,
+  countdownEntered: false,
+  lastStandbyLogTime: 0
 };
 
 // ==========================================
@@ -429,7 +431,7 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
   // Stagger awal agar worker terdistribusi merata di timeline
   await new Promise(r => setTimeout(r, staggerOffsetMs));
 
-  log(`WORKER-${workerId}`, `Memulai radar sweep loop (Offset: ${staggerOffsetMs}ms)...`, C.cyan);
+  log(`WORKER-${workerId}`, `Worker standby & siap (Offset: ${staggerOffsetMs}ms)...`, C.cyan);
 
   while (!sharedState.auctionFinished) {
     const remainingSec = getRemainingSeconds();
@@ -440,26 +442,59 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
       break;
     }
 
-    // Tentukan fase SEBELUM melakukan IO apapun
+    // ═══════════════════════════════════════════════════════════════
+    // FASE 1: STANDBY / PRE-COUNTDOWN (Belum masuk range countdown)
+    // ATURAN: JANGAN REFRESH / RELOAD SAMA SEKALI! (Zero-Refresh Idle)
+    // ═══════════════════════════════════════════════════════════════
     const inCountdownWindow = remainingSec <= config.startBiddingCountdownSeconds && remainingSec > -2;
 
-    try {
-      let scraped = null;
+    if (!inCountdownWindow) {
+      const distToCountdown = remainingSec - config.startBiddingCountdownSeconds;
+      const nowMs = Date.now();
 
-      if (inCountdownWindow) {
-        // CRITICAL WINDOW — Fast in-page fetch()
-        scraped = await fastFetchScrape(page);
-      } else {
-        // STANDBY PHASE — reload biasa
-        await page.reload({ waitUntil: 'domcontentloaded', timeout: 15000 }).catch(() => {});
-        await page.evaluate(() => {
-          const btn = document.querySelector('#btn-auction');
-          if (btn && typeof switchTab === 'function' && !btn.classList.contains('active')) {
-            switchTab('auction');
-          }
-        }).catch(() => {});
-        scraped = await scrapeAuction(page);
+      // Log status countdown secara berkala via Worker 1 (setiap 5 detik)
+      if (workerId === 1 && (nowMs - sharedState.lastStandbyLogTime >= 5000 || sharedState.lastStandbyLogTime === 0)) {
+        sharedState.lastStandbyLogTime = nowMs;
+        const targetDesc = distToCountdown > 0 ? `${distToCountdown.toFixed(1)}s lagi` : 'Sesaat lagi';
+        log('STANDBY',
+          `⏳ Menunggu countdown... Sisa waktu: ${C.yellow}${remainingSec.toFixed(1)}s${C.reset} | ` +
+          `Radar sweep aktif dalam: ${C.cyan}${targetDesc}${C.reset} (T-${config.startBiddingCountdownSeconds}s) [ZERO-REFRESH IDLE]`,
+          C.blue
+        );
       }
+
+      // Waktu tidur cerdas tanpa reload:
+      let idleSleepMs;
+      if (distToCountdown > 10) {
+        idleSleepMs = 2000; // Masih jauh, tidur santai 2 detik
+      } else if (distToCountdown > 3) {
+        idleSleepMs = 1000; // Mulai mendekati, tidur 1 detik
+      } else if (distToCountdown > 0.5) {
+        idleSleepMs = Math.max(50, Math.floor(distToCountdown * 400)); // Sangat dekat, presisi
+      } else {
+        idleSleepMs = 20; // Transisi mulus ke countdown window
+      }
+
+      await new Promise(r => setTimeout(r, idleSleepMs));
+      continue; // Lewati IO/scraping, langsung loop berikutnya
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // FASE 2: CRITICAL COUNTDOWN WINDOW (remainingSec <= startBiddingCountdownSeconds)
+    // REFRESH / RADAR SWEEP AKTIF DENGAN KECEPATAN TINGGI (fastFetchScrape)
+    // ═══════════════════════════════════════════════════════════════
+    if (!sharedState.countdownEntered) {
+      sharedState.countdownEntered = true;
+      log('COUNTDOWN',
+        `🚨 ${C.bgRed}${C.bold}[COUNTDOWN ACTIVE - RADAR SWEEP DIMULAI]${C.reset} ` +
+        `Memasuki range countdown (T-${config.startBiddingCountdownSeconds}s, sisa: ${remainingSec.toFixed(1)}s)! Refresh & fast polling diaktifkan!`,
+        C.red
+      );
+    }
+
+    try {
+      // High-speed in-page fetch() scrape
+      const scraped = await fastFetchScrape(page);
 
       // Update shared state jika scrape berhasil
       if (scraped && scraped.found) {
@@ -476,7 +511,7 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
         sharedState.lastUpdateTime   = Date.now();
       }
 
-      // ── STATUS LOG ──
+      // ── STATUS LOG DI COUNTDOWN WINDOW ──
       const nowRemaining = getRemainingSeconds();
       const holderDisplay = sharedState.isMyClassHolding
         ? `${C.green}👑 KELAS KITA (${sharedState.holderClass})${C.reset}`
@@ -484,107 +519,83 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
       const secDisplay = nowRemaining > 0
         ? `${nowRemaining.toFixed(1)}s tersisa`
         : `${Math.abs(nowRemaining).toFixed(1)}s LEWAT`;
-      const statusTag = inCountdownWindow ? `${C.bgRed}[CRITICAL WINDOW]${C.reset}` : `[STANDBY]`;
 
-      if (inCountdownWindow || Math.floor(nowRemaining) % 5 === 0) {
-        const saldoDisplay = sharedState.currentScore > 0
-          ? `${C.green}${sharedState.currentScore} Pt${C.reset}`
-          : `${C.yellow}Memuat...${C.reset}`;
-        log(`WORKER-${workerId}`,
-          `${statusTag} Item: ${C.bold}${sharedState.itemName || 'Auction'}${C.reset} | ` +
-          `Top Bid: ${C.bold}${sharedState.highestBid} Pt${C.reset} | ` +
-          `Saldo: ${saldoDisplay} | ` +
-          `Holder: ${holderDisplay} | Sisa: ${C.yellow}${secDisplay}${C.reset}`
-        );
-      }
+      log(`WORKER-${workerId}`,
+        `${C.bgRed}[COUNTDOWN]${C.reset} Item: ${C.bold}${sharedState.itemName || 'Auction'}${C.reset} | ` +
+        `Top Bid: ${C.bold}${sharedState.highestBid} Pt${C.reset} | ` +
+        `Saldo: ${sharedState.currentScore > 0 ? C.green + sharedState.currentScore + ' Pt' + C.reset : C.yellow + '...' + C.reset} | ` +
+        `Holder: ${holderDisplay} | Sisa: ${C.yellow}${secDisplay}${C.reset}`
+      );
 
       // ── FIRST RESPONDER BIDDING LOGIC ──
-      if (inCountdownWindow) {
-        if (sharedState.isMyClassHolding) {
-          // Kelas kita memegang penawaran tertinggi — tidak perlu bid
+      if (sharedState.isMyClassHolding) {
+        // Kelas kita memegang penawaran tertinggi — aman
+      } else {
+        const minRequired1Pct = Math.ceil(sharedState.highestBid * (config.percentIncrement || 1.01));
+        const absoluteMinLegal = Math.max(sharedState.minBid || 0, minRequired1Pct, sharedState.highestBid + 1);
+
+        // ═══════════════════════════════════════════════════════
+        // GUARD 1: CEK APAKAH SALDO MENCUKUPI UNTUK MINIMUM BID
+        // ═══════════════════════════════════════════════════════
+        if (sharedState.currentScore > 0 && absoluteMinLegal > sharedState.currentScore) {
+          log(`WORKER-${workerId}`,
+            `🛑 ${C.bgRed}[GUARD SALDO: POIN TIDAK CUKUP]${C.reset} ` +
+            `Min legal bid (${absoluteMinLegal} Pt) melebihi saldo saat ini (${sharedState.currentScore} Pt). Bot berhenti bid agar tidak minus!`,
+            C.red
+          );
         } else {
-          const minRequired1Pct = Math.ceil(sharedState.highestBid * (config.percentIncrement || 1.01));
-          const absoluteMinLegal = Math.max(sharedState.minBid || 0, minRequired1Pct, sharedState.highestBid + 1);
+          const targetBid = calculateNextBid(sharedState.highestBid, sharedState.minBid, sharedState.currentScore);
 
           // ═══════════════════════════════════════════════════════
-          // GUARD 1: CEK APAKAH SALDO MENCUKUPI UNTUK MINIMUM BID
+          // GUARD 2: CEK APAKAH TARGET BID MELEBIHI SALDO
           // ═══════════════════════════════════════════════════════
-          if (sharedState.currentScore > 0 && absoluteMinLegal > sharedState.currentScore) {
+          if (sharedState.currentScore > 0 && targetBid > sharedState.currentScore) {
             log(`WORKER-${workerId}`,
-              `🛑 ${C.bgRed}[GUARD SALDO: POIN TIDAK CUKUP]${C.reset} ` +
-              `Min legal bid (${absoluteMinLegal} Pt) melebihi saldo saat ini (${sharedState.currentScore} Pt). Bot berhenti bid agar tidak berutang!`,
+              `🛑 ${C.bgRed}[GUARD SALDO: TARGET BID MELEBIHI SALDO]${C.reset} ` +
+              `Target bid (${targetBid} Pt) melebihi saldo saat ini (${sharedState.currentScore} Pt). Bot berhenti bid!`,
+              C.red
+            );
+          } else if (targetBid > config.maxBidLimit) {
+            log(`WORKER-${workerId}`,
+              `🛑 ${C.bgRed}MAX BID LIMIT TERLEWATI!${C.reset} ` +
+              `Harga minimal sah (${targetBid} Pt) sudah melebihi batas (${config.maxBidLimit} Pt). Bot berhenti bid!`,
               C.red
             );
           } else {
-            const targetBid = calculateNextBid(sharedState.highestBid, sharedState.minBid, sharedState.currentScore);
-
             // ═══════════════════════════════════════════════════════
-            // GUARD 2: CEK APAKAH TARGET BID MELEBIHI SALDO SAAT ITU JUGA
+            // FIRST RESPONDER ATOMIC TRIGGER:
+            // Hanya worker PERTAMA yang mendeteksi perubahan harga ini
+            // yang akan menembak bid secara instan.
             // ═══════════════════════════════════════════════════════
-            if (sharedState.currentScore > 0 && targetBid > sharedState.currentScore) {
+            const isNewHigherBidNeeded = targetBid > sharedState.lastDispatchedBid || (Date.now() - sharedState.lastBidTime > 2500);
+
+            if (isNewHigherBidNeeded) {
+              // Klaim eksekusi secara instan
+              sharedState.lastDispatchedBid = targetBid;
+              sharedState.lastBidPlaced = targetBid;
+              sharedState.lastBidTime = Date.now();
+              sharedState.isMyClassHolding = true; // Kunci optimistik
+              sharedState.lastBidTriggeredBy = workerId;
+
               log(`WORKER-${workerId}`,
-                `🛑 ${C.bgRed}[GUARD SALDO: TARGET BID MELEBIHI SALDO]${C.reset} ` +
-                `Target bid (${targetBid} Pt) melebihi saldo saat ini (${sharedState.currentScore} Pt). Bot berhenti bid!`,
-                C.red
+                `⚡ ${C.bgYellow}${C.bold}[FIRST RESPONDER]${C.reset} Terdeteksi lawan (${sharedState.holderClass}: ${sharedState.highestBid} Pt)! Mengambil giliran menimpa ke ${targetBid} Pt (Saldo: ${sharedState.currentScore} Pt)...`,
+                C.yellow
               );
-            } else if (targetBid > config.maxBidLimit) {
-              // Ini hanya terpicu jika maxBidLimit < absoluteMinLegal (tidak bisa dikap, harus ditolak)
-              log(`WORKER-${workerId}`,
-                `🛑 ${C.bgRed}MAX BID LIMIT DI BAWAH MINIMUM LEGAL!${C.reset} ` +
-                `Harga minimal sah (${targetBid} Pt) sudah melebihi batas konfigurasi (${config.maxBidLimit} Pt). Bot berhenti bid!`,
-                C.red
-              );
-            } else {
-              // ═══════════════════════════════════════════════════════
-              // FIRST RESPONDER ATOMIC TRIGGER:
-              // Hanya worker PERTAMA yang mendeteksi perubahan harga ini
-              // yang akan menembak bid. Worker lain yang mengecek setelahnya
-              // melihat bid sudah di-dispatch dan tetap standby memantau
-              // jika ada lawan yang menimpa lagi.
-              // ═══════════════════════════════════════════════════════
-              const isNewHigherBidNeeded = targetBid > sharedState.lastDispatchedBid || (Date.now() - sharedState.lastBidTime > 2500);
 
-              if (isNewHigherBidNeeded) {
-                // Klaim eksekusi secara instan
-                sharedState.lastDispatchedBid = targetBid;
-                sharedState.lastBidPlaced = targetBid;
-                sharedState.lastBidTime = Date.now();
-                sharedState.isMyClassHolding = true; // Kunci optimistik
-                sharedState.lastBidTriggeredBy = workerId;
-
-                log(`WORKER-${workerId}`,
-                  `⚡ ${C.bgYellow}${C.bold}[FIRST RESPONDER]${C.reset} Terdeteksi lawan (${sharedState.holderClass}: ${sharedState.highestBid} Pt)! Mengambil giliran menimpa ke ${targetBid} Pt (Saldo: ${sharedState.currentScore} Pt)...`,
-                  C.yellow
-                );
-
-                await placeBid(page, workerId, targetBid, sharedState.auctionId);
-              }
+              await placeBid(page, workerId, targetBid, sharedState.auctionId);
             }
           }
         }
       }
 
     } catch (loopErr) {
-      log(`WORKER-${workerId}`, `Peringatan: ${loopErr.message}`, C.yellow);
+      log(`WORKER-${workerId}`, `Peringatan polling: ${loopErr.message}`, C.yellow);
     }
 
-    // ── ASYNCHRONOUS JITTERED POLLING INTERVAL ──
-    // Setiap worker memiliki interval yang sedikit berbeda + random micro-jitter
-    // agar siklus polling antar worker SELALU saling silang (interleaved)
-    // dan tidak pernah menyatu dalam detik yang sama.
-    let sleepTime;
-    if (inCountdownWindow) {
-      // Worker 1 ~70ms, Worker 2 ~100ms, Worker 3 ~130ms (+ 0-20ms jitter)
-      const baseCritical = 70 + ((workerId - 1) * 30);
-      const jitter = Math.floor(Math.random() * 20);
-      sleepTime = baseCritical + jitter;
-    } else {
-      // Standby phase: base ~200ms + offset per worker
-      const baseStandby = Math.max(150, config.pollIntervalMs);
-      const workerOffset = (workerId - 1) * 40;
-      const jitter = Math.floor(Math.random() * 30);
-      sleepTime = baseStandby + workerOffset + jitter;
-    }
+    // High-speed polling interval dengan micro-jitter (interleaved)
+    const baseCritical = Math.max(2, config.pollIntervalMs || 50);
+    const jitter = Math.floor(Math.random() * 15);
+    const sleepTime = baseCritical + ((workerId - 1) * 8) + jitter;
 
     await new Promise(r => setTimeout(r, sleepTime));
   }

@@ -7,7 +7,7 @@
   "startBiddingCountdownSeconds": 60,
   "targetEndTime": "19:00:00",
   "timezone": "Asia/Jakarta",
-  "maxBidLimit": 205,
+  "maxBidLimit": 300,
   "bidStrategy": "AUTO",
   "addPoints": 10,
   "percentIncrement": 1.01,
