@@ -298,8 +298,35 @@ async function evaluateAndDecide() {
     return { decision: 'NO', reason: 'RULE3_VULNERABILITY', amount: 0 };
   }
 
+  // ── Rule 4.5: Daily Income Cap (Anti-Gap Shrink) ──────────────────────────
+  // Investasi tidak boleh melebihi income hari ini (growth24h), dan dibatasi max 80% dari income.
+  // Ini mencegah investasi memotong poin lebih dari yang didapat hari ini, menjaga gap vs kompetitor.
+  const todayIncome = ourClass.growth24h || 0;
+  if (todayIncome <= 0) {
+    const reason = `Rule 4.5 (Income Cap): Income hari ini ${todayIncome} Pt ≤ 0. Tidak ada basis untuk invest hari ini.`;
+    Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
+    await logDecision({ decision: 'NO', reason: 'RULE4_5_NO_INCOME', amount: 0, details: reason, metrics: { currentBalance, todayIncome, plannedInvest, ourRank } });
+    await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
+    return { decision: 'NO', reason: 'RULE4_5_NO_INCOME', amount: 0 };
+  }
+
+  const maxInvestByIncome = Math.floor(todayIncome * 0.80); // Maks 80% dari income hari ini
+  if (maxInvestByIncome < MIN_INVEST_AMOUNT) {
+    const reason = `Rule 4.5 (Income Cap): 80% dari income hari ini (${todayIncome} Pt) = ${maxInvestByIncome} Pt < minimum invest ${MIN_INVEST_AMOUNT} Pt.`;
+    Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
+    await logDecision({ decision: 'NO', reason: 'RULE4_5_INCOME_TOO_LOW', amount: 0, details: reason, metrics: { currentBalance, todayIncome, maxInvestByIncome, ourRank } });
+    await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
+    return { decision: 'NO', reason: 'RULE4_5_INCOME_TOO_LOW', amount: 0 };
+  }
+
+  // Gunakan yang lebih kecil: overflow atau batas income (80%)
+  const cappedAmount = Math.min(plannedInvest, maxInvestByIncome);
+  if (cappedAmount < plannedInvest) {
+    Logger.info(`Rule 4.5 (Income Cap): Invest dikurangi dari ${plannedInvest} Pt → ${cappedAmount} Pt (80% income ${todayIncome} Pt)`);
+  }
+
   // ── Rule 4: Adaptive Overflow Execution & Hard Floor Safeguard ───────────
-  const finalAmount = plannedInvest;
+  const finalAmount = cappedAmount;
   const remainingCash = currentBalance - finalAmount;
 
   // Sisa saldo kas setelah invest MUTLAK tidak boleh di bawah targetReserve atau HARD_MIN_RESERVE
@@ -323,7 +350,13 @@ async function evaluateAndDecide() {
   const investDate    = getWibDate();
   const expectedReturn = Math.floor(finalAmount * INVEST_RETURN_RATE);
   const maturityDate  = addDays(investDate, INVEST_DURATION_DAYS);
-  const metrics       = { ourRank, currentBalance, targetReserve, gapBehind, paceOur: +paceOur.toFixed(2), paceRank1: +paceRank1.toFixed(2), classAboveName: classAbove?.name || '(Kita #1)', classBelowName: classBelow?.name || '(Tidak ada)' };
+  const metrics       = {
+    ourRank, currentBalance, targetReserve, gapBehind,
+    paceOur: +paceOur.toFixed(2), paceRank1: +paceRank1.toFixed(2),
+    todayIncome, maxInvestByIncome,
+    classAboveName: classAbove?.name || '(Kita #1)',
+    classBelowName: classBelow?.name || '(Tidak ada)'
+  };
 
   await withRetry(
     () => setDoc(`schedules/${entryId}`, {
@@ -341,6 +374,10 @@ async function evaluateAndDecide() {
     { label: 'decision:writeSchedule', ...DEFAULT_RETRY }
   );
 
+  const incomeCapNote = finalAmount < plannedInvest
+    ? `Income Cap: ${finalAmount} Pt (dipotong ke 80% income ${todayIncome} Pt) ✅`
+    : `Income Cap: ${finalAmount} Pt (dalam batas 80% income ${todayIncome} Pt) ✅`;
+
   const successMsg = [
     `📊 Decision Engine (01:00 WIB)`,
     `✅ KEPUTUSAN: YA — Invest ${finalAmount} Pt hari ini (${investDate})`,
@@ -349,6 +386,7 @@ async function evaluateAndDecide() {
     `Target Salip: ${classAbove?.name || 'Pertahankan #1'} (${classAbove?.total || 'N/A'} Pt)`,
     `Gap ke Kelas Bawah: ${gapBehind} Pt ✅`,
     `Pace Kita: ${paceOur.toFixed(1)} Pt/hari ≥ Pace Rank #1: ${paceRank1.toFixed(1)} Pt/hari ✅`,
+    incomeCapNote,
   ].join('\n');
 
   await logDecision({ decision: 'YES', reason: 'ALL_RULES_PASSED', amount: finalAmount, details: successMsg, metrics });

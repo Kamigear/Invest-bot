@@ -1,7 +1,7 @@
-# Graph Report - Investation  (2026-09-25)
+# Graph Report - Investation  (2026-10-05)
 
 ## Corpus Check
-- 118 files · ~111,185 words
+- 118 files · ~111,448 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b73c31ff`
+- Built from commit: `dee51618`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -256,20 +256,20 @@ Cohesion: 0.20
 Nodes (9): Breakpoint System, Container Queries, Custom Breakpoints, Max-Width Queries, Mobile-First Approach, Range Queries, Responsive State Variants, Tailwind CSS Responsive Design (+1 more)
 
 ### Community 10 - "Board Index"
-Cohesion: 0.11
-Nodes (36): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+28 more)
+Cohesion: 0.12
+Nodes (35): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+27 more)
 
 ### Community 11 - "Board Leaderboard"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, full, md, md
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
 Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common Font Pairings, Contrast Requirements, CSS Implementation, Editorial (+22 more)
 
 ### Community 13 - "Board Dailyreward"
-Cohesion: 0.10
-Nodes (29): claimDailyReward(), { isTransientError }, { Logger }, puppeteer, { db, runTransaction, serverTimestamp, getDoc, setDoc }, DEFAULT_RETRY, { executeInvest }, getWibDate() (+21 more)
+Cohesion: 0.09
+Nodes (30): axios, https, httpsAgent, { Logger }, claimDailyReward(), { isTransientError }, { Logger }, puppeteer (+22 more)
 
 ### Community 14 - "Kiro Steering Brand"
 Cohesion: 0.07
@@ -560,8 +560,8 @@ Cohesion: 0.20
 Nodes (9): Common Structures, Duarte Sparkline Pattern, Matching Strategy to Context, Product Demo (6 slides), Sales Pitch (9 slides), Search Commands, Slide Strategies, Strategy Selection (+1 more)
 
 ### Community 86 - "Board Firebase"
-Cohesion: 0.15
-Nodes (21): args, C, calculateNextBid(), config, CONFIG_FILE, fastFetchScrape(), fs, { getChromiumPath } (+13 more)
+Cohesion: 0.14
+Nodes (22): args, C, calculateNextBid(), config, CONFIG_FILE, fastFetchScrape(), fs, { getChromiumPath } (+14 more)
 
 ### Community 87 - "Completedprocess"
 Cohesion: 0.28
@@ -588,8 +588,8 @@ Cohesion: 0.29
 Nodes (7): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at Breakpoint Boundaries, 4. Use Container for Content Width, 5. Progressive Enhancement, 6. Avoid Too Many Breakpoints, Best Practices
 
 ### Community 93 - "Board Alert"
-Cohesion: 0.25
-Nodes (15): addDays(), DEFAULT_RETRY, evaluateAndDecide(), findOurClass(), { getDoc, setDoc, serverTimestamp }, getWibDate(), logDecision(), { Logger } (+7 more)
+Cohesion: 0.18
+Nodes (18): addDays(), DEFAULT_RETRY, evaluateAndDecide(), findOurClass(), { getDoc, setDoc, serverTimestamp }, getWibDate(), logDecision(), { Logger } (+10 more)
 
 ### Community 94 - "Index Html"
 Cohesion: 0.50
@@ -652,8 +652,8 @@ Cohesion: 0.40
 Nodes (5): Card Grid, Common Responsive Layouts, Hero Section, Navigation, Sidebar Layout
 
 ### Community 109 - "Kiro Steering Design"
-Cohesion: 0.16
-Nodes (23): axios, https, httpsAgent, { Logger }, sendAlert(), stripEmoji(), getDoc(), { evaluateAndDecide } (+15 more)
+Cohesion: 0.22
+Nodes (19): sendAlert(), stripEmoji(), getDoc(), { evaluateAndDecide }, { getDoc, setDoc, serverTimestamp }, getWibDate(), getWibTimeStr(), isDailyClaimDoneToday() (+11 more)
 
 ### Community 110 - "md"
 Cohesion: 0.50
@@ -661,7 +661,7 @@ Nodes (3): Answer, Q: apakah kemungkinan investasi bisa terskip?, Source Nodes
 
 ### Community 111 - "$type"
 Cohesion: 0.67
-Nodes (4): $type, $value, default, default
+Nodes (4): $type, $value, md, md
 
 ### Community 112 - "_select_palette_for_mode"
 Cohesion: 0.67
