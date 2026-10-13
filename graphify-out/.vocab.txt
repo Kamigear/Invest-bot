@@ -33,6 +33,7 @@ agree
 aida
 aktual
 alert
+alerts
 algorithm
 alignment
 all
@@ -46,6 +47,7 @@ analogous
 analytics
 analyze
 anatomy
+anchor
 and
 animation
 anonymous
@@ -53,6 +55,7 @@ ansi
 answer
 anti
 any
+apakah
 app
 apparel
 apply
@@ -113,6 +116,7 @@ best
 better
 between
 bid
+bisa
 black
 bleed
 block
@@ -167,6 +171,8 @@ checkbox
 checking
 checklist
 checks
+choices
+choose
 chromatic
 chrome
 chromium
@@ -206,6 +212,7 @@ competitors
 complementary
 complete
 completed
+complexity
 compliance
 compone
 component
@@ -278,6 +285,7 @@ delivery
 demo
 density
 dependencies
+depth
 describes
 description
 descriptions
@@ -293,6 +301,7 @@ detection
 determine
 development
 devtools
+dfii
 dial
 dialog
 dialogs
@@ -300,6 +309,7 @@ dials
 dict
 dicts
 different
+differentiation
 digit
 digital
 dimensions
@@ -318,6 +328,7 @@ does
 doesn
 domain
 domains
+dominant
 don
 done
 dotenv
@@ -405,6 +416,7 @@ families
 fase
 fashion
 fast
+feasibility
 feature
 features
 feedback
@@ -451,6 +463,7 @@ frameworks
 frequency
 fresh
 from
+frontend
 full
 fun
 function
@@ -486,6 +499,7 @@ group
 growth
 grpc
 guard
+guidance
 guide
 guideline
 guidelines
@@ -529,6 +543,7 @@ illustrations
 image
 imagery
 images
+impact
 implementation
 implemented
 important
@@ -552,6 +567,7 @@ initialize
 initialized
 injection
 input
+inputs
 inside
 installation
 installed
@@ -562,10 +578,12 @@ intelligent
 interaction
 interactive
 interest
+interpretation
 into
 inv
 invalid
 invest
+investasi
 investation
 investigation
 investment
@@ -581,6 +599,7 @@ javascript
 job
 json
 keeps
+kemungkinan
 kept
 key
 keyboard
@@ -611,6 +630,7 @@ light
 lighter
 lighting
 like
+limitations
 line
 list
 listing
@@ -624,7 +644,6 @@ log
 logger
 logging
 logic
-login
 logo
 logotype
 lookup
@@ -634,6 +653,8 @@ luminance
 luxury
 main
 management
+mandate
+mandatory
 manifest
 manual
 many
@@ -714,6 +735,7 @@ new
 next
 nextjs
 node
+nodes
 non
 none
 normal
@@ -730,9 +752,11 @@ office
 official
 old
 once
+one
 only
 opacity
 open
+operator
 opsional
 opt
 optimized
@@ -775,7 +799,6 @@ parses
 partner
 pas
 pass
-password
 path
 paths
 pattern
@@ -860,6 +883,7 @@ punctuation
 puppeteer
 pure
 purple
+purpose
 purposes
 python
 quality
@@ -972,6 +996,7 @@ schedule
 schema
 scope
 score
+scoring
 scrape
 screen
 screenshot
@@ -1051,6 +1076,7 @@ source
 space
 spacing
 sparkline
+spatial
 spec
 specific
 specifications
@@ -1138,12 +1164,14 @@ templates
 temporary
 terminated
 terms
+terskip
 test
 testimonial
 testing
 tests
 text
 textarea
+texture
 than
 that
 the
@@ -1152,6 +1180,7 @@ themes
 theming
 then
 they
+thinking
 this
 three
 tidak
@@ -1193,7 +1222,6 @@ triadic
 true
 truncate
 truth
-try
 tuple
 turn
 twice
@@ -1284,6 +1312,7 @@ within
 without
 wordmark
 words
+worked
 worker
 workflow
 workflows

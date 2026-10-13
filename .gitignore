@@ -29,3 +29,6 @@ yarn-error.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Graphify AST cache
+graphify-out/cache/ast/

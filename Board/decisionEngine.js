@@ -41,6 +41,16 @@ const MIN_INVEST_AMOUNT = parseInt(process.env.MIN_INVEST_AMOUNT, 10) || 1;   //
 const INVEST_RETURN_RATE = parseFloat(process.env.INVEST_RETURN_RATE) || 1.26; // Return 26% profit (1.26x total) dengan pembulatan Math.floor
 const INVEST_DURATION_DAYS = 30;
 
+function parsePercent(val, fallback = 0.80) {
+  if (val === undefined || val === null || val === '') return fallback;
+  const num = parseFloat(val);
+  if (isNaN(num) || num <= 0) return fallback;
+  return num > 1 ? num / 100 : num;
+}
+
+// Batas persentase investasi harian dari income (default 80% / 0.80, dapat dioverride lewat env DAILY_INCOME_CAP_PERCENT)
+const DEFAULT_DAILY_INCOME_CAP_RATE = parsePercent(process.env.DAILY_INCOME_CAP_PERCENT, 0.80);
+
 // ── Identitas Kelas Kita ──────────────────────────────────────────────────────
 const OUR_CLASS_ID       = process.env.REP_CLASS_ID || '4';
 const OUR_CLASS_PATTERNS = ['kaleb', 'mr kaleb', 'class mr kaleb'];
@@ -114,20 +124,30 @@ async function logDecision({ decision, reason, amount, details, metrics }) {
 async function evaluateAndDecide() {
   Logger.banner('DECISION ENGINE (01:00 WIB) — Evaluasi Keputusan Investasi Dimulai');
 
-  // ── Safety Layer 5: Remote Emergency Freeze ──────────────────────────────
+  // ── Safety Layer 5: Remote Emergency Freeze & Dynamic Config ─────────────
+  let remoteIncomeCapRate = null;
   try {
     const controlDoc = await withRetry(
       () => getDoc('botState/control'),
       { label: 'decision:emergencyCheck', ...DEFAULT_RETRY }
     );
-    if (controlDoc.exists && controlDoc.data().EMERGENCY_FREEZE === true) {
-      Logger.warning('EMERGENCY_FREEZE aktif di Firestore — Batalkan evaluasi.');
-      await sendAlert('⛔ EMERGENCY FREEZE aktif!\nBot tidak akan invest hari ini. Set EMERGENCY_FREEZE=false di Firestore untuk melanjutkan.');
-      return { decision: 'NO', reason: 'EMERGENCY_FREEZE', amount: 0 };
+    if (controlDoc.exists) {
+      const controlData = controlDoc.data();
+      if (controlData.EMERGENCY_FREEZE === true) {
+        Logger.warning('EMERGENCY_FREEZE aktif di Firestore — Batalkan evaluasi.');
+        await sendAlert('⛔ EMERGENCY FREEZE aktif!\nBot tidak akan invest hari ini. Set EMERGENCY_FREEZE=false di Firestore untuk melanjutkan.');
+        return { decision: 'NO', reason: 'EMERGENCY_FREEZE', amount: 0 };
+      }
+      if (controlData.DAILY_INCOME_CAP_PERCENT !== undefined && controlData.DAILY_INCOME_CAP_PERCENT !== null) {
+        remoteIncomeCapRate = parsePercent(controlData.DAILY_INCOME_CAP_PERCENT, DEFAULT_DAILY_INCOME_CAP_RATE);
+      }
     }
   } catch (e) {
-    Logger.warning('decisionEngine: Gagal cek EMERGENCY_FREEZE, lanjut:', { error: e.message });
+    Logger.warning('decisionEngine: Gagal cek control doc, lanjut:', { error: e.message });
   }
+
+  const effectiveIncomeCapRate = remoteIncomeCapRate ?? DEFAULT_DAILY_INCOME_CAP_RATE;
+  const incomeCapPctDisplay = Math.round(effectiveIncomeCapRate * 100);
 
   // ── Safety Layer 4: Idempotency Lock ─────────────────────────────────────
   const entryId = todayInvId();
@@ -299,30 +319,30 @@ async function evaluateAndDecide() {
   }
 
   // ── Rule 4.5: Daily Income Cap (Anti-Gap Shrink) ──────────────────────────
-  // Investasi tidak boleh melebihi income hari ini (growth24h), dan dibatasi max 80% dari income.
+  // Investasi tidak boleh melebihi income hari ini (growth24h), dan dibatasi max persentase income.
   // Ini mencegah investasi memotong poin lebih dari yang didapat hari ini, menjaga gap vs kompetitor.
   const todayIncome = ourClass.growth24h || 0;
   if (todayIncome <= 0) {
     const reason = `Rule 4.5 (Income Cap): Income hari ini ${todayIncome} Pt ≤ 0. Tidak ada basis untuk invest hari ini.`;
     Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
-    await logDecision({ decision: 'NO', reason: 'RULE4_5_NO_INCOME', amount: 0, details: reason, metrics: { currentBalance, todayIncome, plannedInvest, ourRank } });
+    await logDecision({ decision: 'NO', reason: 'RULE4_5_NO_INCOME', amount: 0, details: reason, metrics: { currentBalance, todayIncome, plannedInvest, ourRank, incomeCapPercent: incomeCapPctDisplay } });
     await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
     return { decision: 'NO', reason: 'RULE4_5_NO_INCOME', amount: 0 };
   }
 
-  const maxInvestByIncome = Math.floor(todayIncome * 0.80); // Maks 80% dari income hari ini
+  const maxInvestByIncome = Math.floor(todayIncome * effectiveIncomeCapRate); // Maks X% dari income hari ini
   if (maxInvestByIncome < MIN_INVEST_AMOUNT) {
-    const reason = `Rule 4.5 (Income Cap): 80% dari income hari ini (${todayIncome} Pt) = ${maxInvestByIncome} Pt < minimum invest ${MIN_INVEST_AMOUNT} Pt.`;
+    const reason = `Rule 4.5 (Income Cap): ${incomeCapPctDisplay}% dari income hari ini (${todayIncome} Pt) = ${maxInvestByIncome} Pt < minimum invest ${MIN_INVEST_AMOUNT} Pt.`;
     Logger.info(`KEPUTUSAN: TIDAK — ${reason}`);
-    await logDecision({ decision: 'NO', reason: 'RULE4_5_INCOME_TOO_LOW', amount: 0, details: reason, metrics: { currentBalance, todayIncome, maxInvestByIncome, ourRank } });
+    await logDecision({ decision: 'NO', reason: 'RULE4_5_INCOME_TOO_LOW', amount: 0, details: reason, metrics: { currentBalance, todayIncome, maxInvestByIncome, ourRank, incomeCapPercent: incomeCapPctDisplay } });
     await sendAlert(`📊 Decision Engine (01:00 WIB)\n❌ KEPUTUSAN: TIDAK\n${reason}`);
     return { decision: 'NO', reason: 'RULE4_5_INCOME_TOO_LOW', amount: 0 };
   }
 
-  // Gunakan yang lebih kecil: overflow atau batas income (80%)
+  // Gunakan yang lebih kecil: overflow atau batas income (X%)
   const cappedAmount = Math.min(plannedInvest, maxInvestByIncome);
   if (cappedAmount < plannedInvest) {
-    Logger.info(`Rule 4.5 (Income Cap): Invest dikurangi dari ${plannedInvest} Pt → ${cappedAmount} Pt (80% income ${todayIncome} Pt)`);
+    Logger.info(`Rule 4.5 (Income Cap): Invest dikurangi dari ${plannedInvest} Pt → ${cappedAmount} Pt (${incomeCapPctDisplay}% income ${todayIncome} Pt)`);
   }
 
   // ── Rule 4: Adaptive Overflow Execution & Hard Floor Safeguard ───────────
@@ -353,7 +373,7 @@ async function evaluateAndDecide() {
   const metrics       = {
     ourRank, currentBalance, targetReserve, gapBehind,
     paceOur: +paceOur.toFixed(2), paceRank1: +paceRank1.toFixed(2),
-    todayIncome, maxInvestByIncome,
+    todayIncome, maxInvestByIncome, incomeCapPercent: incomeCapPctDisplay,
     classAboveName: classAbove?.name || '(Kita #1)',
     classBelowName: classBelow?.name || '(Tidak ada)'
   };
@@ -375,8 +395,8 @@ async function evaluateAndDecide() {
   );
 
   const incomeCapNote = finalAmount < plannedInvest
-    ? `Income Cap: ${finalAmount} Pt (dipotong ke 80% income ${todayIncome} Pt) ✅`
-    : `Income Cap: ${finalAmount} Pt (dalam batas 80% income ${todayIncome} Pt) ✅`;
+    ? `Income Cap: ${finalAmount} Pt (dipotong ke ${incomeCapPctDisplay}% income ${todayIncome} Pt) ✅`
+    : `Income Cap: ${finalAmount} Pt (dalam batas ${incomeCapPctDisplay}% income ${todayIncome} Pt) ✅`;
 
   const successMsg = [
     `📊 Decision Engine (01:00 WIB)`,

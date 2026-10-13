@@ -70,6 +70,7 @@ jobs:
           NTFY_SERVER: ${{ secrets.NTFY_SERVER || 'https://ntfy.sh' }}
           NTFY_AUTH_TOKEN: ${{ secrets.NTFY_AUTH_TOKEN || '' }}
           INVEST_ENABLED: ${{ secrets.INVEST_ENABLED || 'true' }}
+          DAILY_INCOME_CAP_PERCENT: ${{ vars.DAILY_INCOME_CAP_PERCENT || secrets.DAILY_INCOME_CAP_PERCENT || '80' }}
           DAILY_REWARD_ENABLED: ${{ secrets.DAILY_REWARD_ENABLED || 'true' }}
           LEADERBOARD_URL: ${{ secrets.LEADERBOARD_URL || 'https://boardleaders.rf.gd/' }}
         run: |
