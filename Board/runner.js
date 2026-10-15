@@ -5,9 +5,14 @@
  * Penggunaan:
  *   node Board/runner.js claim_daily -> Rutinitas harian (Klaim Streak 30+, Perk, Easter Egg, Analytics)
  *   node Board/runner.js analytics   -> Rutinitas tiap 1 jam (Leaderboard Scrape & Analytics)
- *   node Board/runner.js decision    -> Rutinitas jam 23:00 WIB (Automated Decision Engine)
- *   node Board/runner.js invest      -> Eksekusi investasi terjadwal jika ada
+ *   node Board/runner.js decision    -> Decision Engine -> (jika YES) Invest -> Analytics
+ *   node Board/runner.js invest      -> Eksekusi investasi terjadwal -> Analytics
  *   node Board/runner.js auto        -> Smart Self-Healing & Catch-up (Anti-Skip)
+ *
+ * Alur:
+ *   claim_daily : Task1 (Easter Egg) -> Task2 (Daily Login) -> Task3 (Analytics)
+ *   decision    : Decision Engine -> (jika YES) Invest -> Task3 (Analytics)
+ *   auto/full   : Claim Daily -> Decision -> (Invest) -> Task3 (Analytics)
  * =============================================================================
  */
 
@@ -130,18 +135,38 @@ async function runAnalytics() {
   }
 }
 
+/**
+ * Analytics ulang setelah Decision/Invest selesai (snapshot leaderboard terbaru).
+ * Sengaja NON-FATAL: claim & invest yang sudah sukses tidak boleh dianggap gagal
+ * hanya karena analytics error.
+ */
+async function runPostDecisionAnalytics() {
+  try {
+    Logger.info('Menjalankan Task 3 (Leaderboard Analytics) pasca Decision/Invest...');
+    await sleep(3000); // jeda agar sesi browser invest tertutup sempurna
+    const result = await runTask3();
+    Logger.info('Hasil Analytics pasca Decision:', { status: result?.status || 'DONE' });
+  } catch (err) {
+    Logger.warning('Analytics pasca Decision gagal (non-fatal):', { error: err.message });
+    await sendAlert(`⚠️ Analytics pasca Decision gagal: ${err.message}`);
+  }
+}
+
 async function runDecision() {
   Logger.banner('RUNNER: DECISION ENGINE DIMULAI (01:00 WIB Routine)');
   try {
     const result = await evaluateAndDecide();
     Logger.info('Hasil Decision Engine:', { decision: result.decision, reason: result.reason, amount: result.amount });
-    
+
     // Jika keputusan YA, langsung eksekusi investasi di hari yang sama
     if (result && result.decision === 'YES') {
       Logger.info('Keputusan YA terkonfirmasi -> Menjalankan eksekusi investasi langsung...');
       await sleep(2000);
       await runInvest();
     }
+
+    // Analytics ulang setelah decision/invest selesai
+    await runPostDecisionAnalytics();
 
     Logger.banner('RUNNER: DECISION ENGINE SELESAI DENGAN SUKSES');
     return result;
@@ -179,28 +204,31 @@ async function main() {
     await runClaimDaily();
   } else if (arg === 'full_run' || arg === 'all' || arg === 'routine' || arg === 'simulate') {
     Logger.banner('RUNNER: FULL RUN / SIMULASI RUTINITAS LENGKAP DIMULAI');
-    Logger.info('Menjalankan seluruh alur tanpa batasan jam/status (Claim -> Analytics -> Decision -> Invest)');
-    
-    // 1. Jalankan Claim Daily (Task 1 Easter Egg + Task 2 Streak Login + Task 3 Analytics)
+    Logger.info('Menjalankan seluruh alur tanpa batasan jam/status (Claim -> Decision -> Invest -> Analytics)');
+
+    // 1. Claim Daily (Task 1 Easter Egg + Task 2 Streak Login + Task 3 Analytics)
     await runClaimDaily();
 
     // 2. Tunggu 3 detik agar browser tertutup sempurna
     await sleep(3000);
 
-    // 3. Langsung evaluasi Decision Engine & eksekusi invest jika YA
+    // 3. Decision Engine & eksekusi invest jika YA (sudah termasuk analytics pasca decision)
     Logger.info('Melanjutkan ke Decision Engine & Eksekusi Investasi...');
     await runDecision();
 
     Logger.banner('RUNNER: FULL RUN / SIMULASI SELESAI DENGAN SUKSES');
   } else if (arg === 'invest') {
+    // Mode invest berdiri sendiri -> tidak lewat runDecision(), jadi analytics dijalankan di sini
     await runInvest();
+    await runPostDecisionAnalytics();
   } else if (arg === 'analytics') {
     await runAnalytics();
   } else if (arg === 'decision') {
     await runDecision();
   } else if (arg === 'auto') {
     // Mode Auto: Smart Unified Daily Routine (01:00 WIB) & Catch-Up Logic
-    let dailyRoutineExecuted = false;
+    // Flag ini true bila analytics sudah jalan (lewat runClaimDaily atau runDecision)
+    let analyticsAlreadyRan = false;
 
     // 1. Cek & Jalankan Rutinitas Harian jika jam >= 01:00 WIB dan belum diklaim hari ini
     if (wibHour >= 1) {
@@ -208,12 +236,12 @@ async function main() {
       if (!alreadyClaimed) {
         Logger.info(`Rutinitas Harian belum dijalankan hari ini (${getWibDate()}) -> Menjalankan Claim Daily & Easter Egg`);
         await runClaimDaily();
-        dailyRoutineExecuted = true;
+        analyticsAlreadyRan = true;
 
         // Tunggu 3 detik agar sesi browser daily reward tertutup sempurna
         await sleep(3000);
 
-        // Langsung lanjutkan dengan Decision Engine & Eksekusi Investasi
+        // Lanjutkan dengan Decision Engine & Eksekusi Investasi (+ analytics pasca decision)
         Logger.info('Melanjutkan langsung ke Decision Engine setelah Claim Daily...');
         await runDecision();
       } else {
@@ -224,6 +252,7 @@ async function main() {
         if (!decisionDone) {
           Logger.info(`Decision Engine belum dievaluasi untuk hari ini (${getWibDate()}) -> Menjalankan Decision Engine (Catch-up)`);
           await runDecision();
+          analyticsAlreadyRan = true; // analytics sudah dijalankan di dalam runDecision()
         } else {
           Logger.info(`Decision Engine sudah dievaluasi untuk hari ini (${getWibDate()}).`);
         }
@@ -232,9 +261,8 @@ async function main() {
       Logger.info(`Belum memasuki jadwal Rutinitas Harian (jam saat ini: ${wibHour}:00 WIB, jadwal: >= 01:00 WIB)`);
     }
 
-    // 2. Jalankan Hourly Analytics jika belum dieksekusi di runClaimDaily
-    // (runClaimDaily sudah menjalankan runTask3 di dalamnya)
-    if (!dailyRoutineExecuted) {
+    // 2. Hourly Analytics hanya jika belum dijalankan oleh rutinitas di atas
+    if (!analyticsAlreadyRan) {
       Logger.info('Menjalankan Hourly Leaderboard Analytics...');
       await runAnalytics();
     }
