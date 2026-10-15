@@ -6,8 +6,6 @@ on:
     - cron: '0 18 * * *'
     # 01:30 WIB = 18:30 UTC (Backup jika antrean GitHub Actions jam 01:00 tertunda)
     - cron: '30 18 * * *'
-    # Berjalan setiap 1 jam pada menit ke-17 (Hourly Analytics & Auto Catch-up)
-    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       task:
