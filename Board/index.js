@@ -40,6 +40,12 @@ function getWibDate(d = new Date()) {
   }).format(dateObj);
 }
 
+function getYesterdayWibDate(d = new Date()) {
+  const dateObj = typeof d === 'string' || typeof d === 'number' ? new Date(d) : d;
+  const prevDate = new Date(dateObj.getTime() - 24 * 60 * 60 * 1000);
+  return getWibDate(prevDate);
+}
+
 function getWibTimeStr() {
   const now = new Date();
   const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -470,13 +476,13 @@ async function runTask2() {
 // ==========================================
 // TUGAS 3: SNAPSHOT LEADERBOARD ANALYTICS
 // ==========================================
-async function runTask3() {
+async function runTask3(options = {}) {
   await waitForTurn("TUGAS_3");
   acquireBrowserLock();
 
   try {
     return await withTaskTimeout(
-      () => runLeaderboardAnalytics(openBrowser),
+      () => runLeaderboardAnalytics(openBrowser, options),
       150000,
       "TUGAS_3"
     );
@@ -658,12 +664,23 @@ function start() {
     try {
       await scanMissedDays();
       Logger.banner('BOOT RUN dimulai');
+      const prevDay = getYesterdayWibDate();
+      Logger.info(`Boot run: Menjalankan Task 3 Leaderboard Analytics hari sebelumnya (${prevDay}) sebelum klaim...`);
+      const t3_prev = await runTask3({ targetDate: prevDay, isPreviousDay: true });
+      await sleep(3000);
+
       const t1 = await runTask1();
       const t2 = await runTask2();
       await sleep(3000);
-      const t3 = await runTask3();
 
-      // Jalankan Decision Engine di boot run dengan data leaderboard analytics yang baru ditarik
+      // 3. Tarik snapshot leaderboard terbaru setelah klaim (milik hari ini)
+      // agar Decision Engine membaca saldo kas dan income hari ini yang SUDAH mencakup hasil klaim harian!
+      const today = getWibDate();
+      Logger.info(`Boot run: Menjalankan Task 3 Leaderboard Analytics pasca klaim (${today}) sebelum Decision Engine...`);
+      const t3_post_claim = await runTask3({ targetDate: today, isPreviousDay: false });
+      await sleep(2000);
+
+      // 4. Jalankan Decision Engine di boot run dengan data leaderboard analytics pasca klaim
       let decisionResult = null;
       let result = null;
       try {
@@ -672,6 +689,10 @@ function start() {
           Logger.info('Boot run: Keputusan YA terkonfirmasi -> Menjalankan eksekusi investasi...');
           await sleep(2000);
           result = await runDailyJobWithLock();
+
+          // Refresh snapshot setelah invest berhasil diproses
+          await sleep(2000);
+          await runTask3({ targetDate: today, isPreviousDay: false });
         } else {
           Logger.info('Boot run: Decision Engine tidak menjadwalkan invest (Saldo kas aman)');
         }
@@ -689,11 +710,12 @@ function start() {
 
       recordLocalTaskRun({
         phase: 'boot',
+        analyticsPrev: t3_prev?.status || 'UNKNOWN',
         task1: t1 || 'COMPLETED',
         task2: t2?.status || 'UNKNOWN',
-        task3: t3?.status || 'UNKNOWN',
         decision: decisionResult?.decision || 'NONE',
-        dailyJob: result?.status || 'SKIPPED'
+        dailyJob: result?.status || 'SKIPPED',
+        analyticsToday: t3_post_claim?.status || 'UNKNOWN'
       });
 
       Logger.banner('BOOT RUN selesai');
@@ -703,11 +725,18 @@ function start() {
   })();
 
   cron.schedule(cronSchedule, async () => {
-    Logger.banner('RUTINITAS HARIAN 01:00 WIB (CLAIM + DECISION + INVEST) DIMULAI', { triggeredAt: new Date().toISOString() });
+    Logger.banner('RUTINITAS HARIAN 01:00 WIB (ANALYTICS KEMARIN + CLAIM + DECISION + INVEST + ANALYTICS HARI INI) DIMULAI', { triggeredAt: new Date().toISOString() });
+    
+    // 1. Task 3 (Leaderboard Analytics Milik Hari Sebelumnya) - SEBELUM CLAIM
+    const prevDay = getYesterdayWibDate();
+    Logger.info(`Menjalankan Task 3: Leaderboard Analytics hari sebelumnya (${prevDay}) sebelum klaim...`);
+    const t3_prev = await runTask3({ targetDate: prevDay, isPreviousDay: true });
+    await sleep(3000);
+
+    // 2. Task 1 & Task 2 (Claim)
     const t1 = await runTask1();
     const t2 = await runTask2();
     await sleep(3000);
-    const t3 = await runTask3();
 
     if (t2 && t2.status === 'NETWORK_ERROR' && t2.attempts) {
       await scheduleDailyRewardRetry(t2.attempts);
@@ -715,10 +744,17 @@ function start() {
 
     await sendAlert(
       `🌅 Rutinitas Harian Selesai (${getWibTimeStr()})\n` +
-      `✅ Daily Login & Easter Egg Berhasil Di Claim`
+      `📊 Analytics Kemarin (${prevDay}) & ✅ Daily Login & Easter Egg Berhasil Di Claim`
     );
 
-    // Langsung jalankan Decision Engine setelah data saldo terbaru masuk
+    // 3. Tarik snapshot leaderboard terbaru setelah klaim (milik hari ini)
+    // agar Decision Engine membaca saldo kas dan income hari ini yang SUDAH mencakup hasil klaim harian!
+    const today = getWibDate();
+    Logger.info(`Menjalankan Task 3: Leaderboard Analytics pasca klaim (${today}) sebelum Decision Engine...`);
+    const t3_post_claim = await runTask3({ targetDate: today, isPreviousDay: false });
+    await sleep(2000);
+
+    // 4. Decision Engine & Invest (menggunakan data saldo pasca klaim)
     let decisionResult = null;
     let investResult = null;
     try {
@@ -730,6 +766,10 @@ function start() {
         Logger.info('Keputusan YA terkonfirmasi -> Menjalankan eksekusi investasi...');
         await sleep(2000);
         investResult = await runDailyJobWithLock();
+
+        // Refresh snapshot setelah invest berhasil diproses
+        await sleep(2000);
+        await runTask3({ targetDate: today, isPreviousDay: false });
       }
     } catch (err) {
       Logger.critical('Decision Engine gagal dengan error tidak terduga', { error: err.message });
@@ -738,11 +778,12 @@ function start() {
 
     recordLocalTaskRun({
       phase: 'cron_daily_unified',
+      analyticsPrev: t3_prev?.status || 'UNKNOWN',
       task1: t1 || 'COMPLETED',
       task2: t2?.status || 'UNKNOWN',
-      task3: t3?.status || 'UNKNOWN',
       decision: decisionResult?.decision || 'NONE',
-      invest: investResult?.status || 'NONE'
+      invest: investResult?.status || 'NONE',
+      analyticsToday: t3_post_claim?.status || 'UNKNOWN'
     });
 
     Logger.banner('RUTINITAS HARIAN 01:00 WIB SELESAI');

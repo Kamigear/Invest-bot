@@ -136,7 +136,7 @@ function findBaseline(snapshots, targetMs) {
 
   // 1. Try exact date match (e.g. 7 days ago date string)
   const targetDateStr = toDateKey(targetMs);
-  const sameDateSnap = sorted.find(s => toDateKey(s.scrapedAtMs) === targetDateStr);
+  const sameDateSnap = sorted.find(s => (s.date || toDateKey(s.scrapedAtMs)) === targetDateStr);
   if (sameDateSnap) return sameDateSnap;
 
   // 2. Try latest snapshot <= targetMs
@@ -176,12 +176,20 @@ function summarizeGrade(rows, grade) {
   };
 }
 
-function buildAnalytics(currentClasses, previousSnapshots, sourceUrl, scrapedAtMs) {
-  const oneDay = findBaseline(previousSnapshots, scrapedAtMs - 24 * 60 * 60 * 1000);
-  const sevenDays = findBaseline(previousSnapshots, scrapedAtMs - 7 * 24 * 60 * 60 * 1000);
-  const thirtyDays = findBaseline(previousSnapshots, scrapedAtMs - 30 * 24 * 60 * 60 * 1000);
-  const oldest = previousSnapshots.length > 0
-    ? [...previousSnapshots].sort((a, b) => (a.scrapedAtMs || 0) - (b.scrapedAtMs || 0))[0]
+function buildAnalytics(currentClasses, previousSnapshots, sourceUrl, scrapedAtMs, snapshotDateStr = null) {
+  const effectiveDateStr = snapshotDateStr || toDateKey(scrapedAtMs);
+
+  // Filter snapshot sebelumnya agar tidak bentrok dengan snapshot yang sedang dibuat jika tanggal sama
+  const filteredSnapshots = (previousSnapshots || []).filter(s => {
+    const sDate = s.date || toDateKey(s.scrapedAtMs || s.scrapedAt);
+    return sDate !== effectiveDateStr && s.id !== `snap_${effectiveDateStr}`;
+  });
+
+  const oneDay = findBaseline(filteredSnapshots, scrapedAtMs - 24 * 60 * 60 * 1000);
+  const sevenDays = findBaseline(filteredSnapshots, scrapedAtMs - 7 * 24 * 60 * 60 * 1000);
+  const thirtyDays = findBaseline(filteredSnapshots, scrapedAtMs - 30 * 24 * 60 * 60 * 1000);
+  const oldest = filteredSnapshots.length > 0
+    ? [...filteredSnapshots].sort((a, b) => (a.scrapedAtMs || 0) - (b.scrapedAtMs || 0))[0]
     : null;
 
   const baseline24h = mapSnapshot(oneDay);
@@ -213,14 +221,15 @@ function buildAnalytics(currentClasses, previousSnapshots, sourceUrl, scrapedAtM
     .slice(0, 10);
 
   // Build point history per class from snapshots (daily timeline)
-  const allSnapshots = [...previousSnapshots, { classes: currentClasses, scrapedAtMs }];
+  const allSnapshots = [...filteredSnapshots, { classes: currentClasses, scrapedAtMs, date: effectiveDateStr, id: `snap_${effectiveDateStr}` }];
   const pointHistory = {};
   for (const snap of allSnapshots) {
+    const snapDate = snap.date || toDateKey(snap.scrapedAtMs || snap.scrapedAt);
     for (const cls of snap.classes || []) {
       const key = classKey(cls);
       if (!pointHistory[key]) pointHistory[key] = [];
       pointHistory[key].push({
-        date: toDateKey(snap.scrapedAtMs || snap.scrapedAt),
+        date: snapDate,
         total: cls.total,
         scrapedAt: snap.scrapedAtMs
       });
@@ -237,11 +246,12 @@ function buildAnalytics(currentClasses, previousSnapshots, sourceUrl, scrapedAtM
 
   return {
     sourceUrl,
+    date: effectiveDateStr,
     scrapedAt: new Date(scrapedAtMs).toISOString(),
     scrapedAtMs,
-    snapshotCount: previousSnapshots.length + 1,
+    snapshotCount: filteredSnapshots.length + 1,
     baselines: {
-      growth24h: oneDay ? oneDay.scrapedAt : null
+      growth24h: oneDay ? (oneDay.scrapedAt || oneDay.date) : null
     },
     gradeSummary: [null, 10, 11, 12].map(grade => summarizeGrade(rows, grade)),
     classes: rows.sort((a, b) => b.total - a.total),
@@ -259,19 +269,63 @@ async function fetchPreviousSnapshots() {
   return snap.docs.map(doc => doc.data());
 }
 
-async function runLeaderboardAnalytics(pageFactory) {
+function getYesterdayWibDate(ms = Date.now()) {
+  const d = new Date(ms - 24 * 60 * 60 * 1000);
+  return toDateKey(d.getTime());
+}
+
+async function runLeaderboardAnalytics(pageFactory, options = {}) {
   const enabled = process.env.LEADERBOARD_ANALYTICS_ENABLED !== 'false' && process.env.LEADERBOARD_ANALYTICS_ENABLED !== '0';
   if (!enabled) {
     Logger.info('Leaderboard analytics dilewati (fitur dinonaktifkan)', { task: 'LEADERBOARD_ANALYTICS' });
     return { status: 'SKIPPED', task: 'LEADERBOARD_ANALYTICS' };
   }
 
+  let targetDateStr = null;
+  let isPreviousDay = false;
+  if (typeof options === 'string') {
+    targetDateStr = options;
+  } else if (options && typeof options === 'object') {
+    targetDateStr = options.targetDate || options.date || null;
+    isPreviousDay = !!options.isPreviousDay;
+  }
+
   const sourceUrl = process.env.LEADERBOARD_URL || DEFAULT_LEADERBOARD_URL;
-  const scrapedAtMs = Date.now();
+  const realNowMs = Date.now();
+
+  let snapshotDateStr = targetDateStr;
+  let scrapedAtMs = realNowMs;
+
+  if (isPreviousDay && !snapshotDateStr) {
+    snapshotDateStr = getYesterdayWibDate(realNowMs);
+  }
+
+  if (snapshotDateStr) {
+    const todayDateStr = toDateKey(realNowMs);
+    if (snapshotDateStr !== todayDateStr) {
+      // Jika target tanggal adalah hari sebelumnya, tentukan scrapedAtMs pada 23:59:59 WIB hari tersebut
+      const parts = snapshotDateStr.split('-').map(Number);
+      if (parts.length === 3) {
+        const [y, m, d] = parts;
+        // 23:59:59 WIB = 16:59:59 UTC
+        const targetEndOfDay = new Date(Date.UTC(y, m - 1, d, 16, 59, 59, 999));
+        scrapedAtMs = targetEndOfDay.getTime();
+      }
+    }
+  } else {
+    snapshotDateStr = toDateKey(realNowMs);
+  }
+
+  const snapshotId = `snap_${snapshotDateStr}`;
   let browser;
 
   try {
-    Logger.info('Mengambil snapshot leaderboard', { task: 'LEADERBOARD_ANALYTICS', sourceUrl });
+    Logger.info(`Mengambil snapshot leaderboard (target date: ${snapshotDateStr}, isPreviousDay: ${isPreviousDay})`, {
+      task: 'LEADERBOARD_ANALYTICS',
+      sourceUrl,
+      snapshotDateStr,
+      isPreviousDay
+    });
     const setup = await pageFactory();
     browser = setup.browser;
 
@@ -281,17 +335,13 @@ async function runLeaderboardAnalytics(pageFactory) {
     }
 
     const previousSnapshots = await fetchPreviousSnapshots();
-    const analytics = buildAnalytics(currentClasses, previousSnapshots, sourceUrl, scrapedAtMs);
-
-    // Document ID per hari (snap_YYYY-MM-DD) agar run berkala (misal 1 jam sekali) saling override sampai tengah malam
-    const todayDateStr = toDateKey(scrapedAtMs);
-    const snapshotId = `snap_${todayDateStr}`;
+    const analytics = buildAnalytics(currentClasses, previousSnapshots, sourceUrl, scrapedAtMs, snapshotDateStr);
 
     await db.collection('leaderboardSnapshots').doc(snapshotId).set({
       id: snapshotId,
-      date: todayDateStr,
+      date: snapshotDateStr,
       sourceUrl,
-      scrapedAt: analytics.scrapedAt,
+      scrapedAt: new Date(scrapedAtMs).toISOString(),
       scrapedAtMs,
       classes: currentClasses,
       createdAt: serverTimestamp()
@@ -299,20 +349,21 @@ async function runLeaderboardAnalytics(pageFactory) {
 
     await db.collection('botState').doc('leaderboardAnalytics').set({
       ...analytics,
+      date: snapshotDateStr,
       generatedAt: serverTimestamp()
     });
 
     // Catat point history & snapshot secara lokal setelah semua task analytics selesai
     saveLocalPointHistory(analytics);
 
-    Logger.success('Leaderboard analytics berhasil diperbarui (snapshot harian di-override)', {
+    Logger.success(`Leaderboard analytics berhasil diperbarui (snapshot: ${snapshotId})`, {
       task: 'LEADERBOARD_ANALYTICS',
       snapshotId,
       classes: currentClasses.length,
       snapshotCount: analytics.snapshotCount
     });
 
-    return { status: 'COMPLETED', task: 'LEADERBOARD_ANALYTICS', classes: currentClasses.length, analytics };
+    return { status: 'COMPLETED', task: 'LEADERBOARD_ANALYTICS', classes: currentClasses.length, analytics, snapshotId, date: snapshotDateStr };
   } catch (error) {
     Logger.error(`Leaderboard analytics gagal: ${error.message}`, {
       task: 'LEADERBOARD_ANALYTICS',
@@ -351,9 +402,9 @@ function saveLocalPointHistory(analytics) {
     historyData.snapshotCount = analytics.snapshotCount;
     historyData.pointHistory = analytics.pointHistory || {};
 
-    const todayDateStr = toDateKey(analytics.scrapedAtMs || Date.now());
+    const snapshotDateStr = analytics.date || toDateKey(analytics.scrapedAtMs || Date.now());
     const newSnapshot = {
-      date: todayDateStr,
+      date: snapshotDateStr,
       scrapedAt: analytics.scrapedAt,
       scrapedAtMs: analytics.scrapedAtMs,
       classes: (analytics.classes || []).map(c => ({ classId: c.classId || resolveClassId(c), grade: c.grade, name: c.name, total: c.total }))
@@ -361,8 +412,8 @@ function saveLocalPointHistory(analytics) {
 
     if (!Array.isArray(historyData.snapshots)) historyData.snapshots = [];
 
-    // Override snapshot lokal jika tanggal yang sama sudah ada hari ini
-    const existingIdx = historyData.snapshots.findIndex(s => s.date === todayDateStr || toDateKey(s.scrapedAtMs) === todayDateStr);
+    // Override snapshot lokal jika tanggal yang sama sudah ada
+    const existingIdx = historyData.snapshots.findIndex(s => (s.date || toDateKey(s.scrapedAtMs)) === snapshotDateStr);
     if (existingIdx >= 0) {
       historyData.snapshots[existingIdx] = newSnapshot;
     } else {

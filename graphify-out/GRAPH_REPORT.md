@@ -1,16 +1,16 @@
-# Graph Report - Investation  (2026-10-13)
+# Graph Report - Investation  (2026-10-16)
 
 ## Corpus Check
-- 151 files · ~145,761 words
+- 151 files · ~146,499 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2672 nodes · 3222 edges · 210 communities (169 shown, 41 thin omitted)
+- 2676 nodes · 3241 edges · 207 communities (166 shown, 41 thin omitted)
 - Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 166 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5f8adc5a`
+- Built from commit: `20f18a71`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -219,10 +219,7 @@
 - capture-workflow.sh
 - form-automation.sh
 - Core Principles
-- Common Patterns
 - default
-- Multi-Page Design Systems
-- Refinement Process
 
 ## God Nodes (most connected - your core abstractions)
 1. `TailwindConfigGenerator` - 57 edges
@@ -255,7 +252,7 @@
 - **Brand & Design Steering System** — kiro_steering_brand_skill_brand, kiro_steering_design_skill_design, kiro_steering_design_system_skill_design_system, kiro_steering_banner_design_skill_banner_design, kiro_steering_slides_skill_slides [EXTRACTED 1.00]
 - **graphify Tooling Suite** — _agents_rules_graphify_graphify_query, _agents_rules_graphify_query_graph, _agents_rules_graphify_graphify_path, _agents_rules_graphify_shortest_path, _agents_rules_graphify_graphify_explain, _agents_rules_graphify_get_node, _agents_rules_graphify_graphify_update [EXTRACTED 1.00]
 
-## Communities (210 total, 41 thin omitted)
+## Communities (207 total, 41 thin omitted)
 
 ### Community 0 - "Kiro Steering Design"
 Cohesion: 0.05
@@ -282,8 +279,8 @@ Cohesion: 0.05
 Nodes (37): 1. Color Palette, 2. Typography, 3. Logo Usage, 4. Voice & Tone, 5. Imagery Guidelines, 6. Design Components, Accessibility, AI Image Generation (+29 more)
 
 ### Community 6 - "Kiro Steering Ui"
-Cohesion: 0.18
-Nodes (10): Canvas Design System, Design Philosophy Approach, Execution Checklist, Output Format, Phase 1: Design Philosophy Creation, Phase 2: Visual Expression, Quality Standards, Use Cases (+2 more)
+Cohesion: 0.06
+Nodes (35): 1. Visual Communication First, 2. Minimal Text Integration, 3. Expert Craftsmanship, 4. Systematic Patterns, Analog Meditation, Approach, Canvas Boundaries, Canvas Design System (+27 more)
 
 ### Community 7 - "Kiro Steering Design"
 Cohesion: 0.06
@@ -299,11 +296,11 @@ Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at B
 
 ### Community 10 - "Board Index"
 Cohesion: 0.11
-Nodes (36): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+28 more)
+Nodes (37): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimestamp }, { evaluateAndDecide }, fs, { getChromiumPath }, getTodayId() (+29 more)
 
 ### Community 11 - "Board Leaderboard"
-Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, full, none, none
+Cohesion: 0.24
+Nodes (10): $type, $value, $type, $value, primitive, radius, shadow, full (+2 more)
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
@@ -378,8 +375,8 @@ Cohesion: 0.09
 Nodes (27): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), generate_design_system(), _generate_intelligent_overrides() (+19 more)
 
 ### Community 30 - "Board Leaderboardanalytics"
-Cohesion: 0.22
-Nodes (19): buildAnalytics(), classKey(), { db, serverTimestamp }, fetchPreviousSnapshots(), findBaseline(), fs, growthAgainst(), KNOWN_CLASS_MAP (+11 more)
+Cohesion: 0.21
+Nodes (20): buildAnalytics(), classKey(), { db, serverTimestamp }, fetchPreviousSnapshots(), findBaseline(), fs, getYesterdayWibDate(), growthAgainst() (+12 more)
 
 ### Community 31 - "Kiro Steering Design"
 Cohesion: 0.10
@@ -403,7 +400,7 @@ Nodes (18): 1. Wordmark (Logotype), 2. Lettermark (Monogram), 3. Pictorial Mark 
 
 ### Community 36 - "Kiro Steering Design"
 Cohesion: 0.11
-Nodes (19): $type, $value, background, foreground, muted-foreground, primary, primary-hover, secondary (+11 more)
+Nodes (19): $type, $value, background, destructive-foreground, muted, primary-foreground, secondary, secondary-foreground (+11 more)
 
 ### Community 37 - "Axios"
 Cohesion: 0.10
@@ -430,12 +427,12 @@ Cohesion: 0.33
 Nodes (4): Architecture & Logic, Invest Bot, Setup di OrangePi, FirebaseDB
 
 ### Community 43 - "Kiro Steering Design"
-Cohesion: 0.20
-Nodes (12): $type, $value, bg, bg, padding, shadow, card, bg (+4 more)
+Cohesion: 0.15
+Nodes (17): $type, $value, $type, $value, bg, bg, border, padding (+9 more)
 
 ### Community 44 - "Kiro Steering Ui"
-Cohesion: 0.09
-Nodes (22): @apply Directive, Best Practices, Color Customization, Complete Tailwind Config, Configuration Examples, Content Configuration, Custom Color Palette, Custom Font Sizes (+14 more)
+Cohesion: 0.14
+Nodes (13): @apply Directive, Best Practices, Complete Tailwind Config, Configuration Examples, Content Configuration, Custom Utilities, Custom Variants, Dark Mode Configuration (+5 more)
 
 ### Community 45 - "Kiro Steering Ui"
 Cohesion: 0.13
@@ -462,8 +459,8 @@ Cohesion: 0.12
 Nodes (16): $type, $value, $type, $value, $type, $value, $type, $value (+8 more)
 
 ### Community 51 - "Kiro Steering Ui"
-Cohesion: 0.12
-Nodes (15): Base Color Presets, Best Practices, Color Customization, Color Format, CSS Variable System, Dark Mode Setup, Method 1: Update CSS Variables, Method 2: Theme Generator (+7 more)
+Cohesion: 0.17
+Nodes (11): Base Color Presets, Best Practices, Color Format, CSS Variable System, Dark Mode Setup, Next.js App Router, Radius Customization, shadcn/ui Theming & Customization (+3 more)
 
 ### Community 52 - "Kiro Steering Ui"
 Cohesion: 0.17
@@ -570,8 +567,8 @@ Cohesion: 0.18
 Nodes (10): Bold Dynamic, CIP Design Style Guide, Classic Traditional, Color Psychology, Corporate Minimal, Fresh Modern, Luxury Premium, Modern Tech (+2 more)
 
 ### Community 78 - "Kiro Steering Design"
-Cohesion: 0.18
-Nodes (11): fast, normal, slow, $type, $value, $type, $value, primitive (+3 more)
+Cohesion: 0.20
+Nodes (10): fast, normal, slow, $type, $value, $type, $value, duration (+2 more)
 
 ### Community 79 - "Kiro Steering Ui"
 Cohesion: 0.20
@@ -662,8 +659,8 @@ Cohesion: 0.07
 Nodes (30): Accessibility audits, agent-browser core, Always use your own session, Common workflows, Diagnosing install issues, Dialogs, eve agent integration, Extract data (+22 more)
 
 ### Community 101 - "Kiro Steering Design"
-Cohesion: 0.47
-Nodes (6): sm, shadow, sm, sm, $type, $value
+Cohesion: 0.60
+Nodes (5): sm, sm, sm, $type, $value
 
 ### Community 102 - "Kilo Kilo"
 Cohesion: 0.40
@@ -694,8 +691,8 @@ Cohesion: 0.07
 Nodes (27): 1. Think Before Coding, 2. Simplicity First, 3. Surgical Changes, 4. Goal-Driven Execution, CLAUDE.md, 1. Think Before Coding, 2. Simplicity First, 3. Surgical Changes (+19 more)
 
 ### Community 109 - "Kiro Steering Design"
-Cohesion: 0.23
-Nodes (18): sendAlert(), getDoc(), { evaluateAndDecide }, { getDoc, setDoc, serverTimestamp }, getWibDate(), getWibTimeStr(), isDailyClaimDoneToday(), isDecisionDoneToday() (+10 more)
+Cohesion: 0.24
+Nodes (20): sendAlert(), getDoc(), { evaluateAndDecide }, { getDoc, setDoc, serverTimestamp }, getWibDate(), getWibTimeStr(), getYesterdayWibDate(), isDailyClaimDoneToday() (+12 more)
 
 ### Community 110 - "md"
 Cohesion: 0.50
@@ -703,7 +700,7 @@ Nodes (3): Answer, Q: apakah kemungkinan investasi bisa terskip?, Source Nodes
 
 ### Community 111 - "$type"
 Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+Nodes (4): $type, $value, none, none
 
 ### Community 112 - "_select_palette_for_mode"
 Cohesion: 0.43
@@ -774,8 +771,8 @@ Cohesion: 0.09
 Nodes (22): App launches but connect fails, Cannot type in input fields, Color Scheme, Common Patterns, Connecting, "Connection refused" or "Cannot connect", Core Workflow, Electron App Automation (+14 more)
 
 ### Community 163 - "Session Management"
-Cohesion: 0.13
-Nodes (15): 1. Name Sessions Semantically, 2. Always Clean Up, 3. Handle State Files Securely, 4. Timeout Long Sessions, Automatic Restore, Best Practices, Contents, Default Session (+7 more)
+Cohesion: 0.11
+Nodes (19): 1. Name Sessions Semantically, 2. Always Clean Up, 3. Handle State Files Securely, 4. Timeout Long Sessions, A/B Testing Sessions, Authenticated Session Reuse, Automatic Restore, Best Practices (+11 more)
 
 ### Community 164 - "Video Recording"
 Cohesion: 0.14
@@ -850,16 +847,16 @@ Cohesion: 0.33
 Nodes (5): Completion, Generate and validate page WebMCP tools, Output, Safety, Workflow
 
 ### Community 188 - "Best Practices"
-Cohesion: 0.33
-Nodes (6): Analog Meditation, Chromatic Language, Concrete Poetry, Design Movement Examples, Geometric Silence, Organic Systems
+Cohesion: 0.50
+Nodes (4): Color Customization, Method 1: Update CSS Variables, Method 2: Theme Generator, Method 3: Multiple Themes
 
 ### Community 189 - "Q: apkaah saat ini bot bisa inves lebih dari pemasukan?"
 Cohesion: 0.40
 Nodes (4): Answer, Outcome, Q: apkaah saat ini bot bisa inves lebih dari pemasukan?, Source Nodes
 
 ### Community 190 - "$type"
-Cohesion: 0.60
-Nodes (5): $type, $value, border, border, border
+Cohesion: 0.67
+Nodes (3): foreground, $type, $value
 
 ### Community 191 - "radius"
 Cohesion: 0.60
@@ -870,8 +867,8 @@ Cohesion: 0.67
 Nodes (4): padding-y, padding-y, $type, $value
 
 ### Community 193 - "Color Customization"
-Cohesion: 0.33
-Nodes (6): Canvas Boundaries, Color Approach, Composition Rules, Implementation Guidelines, Subtle Reference Integration, Typography System
+Cohesion: 0.67
+Nodes (3): muted-foreground, $type, $value
 
 ### Community 194 - "Component Customization"
 Cohesion: 0.50
@@ -883,15 +880,15 @@ Nodes (3): destructive, $type, $value
 
 ### Community 196 - "destructive-foreground"
 Cohesion: 0.67
-Nodes (3): destructive-foreground, $type, $value
+Nodes (3): primary, $type, $value
 
 ### Community 197 - "muted"
 Cohesion: 0.67
-Nodes (3): muted, $type, $value
+Nodes (3): primary-hover, $type, $value
 
 ### Community 198 - "primary-foreground"
 Cohesion: 0.67
-Nodes (3): primary-foreground, $type, $value
+Nodes (3): Color Customization, Custom Color Palette, Semantic Colors
 
 ### Community 199 - "ring"
 Cohesion: 0.67
@@ -899,31 +896,19 @@ Nodes (3): ring, $type, $value
 
 ### Community 200 - "secondary-foreground"
 Cohesion: 0.67
-Nodes (3): secondary-foreground, $type, $value
+Nodes (3): Custom Font Sizes, Custom Fonts, Typography Customization
 
 ### Community 201 - "Color Customization"
 Cohesion: 0.40
 Nodes (5): 1. Add Pauses for Clarity, 2. Use Descriptive Filenames, 3. Handle Recording in Error Cases, 4. Combine with Screenshots, Best Practices
 
 ### Community 205 - "Core Principles"
-Cohesion: 0.40
-Nodes (5): 1. Visual Communication First, 2. Minimal Text Integration, 3. Expert Craftsmanship, 4. Systematic Patterns, Core Principles
-
-### Community 206 - "Common Patterns"
-Cohesion: 0.50
-Nodes (4): A/B Testing Sessions, Authenticated Session Reuse, Common Patterns, Concurrent Scraping
+Cohesion: 0.67
+Nodes (3): Custom Plugin, Official Plugins, Plugins
 
 ### Community 207 - "default"
 Cohesion: 0.67
 Nodes (4): $type, $value, default, default
-
-### Community 208 - "Multi-Page Design Systems"
-Cohesion: 0.50
-Nodes (4): Approach, Consistency Elements, Multi-Page Design Systems, Variation Strategy
-
-### Community 209 - "Refinement Process"
-Cohesion: 0.50
-Nodes (4): Final Verification, Initial Pass, Refinement Process, Second Pass (Critical)
 
 ## Knowledge Gaps
 - **1401 isolated node(s):** `authenticated-session.sh script`, `capture-workflow.sh script`, `form-automation.sh script`, `$schema`, `file:///D:/Investation/.kilo/plugins/graphify.js` (+1396 more)
@@ -934,11 +919,11 @@ Nodes (4): Final Verification, Initial Pass, Refinement Process, Second Pass (Cr
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `UI Styling Skill` connect `Kiro Steering Ui` to `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `TailwindConfigGenerator` connect `Kiro Steering Ui` to `Invest Bot Readme`, `Kiro Steering Ui`, `.test_init_framework`, `Kiro Steering Ui`, `.test_base_config_structure`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Any`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`, `Kiro Steering Ui`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `primitive` connect `Kiro Steering Design` to `Kiro Steering Design`, `Kiro Steering Design`, `Kiro Steering Design`, `Board Leaderboard`, `design-tokens-starter.json`, `Kiro Steering Design`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `Tailwind CSS Utility Reference` connect `Kiro Steering Ui` to `Kiro Steering Ui`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Are the 36 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `.test_node_check_parses_generated_config()`) actually correct?**
   _`TailwindConfigGenerator` has 36 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 23 inferred relationships involving `ShadcnInstaller` (e.g. with `TestShadcnInstaller` and `.test_add_all_components_dry_run()`) actually correct?**
