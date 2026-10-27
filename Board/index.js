@@ -664,10 +664,6 @@ function start() {
     try {
       await scanMissedDays();
       Logger.banner('BOOT RUN dimulai');
-      const prevDay = getYesterdayWibDate();
-      Logger.info(`Boot run: Menjalankan Task 3 Leaderboard Analytics hari sebelumnya (${prevDay}) sebelum klaim...`);
-      const t3_prev = await runTask3({ targetDate: prevDay, isPreviousDay: true });
-      await sleep(3000);
 
       const t1 = await runTask1();
       const t2 = await runTask2();
@@ -710,7 +706,6 @@ function start() {
 
       recordLocalTaskRun({
         phase: 'boot',
-        analyticsPrev: t3_prev?.status || 'UNKNOWN',
         task1: t1 || 'COMPLETED',
         task2: t2?.status || 'UNKNOWN',
         decision: decisionResult?.decision || 'NONE',
@@ -725,15 +720,9 @@ function start() {
   })();
 
   cron.schedule(cronSchedule, async () => {
-    Logger.banner('RUTINITAS HARIAN 01:00 WIB (ANALYTICS KEMARIN + CLAIM + DECISION + INVEST + ANALYTICS HARI INI) DIMULAI', { triggeredAt: new Date().toISOString() });
-    
-    // 1. Task 3 (Leaderboard Analytics Milik Hari Sebelumnya) - SEBELUM CLAIM
-    const prevDay = getYesterdayWibDate();
-    Logger.info(`Menjalankan Task 3: Leaderboard Analytics hari sebelumnya (${prevDay}) sebelum klaim...`);
-    const t3_prev = await runTask3({ targetDate: prevDay, isPreviousDay: true });
-    await sleep(3000);
+    Logger.banner('RUTINITAS HARIAN 01:00 WIB (CLAIM + ANALYTICS + DECISION + INVEST + REFRESH ANALYTICS) DIMULAI', { triggeredAt: new Date().toISOString() });
 
-    // 2. Task 1 & Task 2 (Claim)
+    // 1. Task 1 & Task 2 (Claim)
     const t1 = await runTask1();
     const t2 = await runTask2();
     await sleep(3000);
@@ -744,10 +733,10 @@ function start() {
 
     await sendAlert(
       `🌅 Rutinitas Harian Selesai (${getWibTimeStr()})\n` +
-      `📊 Analytics Kemarin (${prevDay}) & ✅ Daily Login & Easter Egg Berhasil Di Claim`
+      `✅ Daily Login & Easter Egg Berhasil Di Claim`
     );
 
-    // 3. Tarik snapshot leaderboard terbaru setelah klaim (milik hari ini)
+    // 2. Tarik snapshot leaderboard terbaru setelah klaim (milik hari ini)
     // agar Decision Engine membaca saldo kas dan income hari ini yang SUDAH mencakup hasil klaim harian!
     const today = getWibDate();
     Logger.info(`Menjalankan Task 3: Leaderboard Analytics pasca klaim (${today}) sebelum Decision Engine...`);

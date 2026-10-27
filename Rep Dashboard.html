@@ -97,53 +97,26 @@
         ::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.3); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.6); }
     </style>
-<style>
-        .tm-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 999999; opacity: 0; pointer-events: none; transition: opacity 0.2s ease-in-out;
-        }
-        .tm-overlay.tm-show { opacity: 1; pointer-events: auto; }
-        .tm-modal {
-            background: rgba(22, 18, 33, 0.85); border: 1px solid rgba(168, 85, 247, 0.4);
-            border-radius: 12px; padding: 25px 30px; max-width: 350px; width: 90%;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.2);
-            text-align: center; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transform: translateY(-20px) scale(0.95); transition: transform 0.2s ease-in-out;
-        }
-        .tm-overlay.tm-show .tm-modal { transform: translateY(0) scale(1); }
-        .tm-title { font-size: 1.25rem; margin-bottom: 10px; font-weight: bold; color: #fff; }
-        .tm-desc { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 25px; line-height: 1.5; }
-        .tm-btn-group { display: flex; gap: 15px; justify-content: center; }
-        .tm-btn {
-            padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer;
-            font-weight: bold; transition: 0.2s; flex: 1; font-size: 0.9rem;
-        }
-        .tm-btn-cancel { background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-        .tm-btn-cancel:hover { background: rgba(255, 255, 255, 0.15); }
-        .tm-btn-confirm { background: #a855f7; color: white; }
-        .tm-btn-confirm:hover { background: #9333ea; box-shadow: 0 0 10px rgba(168, 85, 247, 0.4); }
-    </style></head>
+</head>
 <body>
 
-    <div id="dot-field-bg"><canvas style="position: absolute; inset: 0px; width: 1280px; height: 585.333px;" width="1920" height="878"></canvas><svg style="position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none;">
+    <div id="dot-field-bg"><canvas width="1920" height="878" style="position: absolute; inset: 0px; width: 1280px; height: 585.333px;"></canvas><svg style="position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none;">
                 <defs>
-                    <radialgradient id="dot-glow-v1ujj3k">
+                    <radialgradient id="dot-glow-4g748zi">
                         <stop offset="0%" stop-color="#2d124d"></stop>
                         <stop offset="100%" stop-color="transparent"></stop>
                     </radialgradient>
                 </defs>
-                <circle id="dot-glow-v1ujj3k-circle" cx="539" cy="91.33332824707031" r="160" fill="url(#dot-glow-v1ujj3k)" style="opacity: 1.88021e-48; will-change: opacity;"></circle>
+                <circle id="dot-glow-4g748zi-circle" cx="478" cy="-387" r="160" fill="url(#dot-glow-4g748zi)" style="opacity: 0.544156; will-change: opacity;"></circle>
             </svg></div>
-    <div id="text-cursor-container"></div>
+    <div id="text-cursor-container"><div class="text-cursor-item" style="left: 660px; top: 288px; transform: translate(-50%, -50%) rotate(0deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: 3.7978840485460132px; --ry: -4.080906943331703px; --rrot: 4.495290756618907deg; --base-angle: 0deg;">🐓</div><div class="text-cursor-item" style="left: 600.194px; top: 292.823px; transform: translate(-50%, -50%) rotate(175.389deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: -0.7092135409162301px; --ry: -4.904702264088103px; --rrot: 2.515940462756631deg; --base-angle: 175.3893506813394deg;">🐓</div><div class="text-cursor-item" style="left: 548.788px; top: 261.882px; transform: translate(-50%, -50%) rotate(-148.956deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: 2.046780634591011px; --ry: 1.3281234072069683px; --rrot: 4.8176478514096deg; --base-angle: -148.9564260037198deg;">🐓</div><div class="text-cursor-item" style="left: 512.941px; top: 213.767px; transform: translate(-50%, -50%) rotate(-126.687deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: 3.1326551128840556px; --ry: 2.6486813308886177px; --rrot: -0.478933454159149deg; --base-angle: -126.6865054275534deg;">🐓</div><div class="text-cursor-item" style="left: 492.062px; top: 157.517px; transform: translate(-50%, -50%) rotate(-110.365deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: 1.4690413426696916px; --ry: 1.6259378578870685px; --rrot: 0.4762275893001995deg; --base-angle: -110.36462959280142deg;">🐓</div><div class="text-cursor-item" style="left: 471.182px; top: 101.267px; transform: translate(-50%, -50%) rotate(-110.365deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: -2.311043272619436px; --ry: -1.6163895743536072px; --rrot: -2.69441505029255deg; --base-angle: -110.36462959280142deg;">🐓</div><div class="text-cursor-item" style="left: 472.734px; top: 41.2871px; transform: translate(-50%, -50%) rotate(-88.5181deg) scale(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; animation: 2s ease-in-out 0s infinite alternate none running textCursorFloat; --rx: -4.766430377717404px; --ry: 4.7261343432163585px; --rrot: -3.6897925219103325deg; --base-angle: -88.51814378918597deg;">🐓</div></div>
     <canvas id="click-spark-canvas" width="1280" height="585"></canvas>
 
 
     <div style="max-width: 1000px; margin: auto; padding-bottom: 20px; position: relative; z-index: 10;">
         <h2>Dashboard Account: <span style="color: #c084fc;">Class Mr Kalebbbbb</span></h2>
         <p style="font-size: 16px;">
-            Point Tersedia: <strong style="color: #4ade80; font-size:20px;">1362 Point</strong> | 
+            Point Tersedia: <strong style="color: #4ade80; font-size:20px;">4860 Point</strong> | 
             Tiket Blind Box: <strong style="color: #38bdf8; font-size:20px;"> 0 Tiket</strong>
         </p>
         
@@ -158,12 +131,12 @@
         <div>
             
             <div class="card">
-                <h3>Kalender Daily Login - September 2026</h3>
+                <h3>Kalender Daily Login - October 2026</h3>
                 <div class="calendar-grid">
                     <div class="cal-header">Minggu</div><div class="cal-header">Senin</div><div class="cal-header">Selasa</div>
                     <div class="cal-header">Rabu</div><div class="cal-header">Kamis</div><div class="cal-header">Selasa</div>
                     <div class="cal-header">Sabtu</div>
-                    <div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">1</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">2</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">3</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">4</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">5</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">6</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">7</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">8</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">9</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">10</div><div class="cal-day cal-today" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">11<span class="cal-event event-auction">Auction Day</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">12</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">13<span class="cal-event event-invest">+53 (Payout)</span><span class="cal-event event-invest">+46 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">14<span class="cal-event event-invest">+53 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">15</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">16<span class="cal-event event-invest">+53 (Payout)</span><span class="cal-event event-invest">+59 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">17<span class="cal-event event-invest">+59 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">18<span class="cal-event event-invest">+66 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">19<span class="cal-event event-invest">+66 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">20<span class="cal-event event-invest">+59 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">21<span class="cal-event event-invest">+66 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">22<span class="cal-event event-invest">+66 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">23<span class="cal-event event-invest">+125 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">24<span class="cal-event event-invest">+125 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">25<span class="cal-event event-invest">+79 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">26</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">27</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">28<span class="cal-event event-invest">+79 (Payout)</span><span class="cal-event event-invest">+79 (Payout)</span><span class="cal-event event-invest">+79 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">29<span class="cal-event event-invest">+125 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">30<span class="cal-event event-invest">+151 (Payout)</span></div>                </div>
+                    <div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background:transparent; border:none;"></div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">1</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">2</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">3</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">4</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">5</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">6</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">7</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">8</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">9</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">10</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">11</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">12</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">13</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">14</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">15</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">16</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">17</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">18</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">19</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">20</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">21</div><div class="cal-day" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">22</div><div class="cal-day cal-today" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">23</div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">24<span class="cal-event event-invest">+385 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">25<span class="cal-event event-invest">+510 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">26<span class="cal-event event-invest">+456 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">27<span class="cal-event event-invest">+419 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">28<span class="cal-event event-invest">+469 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">29<span class="cal-event event-invest">+471 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">30<span class="cal-event event-invest">+481 (Payout)</span></div><div class="cal-day" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);">31<span class="cal-event event-invest">+468 (Payout)</span></div>                </div>
             </div>
 
             <div class="card">
@@ -239,7 +212,7 @@
             <div class="card">
                 <h3>Points Investment</h3>
                 <form method="POST">
-                    <input type="number" name="amount" placeholder="Mau invest berapa" min="1" max="1362" required="">
+                    <input type="number" name="amount" placeholder="Mau invest berapa" min="1" max="4860" required="">
                     <select name="plan" required="">
                         <option value="30">30 Days (18% return)</option>
                         <option value="60">60 Days (25% return)</option>
@@ -262,57 +235,34 @@
             
             <div class="card" style="padding: 0; overflow: hidden; border: 1px solid #a855f7;">
                 <div class="tab-header">
-                    <div class="tab-btn" id="btn-gacha" onclick="switchTab(&#39;gacha&#39;)">Blind Box</div>
-                    <div class="tab-btn active" id="btn-auction" onclick="switchTab(&#39;auction&#39;)">Auction House</div>
+                    <div class="tab-btn active" id="btn-gacha" onclick="switchTab(&#39;gacha&#39;)">Blind Box</div>
+                    <div class="tab-btn" id="btn-auction" onclick="switchTab(&#39;auction&#39;)">Auction House</div>
                 </div>
 
-                <div id="content-gacha" class="tab-content" style="background: transparent;">
+                <div id="content-gacha" class="tab-content active" style="background: transparent;">
                     <h3 style="margin-top:0;">Mystery Blind Box</h3>
                     <p style="color: #cbd5e1;">Apakah anda merasa beruntung (dont gamble ya kids)</p>
-                    <p style="font-size: 16px;"><strong>Harga saat ini:</strong> <span style="color: #c084fc;">744 Point</span></p>
+                    <p style="font-size: 16px;"><strong>Harga saat ini:</strong> <span style="color: #c084fc;">2663 Point</span></p>
                     
                     
                     <form method="POST">
                                                     <button type="submit" name="open_blind_box" class="btn-yellow" style="font-weight:bold; width:100%; font-size:16px;">
-                                Open Mystery Blind Box (744 Points)
+                                Open Mystery Blind Box (2663 Points)
                             </button>
                                             </form>
                     <p style="font-size: 12px; color: #94a3b8; margin-top: 10px; text-align: center;">
-                        Chance free ticket: <strong style="color: #e2e8f0;">15%</strong> (Pity: 2/9)
+                        Chance free ticket: <strong style="color: #e2e8f0;">20%</strong> (Pity: 3/9)
                     </p>
                 </div>
 
-                <div id="content-auction" class="tab-content active" style="background: transparent;">
+                <div id="content-auction" class="tab-content" style="background: transparent;">
                     <h3 style="margin-top:0;">Live Auction</h3>
                     <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">Bid barang yang kelasmu butuh/mau, (bisa unlock EX Rank Perk loh) tiati utang ya</p>
                     
-                                            <div style="border: 1px solid rgba(59, 130, 246, 0.4); padding: 20px; border-radius: 8px; background: rgba(59, 130, 246, 0.05); text-align: center;">
-                            <h4 style="margin: 0 0 10px 0; color: #60a5fa;">High Yield Bond III</h4>
-                            <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 15px;">semua investasi permanen naik 6%</p>
-                            
-                            <div style="background: rgba(0, 0, 0, 0.2); padding: 12px; border-radius: 6px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
-                                <p style="margin: 5px 0; font-size: 13px;"><strong>Lelang berakhir:</strong> 11 Sep 2026, 19:00</p>
-                                <p style="margin: 5px 0; font-size: 18px;"><strong>Bid Tertinggi:</strong> <span style="color: #4ade80;">3 Pt</span></p>
-                                <p style="margin: 5px 0; font-size: 12px; color: #94a3b8;">Milik kelas: <span style="color: #e2e8f0;">Class Mr Kalebbbbb</span></p>
-                            </div>
-                            
-                            <form method="POST" id="bidForm" onsubmit="return confirmBid(this, 1362)">
-                                <input type="hidden" name="auction_id" value="12">
-                                <div style="display: flex; gap: 10px; justify-content: center;">
-                                    <input type="number" name="bid_amount" value="13" min="4" required="" style="width: 120px; text-align: center; font-size: 16px; padding: 8px;" data-last-min="4">
-                                    <button type="submit" name="place_bid" class="btn-blue" style="font-weight: bold; padding: 8px 20px;">Place Bid</button>
-                                </div>
-                            </form>
+                                            <div style="border: 1px dashed rgba(255,255,255,0.2); padding: 25px 15px; border-radius: 6px; background: rgba(255,255,255,0.02); text-align: center; color: #94a3b8;">
+                            <p style="font-size: 14px; margin: 0;">Tidak ada lelang yang aktif saat ini. Silahkan cek lagi nanti!</p>
+                            <p style="font-size: 11px; margin-top: 10px; opacity: 0.7;">(Admin: Tambahkan jadwal di tabel 'auctions' untuk memulai lelang otomatis)</p>
                         </div>
-                        <script>
-                            function confirmBid(form, currentScore) {
-                                const bid = parseInt(form.bid_amount.value);
-                                if (bid > currentScore) {
-                                    return confirm("⚠ WARNING: bidmu sejumlah " + bid + " point melebihi saldomu sekarang (" + currentScore + " points).\n\nkalau kamu menang, jadi ngutang ke bank dan harus bayar dulu.\n\nMau lanjut?");
-                                }
-                                return true;
-                            }
-                        </script>
                                     </div>
             </div>
 
@@ -321,110 +271,110 @@
                 <div class="transaction-list">
                                                                         <div class="tx-item">
                                 <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (43) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">11 Sep, 04:39</span>
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (85) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">23 Oct, 03:56</span>
                                 </div>
                                 <div>
-                                                                            <span class="tx-income">+95 Pt</span>
+                                                                            <span class="tx-income">+245 Pt</span>
                                                                     </div>
                             </div>
                                                     <div class="tx-item">
                                 <div style="flex:1;">
                                     <strong style="color: #e2e8f0;">Investment Matured &amp; Paid Out</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">11 Sep, 04:39</span>
+                                    <span style="font-size:11px; color:#94a3b8;">23 Oct, 03:56</span>
                                 </div>
                                 <div>
-                                                                            <span class="tx-income">+46 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Investment Matured &amp; Paid Out</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">10 Sep, 20:48</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+118 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (42) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">10 Sep, 04:43</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+90 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Bonus: Won 1 Blind Box Ticket! (Pity Reset)</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">09 Sep, 04:11</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+0 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (41) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">09 Sep, 04:11</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+88 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (40) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">08 Sep, 20:12</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+86 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Bonus: Won 1 Blind Box Ticket! (Pity Reset)</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">07 Sep, 04:14</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+0 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (39) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">07 Sep, 04:14</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+84 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (38) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">06 Sep, 04:03</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+82 Pt</span>
-                                                                    </div>
-                            </div>
-                                                    <div class="tx-item">
-                                <div style="flex:1;">
-                                    <strong style="color: #e2e8f0;">Daily Login Streak (37) &amp; Passive Income (1 day(s))</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">05 Sep, 04:19</span>
-                                </div>
-                                <div>
-                                                                            <span class="tx-income">+80 Pt</span>
+                                                                            <span class="tx-income">+207 Pt</span>
                                                                     </div>
                             </div>
                                                     <div class="tx-item">
                                 <div style="flex:1;">
                                     <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
-                                    <span style="font-size:11px; color:#94a3b8;">04 Sep, 04:48</span>
+                                    <span style="font-size:11px; color:#94a3b8;">22 Oct, 03:59</span>
                                 </div>
                                 <div>
-                                                                            <span class="tx-expense">-64 Pt</span>
+                                                                            <span class="tx-expense">-153 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (84) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">22 Oct, 03:58</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+236 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">21 Oct, 04:48</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-218 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (83) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">21 Oct, 04:47</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+336 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">20 Oct, 04:48</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-148 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Bonus: Won 1 Blind Box Ticket! (Pity Reset)</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">20 Oct, 04:47</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+0 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (82) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">20 Oct, 04:47</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+229 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">19 Oct, 02:48</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-179 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Daily Login Streak (81) &amp; Passive Income (1 day(s))</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">19 Oct, 02:47</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-income">+226 Pt</span>
+                                                                    </div>
+                            </div>
+                                                    <div class="tx-item">
+                                <div style="flex:1;">
+                                    <strong style="color: #e2e8f0;">Investasi for 30 Days</strong><br>
+                                    <span style="font-size:11px; color:#94a3b8;">18 Oct, 02:47</span>
+                                </div>
+                                <div>
+                                                                            <span class="tx-expense">-144 Pt</span>
                                                                     </div>
                             </div>
                                                             </div>
@@ -450,17 +400,19 @@
                                                                                                 <span class="perk-qty max-badge">MAX</span>
                                                                                         <span class="tooltiptext">diskon 10% harga final auction</span>
                         </div>
-                                            <div class="perk-badge perk-inactive">
+                                            <div class="perk-badge perk-active">
                             <span>Bronze Bankbook</span>
-                                                        <span class="tooltiptext">generate 0.5% balance tersedia, daily tanpa investasi</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">generate 0.5% balance tersedia, daily tanpa investasi</span>
                         </div>
-                                            <div class="perk-badge perk-inactive">
+                                            <div class="perk-badge perk-active">
                             <span>Early Bird</span>
-                                                        <span class="tooltiptext">extra 2 point untuk daily login</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">extra 2 point untuk daily login</span>
                         </div>
                                             <div class="perk-badge perk-inactive">
                             <span>Gacha Reset</span>
-                                                        <span class="tooltiptext">Reset harga Gacha jadi 100 lagi</span>
+                                                        <span class="tooltiptext">Reset harga Gacha jadi harga terendah</span>
                         </div>
                                             <div class="perk-badge perk-inactive">
                             <span>Gold Bankbook</span>
@@ -474,34 +426,38 @@
                             <span>Hagglers License II</span>
                                                         <span class="tooltiptext">permanen 4% diskon item shop</span>
                         </div>
-                                            <div class="perk-badge perk-inactive">
+                                            <div class="perk-badge perk-active">
                             <span>Hagglers License III</span>
-                                                        <span class="tooltiptext">permanen 6% diskon item shop</span>
+                                                                                                <span class="perk-qty max-badge">MAX</span>
+                                                                                        <span class="tooltiptext">permanen 6% diskon item shop</span>
                         </div>
                                             <div class="perk-badge perk-active">
                             <span>High Yield Bond I</span>
-                                                                                                <span class="perk-qty">1</span>
+                                                                                                <span class="perk-qty">2</span>
                                                                                         <span class="tooltiptext">semua investasi permanen naik 2%</span>
                         </div>
                                             <div class="perk-badge perk-inactive">
                             <span>High Yield Bond II</span>
                                                         <span class="tooltiptext">semua investasi permanen naik 4%</span>
                         </div>
-                                            <div class="perk-badge perk-inactive">
+                                            <div class="perk-badge perk-active">
                             <span>High Yield Bond III</span>
-                                                        <span class="tooltiptext">semua investasi permanen naik 6%</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">semua investasi permanen naik 6%</span>
                         </div>
-                                            <div class="perk-badge perk-inactive">
+                                            <div class="perk-badge perk-active">
                             <span>Login Multiplier I</span>
-                                                        <span class="tooltiptext">5% chance pas login, daily login rewardnya double</span>
+                                                                                                <span class="perk-qty">1</span>
+                                                                                        <span class="tooltiptext">5% chance pas login, daily login rewardnya double</span>
                         </div>
                                             <div class="perk-badge perk-inactive">
                             <span>Login Multiplier II</span>
                                                         <span class="tooltiptext">10% chance pas login, daily login rewardnya double</span>
                         </div>
-                                            <div class="perk-badge perk-inactive">
+                                            <div class="perk-badge perk-active">
                             <span>Night Owl</span>
-                                                        <span class="tooltiptext">extra 4 point untuk daily login</span>
+                                                                                                <span class="perk-qty">2</span>
+                                                                                        <span class="tooltiptext">extra 4 point untuk daily login</span>
                         </div>
                                             <div class="perk-badge perk-active">
                             <span>Piggy Bank</span>
@@ -510,7 +466,7 @@
                         </div>
                                             <div class="perk-badge perk-active">
                             <span>Proxy Bidder</span>
-                                                                                                <span class="perk-qty max-badge">MAX</span>
+                                                                                                <span class="perk-qty ex-badge">EX*</span>
                                                                                         <span class="tooltiptext">bisa ngebid di auction sebesar 1% increment (normalnya 5%) (contoh: kelas yang tidak punya perk ini jika harga bid 100 maka wajib taruh harga minimal 105, tapi jika kelas kalian punya perk ini, maka kalian bisa cuma taruh 101 instead of 105)</span>
                         </div>
                                             <div class="perk-badge perk-inactive">
@@ -523,12 +479,12 @@
                         </div>
                                             <div class="perk-badge perk-active">
                             <span>Silver Bankbook</span>
-                                                                                                <span class="perk-qty">1</span>
+                                                                                                <span class="perk-qty max-badge">MAX</span>
                                                                                         <span class="tooltiptext">generate 1% balance tersedia, daily tanpa investasi</span>
                         </div>
                                             <div class="perk-badge perk-active">
                             <span>Streak Saver</span>
-                                                                                                <span class="perk-qty">1</span>
+                                                                                                <span class="perk-qty">3</span>
                                                                                         <span class="tooltiptext">bisa dipakai untuk save login streak kalau ketinggalan (1 hari) </span>
                         </div>
                                             <div class="perk-badge perk-active">
@@ -583,179 +539,235 @@
                                     <ul style="list-style-type: none; padding: 0;">
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>45 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>53 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>306 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>385 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-13 04:00:51                                 </div>
+                                    Selesai pada: 2026-10-24 02:12:24                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>39 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>46 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>405 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>510 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-13 16:02:29                                 </div>
+                                    Selesai pada: 2026-10-25 01:38:50                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>45 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>53 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>362 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>456 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-14 16:00:54                                 </div>
+                                    Selesai pada: 2026-10-26 02:54:02                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>45 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>53 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>333 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>419 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-16 09:42:03                                 </div>
+                                    Selesai pada: 2026-10-27 01:26:23                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>50 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>59 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>373 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>469 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-16 16:01:17                                 </div>
+                                    Selesai pada: 2026-10-28 05:03:18                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>50 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>59 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>374 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>471 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-17 16:01:37                                 </div>
+                                    Selesai pada: 2026-10-29 03:49:44                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>56 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>66 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>382 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>481 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-18 16:01:52                                 </div>
+                                    Selesai pada: 2026-10-30 02:22:39                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>56 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>66 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>372 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>468 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-19 16:01:43                                 </div>
+                                    Selesai pada: 2026-10-31 01:57:48                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>50 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>59 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>355 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>454 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-20 16:02:16                                 </div>
+                                    Selesai pada: 2026-11-01 03:49:44                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>56 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>66 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>344 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>440 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-21 16:01:34                                 </div>
+                                    Selesai pada: 2026-11-02 03:18:42                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>56 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>66 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>320 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>409 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-22 16:01:32                                 </div>
+                                    Selesai pada: 2026-11-03 03:35:55                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>106 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>125 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>109 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>139 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-23 22:38:21                                 </div>
+                                    Selesai pada: 2026-11-04 05:39:34                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>106 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>125 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>110 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>140 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-24 18:50:53                                 </div>
+                                    Selesai pada: 2026-11-05 04:39:25                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>67 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>79 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>111 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>142 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-25 22:47:47                                 </div>
+                                    Selesai pada: 2026-11-06 05:00:42                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>67 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>79 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>115 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>147 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-28 07:41:04                                 </div>
+                                    Selesai pada: 2026-11-07 05:06:12                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>67 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>79 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>116 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>148 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-28 19:23:36                                 </div>
+                                    Selesai pada: 2026-11-08 03:58:03                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>67 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>79 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>116 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>148 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-28 20:53:33                                 </div>
+                                    Selesai pada: 2026-11-09 01:38:08                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>106 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>125 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>158 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>202 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-29 16:02:08                                 </div>
+                                    Selesai pada: 2026-11-10 03:19:06                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>128 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>151 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>119 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>152 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-09-30 04:02:11                                 </div>
+                                    Selesai pada: 2026-11-11 06:54:22                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>78 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>92 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>97 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>124 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-10-01 22:04:24                                 </div>
+                                    Selesai pada: 2026-11-12 04:17:01                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>78 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>92 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>140 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>179 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-10-02 04:00:57                                 </div>
+                                    Selesai pada: 2026-11-13 03:43:23                                 </div>
                             </li>
                                                     <li style="padding: 10px 0;">
                                 <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
-                                    <span>Saldo yang di invest: <strong>64 Poin</strong></span>
-                                    <span style="color:#4ade80;">Hasil: <strong>75 Pt</strong></span>
+                                    <span>Saldo yang di invest: <strong>2623 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>3357 Pt</strong></span>
                                 </div>
                                 <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
-                                    Selesai pada: 2026-10-03 04:48:13                                 </div>
+                                    Selesai pada: 2026-11-13 07:17:57                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>140 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>179 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-14 07:29:37                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>143 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>183 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-15 03:11:50                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>144 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>184 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-16 02:47:26                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>179 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>229 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-17 02:48:17                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>148 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>189 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-18 04:48:58                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>218 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>279 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-19 04:48:35                                 </div>
+                            </li>
+                                                    <li style="padding: 10px 0;">
+                                <div style="display:flex; justify-content:space-between; color: #e2e8f0;">
+                                    <span>Saldo yang di invest: <strong>153 Poin</strong></span>
+                                    <span style="color:#4ade80;">Hasil: <strong>195 Pt</strong></span>
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+                                    Selesai pada: 2026-11-20 03:59:26                                 </div>
                             </li>
                                             </ul>
                             </div>
@@ -1405,13 +1417,4 @@ function adjustVolume(val) {
     localStorage.setItem('bgm_volume', val);
 }
 </script>
-<div class="tm-overlay">
-        <div class="tm-modal">
-            <div class="tm-title">Konfirmasi Tindakan</div>
-            <div class="tm-desc">Apakah Anda yakin ingin mengeksekusi tombol ini?</div>
-            <div class="tm-btn-group">
-                <button class="tm-btn tm-btn-cancel" id="tm-btn-no">Batal</button>
-                <button class="tm-btn tm-btn-confirm" id="tm-btn-yes">Lanjutkan</button>
-            </div>
-        </div>
-    </div><div style="position: fixed; top: 20px; right: 20px; background-color: rgba(20, 20, 30, 0.9); color: rgb(0, 255, 0); padding: 10px 15px; border-radius: 8px; font-family: monospace; font-size: 18px; z-index: 999999; border: 1px solid rgb(85, 85, 85); pointer-events: none;">07:55:31</div></body></html>
+</body></html>

@@ -190,10 +190,12 @@ async function scrapeAuction(page) {
 
     const text = auctionTab.innerText || '';
 
-    const itemEl = auctionTab.querySelector('h4');
+    // Prefer h4, fallback h3 (beberapa template pakai h3 di blok auction)
+    const itemEl = auctionTab.querySelector('h4') || auctionTab.querySelector('h3');
     const itemName = itemEl ? itemEl.innerText.trim() : 'Unknown Item';
 
-    const bidMatch = text.match(/Bid Tertinggi:\s*(\d+)\s*Pt/i) || text.match(/(\d+)\s*Pt/i);
+    // Jangan pakai fallback /(\\d+)\\s*Pt/ - bisa salah tangkap saldo/ID
+    const bidMatch = text.match(/Bid Tertinggi:\s*(\d+)\s*Pt/i);
     const highestBid = bidMatch ? parseInt(bidMatch[1], 10) : 0;
 
     const classMatch = text.match(/Milik kelas:\s*([^\n\r]+)/i);
@@ -247,11 +249,11 @@ async function fastFetchScrape(page) {
       if (!resp.ok) return { found: false, error: `HTTP ${resp.status}` };
       const html = await resp.text();
 
-      const itemMatch = html.match(/<h4[^>]*>([^<]+)<\/h4>/i);
+      const itemMatch = html.match(/<h4[^>]*>([^<]+)<\/h4>/i) || html.match(/<h3[^>]*>([^<]+)<\/h3>/i);
       const itemName = itemMatch ? itemMatch[1].trim() : 'Unknown Item';
 
       const bidMatch = html.match(/Bid Tertinggi:\s*<[^>]*>\s*(\d+)\s*Pt/i)
-        || html.match(/Bid Tertinggi:[^<]*(\d+)\s*Pt/i);
+        || html.match(/Bid Tertinggi:[^<\d]*(\d+)\s*Pt/i);
       const highestBid = bidMatch ? parseInt(bidMatch[1], 10) : 0;
 
       const classMatch = html.match(/Milik kelas:\s*<[^>]*>([^<]+)<\/span>/i)
@@ -268,8 +270,8 @@ async function fastFetchScrape(page) {
       const scoreMatch = html.match(/confirmBid\s*\(\s*this\s*,\s*(\d+)\s*\)/);
       let currentScore = scoreMatch ? parseInt(scoreMatch[1], 10) : 0;
       if (!currentScore) {
-        const ptMatch = html.match(/Point\s*Tersedia:\s*<[^>]*>\s*(\d+)\s*Point/i)
-          || html.match(/Point\s*Tersedia:[^0-9]*(\d+)\s*Point/i);
+        const ptMatch = html.match(/Point\s*Tersedia:\s*<[^>]*>\s*(\d+)\s*(?:Point|Pt)/i)
+          || html.match(/Point\s*Tersedia[^<\d]*(\d+)/i);
         if (ptMatch) currentScore = parseInt(ptMatch[1], 10);
       }
 
@@ -567,7 +569,8 @@ async function runWorkerLoop(page, workerId, staggerOffsetMs, totalWorkers) {
             // Hanya worker PERTAMA yang mendeteksi perubahan harga ini
             // yang akan menembak bid secara instan.
             // ═══════════════════════════════════════════════════════
-            const isNewHigherBidNeeded = targetBid > sharedState.lastDispatchedBid || (Date.now() - sharedState.lastBidTime > 2500);
+            // shortcut: hapus re-trigger 2500ms; bid hanya dikirim jika targetBid naik
+            const isNewHigherBidNeeded = targetBid > sharedState.lastDispatchedBid;
 
             if (isNewHigherBidNeeded) {
               // Klaim eksekusi secara instan

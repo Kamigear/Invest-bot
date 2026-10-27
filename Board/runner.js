@@ -3,17 +3,17 @@
  * runner.js — One-Shot Task Runner for GitHub Actions / Cron CLI
  * =============================================================================
  * Penggunaan:
- *   node Board/runner.js claim_daily -> Rutinitas harian (Analytics Kemarin -> Klaim Streak 30+, Perk, Easter Egg)
+ *   node Board/runner.js claim_daily -> Rutinitas harian (Klaim Streak 30+, Perk, Easter Egg)
  *   node Board/runner.js analytics   -> Leaderboard Scrape & Analytics (Hari Ini)
  *   node Board/runner.js decision    -> Decision Engine -> (jika YES) Invest -> Analytics
  *   node Board/runner.js invest      -> Eksekusi investasi terjadwal -> Analytics
  *   node Board/runner.js auto        -> Smart Self-Healing & Catch-up (Anti-Skip)
  *
  * Alur Rutinitas Harian (01:00 WIB):
- *   1. Analytics Kemarin : Snapshot leaderboard sebelum klaim (milik hari sebelumnya)
- *   2. Claim Daily       : Task 1 (Easter Egg) -> Task 2 (Daily Login)
+ *   1. Claim Daily       : Task 1 (Easter Egg) -> Task 2 (Daily Login)
+ *   2. Analytics Pra-Inv : Snapshot leaderboard pasca klaim sebelum Decision Engine
  *   3. Decision & Invest : Decision Engine -> (jika YES) Invest
- *   4. Analytics Hari Ini: Snapshot leaderboard pasca klaim & invest (milik hari ini)
+ *   4. Analytics Pasca-Inv: Snapshot leaderboard pasca invest (milik hari ini)
  * =============================================================================
  */
 
@@ -100,24 +100,11 @@ async function isDecisionDoneToday() {
 async function runClaimDaily() {
   Logger.banner(`RUNNER: CLAIM DAILY DIMULAI (${getWibTimeStr()})`);
   try {
-    // 1. Task 3 (Leaderboard Analytics Milik Hari Sebelumnya) - SEBELUM KLAIM
-    // Menjalankan analytics sebelum klaim agar snapshot mencatat hasil bersih penutupan hari kemarin
-    const prevDay = getYesterdayWibDate();
-    Logger.info(`Memulai Task 3: Leaderboard Analytics hari sebelumnya (${prevDay}) sebelum klaim...`);
-    const analyticsResult = await runTask3({ targetDate: prevDay, isPreviousDay: true });
-    if (analyticsResult && analyticsResult.status === 'ERROR') {
-      throw new Error(`Leaderboard Analytics hari sebelumnya gagal: ${analyticsResult.error || 'Unknown error'}`);
-    }
-    Logger.info(`Hasil Leaderboard Analytics hari sebelumnya (${prevDay}):`, { status: analyticsResult?.status || 'DONE' });
-
-    // Tunggu 3 detik agar sesi browser analytics tertutup sempurna sebelum membuka sesi klaim
-    await sleep(3000);
-
-    // 2. Task 1: Scrape dashboard & claim Easter Egg jika hari Minggu/jadwalnya
+    // 1. Task 1: Scrape dashboard & claim Easter Egg jika hari Minggu/jadwalnya
     Logger.info('Memulai Task 1 (Easter Egg & Dashboard Scrape)...');
     await runTask1();
 
-    // 3. Task 2: Claim Daily Login Reward (Streak 30+)
+    // 2. Task 2: Claim Daily Login Reward (Streak 30+)
     Logger.info('Memulai Task 2 (Daily Login Reward)...');
     await runTask2();
 
@@ -127,7 +114,7 @@ async function runClaimDaily() {
     // Kirim notifikasi ntfy bahwa claim daily berhasil dengan jam asli
     await sendAlert(
       `🌅 Claim Daily Selesai (${getWibTimeStr()})\n` +
-      `📊 Analytics Kemarin (${prevDay}) dicatat & ✅ Daily Login & Easter Egg Berhasil Di Claim`
+      `✅ Daily Login & Easter Egg Berhasil Di Claim`
     );
 
     Logger.banner('RUNNER: CLAIM DAILY SELESAI DENGAN SUKSES');
@@ -230,9 +217,9 @@ async function main() {
     await runClaimDaily();
   } else if (arg === 'full_run' || arg === 'all' || arg === 'routine' || arg === 'simulate') {
     Logger.banner('RUNNER: FULL RUN / SIMULASI RUTINITAS LENGKAP DIMULAI');
-    Logger.info('Menjalankan seluruh alur tanpa batasan jam/status (Analytics Kemarin -> Claim -> Decision/Invest -> Analytics Hari Ini)');
+    Logger.info('Menjalankan seluruh alur tanpa batasan jam/status (Claim -> Decision/Invest -> Analytics)');
 
-    // 1. Claim Daily (Task 3 Analytics Kemarin -> Task 1 Easter Egg + Task 2 Streak Login)
+    // 1. Claim Daily (Task 1 Easter Egg + Task 2 Streak Login)
     await runClaimDaily();
 
     // 2. Tunggu 3 detik agar browser tertutup sempurna

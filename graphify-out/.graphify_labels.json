@@ -205,5 +205,6 @@
   "203": "capture-workflow.sh",
   "204": "form-automation.sh",
   "205": "Core Principles",
-  "207": "default"
+  "206": "primary-foreground",
+  "207": "secondary-foreground"
 }
