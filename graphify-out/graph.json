@@ -2884,8 +2884,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_default",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 195,
+      "community_name": "destructive",
       "norm_label": "default"
     },
     {
@@ -2895,8 +2895,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_value",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 195,
+      "community_name": "destructive",
       "norm_label": "$value"
     },
     {
@@ -2906,8 +2906,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_default_type",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 195,
+      "community_name": "destructive",
       "norm_label": "$type"
     },
     {
@@ -2917,8 +2917,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_radius_md",
-      "community": 205,
-      "community_name": "Core Principles",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "md"
     },
     {
@@ -2928,8 +2928,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_md_value",
-      "community": 205,
-      "community_name": "Core Principles",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$value"
     },
     {
@@ -2939,8 +2939,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_md_type",
-      "community": 205,
-      "community_name": "Core Principles",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "$type"
     },
     {
@@ -3038,8 +3038,8 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_default",
-      "community": 11,
-      "community_name": "Board Leaderboard",
+      "community": 195,
+      "community_name": "destructive",
       "norm_label": "default"
     },
     {
@@ -3049,8 +3049,8 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_shadow_md",
-      "community": 205,
-      "community_name": "Core Principles",
+      "community": 11,
+      "community_name": "Board Leaderboard",
       "norm_label": "md"
     },
     {
@@ -3269,8 +3269,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_primary",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 205,
+      "community_name": "Core Principles",
       "norm_label": "primary"
     },
     {
@@ -3280,8 +3280,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_value",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 205,
+      "community_name": "Core Principles",
       "norm_label": "$value"
     },
     {
@@ -3291,8 +3291,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_primary_type",
-      "community": 36,
-      "community_name": "Kiro Steering Design",
+      "community": 205,
+      "community_name": "Core Principles",
       "norm_label": "$type"
     },
     {
@@ -3500,8 +3500,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_color_destructive",
-      "community": 195,
-      "community_name": "destructive",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "destructive"
     },
     {
@@ -3511,8 +3511,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_value",
-      "community": 195,
-      "community_name": "destructive",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$value"
     },
     {
@@ -3522,8 +3522,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_destructive_type",
-      "community": 195,
-      "community_name": "destructive",
+      "community": 36,
+      "community_name": "Kiro Steering Design",
       "norm_label": "$type"
     },
     {
@@ -3830,8 +3830,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_x",
-      "community": 184,
-      "community_name": "input",
+      "community": 192,
+      "community_name": "padding-y",
       "norm_label": "padding-x"
     },
     {
@@ -3841,8 +3841,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_value",
-      "community": 184,
-      "community_name": "input",
+      "community": 192,
+      "community_name": "padding-y",
       "norm_label": "$value"
     },
     {
@@ -3852,8 +3852,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_x_type",
-      "community": 184,
-      "community_name": "input",
+      "community": 192,
+      "community_name": "padding-y",
       "norm_label": "$type"
     },
     {
@@ -3863,8 +3863,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_button_padding_y",
-      "community": 192,
-      "community_name": "padding-y",
+      "community": 184,
+      "community_name": "input",
       "norm_label": "padding-y"
     },
     {
@@ -3874,8 +3874,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_value",
-      "community": 192,
-      "community_name": "padding-y",
+      "community": 184,
+      "community_name": "input",
       "norm_label": "$value"
     },
     {
@@ -3885,8 +3885,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_padding_y_type",
-      "community": 192,
-      "community_name": "padding-y",
+      "community": 184,
+      "community_name": "input",
       "norm_label": "$type"
     },
     {
@@ -4028,8 +4028,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_x",
-      "community": 184,
-      "community_name": "input",
+      "community": 192,
+      "community_name": "padding-y",
       "norm_label": "padding-x"
     },
     {
@@ -4039,8 +4039,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "kiro_steering_design_system_templates_design_tokens_starter_input_padding_y",
-      "community": 192,
-      "community_name": "padding-y",
+      "community": 184,
+      "community_name": "input",
       "norm_label": "padding-y"
     },
     {
@@ -9184,7 +9184,7 @@
       "label": "fastFetchScrape()",
       "file_type": "code",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L245",
+      "source_location": "L250",
       "_origin": "ast",
       "id": "board_auctionsniper_fastfetchscrape",
       "community": 86,
@@ -9195,7 +9195,7 @@
       "label": "placeBid()",
       "file_type": "code",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L293",
+      "source_location": "L307",
       "_origin": "ast",
       "id": "board_auctionsniper_placebid",
       "community": 86,
@@ -9206,7 +9206,7 @@
       "label": "initWorker()",
       "file_type": "code",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L387",
+      "source_location": "L401",
       "_origin": "ast",
       "id": "board_auctionsniper_initworker",
       "community": 86,
@@ -9217,7 +9217,7 @@
       "label": "runWorkerLoop()",
       "file_type": "code",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L432",
+      "source_location": "L446",
       "_origin": "ast",
       "id": "board_auctionsniper_runworkerloop",
       "community": 86,
@@ -9228,7 +9228,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L610",
+      "source_location": "L624",
       "_origin": "ast",
       "id": "board_auctionsniper_main",
       "community": 86,
@@ -42955,7 +42955,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L245",
+      "source_location": "L250",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper",
@@ -43010,7 +43010,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L387",
+      "source_location": "L401",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper",
@@ -43032,7 +43032,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L610",
+      "source_location": "L624",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper",
@@ -43054,7 +43054,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L293",
+      "source_location": "L307",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper",
@@ -43076,7 +43076,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L432",
+      "source_location": "L446",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper",
@@ -43134,7 +43134,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L388",
+      "source_location": "L402",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_initworker",
@@ -43146,7 +43146,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L612",
+      "source_location": "L626",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -43158,7 +43158,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L295",
+      "source_location": "L309",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_placebid",
@@ -43170,7 +43170,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L436",
+      "source_location": "L450",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_runworkerloop",
@@ -43194,7 +43194,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L655",
+      "source_location": "L669",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -43206,7 +43206,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L439",
+      "source_location": "L453",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_runworkerloop",
@@ -43218,7 +43218,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L654",
+      "source_location": "L668",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -43230,7 +43230,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L549",
+      "source_location": "L563",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_runworkerloop",
@@ -43242,7 +43242,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L419",
+      "source_location": "L433",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_initworker",
@@ -43254,7 +43254,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L645",
+      "source_location": "L659",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -43266,7 +43266,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L499",
+      "source_location": "L513",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_runworkerloop",
@@ -43278,7 +43278,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L588",
+      "source_location": "L602",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_runworkerloop",
@@ -43290,7 +43290,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L644",
+      "source_location": "L658",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -43302,7 +43302,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L688",
+      "source_location": "L702",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -43315,7 +43315,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "Board/auctionSniper.js",
-      "source_location": "L628",
+      "source_location": "L642",
       "weight": 1.0,
       "_origin": "ast",
       "source": "board_auctionsniper_main",
@@ -65755,5 +65755,5 @@
       "source_file": ".agents/rules/graphify.md"
     }
   ],
-  "built_at_commit": "021adc7e83b3eb5744fe4759488b0f460d90a1ac"
+  "built_at_commit": "d7008c037d19dbc2a461d9cdc5a09f8d1df5532a"
 }

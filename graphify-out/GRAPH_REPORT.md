@@ -1,7 +1,7 @@
-# Graph Report - Investation  (2026-10-27)
+# Graph Report - Investation  (2026-10-30)
 
 ## Corpus Check
-- 151 files · ~146,559 words
+- 151 files · ~146,653 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `021adc7e`
+- Built from commit: `d7008c03`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -301,7 +301,7 @@ Nodes (37): acquireBrowserLock(), { claimDailyReward }, cron, { db, serverTimest
 
 ### Community 11 - "Board Leaderboard"
 Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, default, full, default
+Nodes (8): $type, $value, $type, $value, radius, full, md, md
 
 ### Community 12 - "Kiro Steering Brand"
 Cohesion: 0.06
@@ -401,7 +401,7 @@ Nodes (18): 1. Wordmark (Logotype), 2. Lettermark (Monogram), 3. Pictorial Mark 
 
 ### Community 36 - "Kiro Steering Design"
 Cohesion: 0.11
-Nodes (19): $type, $value, background, foreground, muted-foreground, primary, primary-hover, secondary (+11 more)
+Nodes (19): $type, $value, background, destructive, foreground, muted-foreground, primary-hover, secondary (+11 more)
 
 ### Community 37 - "Axios"
 Cohesion: 0.10
@@ -833,7 +833,7 @@ Nodes (8): Connecting, Contents, Enabling the stream, Frame rate and staleness, 
 
 ### Community 184 - "input"
 Cohesion: 0.29
-Nodes (8): padding-x, input, $type, $value, focus-ring, padding-x, $type, $value
+Nodes (8): padding-y, input, $type, $value, focus-ring, padding-y, $type, $value
 
 ### Community 185 - "detect_domain"
 Cohesion: 0.43
@@ -865,7 +865,7 @@ Nodes (5): radius, radius, radius, $type, $value
 
 ### Community 192 - "padding-y"
 Cohesion: 0.67
-Nodes (4): padding-y, padding-y, $type, $value
+Nodes (4): padding-x, padding-x, $type, $value
 
 ### Community 193 - "Color Customization"
 Cohesion: 0.67
@@ -877,7 +877,7 @@ Nodes (4): Component Customization, Customize Styles, Customize Variants, Overri
 
 ### Community 195 - "destructive"
 Cohesion: 0.67
-Nodes (3): destructive, $type, $value
+Nodes (4): $type, $value, default, default
 
 ### Community 196 - "destructive-foreground"
 Cohesion: 0.67
@@ -905,7 +905,7 @@ Nodes (5): 1. Add Pauses for Clarity, 2. Use Descriptive Filenames, 3. Handle Re
 
 ### Community 205 - "Core Principles"
 Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+Nodes (3): primary, $type, $value
 
 ### Community 206 - "primary-foreground"
 Cohesion: 0.67

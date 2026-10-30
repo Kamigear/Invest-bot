@@ -189,6 +189,11 @@ async function scrapeAuction(page) {
     }
 
     const text = auctionTab.innerText || '';
+    const form = auctionTab.querySelector('#bidForm') || auctionTab.querySelector('form');
+
+    if (text.includes('Tidak ada lelang yang aktif') || (!form && !text.includes('Bid Tertinggi'))) {
+      return { found: false, noActiveAuction: true, message: 'Tidak ada lelang yang aktif saat ini' };
+    }
 
     // Prefer h4, fallback h3 (beberapa template pakai h3 di blok auction)
     const itemEl = auctionTab.querySelector('h4') || auctionTab.querySelector('h3');
@@ -249,25 +254,34 @@ async function fastFetchScrape(page) {
       if (!resp.ok) return { found: false, error: `HTTP ${resp.status}` };
       const html = await resp.text();
 
-      const itemMatch = html.match(/<h4[^>]*>([^<]+)<\/h4>/i) || html.match(/<h3[^>]*>([^<]+)<\/h3>/i);
+      // Batasi parsing ke blok #content-auction agar tidak tabrakan dengan Reward Shop
+      const auctionBlockMatch = html.match(/id=["']content-auction["'][^>]*>([\s\S]*?)(?:<div class=["']card["']|<\/body)/i)
+        || html.match(/id=["']content-auction["'][^>]*>([\s\S]*)/i);
+      const block = auctionBlockMatch ? auctionBlockMatch[1] : html;
+
+      if (block.includes('Tidak ada lelang yang aktif')) {
+        return { found: false, noActiveAuction: true, message: 'Tidak ada lelang aktif saat ini' };
+      }
+
+      const itemMatch = block.match(/<h4[^>]*>([^<]+)<\/h4>/i) || block.match(/<h3[^>]*>([^<]+)<\/h3>/i);
       const itemName = itemMatch ? itemMatch[1].trim() : 'Unknown Item';
 
-      const bidMatch = html.match(/Bid Tertinggi:\s*<[^>]*>\s*(\d+)\s*Pt/i)
-        || html.match(/Bid Tertinggi:[^<\d]*(\d+)\s*Pt/i);
+      // Tangkap angka setelah 'Bid Tertinggi:' meskipun dipisah banyak tag (misal: <strong>...</strong> <span>1 Pt</span>)
+      const bidMatch = block.match(/Bid Tertinggi:[\s\S]*?(\d+)\s*Pt/i);
       const highestBid = bidMatch ? parseInt(bidMatch[1], 10) : 0;
 
-      const classMatch = html.match(/Milik kelas:\s*<[^>]*>([^<]+)<\/span>/i)
-        || html.match(/Milik kelas:\s*([^\n\r<]+)/i);
+      const classMatch = block.match(/Milik kelas:[\s\S]*?>\s*([^<]+)<\/span>/i)
+        || block.match(/Milik kelas:\s*([^\n\r<]+)/i);
       const holderClass = classMatch ? classMatch[1].trim() : 'Unknown';
 
-      const auctionIdMatch = html.match(/name=["']auction_id["'][^>]*value=["'](\d+)["']/i)
-        || html.match(/value=["'](\d+)["'][^>]*name=["']auction_id["']/i);
+      const auctionIdMatch = block.match(/name=["']auction_id["'][^>]*value=["'](\d+)["']/i)
+        || block.match(/value=["'](\d+)["'][^>]*name=["']auction_id["']/i);
       const auctionId = auctionIdMatch ? auctionIdMatch[1] : null;
 
-      const minBidMatch = html.match(/name=["']bid_amount["'][^>]*min=["'](\d+)["']/i);
+      const minBidMatch = block.match(/name=["']bid_amount["'][^>]*min=["'](\d+)["']/i);
       const minBid = minBidMatch ? parseInt(minBidMatch[1], 10) : highestBid + 1;
 
-      const scoreMatch = html.match(/confirmBid\s*\(\s*this\s*,\s*(\d+)\s*\)/);
+      const scoreMatch = block.match(/confirmBid\s*\(\s*this\s*,\s*(\d+)\s*\)/);
       let currentScore = scoreMatch ? parseInt(scoreMatch[1], 10) : 0;
       if (!currentScore) {
         const ptMatch = html.match(/Point\s*Tersedia:\s*<[^>]*>\s*(\d+)\s*(?:Point|Pt)/i)
