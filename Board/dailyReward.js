@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const { Logger } = require('./logger');
 const { isTransientError } = require('./retry');
+const { sendAlert } = require('./alert');
 
 /**
  * Automate daily reward claim on the rep_panel.php dashboard
@@ -64,6 +65,20 @@ async function claimDailyReward() {
 
     Logger.success("Login sukses - daily reward biasanya otomatis diklaim saat login", { classId });
 
+    // Pengecekan tiket Blind Box di dashboard setelah login
+    const tickets = await page.evaluate(() => {
+      const bodyText = document.body.innerText || '';
+      const ticketMatch = bodyText.match(/Tiket Blind Box:\s*(\d+)/i);
+      return ticketMatch ? parseInt(ticketMatch[1], 10) : 0;
+    });
+
+    if (tickets > 0) {
+      Logger.info(`Tiket Blind Box terdeteksi di dashboard: ${tickets} tiket`, { tickets });
+      await sendAlert(`🎟️ Info Tiket: Ditemukan ${tickets} Tiket Blind Box di dashboard! Segera cek dan gunakan.`);
+    } else {
+      Logger.info("Pengecekan tiket: Tidak ada tiket Blind Box di dashboard (0 tiket)", { tickets: 0 });
+    }
+
     const responseText = await page.evaluate(() => {
       const el = document.querySelector('.alert, .notification, #message');
       return el ? el.innerText.trim() : null;
@@ -74,14 +89,14 @@ async function claimDailyReward() {
       const lowerText = responseText.toLowerCase();
       if (lowerText.includes('error') || lowerText.includes('fail') || lowerText.includes('gagal')) {
         Logger.error("Daily reward gagal berdasarkan respons server", { serverResponse: responseText });
-        return { success: false, data: null, error: `Pesan server: ${responseText}`, alreadyClaimed: false };
+        return { success: false, data: null, error: `Pesan server: ${responseText}`, alreadyClaimed: false, tickets };
       }
       Logger.success("Daily reward berhasil diklaim", { serverResponse: responseText });
-      return { success: true, data: responseText, error: null, alreadyClaimed: false };
+      return { success: true, data: responseText, error: null, alreadyClaimed: false, tickets };
     }
 
     Logger.success("Daily reward selesai (tidak ada pesan error/peringatan)", { alreadyClaimed: true });
-    return { success: true, data: 'Daily reward otomatis diklaim saat login', error: null, alreadyClaimed: false };
+    return { success: true, data: 'Daily reward otomatis diklaim saat login', error: null, alreadyClaimed: false, tickets };
 
   } catch (error) {
     // Re-throw transient network errors so withRetry() can retry

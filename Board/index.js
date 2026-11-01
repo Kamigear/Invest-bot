@@ -448,7 +448,7 @@ async function runTask2() {
           Logger.success(`Daily reward berhasil diklaim: ${result.data}`, { task: "TUGAS_2", data: result.data });
         }
         Pending.clearPending('DAILY_REWARD');
-        return { status: 'COMPLETED', task: 'TUGAS_2' };
+        return { status: 'COMPLETED', task: 'TUGAS_2', tickets: result.tickets || 0 };
       } else {
         Logger.error(`Gagal klaim daily reward: ${result.error}`, { task: "TUGAS_2", error: result.error });
         await sendAlert(`Daily reward gagal diklaim: ${result.error}`);
